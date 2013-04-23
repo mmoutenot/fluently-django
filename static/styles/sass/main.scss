@@ -1,0 +1,146 @@
+@import "bourbon";
+@import "colors";
+@import "fonts";
+
+body, html {
+	padding:0;
+	margin:0;
+	height:100%;
+	font-family:Signika;
+	color:$font;
+	position:relative;
+}
+
+
+#navbar {
+	width:100%;
+	height:80px;
+	position:fixed;
+	top:0;
+	background:$salmon;
+	z-index:999;
+	@include box-shadow(0px 1px 3px 0px $salmon_d);
+
+	#logo {
+		float:left;
+		padding:10px;
+		
+		img {
+			width:190px;
+			height:60px;
+			display: block;
+		}
+	
+	}
+
+	#nav {
+		padding:0;
+		margin:10px 10px 0 0;
+		float:right;
+		list-style:none;
+		
+		li {
+			display: inline-block;
+			margin:0 1px;
+			padding:0;
+			list-style:none;
+			float:left;
+
+			&#slider {
+				height:60px;
+				width:70px;
+				margin-left:1px;
+				background:$grey;
+				opacity:.8;
+				position:absolute;
+				border:2px solid $salmon;
+				border-radius:3px;
+			}
+		
+			a {
+				text-decoration: none;
+				padding:10px;
+				text-align:center;
+				display: block;
+				height:40px;
+				width:50px;
+				line-height:40px;
+				color:$white;
+				border:2px solid $salmon_d;
+				border-radius:3px;
+
+			}
+		}
+	}
+
+}
+
+#main {
+	width:100%;
+	position:relative;
+	top:80px;
+	background:$white;
+
+	#left {
+		width:24%;
+		height:100%;
+		top:80px;
+		float:left;
+		position:fixed;
+		border-right:1px solid $grey;
+
+		#video {
+			width:100%;
+			border-bottom:1px solid $grey;
+			position:relative;
+			display: block;
+			height:300px;
+			float:left;
+		
+			
+		}
+
+	#video_small_container {
+		height:130px;
+		width:100%;
+		position:relatie;
+		display: block;
+		float:left;
+		
+		#video_small {
+			position:relative;
+			width:130px;
+			height:100%;	
+			margin:0 auto;
+			
+		}
+	}
+		
+
+		#chat {
+			width:100%;
+			float:left;
+			display: block;
+			height:170px;
+			border-top:1px solid $grey;
+			
+		}
+	}
+
+	#right {
+		width:75%;
+		height:100%;
+		margin-left:24.5%;
+		float:left;
+		position:fixed;
+		background:$white;
+
+
+		#shared {
+			width:100%;
+			background:$white;
+		}
+	}
+
+}
+

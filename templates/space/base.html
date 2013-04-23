@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    {# CSS INCLUDES  #}
+    <link href='/static/styles/css/index.css' rel='stylesheet' type='text/css'>
+
+    {# JS INCLUDES #}
+    <script>
+      apiKey = "25204042";
+      tok_token  = "{{ tok_token }}";
+      session_id = "{{ tok_session_id }}";
+    </script>
+    <script src='http://static.opentok.com/webrtc/v2.0/js/TB.min.js' ></script>
+    <script src='/static/js/jQuery.min.js' type='text/javascript'></script>
+    <script src='/static/js/main.js' type='text/javascript'></script>
+    <script src='/static/js/video.js' type='text/javascript'></script>
+    <script src="/static/js/jquery.gdocsviewer.min.js" type="text/javascript"></script>
+  </head>
+
+  <body>
+
+    <div id='navbar'>
+      <div id='logo'> <img src='/static/images/logos/Logo_White.png'> </div>
+
+      <ul id='nav'>
+        <li id='slider'></li>
+
+        <li class='active' id='btn1'>
+          <a href='#'> BTN </a>
+        </li>
+
+        <li id='btn2'>
+          <a href='#'> BTN </a>
+        </li>
+
+      </ul>
+    </div>
+
+    <div id='main'>
+      <div id='left'>
+        <div id='video'>
+
+        </div>
+
+        <div id="video_small_container">
+          <div id="video_small"></div>
+        </div>
+
+        <div id='chat'></div>
+
+      </div><!--left-->
+
+      <div id='right'>
+        {% block shared-space %} {% endblock %}
+      </div>
+
+    </div><!--main-->
+
+  </body>
+</html>
