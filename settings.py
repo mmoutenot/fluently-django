@@ -103,6 +103,7 @@ INSTALLED_APPS = (
   # custom apps
   'vendor.TokBox',
   'apps.space',
+  'apps.face',
 )
 
 
