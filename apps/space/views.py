@@ -1,10 +1,19 @@
+# django libraries
 from django.shortcuts import redirect, get_object_or_404, render
 from django.views.decorators.http import require_http_methods
 
+# general python packages
 import uuid
+import sys
+import time
+import os
 
+# third party packages
 from vendor.TokBox import OpenTokSDK
+import crocodoc
+from crocodoc import CrocodocError
 
+# models
 from models import Space
 
 class TokBox:
@@ -28,24 +37,63 @@ class TokBox:
     print 'created token: ' + token
     return token
 
+class Crocodoc:
+  c = crocodoc
+  c.api_key = 'Tw6f4QKEneJ8qiHzCRL7bOlF'
+
+  @classmethod
+  def upload(self, file_path):
+    sys.stdout.write('  Uploading... ')
+    uuid = None
+    try:
+      uuid = self.c.document.upload(url=file_path)
+      print '  UUID is ' + uuid
+      return uuid
+    except CrocodocError as e:
+      print '  Error Code: ' + str(e.status_code)
+      print '  Error Message: ' + e.error_message
+      return None
+
+  @classmethod
+  def generate_session_id(self, uuid):
+    try:
+      session_id = self.c.session.create(uuid)
+      print '  session is ' + session
+      return session_id
+    except CrocodocError as e:
+      print '  Error Code: ' + str(e.status_code)
+      print '  Error Message: ' + e.error_message
+      return None
+
 @require_http_methods(["GET"])
 def dispatch(request):
   print 'in dispatch'
   s = Space(tok_session_id = TokBox.generate_session_id(), url_id=uuid.uuid4())
   s.save()
 
-  return redirect('/%s' % str(s.url_id))
+  return redirect('/%s/' % str(s.url_id))
 
 @require_http_methods(["GET"])
 def main(request, space_url_id):
   print 'in main'
   s = get_object_or_404(Space, url_id=space_url_id)
+
   tok_token = TokBox.generate_token(s.tok_session_id)
+  tok_token=None
+
+  form_w4_url = 'http://www.irs.gov/pub/irs-pdf/fw4.pdf'
+
+  croco_uuid = Crocodoc.upload(form_w4_url)
+  croco_session = Crocodoc.generate_session_id(croco_uuid)
+
+
+
   return render(request, 'space/index.html',
                 {
-                  "space":s,
-                  "tok_token":tok_token,
-                  "tok_session_id":s.tok_session_id
+                  "space"          : s,
+                  "tok_token"      : tok_token,
+                  "tok_session_id" : s.tok_session_id,
+                  "croco_session"  : croco_session,
                 })
 
 
