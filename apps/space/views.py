@@ -86,8 +86,6 @@ def main(request, space_url_id):
   croco_uuid = Crocodoc.upload(form_w4_url)
   croco_session = Crocodoc.generate_session_id(croco_uuid)
 
-
-
   return render(request, 'space/index.html',
                 {
                   "space"          : s,
@@ -95,5 +93,4 @@ def main(request, space_url_id):
                   "tok_session_id" : s.tok_session_id,
                   "croco_session"  : croco_session,
                 })
-
 
