@@ -4,7 +4,7 @@ $(document).ready(function() {
 	$(btn).click(function() {
 		$(this).parent('li').addClass('active');
 		$(btn).not(this).parent('li').removeClass('active');
-	
+
 		if ($('#btn1').hasClass('active')) {
 			$('#slider').animate({
 				marginLeft:1
@@ -17,3 +17,4 @@ $(document).ready(function() {
 	});
 
 });
+
