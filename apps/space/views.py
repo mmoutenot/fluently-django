@@ -94,3 +94,14 @@ def main(request, space_url_id):
                   "croco_session"  : croco_session,
                 })
 
+@require_http_methods(["GET","POST"])
+def upload(request):
+  print 'in upload view'
+  form = UploadFileForm(request.POST, request.FILES)
+  if form.is_valid():
+    handle_uploaded_file(request.FILES['file'])
+    return HttpResponseRedirect('/success/url/')
+  else:
+    form = UploadFileForm()
+    return render_to_response('upload.html', {'form': form})
+
