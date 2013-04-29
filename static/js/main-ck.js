@@ -1,1 +1,0 @@
-$(document).ready(function(){var e=$("#nav li a");$(e).click(function(){$(this).parent("li").addClass("active");$(e).not(this).parent("li").removeClass("active");$("#btn1").hasClass("active")?$("#slider").animate({marginLeft:1}):$("#btn2").hasClass("active")&&$("#slider").animate({marginLeft:77})})});
