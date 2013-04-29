@@ -109,24 +109,36 @@ $(document).ready(function() {
       previewfile(files[i]);
     }
 
-    // now post a new XHR request
-    if (tests.formdata) {
-      var xhr = new XMLHttpRequest();
-      xhr.open('POST', '/upload/');
-      xhr.onload = function() {
-        progress.value = progress.innerHTML = 100;
-      };
-
-      if (tests.progress) {
-        xhr.upload.onprogress = function (event) {
-          if (event.lengthComputable) {
-            var complete = (event.loaded / event.total * 100 | 0);
-            progress.value = progress.innerHTML = complete;
-          }
+    if(tests.formdata){
+      $.ajax({
+        xhr: function()
+        {
+          var xhr = new window.XMLHttpRequest();
+          //Upload progress
+          xhr.upload.addEventListener("progress", function(evt){
+            if (evt.lengthComputable) {
+              var percentComplete = evt.loaded / evt.total;
+              //Do something with upload progress
+              console.log(percentComplete);
+            }
+          }, false);
+          //Download progress
+          xhr.addEventListener("progress", function(event){
+            if (event.lengthComputable) {
+              var complete = (event.loaded / event.total * 100 | 0);
+              progress.value = progress.innerHTML = complete;
+            }
+          }, false);
+          return xhr;
+        },
+        type: 'POST',
+        url: "/upload/",
+        data: formdata,
+        success: function(data){
+          progress.value = progress.innerHTML = 100;
+          alert(data);
         }
-      }
-
-      xhr.send(formData);
+      });
     }
   }
 
