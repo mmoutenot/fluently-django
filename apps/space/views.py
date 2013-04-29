@@ -81,27 +81,27 @@ def main(request, space_url_id):
   tok_token = TokBox.generate_token(s.tok_session_id)
   tok_token=None
 
-  form_w4_url = 'http://www.irs.gov/pub/irs-pdf/fw4.pdf'
-
-  croco_uuid = Crocodoc.upload(form_w4_url)
-  croco_session = Crocodoc.generate_session_id(croco_uuid)
-
   return render(request, 'space/index.html',
                 {
                   "space"          : s,
                   "tok_token"      : tok_token,
                   "tok_session_id" : s.tok_session_id,
-                  "croco_session"  : croco_session,
                 })
 
 @require_http_methods(["GET","POST"])
 def upload(request):
   print 'in upload view'
-  form = UploadFileForm(request.POST, request.FILES)
-  if form.is_valid():
-    handle_uploaded_file(request.FILES['file'])
-    return HttpResponseRedirect('/success/url/')
-  else:
-    form = UploadFileForm()
-    return render_to_response('upload.html', {'form': form})
+  print request.FILES
+  croco_session = handle_uploaded_file(request.FILES['file'])
+
+def handle_uploaded_file(f):
+  croco_session = None
+  try:
+    croco_uuid = Crocodoc.upload(form_w4_url)
+    croco_session = Crocodoc.generate_session_id(croco_uuid)
+  except CrocodocError as e:
+    print '  Error Code: ' + str(e.status_code)
+    print '  Error Message: ' + e.error_message
+    return None
+  return croco_session
 
