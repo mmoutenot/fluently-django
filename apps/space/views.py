@@ -39,7 +39,7 @@ class TokBox:
 
 class Crocodoc:
   c = crocodoc
-  c.api_key = 'Tw6f4QKEneJ8qiHzCRL7bOlF'
+  c.api_token = 'Tw6f4QKEneJ8qiHzCRL7bOlF'
 
   @classmethod
   def upload(self, file_path):
@@ -58,7 +58,7 @@ class Crocodoc:
   def generate_session_id(self, uuid):
     try:
       session_id = self.c.session.create(uuid)
-      print '  session is ' + session
+      print '  session is ' + session_id
       return session_id
     except CrocodocError as e:
       print '  Error Code: ' + str(e.status_code)
