@@ -1,6 +1,10 @@
 {% extends 'space/base.html' %}
 
 {% block shared-space %}
-<iframe id="documentViewer" src="https://crocodoc.com/view/{{ croco_session}}"></iframe>
+  {% if croco_session %}
+    <iframe id="documentViewer" src="http://crocodoc.com/view/{{ croco_session }}"></iframe>
+  {% else %}
+    <iframe id="documentViewer" src=""></iframe>
+  {% endif %}
 {% endblock %}
 
