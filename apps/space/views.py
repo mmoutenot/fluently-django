@@ -71,7 +71,7 @@ def dispatch(request):
   s = Space(tok_session_id = TokBox.generate_session_id(), url_id=uuid.uuid4())
   s.save()
 
-  return redirect('/%s/' % str(s.url_id))
+  return redirect('/space/%s/' % str(s.url_id))
 
 @require_http_methods(["GET"])
 def main(request, space_url_id):
