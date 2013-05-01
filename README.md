@@ -11,7 +11,7 @@ Clone the remote repository
 Create virtual python environment and install dependencies
 
     sudo easy_install pip
-    virtualenv
+    sudo pip install virtualenv
     virtualenv .venv
     cp tools/.virtualenv-auto-activate.sh ~/
     echo "source ~/.virtualenv-auto-activate.sh" >> ~/.bashrc
