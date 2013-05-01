@@ -123,3 +123,7 @@ body, html {
     #main #right #shared {
       width: 100%;
       background: white; }
+
+#documentViewer {
+  width: 100%;
+  height: 100%; }
