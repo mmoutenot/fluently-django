@@ -1,4 +1,5 @@
 # django libraries
+from django.http import HttpResponse
 from django.shortcuts import redirect, get_object_or_404, render
 from django.views.decorators.http import require_http_methods
 
@@ -42,11 +43,11 @@ class Crocodoc:
   c.api_token = 'Tw6f4QKEneJ8qiHzCRL7bOlF'
 
   @classmethod
-  def upload(self, file_path):
+  def upload(self, file_handle):
     sys.stdout.write('  Uploading... ')
     uuid = None
     try:
-      uuid = self.c.document.upload(url=file_path)
+      uuid = self.c.document.upload(file=file_handle)
       print '  UUID is ' + uuid
       return uuid
     except CrocodocError as e:
@@ -86,22 +87,32 @@ def main(request, space_url_id):
                   "space"          : s,
                   "tok_token"      : tok_token,
                   "tok_session_id" : s.tok_session_id,
+                  "croco_session"  : s.croco_session
                 })
 
 @require_http_methods(["GET","POST"])
 def upload(request):
   print 'in upload view'
   print request.FILES
-  croco_session = handle_uploaded_file(request.FILES['file'])
+
+  space_id = request.POST.get('space_id')
+  space = Space.objects.get(id=space_id)
+
+  croco_uuid = handle_uploaded_file(request.FILES['file'])
+  croco_session = Crocodoc.generate_session_id(croco_uuid)
+
+  space.croco_session = croco_session
+  space.save()
+
+  return HttpResponse(croco_session)
 
 def handle_uploaded_file(f):
   croco_session = None
   try:
-    croco_uuid = Crocodoc.upload(form_w4_url)
-    croco_session = Crocodoc.generate_session_id(croco_uuid)
+    croco_uuid = Crocodoc.upload(f)
   except CrocodocError as e:
     print '  Error Code: ' + str(e.status_code)
     print '  Error Message: ' + e.error_message
     return None
-  return croco_session
+  return croco_uuid
 
