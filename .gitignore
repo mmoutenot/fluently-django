@@ -3,3 +3,4 @@
 *.pyc
 *.db
 .sass-cache
+*.DS_Store
