@@ -15,13 +15,13 @@ Create virtual python environment and install dependencies
     virtualenv .venv
     cp bin/.virtualenv-auto-activate.sh ~/
     echo "source ~/.virtualenv-auto-activate.sh" >> ~/.bashrc
-    cd ../fluently
+    cd ../fluently-django
 
 Ensure that the virtual environment is activated
 
     which pip
 
-  Should display ~/.../.../fluently/.venv/blah/blah/pip
+  Should display ~/.../.../fluently-django/.venv/blah/blah/pip
 
     pip install -r requirements.txt
 
@@ -35,7 +35,7 @@ Modify your .gitconfig to be:
         ignorecase = true
     [remote "origin"]
         fetch = +refs/heads/*:refs/remotes/origin/*
-        url = https://github.com/mmoutenot/pinhack-django.git
+        url = https://github.com/mmoutenot/fluently-django.git
     [branch "master"]
         remote = origin
         merge = refs/heads/master
@@ -43,17 +43,9 @@ Modify your .gitconfig to be:
         url = todo
         fetch = +refs/heads/*:refs/remotes/web/*
 
-Install Redis:
+Install postgresql (I know this is scary, but trust me?)
 
-    curl -O http://redis.googlecode.com/files/redis-2.6.8.tar.gz
-    tar xzf redis-2.6.8.tar.gz
-    cd redis-2.6.8
-    make
-
-Copy Redis init scripts:
-
-    sudo cp src/redis-server /usr/local/bin/
-    sudo cp src/redis-cli /usr/local/bin/
+    bash < <(curl -s http://www.solowizard.com/soloist_scripts/jiagb2.sh )
 
 
 Remote Setup
