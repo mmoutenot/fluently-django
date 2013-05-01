@@ -17,9 +17,9 @@
       <div id="login_fields">
         <form action="/face/login/" method="post">
           {% csrf_token %}
-          <input id="login_email" name="login_email" type="text" placeholder="Email"/>
-          <input id="login_password" name="login_password" type="password" placeholder="Password"/>
-          <input type="submit" value="Log In" />
+          <input class="text_inputs" id="login_email" name="login_email" type="text" placeholder="Email"/>
+          <input class="text_inputs" id="login_password" name="login_password" type="password" placeholder="Password"/>
+          <input id="login_submit" type="submit" value="Log In" />
         </form>
       </div>
       <a href="#">
@@ -73,6 +73,9 @@
             marginRight:0,
             easing:'easeInOutQuart'
           }, 300);
+
+          $('#login_submit').delay(1180).fadeIn('slow');
+          $(this).delay(2000).fadeOut();
 
         });
 
