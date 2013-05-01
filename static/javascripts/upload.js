@@ -20,9 +20,7 @@ $(document).ready(function() {
   progress: document.getElementById('progress')
   },
   acceptedTypes = {
-    'image/png': true,
-  'image/jpeg': true,
-  'image/gif': true
+    'application/pdf': true
   },
   progress = document.getElementById('uploadprogress'),
   fileupload = document.getElementById('upload');
@@ -57,45 +55,37 @@ $(document).ready(function() {
     }
   }
 
+
   function readfiles(files) {
-      var formData = tests.formdata ? new FormData() : null;
-      for (var i = 0; i < files.length; i++) {
-        if (tests.formdata) formData.append('file', files[i]);
-        previewfile(files[i]);
-      }
+    var formData = tests.formdata ? new FormData() : null;
+    for (var i = 0; i < files.length; i++) {
+      if (tests.formdata) formData.append('file', files[i]);
+      previewfile(files[i]);
+    }
+    formData.append('space_id', space_id);
+    formData.append('csrfmiddlewaretoken', csrf_token);
 
-      // now post a new XHR request
-      if (tests.formdata) {
-        var xhr = new XMLHttpRequest();
-        xhr.open('POST', '/space/upload/');
-        xhr.onload = function(response) {
-          progress.value = progress.innerHTML = 100;
-        };
+    // now post a new XHR request
+    if (tests.formdata) {
+      var xhr = new XMLHttpRequest();
+      xhr.open('POST', '/space/upload/');
+      xhr.onload = function(data) {
+        progress.value = progress.innerHTML = 100;
+        croco_session = this.responseText;
 
-        xhr.setRequestHeader("X-CSRFToken", getCookie('csrftoken'));
+        documentUploadCallback(croco_session);
+      };
 
-        if (tests.progress) {
-          xhr.upload.onprogress = function (event) {
-            if (event.lengthComputable) {
-              var complete = (event.loaded / event.total * 100 | 0);
-              progress.value = progress.innerHTML = complete;
-            }
+      if (tests.progress) {
+        xhr.upload.onprogress = function (event) {
+          if (event.lengthComputable) {
+            var complete = (event.loaded / event.total * 100 | 0);
+            progress.value = progress.innerHTML = complete;
           }
         }
-
-        xhr.onreadystatechange = function(){
-          if ((xhr.readyState == 4) || (xhr.status == 200)){
-            alert(xhr.responseText);
-          }
-        }
-
-        xhr.send(formData);
       }
-      // // now post a new XHR request
-      // $.post('/upload/', formData)
-      //   .done(function(data){
-      //     alert(data);
-      //   });
+      xhr.send(formData);
+    }
   }
 
   if (tests.dnd) {
@@ -113,4 +103,10 @@ $(document).ready(function() {
     };
   }
 });
+
+function documentUploadCallback(croco_session){
+  console.log("viewing document " + croco_session);
+  $('#documentViewer').attr('src', 'https://crocodoc.com/view/'+croco_session);
+  $('#uploadModal').hide();
+}
 
