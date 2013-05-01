@@ -71,6 +71,7 @@ $(document).ready(function() {
         xhr.onload = function(response) {
           progress.value = progress.innerHTML = 100;
         };
+        xhr.setRequestHeader("X-CSRFToken", getCookie('csrftoken'));
 
         if (tests.progress) {
           xhr.upload.onprogress = function (event) {
