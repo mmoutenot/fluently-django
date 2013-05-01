@@ -59,3 +59,15 @@ Copy Redis init scripts:
 Remote Setup
 ------------
 TODO
+
+
+Developing
+------------
+When you're developing, run these two commands:
+    sass --watch stylesheets/sass:stylesheets
+and
+    python manage.py runserver
+
+The first will actively watch and convert your sass to css and the second runs the django server. The django server automatically restarts when changes are made to the .py files. If, however you add a new file, or make a change to settings.py you have to restart the server.
+
+
