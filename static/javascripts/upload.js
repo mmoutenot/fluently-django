@@ -62,6 +62,7 @@ $(document).ready(function() {
       if (tests.formdata) formData.append('file', files[i]);
       previewfile(files[i]);
     }
+
     formData.append('space_id', space_id);
     formData.append('csrfmiddlewaretoken', csrf_token);
 
@@ -71,9 +72,14 @@ $(document).ready(function() {
       xhr.open('POST', '/space/upload/');
       xhr.onload = function(data) {
         progress.value = progress.innerHTML = 100;
-        croco_session = this.responseText;
+        console.log("response : " + this.responseText);
+        responseDict = JSON.parse(this.responseText);
+        console.log('responseDict : ' + responseDict);
 
-        documentUploadCallback(croco_session);
+        croco_session = responseDict['croco_session'];
+        croco_uuid = responseDict['croco_uuid'];
+
+        documentUploadCallback(croco_uuid, croco_session);
       };
 
       if (tests.progress) {
@@ -104,9 +110,41 @@ $(document).ready(function() {
   }
 });
 
-function documentUploadCallback(croco_session){
+function documentUploadCallback(croco_uuid, croco_session){
   console.log("viewing document " + croco_session);
   $('#documentViewer').attr('src', 'https://crocodoc.com/view/'+croco_session);
   $('#uploadModal').hide();
+
+  data = {
+    action : 'loaded_doc',
+    space : space_id,
+    croco_uuid : croco_uuid,
+  };
+
+  console.log('sending loaded_doc data over socket');
+  socket.send(data);
+
 }
 
+$(function() {
+
+  var messaged = function(data) {
+    switch (data.action) {
+      case 'load_doc':
+        console.log("viewing document " + data.croco_session);
+        $('#documentViewer').attr('src', 'https://crocodoc.com/view/'+data.croco_session);
+        break;
+    }
+  };
+
+  var start = function() {
+    // socket = new io.Socket();
+    // socket.connect();
+    // socket.on('connect', connected);
+    // socket.on('disconnect', disconnected);
+    socket.on('message', messaged);
+  };
+
+  start();
+
+});
