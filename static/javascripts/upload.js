@@ -2,7 +2,7 @@ $(document).ready(function() {
   $('#uploadButton').click(function(e) {
     console.log('upload clicked');
     e.preventDefault();
-    $('#uploadModal').reveal();
+    $('#uploadModal').foundation('reveal', 'open');
   });
 });
 
@@ -16,8 +16,8 @@ $(document).ready(function() {
   },
   support = {
     filereader: document.getElementById('filereader'),
-  formdata: document.getElementById('formdata'),
-  progress: document.getElementById('progress')
+    formdata: document.getElementById('formdata'),
+    progress: document.getElementById('progress')
   },
   acceptedTypes = {
     'application/pdf': true
@@ -36,7 +36,6 @@ $(document).ready(function() {
       support[api].className = 'hidden';
     }
   });
-
 
   function previewfile(file) {
     if (tests.filereader === true && acceptedTypes[file.type] === true) {
@@ -113,7 +112,7 @@ $(document).ready(function() {
 function documentUploadCallback(croco_uuid, croco_session){
   console.log("viewing document " + croco_session);
   $('#documentViewer').attr('src', 'https://crocodoc.com/view/'+croco_session);
-  $('#uploadModal').hide();
+  $('#uploadModal').foundation('reveal', 'close');;
 
   data = {
     action : 'loaded_doc',
@@ -126,25 +125,3 @@ function documentUploadCallback(croco_uuid, croco_session){
 
 }
 
-$(function() {
-
-  var messaged = function(data) {
-    switch (data.action) {
-      case 'load_doc':
-        console.log("viewing document " + data.croco_session);
-        $('#documentViewer').attr('src', 'https://crocodoc.com/view/'+data.croco_session);
-        break;
-    }
-  };
-
-  var start = function() {
-    // socket = new io.Socket();
-    // socket.connect();
-    // socket.on('connect', connected);
-    // socket.on('disconnect', disconnected);
-    socket.on('message', messaged);
-  };
-
-  start();
-
-});
