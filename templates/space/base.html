@@ -2,6 +2,11 @@
 <html>
 
   <head>
+
+    {# Socket.io setup #}
+    {% load socketio_tags %}
+    {% socketio %}
+
     {# CSS INCLUDES  #}
     <link href='/static/stylesheets/index.css'  rel='stylesheet' type='text/css'>
     <link href='/static/stylesheets/main.css'   rel='stylesheet' type='text/css'>
@@ -15,6 +20,14 @@
       tok_token  = "{{ tok_token }}";
       session_id = "{{ tok_session_id }}";
       csrf_token = "{{ csrf_token }}";
+
+      var socket = new io.Socket();
+      socket.connect();
+      socket.on('connect', function() {
+        console.log('connecting to space-'+space_id+' channel');
+        socket.subscribe('space-'+space_id);
+      });
+
     </script>
 
     <script src='http://static.opentok.com/webrtc/v2.0/js/TB.min.js' ></script>
