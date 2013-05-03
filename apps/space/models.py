@@ -4,4 +4,4 @@ from django_extensions.db.fields import UUIDField
 class Space(models.Model):
   url_id         = UUIDField(version=4)
   tok_session_id = models.CharField(max_length=255)
-  croco_session  = models.CharField(max_length=255)
+  croco_uuid     = models.CharField(max_length=255)
