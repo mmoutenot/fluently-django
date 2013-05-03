@@ -11,4 +11,5 @@ urlpatterns = patterns('',
                        url(r'^space/', include('apps.space.urls')),
                        url(r'^admin/', include(admin.site.urls)),
                        url("", include('django_socketio.urls')),
+
 )
