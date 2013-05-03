@@ -8,6 +8,7 @@ import uuid
 import sys
 import time
 import os
+import json
 
 # third party packages
 from vendor.TokBox import OpenTokSDK
@@ -76,8 +77,11 @@ def dispatch(request):
 
 @require_http_methods(["GET"])
 def main(request, space_url_id):
-  print 'in main'
   s = get_object_or_404(Space, url_id=space_url_id)
+
+  croco_session = ''
+  if s.croco_uuid:
+    croco_session = Crocodoc.generate_session_id(s.croco_uuid)
 
   tok_token = TokBox.generate_token(s.tok_session_id)
   tok_token=None
@@ -87,7 +91,7 @@ def main(request, space_url_id):
                   "space"          : s,
                   "tok_token"      : tok_token,
                   "tok_session_id" : s.tok_session_id,
-                  "croco_session"  : s.croco_session
+                  "croco_session"  : croco_session
                 })
 
 @require_http_methods(["GET","POST"])
@@ -101,10 +105,17 @@ def upload(request):
   croco_uuid = handle_uploaded_file(request.FILES['file'])
   croco_session = Crocodoc.generate_session_id(croco_uuid)
 
-  space.croco_session = croco_session
+  space.croco_uuid = croco_uuid
   space.save()
 
-  return HttpResponse(croco_session)
+  responseDict = {
+    'croco_session' : croco_session,
+    'croco_uuid'    : croco_uuid
+  }
+
+  print 'responseDict', responseDict
+
+  return HttpResponse(json.dumps(responseDict), content_type="application/json")
 
 def handle_uploaded_file(f):
   croco_session = None
