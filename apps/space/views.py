@@ -85,12 +85,15 @@ def main(request, space_url_id):
 
   tok_token = TokBox.generate_token(s.tok_session_id)
 
+  print 'user',request.user
+
   return render(request, 'space/index.html',
                 {
                   "space"          : s,
                   "tok_token"      : tok_token,
                   "tok_session_id" : s.tok_session_id,
-                  "croco_session"  : croco_session
+                  "croco_session"  : croco_session,
+                  "user"           : request.user,
                 })
 
 @require_http_methods(["GET","POST"])
