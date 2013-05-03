@@ -100,8 +100,11 @@ INSTALLED_APPS = (
   'django.contrib.staticfiles',
   'django.contrib.admin',
 
-  # custom apps
+  # vendor apps
   'vendor.TokBox',
+  'django_socketio',
+
+  # fluently apps
   'apps.space',
   'apps.face',
 )
