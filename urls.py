@@ -10,4 +10,5 @@ urlpatterns = patterns('',
                        url(r'^face/', include('apps.face.urls')),
                        url(r'^space/', include('apps.space.urls')),
                        url(r'^admin/', include(admin.site.urls)),
+                       url("", include('django_socketio.urls')),
 )
