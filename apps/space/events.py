@@ -26,4 +26,17 @@ def message(request, socket, context, message):
     message["name"] = user.get_full_name()
     socket.send_and_broadcast_channel(message)
 
+@events.on_finish(channel="^space-")
+def finish(request, socket, context):
+  """
+  Event handler for a socket session ending in a room. Broadcast
+  the user leaving and delete them from the DB.
+  """
+  try:
+    user = request.user
+  except KeyError:
+    return
+  left = {"action": "leave", "name": user.get_full_name()}
+  socket.broadcast_channel(left)
+
 

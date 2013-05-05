@@ -35,7 +35,11 @@ $(function() {
         break;
 
       case 'message':
-        console.log('received a message');
+        addMessage(data);
+        break;
+
+      case 'leave':
+        data.message='left the space';
         addMessage(data);
         break;
     }
