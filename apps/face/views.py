@@ -24,3 +24,5 @@ def login_user(request):
       print 'invalid user'
   return redirect('/')
 
+def register_user(request):
+  return render(request, 'face/register.html')
