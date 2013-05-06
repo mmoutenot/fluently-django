@@ -6,7 +6,7 @@
 <!DOCTYPE <html>
 <head>
 	<title>Fluently</title>
-	<link rel="stylesheet" type="text/css" href="../../static/styles/css/create_account.css">
+	<link rel="stylesheet" type="text/css" href="/static/stylesheets/create_account.css">
   <link rel="icon" type="image/png" href="/static/images/favicon.ico" />
 
 </head>
@@ -15,41 +15,75 @@
 <!-- USE NAVBAR TEMPLATE -->
 	<div id='navbar'>
       <div id='logo'> 
-      	<img src='../../static/images/logos/Logo_White.png'> 
+      	<img src='/static/images/logos/Logo_White.png'> 
       </div>
   </div>
 
   <div id='container'>
   	<div id='steps'>
-  			<div id='line'></div>
-	  		<ul>	
-	  			<li>
-	  				<h2 class=''>1</h2>
-	  				<label>Information</label>
-	  			</li>
-	  			<li>
-	  				<h2 class='active'>2</h2>
-	  				<label>Certification</label>
-	  			</li>
-	  			<li>
-	  				<h2>3</h2>
-	  				<label>Get Started</label>
-	  			</li>
-	  		</ul>
-  	</div>
+      <div id='line'></div>
+      <ul>  
+        <li>
+          <h2 class=''>1</h2>
+          <label>Account</label>
+        </li>
+        <li>
+          <h2 >2</h2>
+          <label>Confirmation</label>
+        </li>
+        <li>
+          <h2 >3</h2>
+          <label>Certification</label>
+        </li>
+        <li>
+          <h2 class='active'>4</h2>
+          <label>Submit</label>
+        </li>
+      </ul>
+    </div>
   	
-  	<!-- USE TEMPLATE FOR EACH STEP -->
+  	{# use templating for form #}
   	<form>
-  		<input type='text' class = 'text_input form_input' placeholder= 'First Name'/>
+
+      {# ACCOUNT INFO #}
+      <input type='text' class = 'text_input form_input' placeholder= 'First Name'/>
   		<input type='text' class = 'text_input form_input' placeholder= 'Last Name' />
   		<input type='text' class = 'text_input form_input' placeholder= 'Email' />
   		<input type='password' class = 'text_input form_input' placeholder= 'Password' />
   		<input type='password' class = 'text_input form_input' placeholder= 'Confirm Password' />
-  		
-  		<a href='#' id='next' class='btn submit'>
-  			Next 
-  		</a>
-  		<a href='3' id='back'>Go Back</a>
+  
+      <div id='terms_box'>
+        <label for='termsCheck'>
+          Agree to our <a href="#">Terms of Service</a>
+        </label>
+        <input type='checkbox' id='termsCheck'>
+      </div>
+
+      <a href='#' id='next' class='btn submit'>
+        Next 
+      </a>
+<!--   
+      {# EMAIL CONFIRMATION #}
+      <h3>
+        Thank you for creating an account. Check your inbox for a link to complete the signup process.
+      </h3>
+
+      {# CERTIFICATION #}
+      <input type='text' class = 'text_input form_input input_wide' placeholder= 'Certifications (ex. CCC-SLP)'/>
+      <input type='text' class = 'text_input form_input input_wide' placeholder= 'Education'/>
+      <input type='text' class = 'text_input form_input input_wide' placeholder= 'Licensed State(s)'/>
+      <input type='text' class = 'text_input form_input input_wide' placeholder= 'Membership (ex. American Speech & Hearing Assoc.)'/>
+      <textarea placeholder='Experience & Specialities (ex. 12 years in stuttering therapies)'></textarea>
+      <a href='#' id='apply' class='btn submit'>
+        Apply
+      </a>
+
+
+      {# SUBMISSION CONFIRMATION #}
+      <h3>
+        Thank you for your submission. We will review your application and get back to you soon.
+      </h3>
+-->   
   	</form>
 
   </div>
