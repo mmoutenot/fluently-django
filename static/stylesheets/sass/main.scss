@@ -2,6 +2,9 @@
 @import "colors";
 @import "fonts";
 
+// VARIABLES
+$transition: all .7s ease-in-out;
+
 body, html {
 	padding:0;
 	margin:0;
@@ -95,7 +98,7 @@ body, html {
 			border-bottom:1px solid $grey;
 			position:relative;
 			display: block;
-			height:300px;
+			height:auto;
 			float:left;
 
 
@@ -146,3 +149,91 @@ body, html {
 
 }
 
+// BUTTONS
+input.text_input{
+	border:1px solid $grey;
+	background:$white;
+	padding:3px;
+	width:250px;
+	height:35px;
+	line-height:35px;
+	font-size:18px;
+	font-family:Signika;
+	color:$font;
+
+	&:focus {
+		outline:none;
+		background:lighten($salmon, 30%);
+		@include box-shadow(none);
+	}
+}
+
+textarea {
+	border:1px solid $grey;
+	background:$white;
+	padding:5px;
+	line-height:22px;
+	font-size:18px;
+
+	&:focus {
+		outline:none;
+		background:lighten($salmon, 30%);
+		@include box-shadow(none);
+	}
+}
+
+.btn {
+	text-decoration:none;
+	width:143px;
+	height:41px;
+	background:$lt_blue;
+	display: inline-block;
+	text-align:center;
+	color:$white;
+	font-size:20px;
+	cursor:pointer;
+	line-height:41px;
+	@include transition($transition);
+	@include box-shadow(none);
+	border:none;
+
+	&:focus {
+		outline:none;
+		@include box-shadow(inset 0 0 3px 3px darken($lt_blue,10%));
+	}
+
+	&:hover {
+		background:darken($lt_blue,10%);
+	}
+}
+
+// FOOTER STYLE
+
+footer {
+	width:100%;
+	position:absolute;
+	bottom:0;
+	height:200px;
+	background:$font;
+
+	&:before {
+		padding-top:300px;
+	}
+}
+
+// GENERAL STYLING
+a {
+	text-decoration:none;
+}
+
+ul {
+	list-style:none;
+	padding:0;
+	margin:0;
+
+	li {
+		list-style: none;
+		padding:0;
+		margin:0;
+	}
+}
