@@ -61,18 +61,14 @@
       <div id='logo'> <img src='/static/images/logos/Logo_White.png'> </div>
 
       <ul id='nav'>
-        <!-- <li id='slider'></li> -->
 
-        <li>
-          <a href="#" id="uploadButton">Upload</a>
-        </li>
-
-        <li class='active' id='btn1'>
-          <a href='#'> BTN </a>
-        </li>
-
-        <li id='btn2'>
-          <a href='#'> BTN </a>
+        <li class='navLink'>
+          <a href="#">Options</a>
+          <ul>
+            <li id='uploadButton'><a href="#">Upload</a></li>
+            <li><a href="#">TWO</a></li>
+            <li><a href="#">THREE</a></li>
+          </ul>
         </li>
 
       </ul>
@@ -109,6 +105,17 @@
      </div>
      <a class="close-reveal-modal">&#215;</a>
    </div>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('.close-reveal-modal').click(function() {
+        $('#uploadModal').hide();
+        $('#uploadModal').removeClass('open');
+        $('.reveal-modal-bg').fadeOut();
+      })
+    })
+  </script>
+
 
  </body>
 </html>
