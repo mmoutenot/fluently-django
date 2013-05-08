@@ -10,13 +10,19 @@
 
 {% block chat %}
 
+  <link rel="stylesheet" type="text/css" href="/static/stylesheets/chat.css">
+
   <ul id="messages">
-    <script type="text/x-jquery-tmpl"><li class="${action}">(${time}) ${name}: ${message}</li></script>
+    <script type="text/x-jquery-tmpl">
+      <li class="${action}">
+        (${time}) ${name}: ${message}
+      </li>
+    </script>
   </ul>
 
   <form id="chat_form">
-    <input type="text" id="message" name="message">
-    <input type="submit" id="submit" value="Send">
+   <textarea id="message" name="message" placeholder='Send a message...'></textarea>
+    <input type="submit" id="submit" value="Send"> 
   </form>
 
 {% endblock %}
