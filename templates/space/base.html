@@ -14,6 +14,7 @@
     <link href='/static/stylesheets/reveal.css' rel='stylesheet' type='text/css'>
 
     {# JS INCLUDES #}
+
     <script>
 
       apiKey = "25204042";
@@ -22,6 +23,13 @@
       session_id = "{{ tok_session_id }}";
       csrf_token = "{{ csrf_token }}";
       user_name  = "{{ user.get_full_name }}";
+
+      SPACE_TYPES = {
+        VIDEO : "video",
+        DOC   : "document",
+      };
+
+      active_space = SPACE_TYPES.VIDEO;
 
     </script>
 
@@ -41,6 +49,10 @@
     <script src='/static/javascripts/video.js' type='text/javascript'></script>
     <script src='/static/javascripts/upload.js' type='text/javascript'></script>
     <script src='/static/javascripts/chat.js' type='text/javascript'></script>
+    {% load compress %}
+    {% compress js %}
+      {# coffee script in here #}
+    {% endcompress %}
   </head>
 
   <body>
@@ -68,13 +80,6 @@
 
     <div id='main'>
       <div id='left'>
-        <div id='video'>
-
-        </div>
-
-        <div id="video_small_container">
-          <div id="video_small"></div>
-        </div>
 
         <div id='chat'>
           {% block chat %} {% endblock %}
