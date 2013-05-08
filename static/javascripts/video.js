@@ -1,5 +1,10 @@
 console.log("including video");
 
+// stored in variables so that we can inject them into their proper zone
+var videoLargeContainerHTML="<div id='video_large_container'><div id='video_large'></div></div>"
+var videoSmallContainerHTML="<div id='video_small_container'><div id='video_small'></div></div>";
+
+
 function sessionConnectHandler (event) {
   subscribeToStreams(event.streams);
   var div = document.createElement('div');
@@ -27,7 +32,7 @@ function subscribeToStreams(streams) {
 function displayStream(stream) {
   var div = document.createElement('div');
   div.setAttribute('id', 'stream' + stream.streamId);
-  var streamsContainer = document.getElementById('video');
+  var streamsContainer = document.getElementById('video_large');
   streamsContainer.appendChild(div);
   subscriber = session.subscribe(stream, 'stream' + stream.streamId);
   $('#stream'+stream.streamId).width('100%');
@@ -46,3 +51,12 @@ session.addEventListener("streamCreated", streamCreatedHandler);
 session.connect(apiKey, tok_token);
 
 
+$(document).ready(function() {
+  if (active_space == SPACE_TYPES.VIDEO) {
+    $('#right').append(videoLargeContainerHTML);
+    $('#right').append(videoSmallContainerHTML);
+  } else {
+    $('#left').append(videoLargeContainerHTML);
+    $('#left').append(videoSmallContainerHTML);
+  }
+});
