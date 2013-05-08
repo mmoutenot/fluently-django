@@ -58,7 +58,6 @@ USE_L10N = True
 MEDIA_ROOT = 'media/'
 MEDIA_URL = 'media/'
 
-# STATIC_ROOT = os.path.join(PROJECT_PATH, 'static')
 STATIC_URL = '/static/'
 
 # URL prefix for admin static files -- CSS, JavaScript and images.
@@ -70,6 +69,9 @@ ADMIN_MEDIA_PREFIX = '/static/admin/'
 STATICFILES_FINDERS = (
   'django.contrib.staticfiles.finders.FileSystemFinder',
   'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+
+  # vendor
+  'compressor.finders.CompressorFinder',
 )
 
 SECRET_KEY = 'PLEASE_ADD_ME'
@@ -88,6 +90,10 @@ MIDDLEWARE_CLASSES = (
   'django.contrib.messages.middleware.MessageMiddleware',
 )
 
+COMPRESS_PRECOMPILERS = (
+  ('text/coffeescript', 'coffee --compile --stdio'),
+)
+
 ROOT_URLCONF = 'urls'
 
 
@@ -103,11 +109,13 @@ INSTALLED_APPS = (
   # vendor apps
   'vendor.TokBox',
   'django_socketio',
+  'compressor',
 
   # fluently apps
   'apps.space',
   'apps.face',
 )
+
 
 
 LOGGING = {
