@@ -84,7 +84,7 @@ def main(request, space_url_id):
     croco_session = Crocodoc.generate_session_id(s.croco_uuid)
 
   tok_token = TokBox.generate_token(s.tok_session_id)
-  tok_token=None
+  # tok_token=None
 
   print 'user',request.user
 
