@@ -89,17 +89,22 @@ body, html {
     float: left;
     position: fixed;
     border-right: 1px solid #d2d2d2; }
-    #main #left #video {
+    #main #left #video_large_container {
       width: 100%;
       border-bottom: 1px solid #d2d2d2;
       position: relative;
       display: block;
       height: auto;
       float: left; }
+      #main #left #video_large_container #video_large {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        margin: 0 auto; }
     #main #left #video_small_container {
       height: 130px;
       width: 100%;
-      position: relatie;
+      position: relative;
       display: block;
       float: left; }
       #main #left #video_small_container #video_small {
@@ -120,7 +125,26 @@ body, html {
     margin-left: 331px;
     float: left;
     position: fixed;
-    background: white; }
+    background: #d2d2d2; }
+    #main #right #video_large_container {
+      width: 85%;
+      height: 100%;
+      box-shadow: 4px 0 18px #666666, -4px 0 18px #666666;
+      margin: 0 auto; }
+      #main #right #video_large_container #video_large {
+        width: 100%;
+        height: 100%;
+        margin: 0 auto; }
+    #main #right #video_small_container {
+      height: 200px;
+      width: 240px;
+      position: absolute;
+      bottom: 100px;
+      left: 100px; }
+      #main #right #video_small_container #video_small {
+        position: relative;
+        width: 240px;
+        height: 100%; }
     #main #right #shared {
       width: 100%;
       background: white; }
