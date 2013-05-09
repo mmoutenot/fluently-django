@@ -142,14 +142,14 @@ body, html {
       border-top: 1px solid #d2d2d2; }
   #main #right {
     width: calc(100% - 331px);
-    height: 100%;
+    height: calc(100% - 80px);
     top: 80px;
     margin-left: 331px;
     float: left;
     position: fixed;
     background: #d2d2d2; }
     #main #right #video_large_container {
-      width: 85%;
+      width: 85.5%;
       height: 100%;
       box-shadow: 4px 0 18px #666666, -4px 0 18px #666666;
       margin: 0 auto; }
@@ -161,7 +161,7 @@ body, html {
       height: 200px;
       width: 240px;
       position: absolute;
-      bottom: 100px;
+      bottom: 20px;
       left: 100px; }
       #main #right #video_small_container #video_small {
         position: relative;
