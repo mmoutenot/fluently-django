@@ -21,72 +21,21 @@ body, html {
   position:fixed;
   top:0;
   background:$salmon;
-  z-index:999;
-  @include box-shadow(0px 1px 3px 0px $salmon_d);
+  z-index:999999999;
+  @include box-shadow(0px 1px 7px 1px #666);
+  @include linear-gradient($salmon, darken($salmon, 3%));
 
   #logo {
     float:left;
     padding:10px;
+    margin-left:5px;
 
     img {
       width:190px;
       height:60px;
       display: block;
     }
-
   }
-
-  #nav {
-    padding:0;
-    margin:10px 10px 0 0;
-    float:right;
-    list-style:none;
-
-    .navLink {
-
-      a {
-        text-decoration: none;
-        display: block;
-        width:150px;
-        color:$white;
-        border:1px solid $white;
-        text-align: center;
-        font-size:20px;
-        height:40px;
-        line-height:40px;
-      }
-
-      ul {
-        display: none;
-        margin-top:1px;
-        li {
-          display: block;
-          a {
-            display: block;
-            width:100%;
-            border:none;
-            border-bottom:1px solid $grey;
-            height:40px;
-            line-height:40px;
-            background:$font;
-
-            &:hover {
-              background:$grey;
-            }
-
-
-          }
-        }
-      }
-
-      &:hover {
-        ul {
-          display: block;
-        }
-      }
-    }
-  }
-
 }
 
 #main {
@@ -100,9 +49,12 @@ body, html {
     width:330px;
     height:100%;
     top:80px;
+    background:#F1F1F1;
     float:left;
     position:fixed;
     border-right:1px solid $grey;
+    @include box-shadow (4px 0 18px #666666);
+    z-index:1;
 
     #video_large_container {
       width:100%;
@@ -153,7 +105,7 @@ body, html {
     margin-left:331px;
     float:left;
     position:fixed;
-    background:$grey;
+    @include background-image(url('/static/images/background_dark.png'));
 
     #video_large_container {
       width:85.5%;
@@ -205,7 +157,7 @@ input.text_input{
 
   &:focus {
     outline:none;
-    background:lighten($salmon, 30%);
+    background:lighten($salmon, 25%);
     @include box-shadow(none);
   }
 }
@@ -219,7 +171,7 @@ textarea {
 
   &:focus {
     outline:none;
-    background:lighten($salmon, 30%);
+    background:lighten($salmon, 25%);
     @include box-shadow(none);
   }
 }
@@ -235,7 +187,7 @@ textarea {
   font-size:20px;
   cursor:pointer;
   line-height:41px;
-  // @include transition($transition);
+  @include transition($transition);
   @include box-shadow(none);
   border:none;
 
