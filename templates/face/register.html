@@ -10,6 +10,13 @@ Need to include existing templates (nav) and create templates for each step of a
     <title>Fluently</title>
     <link rel="stylesheet" type="text/css" href="/static/stylesheets/create_account.css">
     <link rel="icon" type="image/png" href="/static/images/favicon.ico" />
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
+
+    <script type="text/javascript" src="/static/javascripts/register.js"></script>
+    <script type="text/javascript">
+      var csrf_token = "{{csrf_token}}";
+    </script>
   </head>
 
   <body>
@@ -45,14 +52,14 @@ Need to include existing templates (nav) and create templates for each step of a
       </div>
 
       {# use templating for form #}
-      <form>
+      <form id="register-account-form">
 
         {# ACCOUNT INFO #}
-        <input type='text' class = 'text_input form_input' placeholder= 'First Name'/>
-        <input type='text' class = 'text_input form_input' placeholder= 'Last Name' />
-        <input type='text' class = 'text_input form_input' placeholder= 'Email' />
-        <input type='password' class = 'text_input form_input' placeholder= 'Password' />
-        <input type='password' class = 'text_input form_input' placeholder= 'Confirm Password' />
+        <input id="account-first-name" type='text' class = 'text_input form_input' placeholder= 'First Name'/>
+        <input id="account-last-name" type='text' class = 'text_input form_input' placeholder= 'Last Name' />
+        <input id="account-email" type='text' class = 'text_input form_input' placeholder= 'Email' />
+        <input id="account-password-a" type='password' class = 'text_input form_input' placeholder= 'Password' />
+        <input id="account-password-b" type='password' class = 'text_input form_input' placeholder= 'Confirm Password' />
 
         <div id='terms_box'>
           <label for='termsCheck'>
@@ -62,6 +69,7 @@ Need to include existing templates (nav) and create templates for each step of a
         </div>
 
         <input type='submit' class='btn submit' value="Next"/>
+      </form>
         <!--
         {# EMAIL CONFIRMATION #}
         <h3>
@@ -84,7 +92,6 @@ Need to include existing templates (nav) and create templates for each step of a
           Thank you for your submission. We will review your application and get back to you soon.
         </h3>
         -->
-      </form>
 
     </div>
 
