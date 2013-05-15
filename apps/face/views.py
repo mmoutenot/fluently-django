@@ -1,6 +1,9 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
+from django.http import HttpResponse
+
+import json
 
 
 def main(request):
@@ -37,13 +40,13 @@ Responses:
   INV - email invalid
   DUP - email already taken
 """
-def account_info_receiver(request):
+def register_account_handler(request):
+  response_string = '{status:"INV"}'
   if request.POST:
     first_name = request.POST.get('firstName')
     last_name = request.POST.get('lastName')
     email = request.POST.get('email')
-    password_a = request.POST.get('passwordA')
-    password_b = request.POST.get('passwordB')
+    password_a = request.POST.get('password')
 
     u, created = User.objects.get_or_create(username = email)
     if created:
@@ -52,8 +55,8 @@ def account_info_receiver(request):
       u.email      = email
       u.password   = password_a
       u.save()
-      return HttpResponse('{status:"OK"}')
+      response_string = '{status:"OK"}'
     else:
-      return HttpResponse('{status:"DUP"}')
-  return HttpResponse('{status:"INV"}')
+      response_string = '{status:"DUP"}'
+  return HttpResponse(json.dumps(response_string), mimetype="application/json")
 
