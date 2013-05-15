@@ -33,47 +33,20 @@ body, html {
   height: 80px;
   position: fixed;
   top: 0;
-  background: #da6459;
-  z-index: 999;
-  box-shadow: 0px 1px 3px 0px #d34336; }
+  background: #e67b6d;
+  z-index: 999999999;
+  box-shadow: 0px 1px 7px 1px #666666;
+  background-color: #e67b6d;
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #e67b6d), color-stop(100%, #e46f60));
+  background-image: -webkit-linear-gradient(#e67b6d, #e46f60);
+  background-image: linear-gradient(#e67b6d, #e46f60); }
   #navbar #logo {
     float: left;
-    padding: 10px; }
+    padding: 10px;
+    margin-left: 5px; }
     #navbar #logo img {
       width: 190px;
       height: 60px;
-      display: block; }
-  #navbar #nav {
-    padding: 0;
-    margin: 10px 10px 0 0;
-    float: right;
-    list-style: none; }
-    #navbar #nav .navLink a {
-      text-decoration: none;
-      display: block;
-      width: 150px;
-      color: white;
-      border: 1px solid white;
-      text-align: center;
-      font-size: 20px;
-      height: 40px;
-      line-height: 40px; }
-    #navbar #nav .navLink ul {
-      display: none;
-      margin-top: 1px; }
-      #navbar #nav .navLink ul li {
-        display: block; }
-        #navbar #nav .navLink ul li a {
-          display: block;
-          width: 100%;
-          border: none;
-          border-bottom: 1px solid #d2d2d2;
-          height: 40px;
-          line-height: 40px;
-          background: #5d6976; }
-          #navbar #nav .navLink ul li a:hover {
-            background: #d2d2d2; }
-    #navbar #nav .navLink:hover ul {
       display: block; }
 
 #main {
@@ -86,9 +59,12 @@ body, html {
     width: 330px;
     height: 100%;
     top: 80px;
+    background: #F1F1F1;
     float: left;
     position: fixed;
-    border-right: 1px solid #d2d2d2; }
+    border-right: 1px solid #d2d2d2;
+    box-shadow: 4px 0 18px #666666;
+    z-index: 1; }
     #main #left #video_large_container {
       width: 100%;
       border-bottom: 1px solid #d2d2d2;
@@ -125,7 +101,8 @@ body, html {
     margin-left: 331px;
     float: left;
     position: fixed;
-    background: #d2d2d2; }
+    background-image: url("/static/images/background_dark.png");
+    background-image: url("/static/images/background_dark.png"); }
     #main #right #video_large_container {
       width: 85.5%;
       height: 100%;
@@ -161,7 +138,7 @@ input.text_input {
   color: #5d6976; }
   input.text_input:focus {
     outline: none;
-    background: #f6d9d6;
+    background: #f9ddda;
     box-shadow: none; }
 
 textarea {
@@ -172,7 +149,7 @@ textarea {
   font-size: 18px; }
   textarea:focus {
     outline: none;
-    background: #f6d9d6;
+    background: #f9ddda;
     box-shadow: none; }
 
 .btn {
@@ -186,6 +163,9 @@ textarea {
   font-size: 20px;
   cursor: pointer;
   line-height: 41px;
+  -webkit-transition: all 0.7s ease-in-out;
+  -moz-transition: all 0.7s ease-in-out;
+  transition: all 0.7s ease-in-out;
   box-shadow: none;
   border: none; }
   .btn:focus {

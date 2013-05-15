@@ -60,18 +60,6 @@
     <div id='navbar'>
       <div id='logo'> <img src='/static/images/logos/Logo_White.png'> </div>
 
-      <ul id='nav'>
-
-        <li class='navLink'>
-          <a href="#">Options</a>
-          <ul>
-            <li id='uploadButton'><a href="#">Upload</a></li>
-            <li><a href="#">TWO</a></li>
-            <li><a href="#">THREE</a></li>
-          </ul>
-        </li>
-
-      </ul>
     </div>
 
     <div id='main'>
@@ -84,7 +72,8 @@
       </div><!--left-->
 
       <div id='right'>
-        {% block shared-space %} {% endblock %}
+        
+        {% block side-nav %} {% endblock %}
       </div>
 
     </div><!--main-->
@@ -114,6 +103,26 @@
         $('.reveal-modal-bg').fadeOut();
       })
     })
+  </script>
+
+  <script type="text/javascript">
+    $('#settings_tab').toggle(function() {
+      $('#side_nav').animate({
+        top:140
+      }, 400);
+      $('#settings_tab').addClass('active');
+    }, function() {
+      $('#side_nav').animate({
+        top:-650
+      }, 400);
+      $('#settings_tab').removeClass('active');
+    });
+  </script>
+
+  <script type="text/javascript">
+    $('#test').click(function() {
+      console.log("rgerg");
+    });
   </script>
 
 
