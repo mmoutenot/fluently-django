@@ -35,10 +35,12 @@ $(function(){
         url : "/face/register/account_handler/",
         data: data,
         success:function(data){
-          console.log('success');
-          console.log(data);
-          // slide to stage two
-          console.log('account registered. stage 1 complete');
+          dataJSON = jQuery.parseJSON(data);
+          if(dataJSON['status'] === "OK"){
+            console.log('account registered. stage 1 complete');
+            // TODO:mmoutenot or TODO:dporterlance
+            // SLLlllliidde to the right, yo!
+          }
         }
       });
     }
