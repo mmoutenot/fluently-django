@@ -3,6 +3,8 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
 from django.http import HttpResponse
 
+from utils import send_email_using_template
+
 import json
 
 
@@ -41,7 +43,7 @@ Responses:
   DUP - email already taken
 """
 def register_account_handler(request):
-  response_string = '{status:"INV"}'
+  response_string = '{"status":"INV"}'
   if request.POST:
     first_name = request.POST.get('firstName')
     last_name = request.POST.get('lastName')
@@ -55,8 +57,9 @@ def register_account_handler(request):
       u.email      = email
       u.password   = password_a
       u.save()
-      response_string = '{status:"OK"}'
+      response_string = '{"status":"OK"}'
     else:
-      response_string = '{status:"DUP"}'
+      response_string = '{"status":"DUP"}'
+      # send_email_using_template()
   return HttpResponse(json.dumps(response_string), mimetype="application/json")
 
