@@ -1,10 +1,98 @@
 /* MAIN COLORS */
 /* SECONDARY COLORS */
+@font-face {
+  font-family: Quicksand;
+  src: url("/static/fonts/Quicksand/Quicksand_Book-webfont.ttf");
+  /* url('Quicksand_Book-webfont.ttf');  IE9 */ }
+
+@font-face {
+  font-family: QuicksandBold_Bold;
+  src: url("static/fonts/Quicksand/Quicksand_Bold-webfont.ttf");
+  /* url('Quicksand_Bold-webfont.ttf');  IE9 */ }
+
+@font-face {
+  font-family: Signika;
+  src: url("/static/fonts/Signika/Signika-Regular.ttf");
+  /* url('Signika-Regular.ttf');  IE9 */ }
+
+@font-face {
+  font-family: SignikaBold;
+  src: url("/static/fonts/Signika/Signika-Bold.ttf");
+  /* url('Signika-Bold.ttf');  IE9 */ }
+
+#uploadModal {
+  padding: 0;
+  border-radius: 5px;
+  font-family: Quicksand; }
+  #uploadModal h1 {
+    height: 60px;
+    line-height: 68px;
+    margin: 0;
+    width: 100%;
+    top: 0;
+    background: #8ec0ed;
+    color: white;
+    font-size: 30px;
+    text-align: center;
+    text-transform: uppercase;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    box-shadow: inset 0 0 8px 3px #78b4e9; }
+  #uploadModal #uploadToggle {
+    display: block;
+    width: 100%;
+    position: relative;
+    *zoom: 1; }
+    #uploadModal #uploadToggle:before, #uploadModal #uploadToggle:after {
+      content: " ";
+      display: table; }
+    #uploadModal #uploadToggle:after {
+      clear: both; }
+    #uploadModal #uploadToggle a {
+      text-decoration: none;
+      display: inline-block;
+      width: 50%;
+      background: #d2d2d2;
+      box-shadow: inset 0 0 0 1px #c5c5c5;
+      text-align: center;
+      color: #6d6d6d;
+      font-size: 20px;
+      height: 40px;
+      line-height: 44px;
+      float: left; }
+      #uploadModal #uploadToggle a.active {
+        background: #acacac;
+        box-shadow: inset 0 0 10px 2px #6d6d6d; }
+  #uploadModal #uploadModalContent {
+    padding: 0 20px 20px 20px;
+    margin-top: 30px;
+    color: #5d6976; }
+    #uploadModal #uploadModalContent article #dndTagline {
+      width: 100%;
+      text-align: center; }
+      #uploadModal #uploadModalContent article #dndTagline p {
+        font-size: 16px; }
+      #uploadModal #uploadModalContent article #dndTagline p:nth-child(1) {
+        font-weight: 900; }
+      #uploadModal #uploadModalContent article #dndTagline p:nth-child(2) {
+        text-transform: uppercase; }
+      #uploadModal #uploadModalContent article #dndTagline a {
+        color: #5d6976;
+        font-style: italic;
+        text-decoration: none; }
+        #uploadModal #uploadModalContent article #dndTagline a:hover {
+          text-decoration: underline; }
+    #uploadModal #uploadModalContent article #progressTag {
+      text-align: center;
+      color: #acacac;
+      text-transform: uppercase; }
+
 #holder {
-  border: 10px dashed #cccccc;
-  width: 300px;
-  min-height: 300px;
-  margin: 20px auto; }
+  border: 6px dashed #cccccc;
+  width: 200px;
+  min-height: 200px;
+  margin: 20px auto;
+  border-radius: 35px; }
   #holder .hover {
     border: 10px dashed #d2d2d2; }
   #holder img {
@@ -15,10 +103,27 @@
     font-size: 14px; }
 
 progress {
-  width: 100%; }
+  width: 80%;
+  height: 25px;
+  display: block;
+  margin: 40px auto 10px auto;
+  border-color: red; }
 
 progress:after {
   content: '%'; }
+
+progress::-webkit-progress-bar {
+  background-color: #6d6d6d;
+  border-radius: 10px;
+  border: none;
+  height: 25px; }
+
+progress::-webkit-progress-value {
+  background-color: #8ec0ed;
+  border-radius: 10px;
+  height: 25px;
+  border: none;
+  box-shadow: inset 0 0 8px 3px #78b4e9; }
 
 .fail {
   background: #c00;
@@ -27,3 +132,27 @@ progress:after {
 
 .hidden {
   display: none !important; }
+
+#myFiles {
+  width: 90%;
+  display: none;
+  margin: 0 auto;
+  max-height: 450px;
+  overflow-y: scroll; }
+  #myFiles a {
+    width: 33%;
+    height: 150px;
+    display: inline-block;
+    float: left;
+    margin: 10px 0;
+    text-decoration: none; }
+    #myFiles a img {
+      width: 90%;
+      min-height: 50px;
+      height: 120px;
+      margin-left: 5%; }
+    #myFiles a label {
+      text-align: center;
+      font-size: 14px;
+      display: block;
+      width: 100%; }
