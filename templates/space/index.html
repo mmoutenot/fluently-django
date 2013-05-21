@@ -17,17 +17,17 @@
     <script type="text/x-jquery-tmpl">
 
       <li class="${action}">
-        <h3 class='name'>NAME</h3>
+      <h3 class='name'>${name}</h3>
         <h3 class='time'>${time}</h2>
         <p class='postContent'>${message}</p>
       </li>
-      
+
     </script>
   </ul>
 
   <form id="chat_form">
     <input id='message' type='text' name='message' placeholder = 'Send a message...' />
-    <input type="submit" id="submit" value="Send" /> 
+    <input type="submit" id="submit" value="Send" />
   </form>
 
 {% endblock %}
