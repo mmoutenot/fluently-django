@@ -63,8 +63,8 @@
       </a>
     </li>
 
-    <li>
-      <a href="#">
+    <li id="helpButton">
+      <a href="javascript:void(0);" onclick="olark('api.box.expand')">
         <img src="/static/images/icons/question1.png">
         <h2>Help</h2>
       </a>
@@ -78,4 +78,18 @@
     </li>
 
   </ul>
+
+  <script src="/static/javascripts/olark.js" type="text/javascript"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      var helpLink = $('#helpButton a');
+      $(helpLink).click(function() {
+        $('#habla_panel_div').animate({
+          opacity:1
+        }, 100);
+      });
+
+    });
+  </script>
 {% endblock %}
