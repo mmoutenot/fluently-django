@@ -6,7 +6,7 @@
   /* url('Quicksand_Book-webfont.ttf');  IE9 */ }
 
 @font-face {
-  font-family: QuicksandBold_Bold;
+  font-family: QuicksandBold;
   src: url("static/fonts/Quicksand/Quicksand_Bold-webfont.ttf");
   /* url('Quicksand_Bold-webfont.ttf');  IE9 */ }
 
@@ -87,12 +87,6 @@ body, html {
         width: 130px;
         height: 100%;
         margin: 0 auto; }
-    #main #left #chat {
-      width: 100%;
-      float: left;
-      display: block;
-      height: 170px;
-      border-top: 1px solid #d2d2d2; }
   #main #right {
     width: calc(100% - 331px);
     height: calc(100% - 80px);
@@ -161,9 +155,6 @@ textarea {
   font-size: 20px;
   cursor: pointer;
   line-height: 41px;
-  -webkit-transition: all 0.7s ease-in-out;
-  -moz-transition: all 0.7s ease-in-out;
-  transition: all 0.7s ease-in-out;
   box-shadow: none;
   border: none; }
   .btn:focus {

@@ -15,13 +15,22 @@ $(function() {
     if (h > 12) {
       h -= 12;
       ampm = " PM";
-    } else { 
+    } else {
       if (h === 0) {
         h = 12;
       }
-      ampm = " AM" 
+      ampm = " AM"
     }
 
+    if (data.action == null){
+      data.action = "message";
+    }
+
+    if (data.name === user_name){
+      data.sender = 'local';
+    } else {
+      data.sender = 'remote';
+    }
 
     data.time = h + ":" + $.map([d.getMinutes()],
       function(s) {
