@@ -1,0 +1,28 @@
+#habla_window_div {
+	right:125px !important;
+	font-family:Signika !important;
+
+	a {
+		color:$salmon !important;
+		font-family:Quicksand !important;
+		cursor:pointer !important;
+		text-transform: uppercase;
+		line-height:20px;
+	}
+}
+
+#habla_panel_div {
+	opacity:0;
+}
+
+#habla_offline_submit_input {
+	background:red;
+	border:none;
+	display:block;
+	margin-top:-15px;
+	font-family:Quicksand !important;
+	width:120px;
+	height:20px;
+	color:$white;
+	background:$lt_blue;
+}
