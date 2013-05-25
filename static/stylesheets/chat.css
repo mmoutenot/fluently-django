@@ -6,7 +6,7 @@
   /* url('Quicksand_Book-webfont.ttf');  IE9 */ }
 
 @font-face {
-  font-family: QuicksandBold_Bold;
+  font-family: QuicksandBold;
   src: url("static/fonts/Quicksand/Quicksand_Bold-webfont.ttf");
   /* url('Quicksand_Bold-webfont.ttf');  IE9 */ }
 
@@ -28,7 +28,7 @@
   /* url('Quicksand_Book-webfont.ttf');  IE9 */ }
 
 @font-face {
-  font-family: QuicksandBold_Bold;
+  font-family: QuicksandBold;
   src: url("static/fonts/Quicksand/Quicksand_Bold-webfont.ttf");
   /* url('Quicksand_Bold-webfont.ttf');  IE9 */ }
 
@@ -109,12 +109,6 @@ body, html {
         width: 130px;
         height: 100%;
         margin: 0 auto; }
-    #main #left #chat {
-      width: 100%;
-      float: left;
-      display: block;
-      height: 170px;
-      border-top: 1px solid #d2d2d2; }
   #main #right {
     width: calc(100% - 331px);
     height: calc(100% - 80px);
@@ -183,9 +177,6 @@ textarea {
   font-size: 20px;
   cursor: pointer;
   line-height: 41px;
-  -webkit-transition: all 0.7s ease-in-out;
-  -moz-transition: all 0.7s ease-in-out;
-  transition: all 0.7s ease-in-out;
   box-shadow: none;
   border: none; }
   .btn:focus {
@@ -218,10 +209,12 @@ ul {
 #messages {
   list-style: none;
   padding: 0;
-  margin: 0; }
+  margin: 0;
+  position: relative;
+  overflow: auto;
+  height: calc(100% - 193px); }
   #messages li {
     display: block;
-    background: #F1F1F1;
     padding: 10px 0;
     border-bottom: 1px solid #d2d2d2;
     width: 300px;
@@ -251,6 +244,10 @@ ul {
         margin-bottom: 3px;
         height: 20px;
         width: 100%; }
+      #messages li h3.message-local {
+        background: #F1F1F1; }
+      #messages li h3.message-remote {
+        background: #E4E4E4; }
     #messages li .postContent {
       padding: 0;
       font-size: 16px;
@@ -297,14 +294,15 @@ ul {
     color: white;
     width: 63px;
     margin-left: 5px;
+    margin-top: 2px;
     border-radius: 4px;
     border: none;
     box-shadow: none;
     padding: 0;
     font-family: Signika;
-    height: 26px;
+    height: 28px;
     float: left;
-    line-height: 26px;
+    line-height: 28px;
     font-size: 16px;
     box-shadow: inset 0 0 4px 2px #78b4e9; }
     #chat_form input[type='submit']:focus {
