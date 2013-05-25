@@ -79,17 +79,39 @@
     </div><!--main-->
 
     <div id="uploadModal" class="reveal-modal">
-     <h1>Add image</h1>
+     <h1>Share a File</h1>
+     <div id="uploadToggle">
+      <a href="#" id="newUploadBtn" class='active'>New Upload</a>
+      <a href="#" id="myFilesBtn">My Files</a>
+     </div>
      <div id="uploadModalContent">
-       <article>
+       <article id="newUpload">
          <div id="holder">
          </div>
+         <div id="dndTagline">
+          <p>Drag a document from your computer here</p>
+          <p>or</p>
+          <a href="#">Browse from your computer</a>
+         </div>
+         
          <p id="upload" class="hidden"><label>Drag & drop not supported, but you can still upload via this input field:<br><input type="file"></label></p>
          <p id="filereader">File API & FileReader API not supported</p>
          <p id="formdata">XHR2's FormData is not supported</p>
          <p id="progress">XHR2's upload progress isn't supported</p>
-         <p>Upload progress: <progress id="uploadprogress" min="0" max="100" value="0">0</progress></p>
-         <p>Drag an image from your desktop on to the drop zone above to see the browser both render the preview, but also upload automatically to this server.</p>
+         <progress id="uploadprogress" min="0" max="100" value="0">0</progress>
+         <p id="progressTag">Upload Progress</p>
+       </article>
+       
+       <article id="myFiles">
+        <a href="#"><img src="#"><label>FILE NAME</label></a>
+        <a href="#"><img src="#"><label>FILE NAME</label></a>
+        <a href="#"><img src="#"><label>FILE NAME</label></a>
+        <a href="#"><img src="#"><label>FILE NAME</label></a>
+        <a href="#"><img src="#"><label>FILE NAME</label></a>
+        <a href="#"><img src="#"><label>FILE NAME</label></a>
+        <a href="#"><img src="#"><label>FILE NAME</label></a>
+
+
        </article>
      </div>
      <a class="close-reveal-modal">&#215;</a>
@@ -120,8 +142,20 @@
   </script>
 
   <script type="text/javascript">
-    $('#test').click(function() {
-      console.log("rgerg");
+    $(document).ready(function() {
+      var uploadBtn = $('#uploadToggle a');
+      var article = $('#uploadModalContent article');
+
+      $(uploadBtn).click(function(e) {
+        e.preventDefault();
+        $(this).addClass('active');
+        $(uploadBtn).not(this).removeClass('active');
+
+        var disp = '#' + this.id.replace("Btn", "");
+        var other = $(article).not(disp);
+        $(other).hide();
+        $(disp).show();
+      });
     });
   </script>
 

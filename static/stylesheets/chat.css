@@ -6,7 +6,7 @@
   /* url('Quicksand_Book-webfont.ttf');  IE9 */ }
 
 @font-face {
-  font-family: QuicksandBold;
+  font-family: QuicksandBold_Bold;
   src: url("static/fonts/Quicksand/Quicksand_Bold-webfont.ttf");
   /* url('Quicksand_Bold-webfont.ttf');  IE9 */ }
 
@@ -28,7 +28,7 @@
   /* url('Quicksand_Book-webfont.ttf');  IE9 */ }
 
 @font-face {
-  font-family: QuicksandBold;
+  font-family: QuicksandBold_Bold;
   src: url("static/fonts/Quicksand/Quicksand_Bold-webfont.ttf");
   /* url('Quicksand_Bold-webfont.ttf');  IE9 */ }
 
@@ -75,7 +75,6 @@ body, html {
   width: 100%;
   height: 100%;
   position: relative;
-  top: 80px;
   background: white; }
   #main #left {
     width: 330px;
@@ -160,8 +159,7 @@ input.text_input {
   color: #5d6976; }
   input.text_input:focus {
     outline: none;
-    background: #f9ddda;
-    box-shadow: none; }
+    box-shadow: inset 0 0 2px 1px #6d6d6d; }
 
 textarea {
   border: 1px solid #d2d2d2;
@@ -282,7 +280,7 @@ ul {
   #chat_form input[type='text'] {
     background: white;
     width: 218px;
-    height: 26px;
+    min-height: 26px;
     font-size: 16px;
     line-height: 26px;
     color: #5d6976;
@@ -293,7 +291,7 @@ ul {
     border: 1px solid #d2d2d2; }
     #chat_form input[type='text']:focus {
       outline: none;
-      background: #f9ddda; }
+      box-shadow: inset 0 0 2px 1px #6d6d6d; }
   #chat_form input[type='submit'] {
     background: #8ec0ed;
     color: white;
@@ -308,9 +306,6 @@ ul {
     float: left;
     line-height: 26px;
     font-size: 16px;
-    -webkit-transition: all 0.7s ease-in-out;
-    -moz-transition: all 0.7s ease-in-out;
-    transition: all 0.7s ease-in-out;
     box-shadow: inset 0 0 4px 2px #78b4e9; }
     #chat_form input[type='submit']:focus {
       outline: none;
