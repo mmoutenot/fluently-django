@@ -5,7 +5,7 @@
 
 @font-face {
   font-family: QuicksandBold;
-  src: url("static/fonts/Quicksand/Quicksand_Bold-webfont.ttf");
+  src: url("/static/fonts/Quicksand/Quicksand_Bold-webfont.ttf");
   /* url('Quicksand_Bold-webfont.ttf');  IE9 */ }
 
 @font-face {

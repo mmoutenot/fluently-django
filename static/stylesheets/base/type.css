@@ -1,0 +1,50 @@
+@font-face {
+  font-family: Quicksand;
+  font-weight: normal;
+  font-style: normal;
+  src: url("../../fonts/Quicksand/Quicksand_Book-webfont.eot");
+  src: url("../../fonts/Quicksand/Quicksand_Book-webfont.eot?#iefix") format("embedded-opentype"), url("../../fonts/Quicksand/Quicksand_Book-webfont.woff") format("woff"), url("../../fonts/Quicksand/Quicksand_Book-webfont.ttf") format("truetype"), url("../../fonts/Quicksand/Quicksand_Book-webfont.svg#Quicksand") format("svg"); }
+
+@font-face {
+  font-family: QuicksandBold;
+  font-weight: normal;
+  font-style: normal;
+  src: url("../../fonts/Quicksand/Quicksand_Bold-webfont.eot");
+  src: url("../../fonts/Quicksand/Quicksand_Bold-webfont.eot?#iefix") format("embedded-opentype"), url("../../fonts/Quicksand/Quicksand_Bold-webfont.woff") format("woff"), url("../../fonts/Quicksand/Quicksand_Bold-webfont.ttf") format("truetype"), url("../../fonts/Quicksand/Quicksand_Bold-webfont.svg#QuicksandBold") format("svg"); }
+
+@font-face {
+  font-family: Signika;
+  font-weight: normal;
+  font-style: normal;
+  src: url("../../fonts/Signika/Signika-Light.eot");
+  src: url("../../fonts/Signika/Signika-Light.eot?#iefix") format("embedded-opentype"), url("../../fonts/Signika/Signika-Light.woff") format("woff"), url("../../fonts/Signika/Signika-Light.ttf") format("truetype"), url("../../fonts/Signika/Signika-Light.svg#Signika") format("svg"); }
+
+/*
+	HEADER TYPES
+*/
+h1, h2, h3, h4, h5, h6 {
+  padding: 0;
+  margin: 10px 0;
+  font-family: Quicksand;
+  text-transform: uppercase;
+  position: relative;
+  display: block;
+  line-height: 1.2em; }
+
+h1 {
+  font-size: 44px; }
+
+h2 {
+  font-size: 38px; }
+
+h3 {
+  font-size: 32px; }
+
+h4 {
+  font-size: 26px; }
+
+h5 {
+  font-size: 20px; }
+
+h6 {
+  font-size: 14px; }
