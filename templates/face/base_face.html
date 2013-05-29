@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Fluently</title>
+    <link rel="icon" type="image/png" href="/static/images/favicon.ico" />
+    {% block head %} {% endblock %}
+  </head>
+
+  <body>
+    <div id='navbar'>
+      <div id='logo'>
+        <img src='/static/images/logos/Logo_White.png'>
+      </div>
+    </div>
+
+    <div id='container'>
+      {% block content %} {% endblock %}
+    </div>
+
+  </body>
+</html>
