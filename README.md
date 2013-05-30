@@ -28,21 +28,21 @@ Should display ~/.../.../fluently-django/.venv/blah/blah/pip
 Modify your .git/config to be:
 
     [core]
-      repositoryformatversion = 0
-      filemode = true
-      bare = false
-      logallrefupdates = true
-      ignorecase = true
-      precomposeunicode = false
+         repositoryformatversion = 0
+         filemode = true
+         bare = false
+         logallrefupdates = true
+         ignorecase = true
+         precomposeunicode = false
     [remote "origin"]
-      url = https://github.com/mmoutenot/fluently-django.git
-      fetch = +refs/heads/*:refs/remotes/origin/*
+         url = https://github.com/mmoutenot/fluently-django.git
+         fetch = +refs/heads/*:refs/remotes/origin/*
     [branch "master"]
-      remote = origin
-      merge = refs/heads/master
-      rebase = true
+         remote = origin
+         merge = refs/heads/master
+         rebase = true
     [remote "production"]
-      url = ssh://ubuntu@fluentlynow.com:22/home/ubuntu/fluently-django.git
+         url = ssh://ubuntu@fluentlynow.com:22/home/ubuntu/fluently-django.git
 
 Install postgresql (I know this is scary, but trust me?). You need brew installed (simple google).
 
