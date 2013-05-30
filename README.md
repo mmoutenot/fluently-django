@@ -26,6 +26,7 @@ Should display ~/.../.../fluently-django/.venv/blah/blah/pip
     pip install -r requirements.txt
 
 Modify your .git/config to be:
+
     [core]
       repositoryformatversion = 0
       filemode = true
