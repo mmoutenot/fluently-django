@@ -1,0 +1,47 @@
+@font-face {
+  font-family: Quicksand;
+  font-weight: normal;
+  font-style: normal;
+  src: url("../../fonts/Quicksand/Quicksand_Book-webfont.eot");
+  src: url("../../fonts/Quicksand/Quicksand_Book-webfont.eot?#iefix") format("embedded-opentype"), url("../../fonts/Quicksand/Quicksand_Book-webfont.woff") format("woff"), url("../../fonts/Quicksand/Quicksand_Book-webfont.ttf") format("truetype"), url("../../fonts/Quicksand/Quicksand_Book-webfont.svg#Quicksand") format("svg"); }
+
+@font-face {
+  font-family: QuicksandBold;
+  font-weight: normal;
+  font-style: normal;
+  src: url("../../fonts/Quicksand/Quicksand_Bold-webfont.eot");
+  src: url("../../fonts/Quicksand/Quicksand_Bold-webfont.eot?#iefix") format("embedded-opentype"), url("../../fonts/Quicksand/Quicksand_Bold-webfont.woff") format("woff"), url("../../fonts/Quicksand/Quicksand_Bold-webfont.ttf") format("truetype"), url("../../fonts/Quicksand/Quicksand_Bold-webfont.svg#QuicksandBold") format("svg"); }
+
+@font-face {
+  font-family: Signika;
+  font-weight: normal;
+  font-style: normal;
+  src: url("../../fonts/Signika/Signika-Light.eot");
+  src: url("../../fonts/Signika/Signika-Light.eot?#iefix") format("embedded-opentype"), url("../../fonts/Signika/Signika-Light.woff") format("woff"), url("../../fonts/Signika/Signika-Light.ttf") format("truetype"), url("../../fonts/Signika/Signika-Light.svg#Signika") format("svg"); }
+
+/*
+	INPUT STYLES
+*/
+input[type=text] {
+  border: 1px solid #d2d2d2;
+  box-shadow: none;
+  background: white;
+  font-family: Signika;
+  height: 26px;
+  padding: 2px 6px;
+  line-height: 24px;
+  font-size: 16px;
+  border-radius: 6px; }
+  input[type=text]:focus {
+    box-shadow: inset 0 0 2px 1px #6d6d6d;
+    outline: none; }
+  input[type=text].span1 {
+    width: 90px; }
+  input[type=text].span2 {
+    width: 180px; }
+  input[type=text].span3 {
+    width: 270px; }
+  input[type=text].span4 {
+    width: 360px; }
+  input[type=text].span5 {
+    width: 450px; }

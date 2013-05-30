@@ -1,0 +1,25 @@
+{% extends 'face/base_face.html' %}
+
+{% block head %}
+	<link rel="stylesheet" type="text/css" href="/static/stylesheets/face/get_started.css">
+{% endblock %}
+
+{% block content %}
+  <h2>Getting Started</h2>
+  <p>You've been invited to join a session. Let's get started:</p>
+  
+  <div class="stepBlock">
+  	<h5><span>Step One</span>: Use Google Chrome</h5>
+  	<p>Make sure you are using <a href="#">Google Chrome</a> as your web browser. Fluently uses new videoconferencing technology only available in Chrome at this time.</p>
+  </div>
+
+  <div class="stepBlock">
+    <h5><span>Step Two</span>: "Allow" Webcam Access</h5>
+    <p>Click “Allow” to give Fluently access to your computer’s webcam. This access will immediately terminate as soon as your session is completed.</p>
+  </div>
+
+  <a href="#" class="btn btn-large" id="join">Join Session</a>
+  <p>You will be able to join this session once the other user accepts your invitation</p>
+
+
+{% endblock %}
