@@ -1,5 +1,19 @@
 $(document).ready(function() {
-  // $('.submit').prop('disabled', true);
+  $('.submit').prop('disabled', true);
+  observeInterval = 100;
+    setInterval(function() { 
+      isValid = true;
+      $('.text_input').each(function() {
+        if ($(this).val() == '') {
+          isValid = false;
+        }
+      });
+      if (!$('#check').prop('checked')) {
+        isValid = false;
+      }
+      $('.submit').prop('disabled', !isValid);
+    }, observeInterval);
+  });
 });
 
 $(function(){
