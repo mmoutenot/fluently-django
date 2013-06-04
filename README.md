@@ -48,6 +48,19 @@ Install postgresql (I know this is scary, but trust me?). You need brew installe
 
     bash < <(curl -s http://www.solowizard.com/soloist_scripts/jiagb2.sh )
 
+Alternatively you can just use sqlite by modifying the databse section in /settings.py to be the following:
+
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': 'fluently.db',            # Or path to database file if using sqlite3.
+            'USER': '',            # Not used with sqlite3.
+            'PASSWORD': '',          # Not used with sqlite3.
+            'HOST': '',            # Set to empty string for localhost. Not used with sqlite3.
+            'PORT': '',            # Set to empty string for default. Not used with sqlite3.
+        }
+    }
+
 Developing
 ------------
 When you're developing, run these two commands:
@@ -60,4 +73,4 @@ and
 
 The first will actively watch and convert your sass to css and the second runs the django server. The django server automatically restarts when changes are made to the .py files. If, however you add a new file, or make a change to settings.py you have to restart the server.
 
-
+The latter is the only one needed to just view the site. You can see it at http://localhost:9000
