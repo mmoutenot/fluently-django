@@ -48,7 +48,7 @@ Install postgresql (I know this is scary, but trust me?). You need brew installe
 
     bash < <(curl -s http://www.solowizard.com/soloist_scripts/jiagb2.sh )
 
-Alternatively you can just use sqlite by modifying the databse section in /settings.py to be the following:
+Alternatively you can just use sqlite by modifying the databse section in settings.py to be the following:
 
     DATABASES = {
         'default': {
@@ -60,6 +60,12 @@ Alternatively you can just use sqlite by modifying the databse section in /setti
             'PORT': '',            # Set to empty string for default. Not used with sqlite3.
         }
     }
+
+To populate the database, just use the command:
+
+    python manage.py syncdb
+    
+And you can enter a superuser of your choosing.
 
 Developing
 ------------
