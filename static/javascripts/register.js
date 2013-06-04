@@ -8,7 +8,7 @@ $(document).ready(function() {
           isValid = false;
         }
       });
-      if (!$('#check').prop('checked')) {
+      if (!$('#termsCheck').prop('checked')) {
         isValid = false;
       }
       $('.submit').prop('disabled', !isValid);
