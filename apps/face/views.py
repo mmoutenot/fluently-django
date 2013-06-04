@@ -28,6 +28,13 @@ def login_user(request):
 def register_user(request):
   return render(request, 'face/register.html')
 
+def get_started(request):
+  return render(request, 'face/welcome_blocks/get_started.html')
+
+def welcome(request):
+  return render(request, 'face/welcome_blocks/welcome.html')
+
+
 """
 Receives ajax call from register page and parses POST to check for validiy on
 the server side.
