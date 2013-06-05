@@ -8,8 +8,8 @@ mandrill_api_key = "qIjK_MqTNHaoGT5kiIhIJg"
 """
 def send_email_using_template(template_name, template_content, recipient_email, recipient_name, tag):
   request = {
-    "key": mandrill_api_key
-    "template_name": template_name
+    "key": mandrill_api_key,
+    "template_name": template_name,
     "template_content": template_content,
     "message": {
       "from_email": "jack@fluentlynow.com",
