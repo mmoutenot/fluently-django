@@ -33,6 +33,9 @@ def login_user(request):
 def register_user(request):
   return render(request, 'face/register.html')
 
+def register_blocks(request):
+  return render(request, 'face/register_blocks.html')
+
 """
 Receives ajax call from register page and parses POST to check for validiy on
 the server side.
