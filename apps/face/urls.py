@@ -6,6 +6,6 @@ urlpatterns = patterns('',
                        url(r'^$', 'apps.face.views.main'),
                        url(r'^login/', 'apps.face.views.login_user'),
                        url(r'^register/$', 'apps.face.views.register_user'),
-                       url(r'^register_blocks', 'apps.face.views.register_blocks'),
+                       url(r'^register/register_blocks', 'apps.face.views.register_blocks'),
                        url(r'^register/account_handler', 'apps.face.views.register_account_handler'),
 )
