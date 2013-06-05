@@ -1,19 +1,19 @@
 $(document).ready(function() {
+  $('#account-wrap').load('register_blocks #account-block');
   $('.submit').prop('disabled', true);
   observeInterval = 100;
-    setInterval(function() { 
-      isValid = true;
-      $('.text_input').each(function() {
-        if ($(this).val() == '') {
-          isValid = false;
-        }
-      });
-      if (!$('#termsCheck').prop('checked')) {
+  setInterval(function() { 
+    isValid = true;
+    $('.text_input').each(function() {
+      if ($(this).val() == '') {
         isValid = false;
       }
-      $('.submit').prop('disabled', !isValid);
-    }, observeInterval);
-  });
+    });
+    if (!$('#termsCheck').prop('checked')) {
+      isValid = false;
+    }
+    $('.submit').prop('disabled', !isValid);
+  }, observeInterval);
 });
 
 $(function(){
@@ -57,7 +57,7 @@ $(function(){
       });
     
     $('#account-wrap').empty();
-    $('#account-wrap').load('register_blocks/confirmation.html');
+    $('#account-wrap').load('register_blocks #confirmation-block');
     
     }
     return false;
@@ -99,7 +99,7 @@ $(function(){
     });
     
     $('#account-wrap').empty();
-    $('#account-wrap').load('register_blocks/submit.html');
+    $('#account-wrap').load('register_blocks #submit-block');
 
   });
 
