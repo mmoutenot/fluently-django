@@ -55,6 +55,10 @@ $(function(){
           }
         }
       });
+    
+    $('#account-wrap').empty();
+    $('#account-wrap').load('register_blocks/confirmation.html');
+    
     }
     return false;
 
@@ -93,6 +97,9 @@ $(function(){
         }
       }
     });
+    
+    $('#account-wrap').empty();
+    $('#account-wrap').load('register_blocks/submit.html');
 
   });
 
