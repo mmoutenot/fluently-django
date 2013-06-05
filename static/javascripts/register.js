@@ -18,7 +18,7 @@ $(document).ready(function() {
 
 $(function(){
   $('#register-account-form').submit(function() {
-    console.log("submitted");
+    console.log("submitted-reg");
     // TODO:validate form items
     first_name = $('#account-first-name').val();
     last_name = $('#account-first-name').val();
@@ -42,7 +42,6 @@ $(function(){
         csrfmiddlewaretoken:csrf_token
       };
 
-
       $.ajax({
         type : "post",
         dataType:'json',
@@ -52,13 +51,48 @@ $(function(){
           dataJSON = jQuery.parseJSON(data);
           if(dataJSON['status'] === "OK"){
             console.log('account registered. stage 1 complete');
-            // TODO:mmoutenot or TODO:dporterlance
-            // SLLlllliidde to the right, yo!
+            // TODO: SLLlllliidde to the right, yo!
           }
         }
       });
     }
     return false;
+
+  });
+
+  $('#certify-account-form').submit(function() {
+    console.log("submitted-cert");
+    // TODO: validate form items
+    certification          = $('#account-certification').val();
+    education              = $('#account-education').val();
+    licensed_states        = $('#account-licensed-states').val();
+    membership             = $('#account-membership').val();
+    experience_specialties = $('#account-experience-specialties').val();
+    
+    data = {
+      stage: "certification",
+      certification: certification,
+      education: education,
+      licensedStates: licensed_states,
+      membership: membership,
+      experienceSpecialties: experience_specialties,
+      // and with every ajax post, we need the csrf_token
+      csrfmiddlewaretoken: csrf_token
+    };
+    
+    $.ajax({
+      type : "post",
+      dataType:'json',
+      url : "/face/register/account_handler/",
+      data: data,
+      success:function(data){
+      dataJSON = jQuery.parseJSON(data);
+        if(dataJSON['status'] === "OK"){
+          console.log('account certified. stage 3 complete');
+          // TODO: SLLlllliidde to the right, yo!
+        }
+      }
+    });
 
   });
 
