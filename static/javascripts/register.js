@@ -1,4 +1,5 @@
 $(document).ready(function() {
+  
   $('#account-wrap').load('register_blocks #account-block');
   $('.submit').prop('disabled', true);
   observeInterval = 100;
@@ -13,12 +14,10 @@ $(document).ready(function() {
       isValid = false;
     }
     $('.submit').prop('disabled', !isValid);
+    console.log(isValid);
   }, observeInterval);
-});
 
-$(function(){
-  $('#register-account-form').submit(function() {
-    console.log("submitted-reg");
+  $('#register-account-form').live('submit', function() {
     // TODO:validate form items
     first_name = $('#account-first-name').val();
     last_name = $('#account-first-name').val();
@@ -56,7 +55,6 @@ $(function(){
         }
       });
     
-    $('#account-wrap').empty();
     $('#account-wrap').load('register_blocks #confirmation-block');
     
     }
@@ -64,7 +62,7 @@ $(function(){
 
   });
 
-  $('#certify-account-form').submit(function() {
+  $('#certify-account-form').live('submit', function() {
     console.log("submitted-cert");
     // TODO: validate form items
     certification          = $('#account-certification').val();
@@ -98,7 +96,6 @@ $(function(){
       }
     });
     
-    $('#account-wrap').empty();
     $('#account-wrap').load('register_blocks #submit-block');
 
   });
