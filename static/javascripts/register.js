@@ -4,28 +4,48 @@ $(document).ready(function() {
   $('.submit').prop('disabled', true);
   observeInterval = 100;
   setInterval(function() { 
-    isValid = true;
+    noBlanks = true;
     $('.text_input').each(function() {
       if ($(this).val() == '') {
-        isValid = false;
+        noBlanks = false;
       }
     });
     if (!$('#termsCheck').prop('checked')) {
-      isValid = false;
+      noBlanks = false;
     }
-    $('.submit').prop('disabled', !isValid);
-    console.log(isValid);
+    $('.submit').prop('disabled', !noBlanks);
+    console.log(noBlanks);
   }, observeInterval);
 
   $('#register-account-form').live('submit', function() {
-    // TODO:validate form items
-    first_name = $('#account-first-name').val();
-    last_name = $('#account-first-name').val();
-    email = $('#account-first-name').val();
-    password_a = $('#account-first-name').val();
-    password_b = $('#account-first-name').val();
 
-    if (password_a === password_b){
+    validInputs = true;
+    validation_strs = [];
+    $('#invalid-wrap').text('');
+
+    first_name = $('#account-first-name').val();
+    last_name = $('#account-last-name').val();
+    email = $('#account-email').val();
+    password_a = $('#account-password-a').val();
+    password_b = $('#account-password-b').val();
+    
+    email_regex = '^..*@.*.$';
+    invalid_email_str = "Please provide valid email.";
+    if (!email.match(email_regex)) {
+      validInputs = false;
+      validation_strs.push(invalid_email_str);
+      $('#account-email').val('');
+    }
+
+    mismatch_pw_str = "Passwords must match.";
+    if (password_a !== password_b){
+      validInputs = false;
+      validation_strs.push(mismatch_pw_str);
+      $('[id*=password]').val('');
+    }
+
+    if (validInputs) {
+
       // data_string = 'stage=account'
       // data_string += '&firstName=' + first_name;
       // data_string += '&lastName=' + last_name;
@@ -57,7 +77,18 @@ $(document).ready(function() {
     
     $('#account-wrap').load('register_blocks #confirmation-block');
     
+    } else {
+      
+      $('#invalid-wrap').append(validation_strs[0]);
+      if (validation_strs.length > 1) {
+        $('#invalid-wrap').append('<br/>');
+        for (i = 1; i < validation_strs.length; i++) {
+          $('#invalid-wrap').append(validation_strs[i]);
+        }
+      }
+
     }
+
     return false;
 
   });
