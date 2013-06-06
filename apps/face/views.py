@@ -37,7 +37,7 @@ def register_blocks(request):
   return render(request, 'face/register_blocks.html')
 
 """
-Receives ajax call from register page and parses POST to check for validiy on
+Receives ajax call from register page and parses POST to check for validity on
 the server side.
 
 Responses:
@@ -48,21 +48,36 @@ Responses:
 def register_account_handler(request):
   response_string = '{"status":"INV"}'
   if request.POST:
-    first_name = request.POST.get('firstName')
-    last_name = request.POST.get('lastName')
-    email = request.POST.get('email')
-    password_a = request.POST.get('password')
-
-    u, created = User.objects.get_or_create(username = email)
-    if created:
-      u.first_name = first_name
-      u.last_name  = last_name
-      u.email      = email
-      u.password   = password_a
-      u.save()
-      response_string = '{"status":"OK"}'
-    else:
-      response_string = '{"status":"DUP"}'
-      # send_email_using_template()
+    stage = request.POST.get('stage')   
+    if stage == "account":
+      first_name = request.POST.get('firstName')
+      last_name  = request.POST.get('lastName')
+      email      = request.POST.get('email')
+      password_a = request.POST.get('password')
+      u, created = User.objects.get_or_create(username = email)
+      if created:
+        u.profile.first_name = first_name
+        u.profile.last_name  = last_name
+        u.email              = email
+        u.password           = password_a
+        u.save()
+        response_string = '{"status":"OK"}'
+      else:
+        response_string = '{"status":"DUP"}'
+    else if stage == "certification":
+      certification          = request.POST.get('certification')
+      education              = request.POST.get('education')
+      licensed_states        = request.POST.get('licensedStates')
+      experience_specialties = request.POST.get('experienceSpecialties')
+      try:
+        u = User.objects.get(username = email)
+        u.profile.certification          = certification
+        u.profile.education              = education
+        u.profile.licensed_states        = licensed_states
+        u.profile.experience_specialties = experience_specialties
+        u.profile.save()
+        response_string = '{"status":"OK"}'
+      except User.DoesNotExist:
+        pass
+  #send_email_using_template()
   return HttpResponse(json.dumps(response_string), mimetype="application/json")
-
