@@ -1,3 +1,10 @@
+// String Constants
+
+var EMAIL_REGEX = '^..*@.*.$';
+var INVALID_EMAIL = "Please provide valid email.";
+var EMAIL_TAKEN = "Email is already in use.";
+var MISMATCH_PASSWORD = "Passwords must match.";
+
 $(document).ready(function() {
   
   $('#account-wrap').load('register_blocks #account-block');
@@ -19,8 +26,8 @@ $(document).ready(function() {
 
   $('#register-account-form').live('submit', function() {
 
-    validInputs = true;
-    validation_strs = [];
+    validInputClient = true;
+    display_strs = [];
     $('#invalid-wrap').text('');
 
     first_name = $('#account-first-name').val();
@@ -29,23 +36,19 @@ $(document).ready(function() {
     password_a = $('#account-password-a').val();
     password_b = $('#account-password-b').val();
     
-    email_regex = '^..*@.*.$';
-    invalid_email_str = "Please provide valid email.";
     if (!email.match(email_regex)) {
-      validInputs = false;
-      validation_strs.push(invalid_email_str);
+      validInputClient = false;
+      display_strs.push(INVALID_EMAIL);
       $('#account-email').val('');
     }
 
-    mismatch_pw_str = "Passwords must match.";
     if (password_a !== password_b){
-      validInputs = false;
-      validation_strs.push(mismatch_pw_str);
+      validInputClient = false;
+      display_strs.push(MISMATCH_PASSWORD);
       $('[id*=password]').val('');
     }
 
-    if (validInputs) {
-
+    if (validInputClient) {
       // data_string = 'stage=account'
       // data_string += '&firstName=' + first_name;
       // data_string += '&lastName=' + last_name;
@@ -70,20 +73,25 @@ $(document).ready(function() {
           dataJSON = jQuery.parseJSON(data);
           if(dataJSON['status'] === "OK"){
             console.log('account registered. stage 1 complete');
+            $('#account-wrap').load('register_blocks #confirmation-block');
             // TODO: SLLlllliidde to the right, yo!
+          } else if (dataJSON['status'] === "DUP") {
+            validInputServer = false;
+            $('#account-email').val('');
+            display_strs.push(EMAIL_TAKEN);
           }
         }
       });
+
+    }
     
-    $('#account-wrap').load('register_blocks #confirmation-block');
-    
-    } else {
+    if (!validInputClient || !validInputServer) {
       
-      $('#invalid-wrap').append(validation_strs[0]);
-      if (validation_strs.length > 1) {
+      $('#invalid-wrap').append(display_strs[0]);
+      if (display_strs.length > 1) {
         $('#invalid-wrap').append('<br/>');
-        for (i = 1; i < validation_strs.length; i++) {
-          $('#invalid-wrap').append(validation_strs[i]);
+        for (i = 1; i < display_strs.length; i++) {
+          $('#invalid-wrap').append(display_strs[i]);
         }
       }
 
