@@ -47,13 +47,13 @@ Responses:
 """
 def register_account_handler(request):
   response_string = '{"status":"INV"}'
-  if request.POST:
-    stage = request.POST.get('stage')   
+  if request == "POST":
+    stage = request.POST.get('stage', "")   
     if stage == "account":
-      first_name = request.POST.get('firstName')
-      last_name  = request.POST.get('lastName')
-      email      = request.POST.get('email')
-      password_a = request.POST.get('password')
+      first_name = request.POST.get('firstName', "")
+      last_name  = request.POST.get('lastName', "")
+      email      = request.POST.get('email', "")
+      password_a = request.POST.get('password', "")
       u, created = User.objects.get_or_create(username = email)
       if created:
         u.profile.first_name = first_name
@@ -65,10 +65,10 @@ def register_account_handler(request):
       else:
         response_string = '{"status":"DUP"}'
     else if stage == "certification":
-      certification          = request.POST.get('certification')
-      education              = request.POST.get('education')
-      licensed_states        = request.POST.get('licensedStates')
-      experience_specialties = request.POST.get('experienceSpecialties')
+      certification          = request.POST.get('certification', "")
+      education              = request.POST.get('education', "")
+      licensed_states        = request.POST.get('licensedStates', "")
+      experience_specialties = request.POST.get('experienceSpecialties', "")
       try:
         u = User.objects.get(username = email)
         u.profile.certification          = certification
