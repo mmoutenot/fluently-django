@@ -3,10 +3,10 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
 from django.http import HttpResponse
 
-from utils import send_email_using_template
+from utils import email_template
 
 import json
-
+import requests
 
 def main(request):
   return render(request, 'face/login.html')
@@ -47,37 +47,42 @@ Responses:
 """
 def register_account_handler(request):
   response_string = '{"status":"INV"}'
-  if request == "POST":
+  if request.POST:
     stage = request.POST.get('stage', "")   
     if stage == "account":
       first_name = request.POST.get('firstName', "")
       last_name  = request.POST.get('lastName', "")
       email      = request.POST.get('email', "")
-      password_a = request.POST.get('password', "")
-      u, created = User.objects.get_or_create(username = email)
+      password   = request.POST.get('password', "")
+      print email
+      u, created = User.objects.get_or_create(username=email)
       if created:
-        u.profile.first_name = first_name
-        u.profile.last_name  = last_name
-        u.email              = email
-        u.password           = password_a
+        u.password               = password
+        u.userprofile.first_name = first_name
+        u.userprofile.last_name  = last_name
         u.save()
+        u.userprofile.save()
+        print u.userprofile
         response_string = '{"status":"OK"}'
+        mandrill_email_template = email_template("invite-user", [], email, first_name + " " + last_name, "")
+        mandrill_url = "https://mandrillapp.com/api/1.0/messages/send-template.json"
+        r = requests.post(mandrill_url, data=mandrill_email_template)
+        print r.text
       else:
         response_string = '{"status":"DUP"}'
-    else if stage == "certification":
+    elif stage == "certification":
       certification          = request.POST.get('certification', "")
       education              = request.POST.get('education', "")
       licensed_states        = request.POST.get('licensedStates', "")
       experience_specialties = request.POST.get('experienceSpecialties', "")
       try:
         u = User.objects.get(username = email)
-        u.profile.certification          = certification
-        u.profile.education              = education
-        u.profile.licensed_states        = licensed_states
-        u.profile.experience_specialties = experience_specialties
-        u.profile.save()
+        u.userprofile.certification          = certification
+        u.userprofile.education              = education
+        u.userprofile.licensed_states        = licensed_states
+        u.userprofile.experience_specialties = experience_specialties
+        u.userprofile.save()
         response_string = '{"status":"OK"}'
       except User.DoesNotExist:
         pass
-  #send_email_using_template()
   return HttpResponse(json.dumps(response_string), mimetype="application/json")
