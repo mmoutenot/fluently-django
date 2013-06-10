@@ -6,39 +6,11 @@ var EMAIL_TAKEN = "Email is already in use.";
 var MISMATCH_PASSWORD = "Passwords must match.";
 var TERMS_NOT_AGREED = "You must agree to the Terms of Service to proceed.";
 
-// Stage functions
-// account -> confirmation -> certification -> submit
-
-// Returns a string corresponding to current registration stage
-function checkStage() {
-  if ($('#account-block').exists()) { 
-    return "account"; 
-  } else if ($('#confirmation-block').exists()) {
-    return "confirmation";
-  } else if ($('#certification-block').exists()) { 
-    return "certification"; 
-  } else if ($('#submit-block').exists()) {
-    return "submit";
-  } else {
-    return null;
-  }
-}
-
-// Advances front end registration stage and returns string corresponding
-// to new registration stage
-function advanceStage() {
-  if (checkStage() == "account") {
-    $('#account-wrap').load('register-blocks #confirmation-block');
-  } else if (checkStage() == "certification") {
-    $('#account-wrap').load('register-blocks #submit-block');
-  }
-  return checkStage();
-}
-
 $(document).ready(function() {
 
-  stage = checkStage();  
   $('#account-wrap').load('register_blocks #account-block');
+  stage = "account";
+
   $('.submit').prop('disabled', true);
   observeInterval = 100;
   setInterval(function() { 
@@ -51,11 +23,16 @@ $(document).ready(function() {
     $('.submit').prop('disabled', !noBlanks);
   }, observeInterval);
 
-  $('.submit').live('submit', function() {
+});
+
+$(function() {
+
+  $('#register-account-form').live('submit', function() {
 
     validInputClient = true;
     validInputServer = true;
-    display_strs = [];
+    client_error_strs = [];
+    server_error_strs = [];
     $('#invalid-wrap').text('');
 
     if (stage == "account") {
@@ -67,21 +44,21 @@ $(document).ready(function() {
       password_b             = $('#account-password-b').val();
       terms_check            = $('#account-terms').prop('checked'); 
 
-      if (!email.match(email_regex)) {
+      if (!email.match(EMAIL_REGEX)) {
         validInputClient = false;
-        display_strs.push(INVALID_EMAIL);
+        client_error_strs.push(INVALID_EMAIL);
         $('#account-email').val('');
       }
       
       if (password_a !== password_b) {
         validInputClient = false;
-        display_strs.push(MISMATCH_PASSWORD);
+        client_error_strs.push(MISMATCH_PASSWORD);
         $('[id*=password]').val('');
       }
       
       if (!$('#account-terms').prop('checked')) {
         validInputClient = false;
-        display_strs.push(TERMS_NOT_AGREED);
+        client_error_strs.push(TERMS_NOT_AGREED);
       }
   
       if (validInputClient) {
@@ -128,29 +105,36 @@ $(document).ready(function() {
         success:function(data){
           dataJSON = jQuery.parseJSON(data);
           if(dataJSON['status'] === "OK") {
-            stage = advanceStage();
+            $('#account-wrap').load('register_blocks #confirmation-block');
             // TODO: SLLlllliidde to the right, yo!
           } else if (stage == "account" && dataJSON['status'] === "DUP") {
             validInputServer = false;
             $('#account-email').val('');
-            display_strs.push(EMAIL_TAKEN);
+            server_error_strs.push(EMAIL_TAKEN);
+            $('#invalid-wrap').append(server_error_strs[0]);
+            if (server_error_strs.length > 1) {
+              $('#invalid-wrap').append('<br/>');
+              for (i = 1; i < server_error_strs.length; i++) {
+                $('#invalid-wrap').append(server_error_strs[i]);
+              }
+            }
           }
         }
       });
-    }
-    
-    if (!validInputClient || !validInputServer) {  
-      $('#invalid-wrap').append(display_strs[0]);
-      if (display_strs.length > 1) {
+    } else { 
+      $('#invalid-wrap').append(client_error_strs[0]);
+      if (error_strs.length > 1) {
         $('#invalid-wrap').append('<br/>');
-        for (i = 1; i < display_strs.length; i++) {
-          $('#invalid-wrap').append(display_strs[i]);
+        for (i = 1; i < client_error_strs.length; i++) {
+          $('#invalid-wrap').append(client_error_strs[i]);
         }
       }
     }
 
     return false;
+  
   });
+
 });
 
 
