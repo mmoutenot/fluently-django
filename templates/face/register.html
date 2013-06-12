@@ -12,7 +12,7 @@ Need to include existing templates (nav) and create templates for each step of a
     <link rel="icon" type="image/png" href="/static/images/favicon.ico" />
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
-
+    <script type="text/javscript" src="/static/javascripts/jquery.transit.min.js"></script>
     <script type="text/javascript" src="/static/javascripts/register.js"></script>
     <script type="text/javascript">
       var csrf_token = "{{csrf_token}}";
@@ -32,20 +32,20 @@ Need to include existing templates (nav) and create templates for each step of a
       <div id='steps'>
         <div id='line'></div>
         <ul>
-          <li>
+          <li id="account-step">
           <h2 class='active'>1</h2>
           <label>Account</label>
           </li>
-          <li>
-          <h2 >2</h2>
+          <li id="confirmation-step">
+          <h2>2</h2>
           <label>Confirmation</label>
           </li>
-          <li>
-          <h2 >3</h2>
+          <li id="certification-step">
+          <h2>3</h2>
           <label>Certification</label>
           </li>
-          <li>
-          <h2 class=''>4</h2>
+          <li id="submit-step">
+          <h2>4</h2>
           <label>Submit</label>
           </li>
         </ul>
