@@ -22,6 +22,16 @@ function getUrlVars()
     return vars;
 }
 
+function display_errors(errors) {
+  $('#invalid-wrap').append(errors[0]);
+  if (errors.length > 1) {
+    $('#invalid-wrap').append('<br/>');
+    for (i = 1; i < errors.length; i++) {
+      $('#invalid-wrap').append(errors[i]);
+    }
+  }
+}
+
 $(document).ready(function() {
 
   id = getUrlVars()["id"];
@@ -135,6 +145,7 @@ $(document).ready(function() {
           if(stage == "account" && dataJSON['status'] === "OK") {
             stage = "confirmation";
             $('#account-wrap').load('register_blocks #confirmation-block');
+            $('h2.active').transition({opacity: 0});
           } else if (stage == "account" && dataJSON['status'] === "DUP") {
             $('#account-email').val('');
             errors.push(EMAIL_TAKEN);
@@ -144,18 +155,12 @@ $(document).ready(function() {
           } else {
             errors.push(SERVER_ERROR);
           }
+          display_errors(errors);          
         }
       });
     }  
-    
-    // Display errors if any
-    $('#invalid-wrap').append(errors[0]);
-    if (errors.length > 1) {
-      $('#invalid-wrap').append('<br/>');
-      for (i = 1; i < errors.length; i++) {
-        $('#invalid-wrap').append(errors[i]);
-      }
-    }
+
+    display_errors(errors);
 
     return false;
   
