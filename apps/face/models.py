@@ -10,6 +10,7 @@ class UserProfile(models.Model):
   education = models.CharField(max_length=64)
   membership = models.CharField(max_length=64)
   experience_specialties = models.CharField(max_length=256)
+  join_id = models.CharField(max_length=36, unique=True)
   confirmed = models.BooleanField(default=False)
 
   def __str__(self):
