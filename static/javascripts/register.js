@@ -32,6 +32,17 @@ function display_errors(errors) {
   }
 }
 
+function animate_step() {
+  inactive_step_text = $('.active').html();
+  $('.active').text('');
+  $('.active').addClass('iterator');
+  $('.active').transition({x:175}, 500, 'ease', function() {
+    $('<h2>' + inactive_step_text + '</h2>').insertBefore('.active');
+    $('.next').prop('class', 'active');
+    $('.iterator').remove();
+  });
+}
+
 $(document).ready(function() {
 
   id = getUrlVars()["id"];
@@ -51,12 +62,16 @@ $(document).ready(function() {
         if (dataJSON['status'] === "OK") {
           email = dataJSON['email'];
           stage = "certification";
+          $('#certification-step h2').addClass('active');
+          $('#submit-step h2').addClass('next');
           $('#account-wrap').load('register_blocks #certification-block');
         }
       }
     });
   } else {
     stage = "account";
+    $('#account-step h2').addClass('active');
+    $('#confirmation-step h2').addClass('next');
     $('#account-wrap').load('register_blocks #account-block');
   }
 
@@ -145,13 +160,14 @@ $(document).ready(function() {
           if(stage == "account" && dataJSON['status'] === "OK") {
             stage = "confirmation";
             $('#account-wrap').load('register_blocks #confirmation-block');
-            $('h2.active').transition({opacity: 0});
+            animate_step();
           } else if (stage == "account" && dataJSON['status'] === "DUP") {
             $('#account-email').val('');
             errors.push(EMAIL_TAKEN);
           } else if (stage == "certification" && dataJSON['status'] === "OK") {
             stage = "submit";
             $('#account-wrap').load('register_blocks #submit-block');
+            animate_step();
           } else {
             errors.push(SERVER_ERROR);
           }
