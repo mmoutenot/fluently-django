@@ -97,6 +97,9 @@ def main(request, space_url_id):
                   "user"           : request.user,
                 })
 
+def account(request):
+  return render(request, 'space/account.html');
+
 @require_http_methods(["GET","POST"])
 def upload(request):
   print 'in upload view'
