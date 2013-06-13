@@ -7,7 +7,7 @@ mandrill_api_key = "qIjK_MqTNHaoGT5kiIhIJg"
 *tags = string representing the topic (for tracking on mandrill
 """
 def email_template(template_name, template_content, recipient_email, recipient_name, tag):
-  request = {
+  return json.dumps({
     "key": mandrill_api_key,
     "template_name": template_name,
     "template_content": template_content,
@@ -48,5 +48,5 @@ def email_template(template_name, template_content, recipient_email, recipient_n
       "images": None,
     },
     "async": False
-  }
+  })
 
