@@ -84,6 +84,7 @@ def register_account_handler(request):
       certification          = request.POST.get('certification', "")
       education              = request.POST.get('education', "")
       licensed_states        = request.POST.get('licensedStates', "")
+      membership             = request.POST.get('membership', "")
       experience_specialties = request.POST.get('experienceSpecialties', "")
       email                  = request.POST.get('email', "")
       try:
@@ -91,6 +92,7 @@ def register_account_handler(request):
         u.userprofile.certification          = certification
         u.userprofile.education              = education
         u.userprofile.licensed_states        = licensed_states
+        u.userprofile.membership             = membership
         u.userprofile.experience_specialties = experience_specialties
         u.userprofile.save()
         mandrill_email_template = email_template("submit-user", [], email, u.userprofile.first_name + " " + u.userprofile.last_name, "")
