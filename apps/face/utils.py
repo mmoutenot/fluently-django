@@ -1,3 +1,5 @@
+import json
+
 mandrill_api_key = "qIjK_MqTNHaoGT5kiIhIJg"
 
 """
