@@ -58,8 +58,8 @@ def register_account_handler(request):
       if created:
         u.password               = password
         u.userprofile.join_id    = str(uuid.uuid1())
-        u.userprofile.first_name = first_name
-        u.userprofile.last_name  = last_name
+        u.first_name = first_name
+        u.last_name  = last_name
         u.save()
         u.userprofile.save()
         template_content = [{

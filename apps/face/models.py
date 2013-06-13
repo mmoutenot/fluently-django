@@ -4,8 +4,6 @@ from django.contrib.auth.models import User
 
 class UserProfile(models.Model):
   user = models.OneToOneField(User, primary_key=True)
-  first_name = models.CharField(max_length=32)
-  last_name = models.CharField(max_length=32)
   certification = models.CharField(max_length=64)
   education = models.CharField(max_length=64)
   membership = models.CharField(max_length=64)
