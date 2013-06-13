@@ -23,16 +23,16 @@ def email_template(template_name, template_content, recipient_email, recipient_n
       "headers": {
         "Reply-To": "jack@fluentlynow.com"
       },
-      "important": false,
-      "track_opens": null,
-      "track_clicks": null,
-      "auto_text": null,
-      "auto_html": null,
-      "inline_css": null,
-      "url_strip_qs": null,
-      "preserve_recipients": null,
-      "tracking_domain": null,
-      "signing_domain": null,
+      "important": False,
+      "track_opens": None,
+      "track_clicks": None,
+      "auto_text": None,
+      "auto_html": None,
+      "inline_css": None,
+      "url_strip_qs": None,
+      "preserve_recipients": None,
+      "tracking_domain": None,
+      "signing_domain": None,
       "tags": [
         tag
       ],
@@ -44,9 +44,9 @@ def email_template(template_name, template_content, recipient_email, recipient_n
           "rcpt": recipient_email,
         }
       ],
-      "attachments": null,
-      "images": null,
+      "attachments": None,
+      "images": None,
     },
-    "async": false
+    "async": False
   }
 
