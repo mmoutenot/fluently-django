@@ -55,6 +55,9 @@ def register_account_handler(request):
       password   = request.POST.get('password', "")
       print email
       u, created = User.objects.get_or_create(username=email)
+      print User.objects.all()
+      print u
+      print created
       if created:
         u.password               = password
         u.userprofile.join_id    = str(uuid.uuid1())
@@ -71,6 +74,7 @@ def register_account_handler(request):
                      "</a>"
           }]
         mandrill_email_template = email_template("invite-user", template_content, email, first_name + " " + last_name, "")
+        print mandrill_email_template
         mandrill_url = "https://mandrillapp.com/api/1.0/messages/send-template.json"
         r = requests.post(mandrill_url, data=mandrill_email_template)
         response_string = '{"status":"OK"}'
@@ -95,7 +99,7 @@ def register_account_handler(request):
         u.userprofile.membership             = membership
         u.userprofile.experience_specialties = experience_specialties
         u.userprofile.save()
-        mandrill_email_template = email_template("submit-user", [], email, u.userprofile.first_name + " " + u.userprofile.last_name, "")
+        mandrill_email_template = email_template("submit-user", [], email, u.first_name + " " + u.last_name, "")
         mandrill_url = "https://mandrillapp.com/api/1.0/messages/send-template.json"
         r = requests.post(mandrill_url, data=mandrill_email_template)
         response_string = '{"status":"OK"}'
