@@ -6,7 +6,7 @@ mandrill_api_key = "qIjK_MqTNHaoGT5kiIhIJg"
 *template_content = list of dictionaries with name and content representing an editable field in the template
 *tags = string representing the topic (for tracking on mandrill
 """
-def send_email_using_template(template_name, template_content, recipient_email, recipient_name, tag):
+def email_template(template_name, template_content, recipient_email, recipient_name, tag):
   request = {
     "key": mandrill_api_key,
     "template_name": template_name,
