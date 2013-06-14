@@ -9,12 +9,12 @@ import requests
 import uuid
 
 def main(request):
-  return render(request, 'face/login.html')
+  return render(request, 'face/landing.html')
 
 def signin(request):
   return render(request, 'face/signin.html')
 
-def login_user(request):
+def signin_user(request):
   email = password = ''
   if request.POST:
     email = request.POST.get('login_email')
