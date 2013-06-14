@@ -3,10 +3,6 @@
 
   <head>
 
-    {# Socket.io setup #}
-    {% load socketio_tags %}
-    {% socketio %}
-
     {# CSS INCLUDES  #}
     <link href='/static/stylesheets/index.css'  rel='stylesheet' type='text/css'>
     <link href='/static/stylesheets/main.css'   rel='stylesheet' type='text/css'>
@@ -43,12 +39,8 @@
 
     <script src='//static.opentok.com/webrtc/v2.0/js/TB.min.js' ></script>
     <script src="//static-v2.crocodoc.com/core/docviewer.js"></script>
-
-    <script src='/static/javascripts/sockets.js' type='text/javascript'></script>
     <script src='/static/javascripts/main.js' type='text/javascript'></script>
-    <script src='/static/javascripts/video.js' type='text/javascript'></script>
     <script src='/static/javascripts/upload.js' type='text/javascript'></script>
-    <script src='/static/javascripts/chat.js' type='text/javascript'></script>
     {% load compress %}
     {% compress js %}
       {# coffee script in here #}
@@ -65,6 +57,7 @@
         <li class='navLink'>
           <a href="#">Options</a>
           <ul>
+            <li><a href="/space/account/">Account</a></li>
             <li id='uploadButton'><a href="#">Upload</a></li>
             <li><a href="#">TWO</a></li>
             <li><a href="#">THREE</a></li>
