@@ -98,7 +98,26 @@ def main(request, space_url_id):
                 })
 
 def account(request):
+  print "Account Page Request"
   return render(request, 'space/account.html');
+
+def profile(request):
+  response_string = '{"status:"INV"}'
+  if request.POST:
+    u = request.user
+    if request.POST.get('change') == "false":
+      response_string = '{"status":"OK", "firstName":"' + u.first_name + '", "email":"' + u.username + '"}'
+    else:
+      firstName = request.POST.get('firstName', "")
+      username = request.POST.get('email', "")
+      if username != "":
+        u.username = username
+      if firstName != "":
+        u.first_name = firstName
+      u.save()
+      response_string = '{"status":"OK"}'
+  return HttpResponse(json.dumps(response_string), mimetype="application/json")
+
 
 @require_http_methods(["GET","POST"])
 def upload(request):
