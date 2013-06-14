@@ -17,8 +17,8 @@ def signin(request):
 def signin_user(request):
   email = password = ''
   if request.POST:
-    email = request.POST.get('login_email')
-    password = request.POST.get('login_password')
+    email = request.POST.get('signin_email')
+    password = request.POST.get('signin_password')
     print 'trying to log in with ', email, password
     user = authenticate(username=email, password=password)
     if user is not None:
