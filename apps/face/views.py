@@ -21,6 +21,7 @@ def signin_user(request):
     password = request.POST.get('signin_password')
     print 'trying to log in with ', email, password
     user = authenticate(username=email, password=password)
+    print user
     if user is not None:
       if user.is_active:
         login(request, user)
