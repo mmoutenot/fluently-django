@@ -7,6 +7,9 @@
     <link rel="icon" type="image/png" href="/static/images/favicon.ico" />
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
     <script src="/static/javascripts/signin.js"></script>
+    <script type="text/javascript">
+      var csrf_token = "{{csrf_token}}";
+    </script>
   </head>
 
   <body>
@@ -29,7 +32,7 @@
   	
   	<div id="login_container">
   	
-  		<form action="/face/login/" method="post">
+  		<form action="/face/signin_user/" method="post">
   		
   			<input type="hidden" name="csrfmiddlewaretoken" value="tDCbSpqp2JunliTEUR254gcEyV2LnB4w">
   			
