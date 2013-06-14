@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title>Fluently</title>
+    <link rel="stylesheet" type="text/css" href="/static/stylesheets/sign-in-style.css">
+    <link rel="icon" type="image/png" href="/static/images/favicon.ico" />
+  </head>
+
+  <body>
+  
+  	<div id="go_back">
+ 	
+ 		<a href="#">&larr; &nbsp;Back to Homepage</a>
+ 	
+ 	</div>
+  
+   <!--SIGN-IN FORM -->
+  
+  <div id="container">
+  
+  	<div id="top_logo_bar">
+  	
+  		<img src="/static/images/Logo_white.png">
+  		
+  	</div><!-- End top_logo_bar -->
+  	
+  	<div id="login_container">
+  	
+  		<form action="/face/login/" method="post">
+  		
+  			<input type="hidden" name="csrfmiddlewaretoken" value="tDCbSpqp2JunliTEUR254gcEyV2LnB4w">
+  			
+  			<input class="text_inputs" id="login_email" name="login_email" type="text" placeholder="Email">
+  			
+  			<input class="text_inputs" id="login_password" name="login_email" type="password" placeholder="Password">
+  			
+  			<input id="login_submit" type="submit" value="Sign-in" style="display: inline-block;">
+  			
+  		</form>	
+  		
+  		<div id="forgot">Forgot password?</div>
+  	
+  	</div><!-- End login_container -->	
+  
+  
+  </div> <!-- End container -->
+  
+
+  <!--FOOTBAR -->
+  
+    <div id='footbar'>
+		 <div id='footbar_content'>
+		 <a href="#">Don't have an account? &nbsp;&nbsp;Sign-up</a>  
+    	</div> <!-- end footbar_content -->
+    </div> <!-- end footbar -->
+
+
+
+
+  </body>
+</html>
