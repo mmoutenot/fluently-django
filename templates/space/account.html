@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
+    <script src="/static/javascripts/account.js"></script>
+        <script type="text/javascript">
+      var csrf_token = "{{csrf_token}}";
+    </script>
+  </head>
+
+ <body>
+
+<form id="account-info-form">
+  <input class="user-field" id="first-name" type="text" value="name"/>
+  <input class="user-field" id="email" type="text" value="email"/>
+  <input class="user-field" id="password" type="password"/>
+</form>
+ </body>
+</html>
