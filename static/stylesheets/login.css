@@ -30,7 +30,7 @@ body, html {
   margin: 0;
   color: white; }
 
-#login {
+#signin {
   position: absolute;
   top: 0;
   right: 0;
@@ -38,7 +38,7 @@ body, html {
   -webkit-transition: "all 0.5s";
   -moz-transition: "all 0.5s";
   transition: "all 0.5s"; }
-  #login a {
+  #signin a {
     text-decoration: none;
     color: white;
     font-size: 18px;
@@ -53,11 +53,11 @@ body, html {
     -webkit-transition: "all 0.5s";
     -moz-transition: "all 0.5s";
     transition: "all 0.5s"; }
-    #login a:hover {
+    #signin a:hover {
       background: #d34336; }
-  #login #login_fields {
+  #signin #signin_fields {
     display: none; }
-    #login #login_fields .text_inputs {
+    #signin #signin_fields .text_inputs {
       width: 300px;
       padding: 3px;
       height: 30px;
@@ -73,12 +73,12 @@ body, html {
       -webkit-transition: "all 0.5s";
       -moz-transition: "all 0.5s";
       transition: "all 0.5s"; }
-      #login #login_fields .text_inputs:focus {
+      #signin #signin_fields .text_inputs:focus {
         outline: none;
         background: #f6d9d6; }
-      #login #login_fields .text_inputs#login_email {
+      #signin #signin_fields .text_inputs#signin_email {
         border-bottom: 1px solid #d2d2d2; }
-    #login #login_fields #login_submit {
+    #signin #signin_fields #signin_submit {
       width: 306px;
       padding: 3px;
       text-align: center;
@@ -93,11 +93,11 @@ body, html {
       position: absolute;
       display: none;
       box-shadow: none; }
-      #login #login_fields #login_submit:hover {
+      #signin #signin_fields #signin_submit:hover {
         background: #d34336; }
-  #login.active a {
+  #signin.active a {
     box-shadow: none; }
-    #login.active a:focus {
+    #signin.active a:focus {
       outline: none;
       box-shadow: inset 0 0 3px 3px #b03226; }
 
