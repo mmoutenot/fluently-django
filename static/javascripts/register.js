@@ -132,7 +132,7 @@ $(document).ready(function() {
         data = {
           stage:                 stage,
           email:                 email,
-          admin_request:         $('#account-admin-request').prop('checked');
+          adminRequest:         $('#account-admin-request').prop('checked');
           csrfmiddlewaretoken:   csrf_token
         };
       }
