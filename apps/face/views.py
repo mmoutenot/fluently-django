@@ -90,8 +90,10 @@ def register_account_handler(request):
       response_string = '{"status":"OK", "email":"' + email + '"}'
     elif stage == "certification":
       email = request.POST.get('email', "")
+      admin_request = request.POST.get('adminRequest', "")
       try:
         u = User.objects.get(username = email)
+        u.userprofile.admin = admin_request
         u.userprofile.save()
         mandrill_email_template = email_template("submit-user", [], email, u.first_name + " " + u.last_name, "")
         mandrill_url = "https://mandrillapp.com/api/1.0/messages/send-template.json"
