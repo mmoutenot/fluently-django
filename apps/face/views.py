@@ -89,19 +89,9 @@ def register_account_handler(request):
       email = UserProfile.objects.filter(join_id=join_id)[0].user.username
       response_string = '{"status":"OK", "email":"' + email + '"}'
     elif stage == "certification":
-      certification          = request.POST.get('certification', "")
-      education              = request.POST.get('education', "")
-      licensed_states        = request.POST.get('licensedStates', "")
-      membership             = request.POST.get('membership', "")
-      experience_specialties = request.POST.get('experienceSpecialties', "")
-      email                  = request.POST.get('email', "")
+      email = request.POST.get('email', "")
       try:
         u = User.objects.get(username = email)
-        u.userprofile.certification          = certification
-        u.userprofile.education              = education
-        u.userprofile.licensed_states        = licensed_states
-        u.userprofile.membership             = membership
-        u.userprofile.experience_specialties = experience_specialties
         u.userprofile.save()
         mandrill_email_template = email_template("submit-user", [], email, u.first_name + " " + u.last_name, "")
         mandrill_url = "https://mandrillapp.com/api/1.0/messages/send-template.json"
