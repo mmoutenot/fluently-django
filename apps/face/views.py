@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, Group
 from django.http import HttpResponse
 from models import UserProfile
 from utils import email_template
@@ -90,10 +90,13 @@ def register_account_handler(request):
       response_string = '{"status":"OK", "email":"' + email + '"}'
     elif stage == "certification":
       email = request.POST.get('email', "")
-      admin_request = request.POST.get('adminRequest', "")
+      company = request.POST.get('company', "")
       try:
         u = User.objects.get(username = email)
-        u.userprofile.admin = admin_request
+        u.userprofile.admin = True
+        u.userprofile.company = company
+        g, created = Group.objects.get_or_create(name=company)
+        u.groups.add(g)
         u.userprofile.save()
         mandrill_email_template = email_template("submit-user", [], email, u.first_name + " " + u.last_name, "")
         mandrill_url = "https://mandrillapp.com/api/1.0/messages/send-template.json"
