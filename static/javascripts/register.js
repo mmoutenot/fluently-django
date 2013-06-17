@@ -128,21 +128,10 @@ $(document).ready(function() {
       
     } else if (stage == "certification") {   
 
-      certification          = $('#account-certification').val();
-      education              = $('#account-education').val();
-      licensed_states        = $('#account-licensed-states').val();
-      membership             = $('#account-membership').val();
-      experience_specialties = $('#account-experience-specialties').val();
-   
       if (errors.length == 0) {
         data = {
           stage:                 stage,
           email:                 email,
-          certification:         certification,
-          education:             education,
-          licensedStates:        licensed_states,
-          membership:            membership,
-          experienceSpecialties: experience_specialties,
           csrfmiddlewaretoken:   csrf_token
         };
       }
