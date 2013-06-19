@@ -1,47 +1,39 @@
 {# Account #}
 
-<div id="account-block">
+    <div class="signup-block" id="account-block">
   <form id="register-account-form" class="account-form">
-    <input id="account-first-name" type='text' class = 'text_input form_input' placeholder= 'First Name'/>
-    <input id="account-last-name" type='text' class = 'text_input form_input' placeholder= 'Last Name' />
+    <input id="account-first-name" type='text' class = 'text_input form_input' placeholder= 'Name'/>
     <input id="account-email" type='text' class = 'text_input form_input' placeholder= 'Email' />
     <input id="account-password-a" type='password' class = 'text_input form_input' placeholder= 'Password' />
-    <input id="account-password-b" type='password' class = 'text_input form_input' placeholder= 'Confirm Password' />
-    <div id='terms_box'>
-      <label for='termsCheck'>
-        Agree to our <a href="#">Terms of Service</a>
-      </label>
-      <input type='checkbox' id='account-terms'>
-    </div>
-    <div id="invalid-wrap"></div>
-    <input type='submit' class='btn submit' value="Next"/>
+        <div id="invalid-wrap"></div>
+    <div id="sign-up-button"><input type='submit' class='btn submit' value="Continue"/></div>
   </form>
-</div>
-
-{# Confirmation #}
-
-<div id="confirmation-block">
-  <h3>
-    Thank you for creating an account. Check your inbox for a link to complete the signup process.
-  </h3>
 </div>
 
 {# Certification #}
 
-<div id="certification-block">
+      <div class="signup-block" id="certification-block">
   <form id="certify-account-form" class="account-form">
     <input id="account-company" type="text" class = 'text_input form_input' placeholder = 'Company Name' />
+    <input id="account-phone" type="text" class = 'text_input form_input' placeholder = 'Phone Number' />
+    <div id='terms_box'>
+        By clicking "Sign-up" you agree to our <a href="#">Terms of Service</a>
+    </div>
     <div id="invalid-wrap"></div>
-    <input type='submit' class='btn submit' value="Apply">
+   <div id="sign-up-button"> <input type='submit' class='btn submit' value="Sign up"></div>
   </form>
 </div>
 
+      
+
 {# Submit #}
 
-<div id="submit-block">
-  <h3>
-    Thank you for your submission. We will review your application and get back to you soon.
-  </h3>
-</div>
-
+<div class="signup-block" id="submit-block">
+  
+  <div id="confirm_container">
+  <h3>You're all set! </h3>
+  <a href="#"><h2>Continue to your Dashboard &rarr;</h2></a> 
+  <p>Check your inbox for an email to confirm your account.<p>
+  </div>
+ </div>
 
