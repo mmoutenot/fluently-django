@@ -34,8 +34,7 @@ body, html {
   position: fixed;
   top: 0;
   background: #da6459;
-  z-index: 999;
-  box-shadow: 0px 1px 3px 0px #d34336; }
+  z-index: 999;}
   #navbar #logo {
     float: left;
     padding: 10px; }
@@ -75,6 +74,11 @@ body, html {
             background: #d2d2d2; }
     #navbar #nav .navLink:hover ul {
       display: block; }
+  #nav_container {
+	  width: 1000px;
+	  margin: 0 auto;
+	  
+  }
 
 #main {
   width: 100%;
@@ -129,7 +133,6 @@ body, html {
     #main #right #video_large_container {
       width: 85.5%;
       height: 100%;
-      box-shadow: 4px 0 18px #666666, -4px 0 18px #666666;
       margin: 0 auto; }
       #main #right #video_large_container #video_large {
         width: 100%;
@@ -154,26 +157,23 @@ input.text_input {
   background: white;
   padding: 3px;
   width: 250px;
-  height: 35px;
+  height: 32px;
   line-height: 35px;
-  font-size: 18px;
+  font-size: 16px;
   font-family: Signika;
-  color: #5d6976; }
-  input.text_input:focus {
-    outline: none;
-    background: #f6d9d6;
-    box-shadow: none; }
+  border-radius: 3px;
+  color: #5d6976;
+  text-indent: 6px; 
+  }
+
 
 textarea {
   border: 1px solid #d2d2d2;
   background: white;
   padding: 5px;
   line-height: 22px;
-  font-size: 18px; }
-  textarea:focus {
-    outline: none;
-    background: #f6d9d6;
-    box-shadow: none; }
+  font-size: 16px; }
+ 
 
 .btn {
   text-decoration: none;
@@ -182,17 +182,29 @@ textarea {
   background: #8ec0ed;
   display: inline-block;
   text-align: center;
+  margin: 0 auto;
+  position: relative;
   color: white;
-  font-size: 20px;
+  font-size: 18px;
+  text-transform: uppercase;
   cursor: pointer;
   line-height: 41px;
   box-shadow: none;
-  border: none; }
+  border: none;}
   .btn:focus {
-    outline: none;
-    box-shadow: inset 0 0 3px 3px #62a7e6; }
+    outline: none;}
   .btn:hover {
     background: #62a7e6; }
+
+#sign-up-button {
+	position: relative;
+	margin: 0 auto;
+	width: 200px;
+	text-align: center;
+	margin-top: 30px;
+	padding-bottom: 10px;
+}
+
 
 footer {
   width: 100%;
@@ -219,27 +231,28 @@ body, html {
   background: #F2F2F2; }
 
 #container {
-  width: 800px;
+  width: 600px;
   position: relative;
   margin: 0 auto;
   padding: 20px;
-  top: 150px;
+  top: 130px;
   border: 1px solid #d2d2d2;
-  box-shadow: 0 0 5px 1px #b8b8b8;
-  background: white; }
+  background: white; 
+  }
   #container #steps {
     width: 700px;
     height: 90px;
     position: relative;
     top: 0;
-    margin: 0 auto; }
+    margin: 0 auto; 
+    }
     #container #steps #line {
-      width: 520px;
+      width: 370px;
       height: 2px;
       border-bottom: 2px solid #d2d2d2;
       position: absolute;
       left: 50%;
-      margin-left: -260px;
+      margin-left: -240px;
       top: 15px; }
     #container #steps ul {
       list-style: none;
@@ -253,13 +266,15 @@ body, html {
         display: inline-block;
         text-align: center;
         width: 25%;
-        float: left; }
+        float: left;
+        margin-left: 20px; }
         #container #steps ul li h2 {
           width: 35px;
           height: 35px;
           background: #d2d2d2;
           color: white;
           font-size: 20px;
+          font-weight: 300;
           line-height: 35px;
           border-radius: 50%;
           padding: 0;
@@ -267,14 +282,15 @@ body, html {
           text-align: center; }
           #container #steps ul li h2.active {
             background: #da6459;
-            box-shadow: 0 0 3px 1px #d2d2d2; }
+            box-shadow: 0 0 3px 1px #d2d2d2; } 
         #container #steps ul li label {
           margin-top: 5px;
           display: block;
           text-transform: uppercase;
-          font-size: 14px;
+          font-size: 12px;
           position: relative;
-          width: 100%; }
+          width: 100%; 
+          opacity: 0.7;}
 
 form {
   *zoom: 1;
@@ -320,11 +336,17 @@ form {
   form #terms_box {
     margin: 0 auto;
     display: block;
-    width: 250px; }
+    width: 480px;
+    text-align: center;
+    font-size: 12px;
+    font-style: italic;
+    font-weight: 100;
+     }
+
     form #terms_box label {
       text-align: left;
       margin-right: 10px; }
-      form #terms_box label a {
+      form #terms_box a {
         color: #8ec0ed; }
   form h3 {
     font-size: 20px;
@@ -332,3 +354,25 @@ form {
     width: 600px;
     display: block;
     margin: 0 auto; }
+    
+#sign-up-title {
+	text-align: center;
+	padding-bottom: 14px;
+	text-transform: uppercase;
+	font-family: Quicksand;
+	font-weight: 500;
+	
+}
+
+.signup-block {
+	margin-top: -40px;
+	
+}
+
+#confirm_container {
+	width: 440px;
+	text-align: center;
+	margin: 0 auto;}
+	#confirm_container a {
+		color: #8ec0ed;
+	}
