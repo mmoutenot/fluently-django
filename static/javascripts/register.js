@@ -90,23 +90,17 @@ $(document).ready(function() {
 
       first_name             = $('#account-first-name').val();
       email                  = $('#account-email').val();
-      password_a             = $('#account-password').val();
+      password               = $('#account-password').val();
 
       if (!email.match(EMAIL_REGEX)) {
         errors.push(INVALID_EMAIL);
         $('#account-email').val('');
       }
       
-      if (password_a !== password_b) {
-        errors.push(MISMATCH_PASSWORD);
-        $('[id*=password]').val('');
-      }
-  
       if (errors.length == 0) {
         data = {
           stage:               stage,
           firstName:           first_name,
-          lastName:            last_name,
           email:               email,
           password:            password,
           csrfmiddlewaretoken: csrf_token
