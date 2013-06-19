@@ -2,12 +2,19 @@
 from django.http import HttpResponse
 from django.shortcuts import redirect, get_object_or_404, render
 from django.views.decorators.http import require_http_methods
+from django.contrib.auth.models import User, Group
+from django.template import Context
+from django.core.context_processors import csrf
+from django.template.loader import get_template
+from apps.face.utils import email_template
+from apps.face.models import UserProfile
 
 # general python packages
 import uuid
 import sys
 import time
 import os
+import requests
 import json
 
 # third party packages
@@ -98,26 +105,65 @@ def main(request, space_url_id):
                 })
 
 def account(request):
-  print "Account Page Request"
-  return render(request, 'space/account.html');
+  u = request.user
+  if not u.is_authenticated():
+    return redirect('/')
+  if not u.userprofile.confirmed:
+    return render(request, 'space/unconfirmed.html')
+  else:
+    try:
+      other_users = Group.objects.get(name=u.userprofile.company).user_set.exclude(username=u.username)
+      active_users = other_users.filter(userprofile__confirmed=True)
+      invited_users = other_users.filter(userprofile__confirmed=False)
+      active_usernames = [n[0] for n in active_users.values_list('username')]
+      invited_usernames = [n[0] for n in invited_users.values_list('username')]
+      print "printing active and invited"
+      print active_usernames
+      print invited_usernames
+      template = get_template('space/account.html')
+      context = Context({"invited_users":invited_users})
+      context.update(csrf(request))
+      return HttpResponse(template.render(context))
+    except:
+      return render(request, 'space/account.html')
 
-def profile(request):
+def invite_user(request):
+  print "invite-user"
   response_string = '{"status:"INV"}'
   if request.POST:
+    print "POST"
     u = request.user
-    if request.POST.get('change') == "false":
-      response_string = '{"status":"OK", "firstName":"' + u.first_name + '", "email":"' + u.username + '"}'
-    else:
-      firstName = request.POST.get('firstName', "")
-      username = request.POST.get('email', "")
-      if username != "":
-        u.username = username
-      if firstName != "":
-        u.first_name = firstName
-      u.save()
+    email = request.POST.get('email', "")
+    print u
+    print email
+    new_user, created = User.objects.get_or_create(username=email)
+    print User.objects.all()
+    if created:
+      print "created"
+      new_user.userprofile.join_id = str(uuid.uuid1())
+      new_user.userprofile.admin = False
+      g, created = Group.objects.get_or_create(name=u.userprofile.company)
+      new_user.groups.add(g)
+      new_user.save()
+      new_user.userprofile.save()
+      template_content = [
+        { "name": "joinlink",
+          "content": "<a href='http://www.fluentlynow.com/face/register?id=" 
+                     + new_user.userprofile.join_id 
+                     + "'>http://www.fluentlynow.com/face/register?id=" 
+                     + new_user.userprofile.join_id 
+                     + "</a>" },
+        { "name": "company", "content": u.userprofile.company },
+        { "name": "admin", "content": u.first_name + " " + u.last_name }]
+      print template_content
+      mandrill_email_template = email_template("invite-user-to-group", template_content, email, first_name + " " + last_name, "")
+      print mandrill_email_template
+      mandrill_url = "https://mandrillapp.com/api/1.0/messages/send-template.json"
+      r = requests.post(mandrill_url, data=mandrill_email_template)
       response_string = '{"status":"OK"}'
+    else:
+      response_string = '{"status":"DUP"}'
   return HttpResponse(json.dumps(response_string), mimetype="application/json")
-
 
 @require_http_methods(["GET","POST"])
 def upload(request):
