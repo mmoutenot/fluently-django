@@ -111,11 +111,6 @@ $(document).ready(function() {
       
       company     = $('#account-company').val();
       phone       = $('#account-phone').val();
-      terms_check = $('#account-terms').prop('checked'); 
-
-      if (!$('#account-terms').prop('checked')) {
-        errors.push(TERMS_NOT_AGREED);
-      }
 
       if (errors.length == 0) {
         data = {
@@ -140,6 +135,7 @@ $(document).ready(function() {
           if(stage == "account" && dataJSON['status'] === "OK") {
             stage = "certification";
             $('#account-wrap').load('register_blocks #certification-block');
+            $('#submit-step h2').addClass('next');
             $('#account-company').val(dataJSON['company']);
             $('#account-company').prop('disabled', 'true');
             animate_step();
