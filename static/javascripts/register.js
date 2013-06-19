@@ -31,6 +31,10 @@ function display_errors(errors) {
 }
 
 function animate_step() {
+  if (stage == "account")
+    $('#certification-step h2').addClass('next');
+  else if (stage == "certification")
+    $('#submit-step h2').addClass('next');
   inactive_step_text = $('.active').html();
   $('.active').text('');
   $('.active').addClass('iterator');
@@ -66,7 +70,6 @@ $(document).ready(function() {
   }
   stage = "account";
   $('#account-step h2').addClass('active');
-  $('#certification-step h2').addClass('next');
   $('#account-wrap').load('register_blocks #account-block');
 
   $('.submit').prop('disabled', true);
@@ -133,19 +136,18 @@ $(document).ready(function() {
         success:function(data){
           dataJSON = jQuery.parseJSON(data);
           if(stage == "account" && dataJSON['status'] === "OK") {
-            stage = "certification";
             $('#account-wrap').load('register_blocks #certification-block');
-            $('#submit-step h2').addClass('next');
             $('#account-company').val(dataJSON['company']);
             $('#account-company').prop('disabled', 'true');
             animate_step();
+            stage = "certification";
           } else if (stage == "account" && dataJSON['status'] === "DUP") {
             $('#account-email').val('');
             errors.push(EMAIL_TAKEN);
           } else if (stage == "certification" && dataJSON['status'] === "OK") {
-            stage = "submit";
             $('#account-wrap').load('register_blocks #submit-block');
             animate_step();
+            stage = "submit";
           } else {
             errors.push(SERVER_ERROR);
           }
