@@ -1,48 +1,41 @@
 $(document).ready(function() {
 
-  $.ajax({
-    type: "post",
-    dataType: "json",
-    url: "/space/profile/",
-    data: { 
-      change: false,
-      csrfmiddlewaretoken: csrf_token },
-    success: function(data) {
-      dataJSON = jQuery.parseJSON(data);
-      if (dataJSON['status'] === "OK") {
-        $('#first-name').val(dataJSON['firstName']);
-        $('#email').val(dataJSON['email']);
+  $('.submit').prop('disabled', true);
+  observeInterval = 100;
+  setInterval(function() { 
+    noBlanks = true;
+    $('.text_input').each(function() {
+      if ($(this).val() == '') {
+        noBlanks = false;
       }
-    }
-  });
+    });
+    $('.submit').prop('disabled', !noBlanks);
+  }, observeInterval);
 
-  $('body').click(function() {
-    $('#status').text("");
-  });
-
-  $('.user-field').change(function() {
+  $('#invite-user-form').live('submit', function() {
     
-    $('#status').text("ALL YOUR INFORMATION HAS BEEN PROCESSED AND YOU BELONG TO US NOW");  
-
     $.ajax({
       type: "post",
       dataType: "json",
-      url: "/space/profile/",
+      url: "/space/invite_user/",
       data: { 
-        change: true,
-        firstName: $('#first-name').val(),
-        email: $('#email').val(),
+        email: $('#invite-email').val(),
         csrfmiddlewaretoken: csrf_token 
       },
       success: function(data) {
         dataJSON = jQuery.parseJSON(data);
         if (dataJSON['status'] === "OK") {
-          $('#name').text(dataJSON['name']);
-          $('#email').text(dataJSON['email']);
+          $('#status').text("Successfully invited " + $('#invite-email').val());
+          $('#invite-email').val("");
+        } else if (dataJSON['status'] === "DUP") {
+          $('#status').text("User has already been invited.");
+          $('#invite-email').val("");
         }
       }
     });
 
+    return false;
+    
   });
 
 });
