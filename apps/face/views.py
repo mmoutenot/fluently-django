@@ -59,7 +59,6 @@ def register_account_handler(request):
     stage = request.POST.get('stage', "")   
     if stage == "account":
       first_name = request.POST.get('firstName', "")
-      last_name  = request.POST.get('lastName', "")
       email      = request.POST.get('email', "")
       password   = request.POST.get('password', "")
       print email
@@ -71,7 +70,6 @@ def register_account_handler(request):
         u.set_password(password)
         u.userprofile.join_id = str(uuid.uuid1())
         u.first_name = first_name
-        u.last_name  = last_name
         u.save()
         u.userprofile.save()
         template_content = [{
@@ -82,7 +80,7 @@ def register_account_handler(request):
                      u.userprofile.join_id + 
                      "</a>"
           }]
-        mandrill_email_template = email_template("invite-user", template_content, email, first_name + " " + last_name, "")
+        mandrill_email_template = email_template("invite-user", template_content, email, first_name, "")
         print mandrill_email_template
         mandrill_url = "https://mandrillapp.com/api/1.0/messages/send-template.json"
         r = requests.post(mandrill_url, data=mandrill_email_template)
