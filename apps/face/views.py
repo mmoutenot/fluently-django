@@ -2,6 +2,9 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User, Group
 from django.http import HttpResponse
+from django.template import Context
+from django.template.loader import get_template
+from django.core.context_processors import csrf
 from models import UserProfile
 from utils import email_template
 import json
@@ -31,7 +34,12 @@ def signin_user(request):
        print 'user not active'
     else:
       print 'invalid user'
-  return redirect('/')
+      error_msg = "Invalid username or password. Please try again."
+      template = get_template('face/signin.html')
+      context = Context({"error_msg":error_msg})
+      context.update(csrf(request))
+      return HttpResponse(template.render(context))
+  return render(request, 'face/signin.html')
 
 def register_user(request):
   return render(request, 'face/register.html')
@@ -91,10 +99,12 @@ def register_account_handler(request):
     elif stage == "certification":
       email = request.POST.get('email', "")
       company = request.POST.get('company', "")
+      phone = request.POST.get('phone', "")
       try:
         u = User.objects.get(username = email)
         u.userprofile.admin = True
         u.userprofile.company = company
+        u.userprofile.phone = phone
         g, created = Group.objects.get_or_create(name=company)
         u.groups.add(g)
         u.userprofile.save()
