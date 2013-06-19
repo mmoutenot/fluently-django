@@ -26,12 +26,9 @@ def signin_user(request):
     user = authenticate(username=email, password=password)
     print user
     if user is not None:
-      if user.is_active:
-        login(request, user)
-        print 'user active and logged in!'
-        return redirect('/space/')
-      else:
-       print 'user not active'
+      login(request, user)
+      print 'user logged in'
+      return redirect('/space/')
     else:
       print 'invalid user'
       error_msg = "Invalid username or password. Please try again."
