@@ -4,8 +4,6 @@ var EMAIL_REGEX = '^..*@.*.$';
 
 var INVALID_EMAIL = "Please provide valid email.";
 var EMAIL_TAKEN = "Email is already in use.";
-var MISMATCH_PASSWORD = "Passwords must match.";
-var TERMS_NOT_AGREED = "You must agree to the Terms of Service to proceed.";
 var SERVER_ERROR = "Please try again.";
 
 // Read a page's GET URL variables and return them as an associative array.
@@ -47,8 +45,7 @@ $(document).ready(function() {
 
   id = getUrlVars()["id"];
   if (typeof id != 'undefined') {
-    data = { stage: "confirmation", 
-             join_id: id,
+    data = { join_id: id,
              csrfmiddlewaretoken: csrf_token };
     $.ajax({
       type : "post",
@@ -61,19 +58,16 @@ $(document).ready(function() {
         console.log(dataJSON['status']);
         if (dataJSON['status'] === "OK") {
           email = dataJSON['email'];
-          stage = "certification";
-          $('#certification-step h2').addClass('active');
-          $('#submit-step h2').addClass('next');
-          $('#account-wrap').load('register_blocks #certification-block');
+          $('#account-email').val(email);
+          $('#account-email').prop('disabled', true);
         }
       }
     });
-  } else {
-    stage = "account";
-    $('#account-step h2').addClass('active');
-    $('#confirmation-step h2').addClass('next');
-    $('#account-wrap').load('register_blocks #account-block');
   }
+  stage = "account";
+  $('#account-step h2').addClass('active');
+  $('#certification-step h2').addClass('next');
+  $('#account-wrap').load('register_blocks #account-block');
 
   $('.submit').prop('disabled', true);
   observeInterval = 100;
@@ -95,11 +89,8 @@ $(document).ready(function() {
     if (stage == "account") {
 
       first_name             = $('#account-first-name').val();
-      last_name              = $('#account-last-name').val();
       email                  = $('#account-email').val();
-      password_a             = $('#account-password-a').val();
-      password_b             = $('#account-password-b').val();
-      terms_check            = $('#account-terms').prop('checked'); 
+      password_a             = $('#account-password').val();
 
       if (!email.match(EMAIL_REGEX)) {
         errors.push(INVALID_EMAIL);
@@ -110,10 +101,6 @@ $(document).ready(function() {
         errors.push(MISMATCH_PASSWORD);
         $('[id*=password]').val('');
       }
-      
-      if (!$('#account-terms').prop('checked')) {
-        errors.push(TERMS_NOT_AGREED);
-      }
   
       if (errors.length == 0) {
         data = {
@@ -121,18 +108,27 @@ $(document).ready(function() {
           firstName:           first_name,
           lastName:            last_name,
           email:               email,
-          password:            password_a,
+          password:            password,
           csrfmiddlewaretoken: csrf_token
         };
       }
       
     } else if (stage == "certification") {   
+      
+      company     = $('#account-company').val();
+      phone       = $('#account-phone').val();
+      terms_check = $('#account-terms').prop('checked'); 
+
+      if (!$('#account-terms').prop('checked')) {
+        errors.push(TERMS_NOT_AGREED);
+      }
 
       if (errors.length == 0) {
         data = {
           stage:                 stage,
           email:                 email,
           company:               $('#account-company').val(),
+          phone:                 $('#account-phone').val(),
           csrfmiddlewaretoken:   csrf_token
         };
       }
@@ -148,8 +144,10 @@ $(document).ready(function() {
         success:function(data){
           dataJSON = jQuery.parseJSON(data);
           if(stage == "account" && dataJSON['status'] === "OK") {
-            stage = "confirmation";
-            $('#account-wrap').load('register_blocks #confirmation-block');
+            stage = "certification";
+            $('#account-wrap').load('register_blocks #certification-block');
+            $('#account-company').val(dataJSON['company']);
+            $('#account-company').prop('disabled', 'true');
             animate_step();
           } else if (stage == "account" && dataJSON['status'] === "DUP") {
             $('#account-email').val('');
