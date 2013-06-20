@@ -73,20 +73,18 @@ def register_user_info(request):
 def register_account_handler(request):
   response_string = '{"status":"INV"}'
   if request.POST:
-    first_name = request.POST.get('firstName', "")
-    email      = request.POST.get('email', "")
-    password   = request.POST.get('password', "")
-    company    = request.POST.get('company', "")
-    phone      = request.POST.get('phone', "")
+    name = request.POST.get('name', "")
+    email = request.POST.get('email', "")
+    phone = request.POST.get('phone', "")
+    state = request.POST.get('company', "")
+    specialties = request.POST.get('specialties', "")
     u, created = User.objects.get_or_create(username=email)
     if created:
-      print password
-      u.set_password(password)
       u.userprofile.join_id = str(uuid.uuid1())
-      u.first_name = first_name
-      u.userprofile.company = company
+      u.userprofile.name = name
       u.userprofile.phone = phone
-      u.userprofile.admin = True
+      u.userprofile.state = state
+      u.userprofile.specialties = specialties
       u.userprofile.emailed = True
       u.save()
       u.userprofile.save()
