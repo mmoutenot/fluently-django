@@ -7,7 +7,7 @@ class UserProfile(models.Model):
   phone = models.CharField(max_length=36)
   name = models.CharField(max_length=64)
   state = models.CharField(max_length=32)
-  specialties = models.CharField(max_length=128)
+  specialties = models.CharField(max_length=512)
   join_id = models.CharField(max_length=36, unique=True)
   confirmed = models.BooleanField(default=False)
   emailed = models.BooleanField(default=False)
