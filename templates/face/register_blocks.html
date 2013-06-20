@@ -2,9 +2,9 @@
 
 <div class="signup-block" id="account-block">
   <form id="register-account-form" class="account-form">
-    <input id="account-name" type='text' class = 'text_input form_input' placeholder= 'Name'/>
-    <input id="account-email" type='text' class = 'text_input form_input' placeholder= 'Email' />
-    <input id="account-phone" type='text' class = 'text_input form_input' placeholder= 'Phone #' />
+    <input id="account-name" maxlength="64" type='text' class = 'text_input form_input' placeholder= 'Name'/>
+    <input id="account-email" maxlength="75" type='text' class = 'text_input form_input' placeholder= 'Email' />
+    <input id="account-phone" maxlength="36" type='text' class = 'text_input form_input' placeholder= 'Phone #' />
     <div id="invalid-wrap"></div>
     <div id="signup-button"><input type='submit' class='btn submit' value="Continue"/></div>
   </form>
@@ -14,8 +14,8 @@
 
 <div class="signup-block" id="certification-block">
   <form id="certify-account-form" class="account-form">
-    <input id="account-state" type="text" class = 'text_input form_input' placeholder = 'State or Country' />
-    <input id="account-specialties" type="text" class = 'text_input form_input' placeholder = 'Therapy Specialties' />
+    <input id="account-state" maxlength="32" type="text" class = 'text_input form_input' placeholder = 'State or Country' />
+    <textarea resize="none" id="account-specialties" maxlength="128" type="text" class = 'text_input form_input' placeholder = 'Therapy Specialties' />
     <div id='terms_box'>By clicking "Sign-up" you agree to our <a href="#">Terms of Service</a></div>
     <div id="invalid-wrap"></div>
     <div id="signup-button"> <input type='submit' class='btn submit' value="Sign up"></div>
