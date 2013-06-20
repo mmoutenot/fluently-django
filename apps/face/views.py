@@ -11,6 +11,13 @@ import json
 import requests
 import uuid
 
+"""  
+Responses:
+  OK - all good, continue to the next step
+  INV - email invalid
+  DUP - email already taken
+"""
+
 def main(request):
   return render(request, 'face/landing.html')
 
@@ -44,69 +51,58 @@ def register_user(request):
 def register_blocks(request):
   return render(request, 'face/register_blocks.html')
 
-"""
-Receives ajax call from register page and parses POST to check for validity on
-the server side.
+def register_emailed(request):
+  response_string = '{"status":"OK"}'
+  if request.POST:
+    email = request.POST.get('email', "")
+    if User.objects.filter(username=email).count():
+      if User.objects.filter(username=email)[0].userprofile.emailed:
+        response_string = '{"status":"DUP"}'
+  return HttpResponse(json.dumps(response_string), mimetype="application/json") 
+    
+def register_user_info(request):
+  response_string = '{"status":"INV"}'
+  if request.POST:
+    join_id = request.POST.get('join_id', "")
+    email = UserProfile.objects.filter(join_id=join_id)[0].user.username
+    company = UserProfile.objects.filter(join_id=join_id)[0].company
+    response_string = '{"status":"OK", "email":"' + email + '", "company":"' + company + '"}'
+  else:
+    return HttpResponse()
 
-Responses:
-  OK - all good, continue to the next step
-  INV - email invalid
-  DUP - email already taken
-"""
 def register_account_handler(request):
   response_string = '{"status":"INV"}'
   if request.POST:
-    stage = request.POST.get('stage', "")   
-    if stage == "account":
-      first_name = request.POST.get('firstName', "")
-      email      = request.POST.get('email', "")
-      password   = request.POST.get('password', "")
-      print email
-      u, created = User.objects.get_or_create(username=email)
-      print User.objects.all()
-      print u
-      print created
-      if created:
-        u.set_password(password)
-        u.userprofile.join_id = str(uuid.uuid1())
-        u.first_name = first_name
-        u.save()
-        u.userprofile.save()
-        template_content = [{
-          "name": "joinlink", 
-          "content": "<a href='http://www.fluentlynow.com/face/register?id=" + 
-                     u.userprofile.join_id + 
-                     "'>http://www.fluentlynow.com/face/register?id=" + 
-                     u.userprofile.join_id + 
-                     "</a>"
-          }]
-        mandrill_email_template = email_template("invite-user", template_content, email, first_name, "")
-        print mandrill_email_template
-        mandrill_url = "https://mandrillapp.com/api/1.0/messages/send-template.json"
-        r = requests.post(mandrill_url, data=mandrill_email_template)
-        response_string = '{"status":"OK"}'
-      else:
-        response_string = '{"status":"DUP"}'
-    elif stage == "confirmation":
-      join_id = request.POST.get('join_id', "")
-      email = UserProfile.objects.filter(join_id=join_id)[0].user.username
-      response_string = '{"status":"OK", "email":"' + email + '"}'
-    elif stage == "certification":
-      email = request.POST.get('email', "")
-      company = request.POST.get('company', "")
-      phone = request.POST.get('phone', "")
-      try:
-        u = User.objects.get(username = email)
-        u.userprofile.admin = True
-        u.userprofile.company = company
-        u.userprofile.phone = phone
-        g, created = Group.objects.get_or_create(name=company)
-        u.groups.add(g)
-        u.userprofile.save()
-        mandrill_email_template = email_template("submit-user", [], email, u.first_name + " " + u.last_name, "")
-        mandrill_url = "https://mandrillapp.com/api/1.0/messages/send-template.json"
-        r = requests.post(mandrill_url, data=mandrill_email_template)
-        response_string = '{"status":"OK"}'
-      except User.DoesNotExist:
-        pass
+    first_name = request.POST.get('firstName', "")
+    email      = request.POST.get('email', "")
+    password   = request.POST.get('password', "")
+    company    = request.POST.get('company', "")
+    phone      = request.POST.get('phone', "")
+    u, created = User.objects.get_or_create(username=email)
+    if created:
+      print password
+      u.set_password(password)
+      u.userprofile.join_id = str(uuid.uuid1())
+      u.first_name = first_name
+      u.userprofile.company = company
+      u.userprofile.phone = phone
+      u.userprofile.admin = True
+      u.userprofile.emailed = True
+      u.save()
+      u.userprofile.save()
+      g, created = Group.objects.get_or_create(name=company)
+      u.groups.add(g)
+      u.userprofile.save()
+      template_content = [{
+        "name": "joinlink", 
+        "content": "<a href='http://www.fluentlynow.com/space?id=" + 
+                   u.userprofile.join_id + 
+                   "'>http://www.fluentlynow.com/space?id=" + 
+                   u.userprofile.join_id + 
+                   "</a>"
+        }]
+      mandrill_email_template = email_template("invite-user", template_content, email, first_name, "")
+      mandrill_url = "https://mandrillapp.com/api/1.0/messages/send-template.json"
+      r = requests.post(mandrill_url, data=mandrill_email_template)
+      response_string = '{"status":"OK"}'
   return HttpResponse(json.dumps(response_string), mimetype="application/json")
