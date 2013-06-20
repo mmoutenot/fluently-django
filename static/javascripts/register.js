@@ -54,7 +54,7 @@ $(document).ready(function() {
     $.ajax({
       type : "post",
       dataType:'json',
-      url : "/face/register/account_handler/",
+      url : "/face/register/user_info/",
       data: data, 
       success: function(data) {
         console.log(data);
@@ -91,69 +91,67 @@ $(document).ready(function() {
 
     if (stage == "account") {
 
-      first_name             = $('#account-first-name').val();
-      email                  = $('#account-email').val();
-      password               = $('#account-password').val();
-
       if (!email.match(EMAIL_REGEX)) {
         errors.push(INVALID_EMAIL);
         $('#account-email').val('');
-      }
-      
-      if (errors.length == 0) {
-        data = {
-          stage:               stage,
-          firstName:           first_name,
-          email:               email,
-          password:            password,
-          csrfmiddlewaretoken: csrf_token
-        };
-      }
-      
-    } else if (stage == "certification") {   
-      
-      company     = $('#account-company').val();
-      phone       = $('#account-phone').val();
-
-      if (errors.length == 0) {
-        data = {
-          stage:                 stage,
-          email:                 email,
-          company:               $('#account-company').val(),
-          phone:                 $('#account-phone').val(),
-          csrfmiddlewaretoken:   csrf_token
-        };
-      }
+      } 
 
     }
-    
-    if (errors.length == 0) {    
-      $.ajax({
-        type : "post",
-        dataType:'json',
-        url : "/face/register/account_handler/",
-        data: data,
-        success:function(data){
-          dataJSON = jQuery.parseJSON(data);
-          if(stage == "account" && dataJSON['status'] === "OK") {
-            $('#account-wrap').load('register_blocks #certification-block');
-            $('#account-company').val(dataJSON['company']);
-            $('#account-company').prop('disabled', 'true');
-            animate_step();
-            stage = "certification";
-          } else if (stage == "account" && dataJSON['status'] === "DUP") {
-            $('#account-email').val('');
-            errors.push(EMAIL_TAKEN);
-          } else if (stage == "certification" && dataJSON['status'] === "OK") {
-            $('#account-wrap').load('register_blocks #submit-block');
-            animate_step();
-            stage = "submit";
-          } else {
-            errors.push(SERVER_ERROR);
+  
+    if (errors.length == 0) {  
+
+      data = {
+        firstName: $('#account-first-name').val(),
+        email: $('#account-email').val(),
+        password: $('#account-password').val(),
+        csrfmiddlewaretoken: csrf_token
+      };
+
+      if (stage == "account") {
+        $.ajax({
+          type : "post",
+          dataType:'json',
+          url : "/face/register/emailed/",
+          data: data,
+          success: function(data) {
+            dataJSON = jQuery.parseJSON(data);
+            if (dataJSON['status'] === "DUP") {
+              $('#account-email').val('');
+              errors.push(EMAIL_TAKEN);
+            } else if (dataJSON['status'] === 'OK') {
+              $('#account-wrap').load('register_blocks #certification-block');
+              $('#account-company').prop('disabled', 'true');
+              animate_step();
+              stage = "certification";
+            }
           }
-          display_errors(errors);          
-        }
-      });
+        });
+
+      } else if (stage == "certification") {
+
+        data.company = $('#account-company').val();
+        data.phone = $('#account-phone').val();
+        data.csrfmiddlewaretoken = csrf_token;
+
+        $.ajax({
+          type : "post",
+          dataType:'json',
+          url : "/face/register/account_handler/",
+          data: data,
+          success:function(data){
+            dataJSON = jQuery.parseJSON(data);
+            if (dataJSON['status'] === "OK") {
+              $('#account-wrap').load('register_blocks #submit-block');
+              animate_step();
+              stage = "submit";
+            } else {
+              errors.push(SERVER_ERROR);
+            }
+            display_errors(errors);          
+          }
+        });
+      }
+        
     }  
 
     display_errors(errors);
