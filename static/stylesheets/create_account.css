@@ -196,7 +196,7 @@ textarea {
   .btn:hover {
     background: #62a7e6; }
 
-#sign-up-button {
+#signup-button {
 	position: relative;
 	margin: 0 auto;
 	width: 200px;
@@ -355,7 +355,7 @@ form {
     display: block;
     margin: 0 auto; }
     
-#sign-up-title {
+#signup-title {
 	text-align: center;
 	padding-bottom: 14px;
 	text-transform: uppercase;
