@@ -60,16 +60,6 @@ def register_emailed(request):
         response_string = '{"status":"DUP"}'
   return HttpResponse(json.dumps(response_string), mimetype="application/json") 
     
-def register_user_info(request):
-  response_string = '{"status":"INV"}'
-  if request.POST:
-    join_id = request.POST.get('join_id', "")
-    email = UserProfile.objects.filter(join_id=join_id)[0].user.username
-    company = UserProfile.objects.filter(join_id=join_id)[0].company
-    response_string = '{"status":"OK", "email":"' + email + '", "company":"' + company + '"}'
-  else:
-    return HttpResponse()
-
 def register_account_handler(request):
   response_string = '{"status":"INV"}'
   if request.POST:
@@ -88,18 +78,13 @@ def register_account_handler(request):
       u.userprofile.emailed = True
       u.save()
       u.userprofile.save()
-      g, created = Group.objects.get_or_create(name=company)
-      u.groups.add(g)
       u.userprofile.save()
-      template_content = [{
-        "name": "joinlink", 
-        "content": "<a href='http://www.fluentlynow.com/space?id=" + 
-                   u.userprofile.join_id + 
-                   "'>http://www.fluentlynow.com/space?id=" + 
-                   u.userprofile.join_id + 
-                   "</a>"
-        }]
-      mandrill_email_template = email_template("invite-user", template_content, email, first_name, "")
+      template_content = [{ "name": "name", "content": name },
+                          { "name": "email", "content": email },
+                          { "name": "phone", "content": phone },
+                          { "name": "state", "content": state },
+                          { "name": "specialties", "content": specialties }]
+      mandrill_email_template = email_template("client-request", template_content, "jack@fluentlynow.com", "Jack McDermott", "client-request")
       mandrill_url = "https://mandrillapp.com/api/1.0/messages/send-template.json"
       r = requests.post(mandrill_url, data=mandrill_email_template)
       response_string = '{"status":"OK"}'
