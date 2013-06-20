@@ -45,6 +45,16 @@ function animate_step() {
   });
 }
 
+function hiddenInputsFromData(data) {
+  html = "";
+  $.each(data, function(key, value) {
+    if (key != "csrfmiddlewaretoken") {
+      html += '<input id="account-' + key + '" hidden="true" value="' + value + '"/>' 
+    } 
+  });
+  return html;
+}
+
 $(document).ready(function() {
 
   id = getUrlVars()["id"];
@@ -91,7 +101,7 @@ $(document).ready(function() {
 
     if (stage == "account") {
 
-      if (!email.match(EMAIL_REGEX)) {
+      if (!$('#account-email').val().match(EMAIL_REGEX)) {
         errors.push(INVALID_EMAIL);
         $('#account-email').val('');
       } 
@@ -100,11 +110,11 @@ $(document).ready(function() {
   
     if (errors.length == 0) {  
 
-      data = {
-        firstName: $('#account-first-name').val(),
+      formData = {
+        name: $('#account-name').val(),
         email: $('#account-email').val(),
-        password: $('#account-password').val(),
-        csrfmiddlewaretoken: csrf_token
+        phone: $('#account-phone').val(),
+        csrfmiddlewaretoken: csrf_token 
       };
 
       if (stage == "account") {
@@ -112,15 +122,16 @@ $(document).ready(function() {
           type : "post",
           dataType:'json',
           url : "/face/register/emailed/",
-          data: data,
+          data: formData,
           success: function(data) {
             dataJSON = jQuery.parseJSON(data);
             if (dataJSON['status'] === "DUP") {
               $('#account-email').val('');
               errors.push(EMAIL_TAKEN);
             } else if (dataJSON['status'] === 'OK') {
-              $('#account-wrap').load('register_blocks #certification-block');
-              $('#account-company').prop('disabled', 'true');
+              $('#account-wrap').load('register_blocks #certification-block', function() {
+                $('#account-wrap').append(hiddenInputsFromData(formData));
+              });
               animate_step();
               stage = "certification";
             }
@@ -129,15 +140,20 @@ $(document).ready(function() {
 
       } else if (stage == "certification") {
 
-        data.company = $('#account-company').val();
-        data.phone = $('#account-phone').val();
-        data.csrfmiddlewaretoken = csrf_token;
+        formData = {
+          name: $('#account-name').val(),
+          email: $('#account-email').val(),
+          phone: $('#account-phone').val(),
+          state: $('#account-state').val(),
+          specialties: $('#account-specialties').val(),
+          csrfmiddlewaretoken: csrf_token 
+        };
 
         $.ajax({
           type : "post",
           dataType:'json',
           url : "/face/register/account_handler/",
-          data: data,
+          data: formData,
           success:function(data){
             dataJSON = jQuery.parseJSON(data);
             if (dataJSON['status'] === "OK") {
