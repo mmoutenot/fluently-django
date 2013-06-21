@@ -66,7 +66,7 @@ def register_account_handler(request):
     name = request.POST.get('name', "")
     email = request.POST.get('email', "")
     phone = request.POST.get('phone', "")
-    state = request.POST.get('company', "")
+    state = request.POST.get('state', "")
     specialties = request.POST.get('specialties', "")
     u, created = User.objects.get_or_create(username=email)
     if created:
@@ -78,14 +78,16 @@ def register_account_handler(request):
       u.userprofile.emailed = True
       u.save()
       u.userprofile.save()
-      u.userprofile.save()
-      template_content = [{ "name": "name", "content": name },
+      template_content_ceo = [{ "name": "name", "content": name },
                           { "name": "email", "content": email },
                           { "name": "phone", "content": phone },
                           { "name": "state", "content": state },
                           { "name": "specialties", "content": specialties }]
-      mandrill_email_template = email_template("client-request", template_content, "jack@fluentlynow.com", "Jack McDermott", "client-request")
+      mandrill_template_ceo = mandrill_template("client-request", template_content_ceo, "dylan@fluentlynow.com", "Jack McDermott", "client-request")
       mandrill_url = "https://mandrillapp.com/api/1.0/messages/send-template.json"
-      r = requests.post(mandrill_url, data=mandrill_email_template)
+      requests.post(mandrill_url, data=mandrill_template_ceo)
+      template_content_user = [{ "name": "name", "content": name }]
+      mandrill_template_user = mandrill_template("application-received", template_content_ceo, email, name, "application-received")
+      requests.post(mandrill_url, data=mandrill_template_user)
       response_string = '{"status":"OK"}'
   return HttpResponse(json.dumps(response_string), mimetype="application/json")
