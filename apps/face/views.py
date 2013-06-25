@@ -61,7 +61,7 @@ def register_confirmed(request):
         join_id = request.POST.get('join_id', "")
         try: 
             u = UserProfile.objects.filter(join_id=join_id).user
-            email = UserProfile.objects.filter(join_id=join_id).user.username:
+            email = UserProfile.objects.filter(join_id=join_id).user.username
             response_json = {
                 "status": "success", 
                 "confirmed": u.userprofile.confirmed, 
@@ -78,6 +78,7 @@ def register_emailed(request):
         email = request.POST.get('email', "")
         if User.objects.filter(username=email).count():
             response_json = {
+                "status": "success",
                 "emailed": User.objects.filter(username=email)[0]
                            .userprofile.emailed
             }
