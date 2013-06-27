@@ -9,6 +9,7 @@ class UserProfile(models.Model):
   state = models.CharField(max_length=32)
   specialties = models.CharField(max_length=512)
   join_id = models.CharField(max_length=36, unique=True)
+  pic_url = models.CharField(max_length=512, unique=True)
   confirmed = models.BooleanField(default=False)
   emailed = models.BooleanField(default=False)
 

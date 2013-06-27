@@ -49,27 +49,65 @@ def handle_signin(request):
 def register(request):
     return render(request, 'face/register.html')
 
+# Display register student page
+def register_student(request):
+    return render(request, 'face/register_student.html')
+
 # Display register blocks
 def register_blocks(request):
     return render(request, 'face/register_blocks.html')
 
+# Display confirm password page
+def confirm(request):
+    return render(request, 'face/confirm.html')
+
+# Display confirm blocks
+def confirm_blocks(request):
+    return render(request, 'face/confirm_blocks.html')
+
 # Request with user's join id
-# Response with matching user's confirmation status and with email if confirmed
-def register_confirmed(request):
+# Response with matching user's email if unconfirmed or redirect to signin
+def confirm_user(request):
     response_json = {"status": "fail"}
     if request.POST:
         join_id = request.POST.get('join_id', "")
+        print join_id
         try: 
-            u = UserProfile.objects.filter(join_id=join_id).user
-            email = UserProfile.objects.filter(join_id=join_id).user.username
+            u = UserProfile.objects.filter(join_id=join_id)[0].user
+            print u
+            email = u.username
+            confirmed = u.userprofile.confirmed
+            print confirmed
             response_json = {
                 "status": "success", 
-                "confirmed": u.userprofile.confirmed, 
+                "confirmed": confirmed, 
                 "email": email }
+            return HttpResponse(json.dumps(response_json), 
+                   mimetype="application/json") 
         except:  
-            pass
-    return HttpResponse(json.dumps(response_json), mimetype="application/json") 
+            return HttpResponse(json.dumps(response_json),
+                   mimetype="application/json")
+    else:
+        return redirect('/face/')
 
+# Request with email and password
+# Set user's password, login and redirect to space
+def confirm_password(request):
+    response_json = {"status": "fail"}
+    if request.POST:
+        email = request.POST.get('email', "")
+        password = request.POST.get('password', "")
+        if User.objects.filter(username=email).count():
+            u = User.objects.filter(username=email)[0]
+            u.set_password(password)
+            u.userprofile.confirmed = True
+            u.save()
+            u.userprofile.save()
+            u = authenticate(username=email, password=password)
+            login(request, u)
+            response_json = {"status": "success"}
+    return HttpResponse(json.dumps(response_json), mimetype="application/json")
+        
 # Request with email
 # Response with whether matching user has been sent a join email
 def register_emailed(request):
@@ -82,12 +120,18 @@ def register_emailed(request):
                 "emailed": User.objects.filter(username=email)[0]
                            .userprofile.emailed
             }
+        else:
+            response_json = { 
+                "status": "success",
+                "emailed": False
+            }
+    print json.dumps(response_json)
     return HttpResponse(json.dumps(response_json), mimetype="application/json") 
 
 # Request with new user info from register page 
-# Save user in database, send email to CEO 
+# Save user in database, send emails to CEO and user 
 def register_account_handler(request):
-    response_json = '{"status":"INV"}'
+    response_json = {"status": "fail"}
     if request.POST:
         name = request.POST.get('name', "")
         email = request.POST.get('email', "")
@@ -96,14 +140,18 @@ def register_account_handler(request):
         specialties = request.POST.get('specialties', "")
         u, created = User.objects.get_or_create(username=email)
         if created:
+            u.set_unusable_password()
             u.userprofile.join_id = str(uuid.uuid1())
             u.userprofile.name = name
             u.userprofile.phone = phone
             u.userprofile.state = state
             u.userprofile.specialties = specialties
+            u.userprofile.pic_url = "/static/images/default_profile.jpg"
             u.userprofile.emailed = True
             u.save()
             u.userprofile.save()
+            mandrill_url = ("https://mandrillapp.com/api/1.0/messages/"
+                           "send-template.json")
             template_content_ceo = [
                 { "name": "name", "content": name },
                 { "name": "email", "content": email },
@@ -115,8 +163,14 @@ def register_account_handler(request):
                                                       "dylan@fluentlynow.com", 
                                                       "Jack McDermott", 
                                                       "provider-request")
-            mandrill_url = """https://mandrillapp.com/api/1.0/messages/
-                           send-template.json"""
             requests.post(mandrill_url, data=mandrill_template_ceo)
-            response_json = '{"status":"OK"}'
+            template_content_user = [
+                {"name": "name", "content": name }]
+            mandrill_template_user = mandrill_template("application-received",
+                                                       template_content_user,
+                                                       email,
+                                                       name,
+                                                       "application-received")
+            requests.post(mandrill_url, data=mandrill_template_user) 
+            response_json = {"status": "success"}
     return HttpResponse(json.dumps(response_json), mimetype="application/json")
