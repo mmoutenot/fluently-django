@@ -3,12 +3,14 @@
 
   <head>
     <title>My Profile | Fluently</title>
-    <link rel="stylesheet" type="text/css" href="account.css">
+    <link rel="stylesheet" type="text/css" href="/static/stylesheets/account.css">
     <link rel="icon" type="image/png" href="/static/images/favicon.ico" />
       
-       <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
-    <script src="/static/javascripts/account.js"></script>
-        <script type="text/javascript">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
+    <script type="text/javascript" src="//api.filepicker.io/v1/filepicker.js"></script>
+    <script type="text/javascript" src="/static/javascripts/spin.min.js"></script>
+    <script type="text/javascript" src="/static/javascripts/profile.js"></script>
+    <script type="text/javascript">
       var csrf_token = "{{csrf_token}}";
     </script>
 
@@ -21,7 +23,7 @@
     <div id='navbar'>
     	<div id='navbar_content'>
 	    	<div id='logo'>
-		    	<a href="#"><img src='Logo_White.png'></a>
+		    	<a href="#"><img src='/static/images/logos/Logo_White.png'></a>
 		    </div>
 		    
 		    <div id="navbar_list">
@@ -45,15 +47,12 @@
   <!--CONTENT BODY -->
      <div id='content'>
      
-     	<div id='sidebar'>
-     	
-     		<ul>
-     			<a href="#"><li id="sidebar_active" class="sidebar_item">My Profile</li></a>
-     			<a href="#"><li class="sidebar_item">Settings</li></a>
-     			<a href="#"><li class="sidebar_item">Manage Users</li></a>
-     			<a href="#"><li class="sidebar_item">Plans & Billing</li></a>
-     			<a href="#"><li class="sidebar_item">Logout</li></a>
-     		</ul>
+     	<div id='sidebar'>	
+        <input type="button" id="profile-picture-button" value="Select Profile Picture"/>
+        <div id="profile-picture-wrapper">
+          <img src="" id="profile-picture" alt="Profile Picture"/>
+        </div>
+        <div id="profile-picture-invalid-wrap"></div>
      	
      	</div><!-- end sidebar -->
      
