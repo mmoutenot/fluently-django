@@ -4,6 +4,19 @@ var INVALID_EMAIL = "Please provide valid email.";
 var EMAIL_TAKEN = "Email is already in use.";
 var SERVER_ERROR = "Server error. Please try again.";
 
+
+// Display all error strings from *errors array in *invalid-wrap element
+
+function displayErrors(errors) {
+  $('#invalid-wrap').append(errors[0]);
+  if (errors.length > 1) {
+    $('#invalid-wrap').append('<br/>');
+    for (i = 1; i < errors.length; i++) {
+      $('#invalid-wrap').append(errors[i]);
+    }
+  }
+}
+
 Shadowbox.init({
   handleOversize: "drag",
   modal: true    
@@ -43,15 +56,44 @@ $(document).ready(function () {
 
     if (errors.length == 0) {
     
-    // Collect data from account form fields
+      // Collect data from account form fields
 
-    formData = {
-      name: $('#student-name').val(),
-      email: $('#student-email').val(),
-      phone: $('#student-phone').val(),
-      csrfmiddlewaretoken: csrf_token
-    };
+      formData = {
+        name: $('#student-name').val(),
+        email: $('#student-email').val(),
+        phone: $('#student-location').val(),
+        csrfmiddlewaretoken: csrf_token
+      };
 
+      // Validate email with server
+      // Store form data
+
+      $.ajax({
+        type: "post",
+        dataType: "json",
+        url: "/face/register/student/",
+        data: formData,
+        success: function (dataJSON) {
+          if (dataJSON['status'] === "success") {
+            if (dataJSON['emailed'] === true) {
+              $('#student-email').val('');
+              errors.push(EMAIL_TAKEN);
+            } else {
+              $('#student-wrap').load('student_blocks #emailed-block');
+            }
+          } else {
+            $('#student-email').val('');
+            errors.push(SERVER_ERROR);
+          }
+          displayErrors(errors);
+        }
+      });
+    
+    }
+
+    displayErrors(errors);
+
+    return false;
 
 
   }); 
