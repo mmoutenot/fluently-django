@@ -49,9 +49,59 @@ def handle_signin(request):
 def register(request):
     return render(request, 'face/register.html')
 
-# Display shadowbox test page
-def student(request):
-    return render(request, 'face/student.html')
+# Request with new student info from register page 
+# Save student in database, send emails to CEO and student 
+def student_account_handler(request):
+    response_json = {"status": "fail"}
+    if request.POST:
+        email = request.POST.get('email', "")
+        name = request.POST.get('name', "")
+        location = request.POST.get('loc', "")
+        needs = request.POST.get('needs', "")
+        if User.objects.filter(username=email).count():
+            response_json = {
+                "status": "success",
+                "emailed": User.objects.filter(username=email)[0]
+                           .userprofile.emailed
+            }
+        else:
+            u, created = User.objects.get_or_create(username=email)
+            if created:
+                u.set_unusable_password()
+                u.userprofile.user_type = 'S'
+                u.userprofile.join_id = str(uuid.uuid1())
+                u.userprofile.name = name
+                u.userprofile.location = location 
+                u.userprofile.needs = needs
+                u.userprofile.emailed = True
+                u.save()
+                u.userprofile.save()
+                mandrill_url = ("https://mandrillapp.com/api/1.0/messages/"
+                                "send-template.json")
+                template_content_ceo = [
+                    { "name": "name", "content": name },
+                    { "name": "email", "content": email },
+                    { "name": "location", "content": location },
+                    { "name": "needs", "content": needs }]
+                mandrill_template_ceo = mandrill_template("student-request", 
+                                                          template_content_ceo, 
+                                                          "dylan@fluentlynow.com", 
+                                                          "Jack McDermott", 
+                                                          "student-request")
+                requests.post(mandrill_url, data=mandrill_template_ceo)
+                template_content_user = [
+                    {"name": "name", "content": name }]
+                mandrill_template_user = mandrill_template("student-app-received",
+                                                       template_content_user,
+                                                       email,
+                                                       name,
+                                                       "student-app-received")
+                requests.post(mandrill_url, data=mandrill_template_user) 
+                response_json = { 
+                    "status": "success",
+                    "emailed": False
+                }
+    return HttpResponse(json.dumps(response_json), mimetype="application/json") 
 
 # Display register student page
 def register_student(request):
@@ -140,15 +190,16 @@ def register_account_handler(request):
         name = request.POST.get('name', "")
         email = request.POST.get('email', "")
         phone = request.POST.get('phone', "")
-        state = request.POST.get('state', "")
+        location = request.POST.get('loc', "")
         specialties = request.POST.get('specialties', "")
         u, created = User.objects.get_or_create(username=email)
         if created:
             u.set_unusable_password()
+            u.userprofile.user_type = 'P'
             u.userprofile.join_id = str(uuid.uuid1())
             u.userprofile.name = name
             u.userprofile.phone = phone
-            u.userprofile.state = state
+            u.userprofile.location = location 
             u.userprofile.specialties = specialties
             u.userprofile.pic_url = "/static/images/default_profile.jpg"
             u.userprofile.emailed = True
@@ -160,7 +211,7 @@ def register_account_handler(request):
                 { "name": "name", "content": name },
                 { "name": "email", "content": email },
                 { "name": "phone", "content": phone },
-                { "name": "state", "content": state },
+                { "name": "location", "content": location },
                 { "name": "specialties", "content": specialties }]
             mandrill_template_ceo = mandrill_template("provider-request", 
                                                       template_content_ceo, 
@@ -170,11 +221,11 @@ def register_account_handler(request):
             requests.post(mandrill_url, data=mandrill_template_ceo)
             template_content_user = [
                 {"name": "name", "content": name }]
-            mandrill_template_user = mandrill_template("application-received",
+            mandrill_template_user = mandrill_template("provider-app-received",
                                                        template_content_user,
                                                        email,
                                                        name,
-                                                       "application-received")
+                                                       "provider-app-received")
             requests.post(mandrill_url, data=mandrill_template_user) 
             response_json = {"status": "success"}
     return HttpResponse(json.dumps(response_json), mimetype="application/json")
