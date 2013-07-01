@@ -6,10 +6,14 @@
 
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="/static/stylesheets/login.css" />
+    <link rel="stylesheet" type="text/css" href="/static/javascripts/shadowbox-3.0.3/shadowbox.css" />
     <link rel="icon" type="image/png" href="/static/images/favicon.ico" />
 
     <!-- JS -->
+    
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+    <script type="text/javascript" src="/static/javascripts/shadowbox-3.0.3/shadowbox.js"></script>
+    <script type="text/javascript" src="/static/javascripts/landing.js"></script>
     <!--<script src="/static/javascripts/login.js"></script>-->
     
     <!-- GOSQUARED TRACKING -->
@@ -30,6 +34,9 @@
           w.attachEvent("onload", gs);
       })(window);
   </script>
+  <script type="text/javascript">
+    var csrf_token = "{{csrf_token}}";
+  </script>
   
   </head>
 
@@ -45,6 +52,8 @@
       <form action="http://balbusspeech.us2.list-manage1.com/subscribe/post" method="POST">
         <input type="hidden" name="u" value="b80caa50775da89c3d2a3b997">
         <input type="hidden" name="id" value="ed30239357">
+
+        <div id="shadowbox-test"><a href="/face/register/student" rel="shadowbox">Shadowbox</a></div>
 
 
         <div id="mergeTable" class="mergeTable">
