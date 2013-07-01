@@ -49,9 +49,13 @@ def handle_signin(request):
 def register(request):
     return render(request, 'face/register.html')
 
+# Display shadowbox test page
+def student(request):
+    return render(request, 'face/student.html')
+
 # Display register student page
 def register_student(request):
-    return render(request, 'face/register_student.html')
+    return render(request, 'face/register_student_modal.html')
 
 # Display register blocks
 def register_blocks(request):
