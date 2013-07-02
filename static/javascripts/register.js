@@ -2,7 +2,7 @@
 var EMAIL_REGEX = '^..*@.*.$';
 var INVALID_EMAIL = "Please provide valid email.";
 var EMAIL_TAKEN = "Email is already in use.";
-var SERVER_ERROR = "Please try again.";
+var SERVER_ERROR = "Server error. Please try again.";
 
 // Read GET URL variables and return them in associative array
 
@@ -63,11 +63,13 @@ function hiddenInputsFromData(data) {
 $(document).ready(function () {
 
   // Begin with account stage
+
   stage = "account";
   $('#account-step h2').addClass('active');
   $('#account-wrap').load('register_blocks #account-block');
 
   // Disable submit button when a form field is blank
+
   $('.submit').prop('disabled', true);
   observeInterval = 100;
   setInterval(function () {
@@ -81,15 +83,18 @@ $(document).ready(function () {
   }, observeInterval);
 
   // On submit
+
   $('.account-form').live('submit', function () {
 
     // Clear errors  
+
     errors = [];
     $('#invalid-wrap').text('');
 
     if (stage == "account") {
 
       // Validate email
+
       if (!$('#account-email').val().match(EMAIL_REGEX)) {
         errors.push(INVALID_EMAIL);
         $('#account-email').val('');
@@ -97,7 +102,8 @@ $(document).ready(function () {
 
       if (errors.length == 0) {
 
-        // Collect data from form fields
+        // Collect data from account form fields
+
         formData = {
           name: $('#account-name').val(),
           email: $('#account-email').val(),
@@ -107,23 +113,28 @@ $(document).ready(function () {
 
         // Validate email with server
         // Store form data and continue to certification stage
+
         $.ajax({
           type: "post",
           dataType: 'json',
           url: "/face/register/emailed/",
           data: formData,
-          success: function (data) {
-            dataJSON = jQuery.parseJSON(data);
-            if (dataJSON['status'] === "DUP") {
-              $('#account-email').val('');
-              errors.push(EMAIL_TAKEN);
-            } else if (dataJSON['status'] === 'OK') {
-              $('#account-wrap').load(
-                'register_blocks #certification-block', function () {
-                  $('#account-wrap').append(hiddenInputsFromData(formData));
+          success: function (dataJSON) {
+            if (dataJSON['status'] === "success") {
+              if (dataJSON['emailed'] ==== true) {
+                $('#account-email').val('');
+                errors.push(EMAIL_TAKEN);
+              } else {
+                $('#account-wrap').load(
+                  'register_blocks #certification-block', function () {
+                    $('#account-wrap').append(hiddenInputsFromData(formData));
                 });
-              animateStep();
-              stage = "certification";
+                animateStep();
+                stage = "certification";
+              }
+            } else {
+              $('#account-email').val('');
+              errors.push(SERVER_ERROR);
             }
           }
         });
@@ -131,12 +142,13 @@ $(document).ready(function () {
 
     } else if (stage == "certification") {
 
-      // Collect data from form fields
+      // Collect data from certification form fields
+
       formData = {
         name: $('#account-name').val(),
         email: $('#account-email').val(),
         phone: $('#account-phone').val(),
-        state: $('#account-state').val(),
+        loc: $('#account-location').val(),
         specialties: $('#account-specialties').val(),
         csrfmiddlewaretoken: csrf_token
       };
@@ -144,14 +156,14 @@ $(document).ready(function () {
       if (errors.length == 0) {
 
         // Send data to server, continue to submit stage
+
         $.ajax({
           type: "post",
           dataType: 'json',
           url: "/face/register/account_handler/",
           data: formData,
-          success: function (data) {
-            dataJSON = jQuery.parseJSON(data);
-            if (dataJSON['status'] === "OK") {
+          success: function (dataJSON) {
+            if (dataJSON['status'] === "success") {
               $('#account-wrap').load('register_blocks #submit-block');
               animateStep();
               stage = "submit";
