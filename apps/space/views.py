@@ -6,7 +6,6 @@ from django.contrib.auth.models import User, Group
 from django.template import Context
 from django.core.context_processors import csrf
 from django.template.loader import get_template
-from apps.face.utils import email_template
 from apps.face.models import UserProfile
 
 # general python packages
@@ -104,6 +103,67 @@ def main(request, space_url_id):
                   "user"           : request.user,
                 })
 
+def profile(request):
+    print "Profile: "
+    print request.user
+    u = request.user
+    template = get_template('space/profile.html')
+    if not u.is_authenticated():
+        error_msg = "Internal server error"
+        context = Context({"error_msg": error_msg})
+        return HttpResponse(template.render(context))
+    if not u.userprofile.confirmed:
+        error_msg = "User unconfirmed"
+        context = Context({"error_msg": error_msg})
+        return HttpResponse(template.render(context))
+    if u.username == "dylanjportelance@gmail.com":
+        print "CEO will get..."
+        users = User.objects.all()
+        usersContextList = []
+        for user in users:
+            userDict = {}
+            userDict['email'] = user.username
+            userDict['name'] = user.userprofile.name
+            userDict['phone'] = user.userprofile.phone
+            userDict['location'] = user.userprofile.location
+            userDict['specialties'] = user.userprofile.specialties
+            usersContextList.append(userDict)
+            print user.username
+            print " "
+        print usersContextList
+        context = Context({
+            "users": usersContextList
+        })
+        context.update(csrf(request))
+        return HttpResponse(template.render(context))
+    name = u.userprofile.name
+    location = u.userprofile.location
+    role = "Speech-Language Pathologist"
+    specialties = u.userprofile.specialties
+    context = Context({
+        "name": name,
+        "location": location,
+        "role": role,
+        "specialties": specialties
+    })
+    context.update(csrf(request))
+    return HttpResponse(template.render(context))
+
+def profile_picture(request):
+    print "profile picture"
+    response_json = {"status": "fail"}
+    u = request.user
+    if request.POST:
+        pic_url = request.POST.get('pic_url', "")
+        if pic_url:
+            u.userprofile.pic_url = pic_url
+            u.userprofile.save()
+            response_json = {"status": "success"}
+        else:
+            response_json = {"status": "success", 
+                             "pic_url": u.userprofile.pic_url}
+    return HttpResponse(json.dumps(response_json), mimetype="application/json")
+
 def account(request):
   u = request.user
   if not u.is_authenticated():
@@ -126,44 +186,6 @@ def account(request):
       return HttpResponse(template.render(context))
     except:
       return render(request, 'space/account.html')
-
-def invite_user(request):
-  print "invite-user"
-  response_string = '{"status:"INV"}'
-  if request.POST:
-    print "POST"
-    u = request.user
-    email = request.POST.get('email', "")
-    print u
-    print email
-    new_user, created = User.objects.get_or_create(username=email)
-    print User.objects.all()
-    if created:
-      print "created"
-      new_user.userprofile.join_id = str(uuid.uuid1())
-      new_user.userprofile.admin = False
-      g, created = Group.objects.get_or_create(name=u.userprofile.company)
-      new_user.groups.add(g)
-      new_user.save()
-      new_user.userprofile.save()
-      template_content = [
-        { "name": "joinlink",
-          "content": "<a href='http://www.fluentlynow.com/face/register?id=" 
-                     + new_user.userprofile.join_id 
-                     + "'>http://www.fluentlynow.com/face/register?id=" 
-                     + new_user.userprofile.join_id 
-                     + "</a>" },
-        { "name": "company", "content": u.userprofile.company },
-        { "name": "admin", "content": u.first_name + " " + u.last_name }]
-      print template_content
-      mandrill_email_template = email_template("invite-user-to-group", template_content, email, first_name + " " + last_name, "")
-      print mandrill_email_template
-      mandrill_url = "https://mandrillapp.com/api/1.0/messages/send-template.json"
-      r = requests.post(mandrill_url, data=mandrill_email_template)
-      response_string = '{"status":"OK"}'
-    else:
-      response_string = '{"status":"DUP"}'
-  return HttpResponse(json.dumps(response_string), mimetype="application/json")
 
 @require_http_methods(["GET","POST"])
 def upload(request):
