@@ -10,7 +10,7 @@ function getUrlVars() {
   var vars = [], hash;
   var hashes = window.location.href.slice(
     window.location.href.indexOf('?') + 1).split('&');
-  for (var i = 0; i < hashes.length; i++) {
+  for (i = 0; i < hashes.length; i++) {
     hash = hashes[i].split('=');
     vars.push(hash[0]);
     vars[hash[0]] = hash[1];
@@ -73,7 +73,7 @@ $(document).ready(function () {
   $('.submit').prop('disabled', true);
   observeInterval = 100;
   setInterval(function () {
-    noBlanks = true;
+    var noBlanks = true;
     $('.text_input').each(function () {
       if ($(this).val() == '') {
         noBlanks = false;
@@ -88,10 +88,10 @@ $(document).ready(function () {
 
     // Clear errors  
 
-    errors = [];
+    var errors = [];
     $('#invalid-wrap').text('');
 
-    if (stage == "account") {
+    if (stage === "account") {
 
       // Validate email
 
@@ -100,11 +100,11 @@ $(document).ready(function () {
         $('#account-email').val('');
       }
 
-      if (errors.length == 0) {
+      if (errors.length === 0) {
 
         // Collect data from account form fields
 
-        formData = {
+        var formData = {
           name: $('#account-name').val(),
           email: $('#account-email').val(),
           phone: $('#account-phone').val(),
@@ -120,8 +120,8 @@ $(document).ready(function () {
           url: "/face/register/emailed/",
           data: formData,
           success: function (dataJSON) {
-            if (dataJSON['status'] === "success") {
-              if (dataJSON['emailed'] ==== true) {
+            if (dataJSON.status === "success") {
+              if (dataJSON.emailed === true) {
                 $('#account-email').val('');
                 errors.push(EMAIL_TAKEN);
               } else {
@@ -140,11 +140,11 @@ $(document).ready(function () {
         });
       }
 
-    } else if (stage == "certification") {
+    } else if (stage === "certification") {
 
       // Collect data from certification form fields
 
-      formData = {
+      var formData = {
         name: $('#account-name').val(),
         email: $('#account-email').val(),
         phone: $('#account-phone').val(),
@@ -153,7 +153,7 @@ $(document).ready(function () {
         csrfmiddlewaretoken: csrf_token
       };
 
-      if (errors.length == 0) {
+      if (errors.length === 0) {
 
         // Send data to server, continue to submit stage
 
@@ -163,7 +163,7 @@ $(document).ready(function () {
           url: "/face/register/account_handler/",
           data: formData,
           success: function (dataJSON) {
-            if (dataJSON['status'] === "success") {
+            if (dataJSON.status === "success") {
               $('#account-wrap').load('register_blocks #submit-block');
               animateStep();
               stage = "submit";
