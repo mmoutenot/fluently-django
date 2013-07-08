@@ -15,6 +15,7 @@ import time
 import os
 import requests
 import json
+import collections
 
 # third party packages
 from vendor.TokBox import OpenTokSDK
@@ -103,6 +104,25 @@ def main(request, space_url_id):
                   "user"           : request.user,
                 })
 
+def usersContextList():
+    keyorder = {k:v for v,k in enumerate(
+        ['id', 'name', 'email', 'phone', 'location', 'specialties']
+    )}
+    users = User.objects.all()
+    usersContextList = []
+    for user in users:
+        userDict = {}
+        userDict['specialties'] = user.userprofile.specialties
+        userDict['location'] = user.userprofile.location
+        userDict['phone'] = user.userprofile.phone
+        userDict['email'] = user.username
+        userDict['name'] = user.userprofile.name
+        userDict['id'] = user.pk
+        dictItems = sorted(userDict.items(), key=lambda i:keyorder.get(i[0]))
+        userDict = collections.OrderedDict(dictItems)
+        usersContextList.append(userDict)
+    return usersContextList
+
 def profile(request):
     print "Profile: "
     print request.user
@@ -118,21 +138,8 @@ def profile(request):
         return HttpResponse(template.render(context))
     if u.username == "dylanjportelance@gmail.com":
         print "CEO will get..."
-        users = User.objects.all()
-        usersContextList = []
-        for user in users:
-            userDict = {}
-            userDict['email'] = user.username
-            userDict['name'] = user.userprofile.name
-            userDict['phone'] = user.userprofile.phone
-            userDict['location'] = user.userprofile.location
-            userDict['specialties'] = user.userprofile.specialties
-            usersContextList.append(userDict)
-            print user.username
-            print " "
-        print usersContextList
         context = Context({
-            "users": usersContextList
+            "users": usersContextList()
         })
         context.update(csrf(request))
         return HttpResponse(template.render(context))
