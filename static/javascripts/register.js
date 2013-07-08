@@ -91,7 +91,7 @@ $(document).ready(function () {
     var errors = [];
     $('#invalid-wrap').text('');
 
-    if (stage === "account") {
+    if (stage == "account") {
 
       // Validate email
 
@@ -113,7 +113,7 @@ $(document).ready(function () {
 
         // Validate email with server
         // Store form data and continue to certification stage
-
+        
         $.ajax({
           type: "post",
           dataType: 'json',
@@ -140,7 +140,7 @@ $(document).ready(function () {
         });
       }
 
-    } else if (stage === "certification") {
+    } else if (stage == "certification") {
 
       // Collect data from certification form fields
 

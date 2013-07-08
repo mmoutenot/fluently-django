@@ -35,7 +35,9 @@ $(document).ready(function () {
 
   // On submit
   
-  $('.account-form').live('submit', function () {
+  $('.account-form').submit(function () {
+
+    console.log("submit");
 
     // Clear errors  
 
@@ -56,17 +58,21 @@ $(document).ready(function () {
       formData = {
         name: $('#student-name').val(),
         email: $('#student-email').val(),
-        phone: $('#student-location').val(),
+        loc: $('#student-location').val(),
+        needs: $('#student-needs').val(),
         csrfmiddlewaretoken: csrf_token
       };
 
       // Validate email with server
       // Store form data
+  
+      console.log("ajaxing ");
+      console.log(formData);
 
       $.ajax({
         type: "post",
         dataType: "json",
-        url: "/face/register/student/",
+        url: "/face/student/",
         data: formData,
         success: function (dataJSON) {
           if (dataJSON['status'] === "success") {
