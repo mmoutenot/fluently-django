@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User, Group
 from django.http import HttpResponse
+from django.http import HttpResponseRedirect
 from django.template import Context
 from django.template.loader import get_template
 from django.core.context_processors import csrf
@@ -32,8 +33,8 @@ def handle_signin(request):
         print user
         if user is not None:
             login(request, user)
-            print 'user logged in'
             return redirect('/space/')
+            print 'user logged in'
         else:
             print 'invalid user'
             error_msg = "Invalid username or password. Please try again."
@@ -54,11 +55,13 @@ def register(request):
 def student_account_handler(request):
     response_json = {"status": "fail"}
     if request.POST:
+        print "POST == true"
         email = request.POST.get('email', "")
         name = request.POST.get('name', "")
         location = request.POST.get('loc', "")
         needs = request.POST.get('needs', "")
         if User.objects.filter(username=email).count():
+            print "emailed == true"
             response_json = {
                 "status": "success",
                 "emailed": User.objects.filter(username=email)[0]
@@ -67,6 +70,8 @@ def student_account_handler(request):
         else:
             u, created = User.objects.get_or_create(username=email)
             if created:
+                print "created "
+                print u
                 u.set_unusable_password()
                 u.userprofile.user_type = 'S'
                 u.userprofile.join_id = str(uuid.uuid1())
@@ -125,13 +130,10 @@ def confirm_user(request):
     response_json = {"status": "fail"}
     if request.POST:
         join_id = request.POST.get('join_id', "")
-        print join_id
         try: 
             u = UserProfile.objects.filter(join_id=join_id)[0].user
-            print u
             email = u.username
             confirmed = u.userprofile.confirmed
-            print confirmed
             response_json = {
                 "status": "success", 
                 "confirmed": confirmed, 
@@ -139,10 +141,11 @@ def confirm_user(request):
             return HttpResponse(json.dumps(response_json), 
                    mimetype="application/json") 
         except:  
-            return HttpResponse(json.dumps(response_json),
-                   mimetype="application/json")
+            return HttpResponse(json.dumps(response_json), 
+                   mimetype="application/json") 
     else:
-        return redirect('/face/')
+        return HttpResponse(json.dumps(response_json),
+               mimetype="application/json")
 
 # Request with email and password
 # Set user's password, login and redirect to space
@@ -185,47 +188,49 @@ def register_emailed(request):
 # Request with new user info from register page 
 # Save user in database, send emails to CEO and user 
 def register_account_handler(request):
+    print "handling"
     response_json = {"status": "fail"}
     if request.POST:
+        print request.POST
         name = request.POST.get('name', "")
         email = request.POST.get('email', "")
         phone = request.POST.get('phone', "")
         location = request.POST.get('loc', "")
         specialties = request.POST.get('specialties', "")
         u, created = User.objects.get_or_create(username=email)
-        if created:
-            u.set_unusable_password()
-            u.userprofile.user_type = 'P'
-            u.userprofile.join_id = str(uuid.uuid1())
-            u.userprofile.name = name
-            u.userprofile.phone = phone
-            u.userprofile.location = location 
-            u.userprofile.specialties = specialties
-            u.userprofile.pic_url = "/static/images/default_profile.jpg"
-            u.userprofile.emailed = True
-            u.save()
-            u.userprofile.save()
-            mandrill_url = ("https://mandrillapp.com/api/1.0/messages/"
-                           "send-template.json")
-            template_content_ceo = [
-                { "name": "name", "content": name },
-                { "name": "email", "content": email },
-                { "name": "phone", "content": phone },
-                { "name": "location", "content": location },
-                { "name": "specialties", "content": specialties }]
-            mandrill_template_ceo = mandrill_template("provider-request", 
-                                                      template_content_ceo, 
-                                                      "dylan@fluentlynow.com", 
-                                                      "Jack McDermott", 
-                                                      "provider-request")
-            requests.post(mandrill_url, data=mandrill_template_ceo)
-            template_content_user = [
-                {"name": "name", "content": name }]
-            mandrill_template_user = mandrill_template("provider-app-received",
-                                                       template_content_user,
-                                                       email,
-                                                       name,
-                                                       "provider-app-received")
-            requests.post(mandrill_url, data=mandrill_template_user) 
-            response_json = {"status": "success"}
+        print "created"
+        u.set_unusable_password()
+        u.userprofile.user_type = 'P'
+        u.userprofile.join_id = str(uuid.uuid1())
+        u.userprofile.name = name
+        u.userprofile.phone = phone
+        u.userprofile.location = location 
+        u.userprofile.specialties = specialties
+        u.userprofile.pic_url = "/static/images/default_profile.jpg"
+        u.userprofile.emailed = True
+        u.save()
+        u.userprofile.save()
+        mandrill_url = ("https://mandrillapp.com/api/1.0/messages/"
+                       "send-template.json")
+        template_content_ceo = [
+            { "name": "name", "content": name },
+            { "name": "email", "content": email },
+            { "name": "phone", "content": phone },
+            { "name": "location", "content": location },
+            { "name": "specialties", "content": specialties }]
+        mandrill_template_ceo = mandrill_template("provider-request", 
+                                                  template_content_ceo, 
+                                                  "dylan@fluentlynow.com", 
+                                                  "Jack McDermott", 
+                                                  "provider-request")
+        requests.post(mandrill_url, data=mandrill_template_ceo)
+        template_content_user = [
+            {"name": "name", "content": name }]
+        mandrill_template_user = mandrill_template("provider-app-received",
+                                                   template_content_user,
+                                                   email,
+                                                   name,
+                                                   "provider-app-received")
+        requests.post(mandrill_url, data=mandrill_template_user) 
+        response_json = {"status": "success"}
     return HttpResponse(json.dumps(response_json), mimetype="application/json")
