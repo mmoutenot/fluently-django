@@ -29,13 +29,15 @@
   	
   	<div id="login_container">
   	
-  		<form action="/face/signin_user/" method="post">
+  		<form action="/face/handle_signin/" method="post">
   		
   			{% csrf_token %}
   			
   			<input class="text_inputs" id="signin_email" name="signin_email" type="text" placeholder="Email">
   			
   			<input class="text_inputs" id="signin_password" name="signin_password" type="password" placeholder="Password">
+
+        <div id="error-msg">{{ error_msg }}</div>
   			
   			<input id="login_submit" type="submit" value="Sign-in" style="display: inline-block;">
   			

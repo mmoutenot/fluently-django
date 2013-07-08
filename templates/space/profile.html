@@ -57,7 +57,14 @@
      	</div><!-- end sidebar -->
      
      	<div id="content_container">
- 
+        
+        {% for user in users %}
+          {% for key, val in user.items %}
+            {{ val }} 
+          {% endfor %} 
+          </br>
+        {% endfor %}
+
 	     	<h3 class="account_title">My Profile</h3>
 	     		
 	     		<form id="account-info-form">

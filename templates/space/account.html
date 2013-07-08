@@ -2,23 +2,124 @@
 <html>
 
   <head>
-
+    
+    <title>Manage Users | Fluently</title>
+    <link rel="stylesheet" type="text/css" href="/static/stylesheets/account.css">
+    <link rel="icon" type="image/png" href="/static/images/favicon.ico" />    
+    
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
     <script src="/static/javascripts/account.js"></script>
-        <script type="text/javascript">
-      var csrf_token = "{{csrf_token}}";
-    </script>
+    <script type="text/javascript">var csrf_token = "{{csrf_token}}";</script>
+
   </head>
 
- <body>
+<body>
 
-<form id="account-info-form">
-  <input class="user-field" id="first-name" type="text"/>
-  <input class="user-field" id="last-name" type="text"/>
-  <input class="user-field" id="email" type="text"/>
-  <input class="user-field" id="password-a" type="password"/>
-  <input class="user-field" id="password-b" type="password"/>
-</form>
-<div id="status"></div>
- </body>
+  <!-- USE NAVBAR TEMPLATE -->
+    <div id='navbar'>
+    	<div id='navbar_content'>
+	    	<div id='logo'>
+		    	<a href="#"><img src='/static/images/logos/Logo_White.png'></a>
+		    </div>
+		    
+		    <div id="navbar_list">
+		    
+		    <ul>		    		    	
+		    	<a href="#"><li class="navbar_button">
+		    	Account
+		    	</li></a>
+		  
+		    	<a href="#"><li class="navbar_button">
+		    	Dashboard
+		    	</li></a>
+		    	
+		    </ul>
+		  
+		    </div>
+		    
+    	</div> <!-- end navbar_content -->
+    </div> <!-- end navbar -->
+
+ 
+<!--CONTENT BODY -->
+     <div id='content'>
+     
+     	<div id='sidebar'>
+     	
+     		<ul>
+     			<a href="#"><li class="sidebar_item">My Profile</li></a>
+     			<a href="#"><li class="sidebar_item">Settings</li></a>
+     			<a href="#"><li  id="sidebar_active" class="sidebar_item">Manage Users</li></a>
+     			<a href="#"><li class="sidebar_item">Plans & Billing</li></a>
+     			<a href="#"><li class="sidebar_item">Logout</li></a>
+     		</ul>
+     	
+     	</div><!-- end sidebar -->
+     
+     	<div id="content_container">
+ 
+	     	<h3 class="account_title">Manage Users</h3> 
+  
+	     	<h4 class="account_subtitle">Confirmed Users</h4> 	
+	     	
+	     		<div id="users-active">
+		     	
+		     		   <div class="users-active-row">
+		     		   
+		     		   		<div class="users-active-personal">
+			     		  
+                    {% for user in invited_users %}
+                      <div class="users-active-name">{{ user.first_name }} {{ user.last_name }}</div>
+                      <div class="users-active-email">{{ user.username }}</div>
+                      <form class="users-active-buttons">
+                        <input class="users-active-admin, tiny_button" type="button" value="Admin" />
+			     		   			  <input class="users-active-delete, tiny_button" type="button" value="Remove"/>
+			     		   	  	</form>
+                    {% endfor %}
+			     		   	
+		     		   		</div>
+			
+			     		 </div><!-- end user-active-row -->
+			     		   			
+		     	</div> <!-- End users-active -->
+
+	    <h4 class="account_subtitle">Add New User</h4> 	
+
+		<form id="invite-user-form">
+			<input class="text_input, user-field" id="invite-email" type="text" placeholder="Email address"/>
+			<input id="invite-submit" class="submit, tiny_button" type="submit" value="Add"/>
+		
+		</form> <!-- end invite-user-form -->
+		
+   	 
+	    </div><!-- end content_container -->
+     
+     </div><!-- end content -->
+          
+  <!--FOOTER -->
+  
+     <div id='footer_container'>
+     
+   		<div id="footer_left">
+   		
+   			<ul>
+   				<a href="#"><li>Home</li></a>
+   				<a href="#"><li>Blog</li></a>	
+   				<a href="#"><li>Twitter</li></a>
+   				<a href="#"><li>Support</li></a>
+   			</ul>
+   			
+   		</div>	<!-- end footer_left -->
+   		
+   		<div id="footer_right">
+   		
+   			<ul>
+   				<a href="#"><li>Terms</li></a>
+   				<li>&copy;&nbsp;Balbus, Inc.</li>	
+   		    
+   		</div><!-- end footer_right -->
+
+     </div><!-- end footer_container -->
+
+  </body>
 </html>
