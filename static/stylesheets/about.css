@@ -1,0 +1,289 @@
+/* MAIN COLORS */
+/* SECONDARY COLORS */
+@font-face {
+  font-family: Quicksand;
+  src: url("/static/fonts/Quicksand/Quicksand_Book-webfont.ttf");
+  /* url('Quicksand_Book-webfont.ttf');  IE9 */ }
+
+@font-face {
+  font-family: QuicksandBold;
+  src: url("static/fonts/Quicksand/Quicksand_Bold-webfont.ttf");
+  /* url('Quicksand_Bold-webfont.ttf');  IE9 */ }
+
+@font-face {
+  font-family: Signika;
+  src: url("/static/fonts/Signika/Signika-Regular.ttf");
+  /* url('Signika-Regular.ttf');  IE9 */ }
+
+@font-face {
+  font-family: SignikaBold;
+  src: url("/static/fonts/Signika/Signika-Bold.ttf");
+  /* url('Signika-Bold.ttf');  IE9 */ }
+
+body, html {
+  padding: 0;
+  margin: 0;
+  font-family: Signika;
+  color: #5d6976;
+  background: #f1f3f5;
+  position: relative; }
+
+/* NAVBAR AREA */
+
+#navbar {
+  width: 100%;
+  height: 80px;
+  position: relative;
+  top: 0;
+  background: #e67b6d;
+  z-index: 9999;
+ 
+  background-color: #e67b6d;
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #e67b6d), color-stop(100%, #e46f60));
+  background-image: -webkit-linear-gradient(#e67b6d, #e46f60);
+  background-image: linear-gradient(#e67b6d, #e46f60); }
+  #navbar_content {
+	  width: 1080px;
+	  margin: 0 auto;
+	  position: relative;}
+  	#navbar #logo {
+    float: left;
+    padding: 10px;
+    padding-left: 0px;
+    margin-left: 5px; }
+  	  #navbar #logo img {
+      width: 190px;
+      height: 60px;
+      display: block; }
+    #navbar_list {
+	float: right;
+	position: relative;
+	width: 560px;
+	color: white;
+	font-family: Quicksand;
+	text-transform: uppercase;
+	font-size: 15px;
+	line-height: 90px;}
+	  #navbar_list li {
+	  float: right;
+	  list-style: none;
+	  margin-left: 70px;
+	  padding: 4px;
+	  height: 84px;
+	  margin-top: -20px;
+	  display: inline-block;
+	  text-align: center;
+	  text-decoration: none;
+	  color: white;}  
+	    #navbar_list li:hover {
+	    text-decoration: underline;
+	    -webkit-transition: all .1s ease-in-out;
+	    -moz-transition: all .1s ease-in-out;
+	    -o-transition: all .1s ease-in-out;
+	    transition: all .1s ease-in-out;}
+	        	        
+
+/* CONTENT */
+
+.text_container {
+	width: 960px;
+	margin: 0 auto;
+	padding-top: 30px;
+	padding-bottom: 30px;}
+
+.section-title {
+	text-align: center;
+	width: 190px;
+	font-family: Quicksand;
+	font-weight: 500;
+	line-height: 46px;
+	text-align: center;
+	margin: 0 auto;
+	padding-top: 20px;
+	border-bottom: 1px solid rgba(93,105,117,0.26);}
+
+
+/* MAIN SECTION */
+
+#main-section {
+	position: relative;
+	background: url('/static/images/1.jpg');
+	height: 400px;
+	background-repeat: repeat;
+	background-size: cover;}
+
+
+/* MISSION SECTION */
+
+#our-mission {
+	background-color: #8EC0ED;
+	width: 100%;
+	height: auto;
+	padding-bottom: 40px;}
+	#our-mission h2 {
+		color: white;
+		width: 160px;
+		border-bottom: 1px solid rgba(255,255,255,0.3);}
+	#our-mission img{
+		height: 80px;
+		width: 80px;
+		margin-top: 50px;
+		margin-left: 440px;}
+	#our-mission h4 {
+		text-align: center;
+		color: white;
+		font-family: Quicksand;
+		text-transform: uppercase;
+		margin-top: 50px;
+		font-size: 22px;}
+.mission-text {
+		color: white;
+		width: 360px;
+		font-size: 16px;
+		line-height: 30px;
+		display: inline-block;
+		margin-left: 80px;
+		margin-top:20px;}
+
+
+/* TEAM SECTION */
+
+
+#team-section {
+	background-color: white;
+		height: auto;
+		padding-bottom: 30px;}
+
+#team-container {
+	width: 800px;
+	margin: 0 auto;
+	padding-top: 30px;
+	text-align: center;}
+
+.member-box {
+	margin-top: 20px;
+	text-align: center;
+	display: inline-block;
+	margin-left: 0px;
+	width: 260px;}
+	.member-box h6 {
+		font-size: 14px;
+		font-weight: 300;
+		font-family: Quicksand;
+		margin-top: -10px;}	
+	.member-box p{
+		font-size: 14px;
+		line-height: 22px;}
+		
+.member-pic {		
+		height: 140px;
+		width: 140px;
+		border-radius: 120px;
+		background-size: cover;
+		margin-left: 58px;}
+
+.member-pic-hover {
+		width: 100%;
+		height: 100%;
+		text-align: center;
+		background-color: #8EC0ED;
+		border-radius: 120px;
+		border: 2px solid rgba(196,196,196,0.67);
+		opacity: 0.0;
+		margin-left: -2px;
+		margin-top: -2px;}
+			.member-pic-hover:hover {
+				opacity: 0.9;
+				-webkit-transition: all .4s ease-in-out;
+				-moz-transition: all .4s ease-in-out;
+				-o-transition: all .4s ease-in-out;
+				transition: all .4s ease-in-out;}
+			
+			.member-pic-hover a{
+				text-decoration: none;
+				font-family: Quicksand;
+				font-weight: 500;
+				color: white;
+				padding: 7px;}
+					.member-pic-hover a:hover{
+						font-weight: 900;}	
+			.hover-link { 
+				margin-top: 60px;}
+
+				#member-pic1 {
+					background-image: url("/static/images/jm.jpg");}
+
+				#member-pic2 {
+					background-image: url("/static/images/dp.jpg");}
+		
+				#member-pic3 {
+					background-image: url("/static/images/mm.jpg");}	
+	
+	
+/* MORE INFO SECTION */
+
+#more-info {
+	background: white;
+	margin: 0 auto;
+	text-decoration: none;
+	margin-top: -100px;}
+	#more-info h6 {
+		font-size: 15px;
+		font-weight: 100;
+		font-family: Quicksand;
+		text-align: center;
+		line-height: 40px;}	
+	#more-info a {
+		  color: #5d6976;}
+	#more-info img { 
+		height: 90px;
+		margin-left: 444px;}
+	#more-info a:hover {
+		font-weight: 400;}
+		
+		
+/* FOOTER */
+
+#global_footer {	
+ 	 width: 100%;
+ 	 height: 140px;
+ 	 position: relative;
+ 	 bottom: 0;
+ 	 z-index: 999;
+  background-color: #e67b6d;
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #e67b6d), color-stop(100%, #e46f60));
+  background-image: -webkit-linear-gradient(#e67b6d, #e46f60);
+  background-image: linear-gradient(#e67b6d, #e46f60); }
+ 
+ 	 
+
+#global_footer_content {
+	width: 980px;
+	height: 90px;
+	position: relative;
+	margin: 0 auto;
+	display: block;
+	font-family: Quicksand;
+	text-transform: uppercase;
+	font-size: 14px;
+	padding-top: 50px;
+	text-align: center;}
+		#global_footer_content a{
+			color: white;
+			list-style: none;
+			display: inline-block;
+			margin: 0 40px;
+			text-decoration: none;
+			padding: 10px;
+			opacity: 1.0;}
+				#global_footer_content p{
+			color: white;
+			list-style: none;
+			display: inline-block;
+			margin: 0 40px;
+			text-decoration: none;
+			padding: 10px;
+			opacity: 1.0;}
+
+			
+	
