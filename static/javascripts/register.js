@@ -105,7 +105,8 @@ $(document).ready(function () {
         // Collect data from account form fields
 
         var formData = {
-          name: $('#account-name').val(),
+          firstName: $('#account-first-name').val(),
+          lastName: $('#account-last-name').val(),
           email: $('#account-email').val(),
           phone: $('#account-phone').val(),
           csrfmiddlewaretoken: csrf_token
@@ -121,9 +122,10 @@ $(document).ready(function () {
           data: formData,
           success: function (dataJSON) {
             if (dataJSON.status === "success") {
-              if (dataJSON.emailed === true) {
+              if (dataJSON.emailed) {
                 $('#account-email').val('');
                 errors.push(EMAIL_TAKEN);
+                console.log(errors);
               } else {
                 $('#account-wrap').load(
                   'register_blocks #certification-block', function () {
@@ -136,6 +138,8 @@ $(document).ready(function () {
               $('#account-email').val('');
               errors.push(SERVER_ERROR);
             }
+            console.log(errors);
+            displayErrors(errors);
           }
         });
       }
@@ -145,7 +149,8 @@ $(document).ready(function () {
       // Collect data from certification form fields
 
       var formData = {
-        name: $('#account-name').val(),
+        firstName: $('#account-first-name').val(),
+        lastName: $('#account-last-name').val(),
         email: $('#account-email').val(),
         phone: $('#account-phone').val(),
         loc: $('#account-location').val(),
