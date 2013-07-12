@@ -123,35 +123,112 @@ def usersContextList():
         usersContextList.append(userDict)
     return usersContextList
 
+def save_profile(request):
+    u = request.user
+    print u
+    if not u.is_authenticated():
+        return redirect('/face/')
+    response_json = {
+        "status": "fail",
+    }
+    if request.POST:
+        print "post save"
+        firstName = request.POST.get('firstName', "")
+        lastName = request.POST.get('lastName', "")
+        location = request.POST.get('loc', "")
+        aboutMe = request.POST.get('aboutMe', "")
+        certifications = request.POST.get('certifications', "")
+        experience = request.POST.get('experience', "")
+        therapyApproach = request.POST.get('therapyApproach', "")
+        u.userprofile.first_name = firstName
+        u.userprofile.last_name = lastName
+        u.userprofile.location = location
+        u.userprofile.about_me = aboutMe
+        u.userprofile.certifications = certifications
+        u.userprofile.experience = experience
+        u.userprofile.therapy_approach = therapyApproach
+        u.userprofile.save()
+        print firstName
+        print lastName
+        print aboutMe
+        print location
+        print certifications
+        print experience
+        print therapyApproach
+        response_json = {   
+            "status": "success",
+        }
+    return HttpResponse(json.dumps(response_json), mimetype="application/json")
+
+def public_profile(request, user_url):
+    print "pub"
+    try:
+        u = UserProfile.objects.filter(user_url=user_url)[0].user  
+        template = get_template('space/public_profile.html')
+        firstName = u.userprofile.first_name
+        lastName = u.userprofile.last_name
+        location = u.userprofile.location
+        aboutMe = u.userprofile.about_me
+        certifications = u.userprofile.certifications
+        experience = u.userprofile.experience
+        therapyApproach = u.userprofile.therapy_approach
+        context = Context({
+            "firstName": firstName,
+            "lastName": lastName,
+            "location": location,
+            "aboutMe": aboutMe,
+            "certifications": certifications,
+            "experience": experience,
+            "therapyApproach": therapyApproach
+        })
+        print aboutMe
+        context.update(csrf(request))
+        return HttpResponse(template.render(context))
+    except:
+        return redirect('/face/')
+
+def contact(request, user_url):
+    try:
+        u = UserProfile.objects.filter(user_url=user_url)[0].user
+        template = get_template('space/contact_student_modal.html')
+        firstName = u.userprofile.first_name
+        lastName = u.userprofile.last_name
+        context = Context({
+            "firstName": firstName,
+            "lastName": lastName
+        })
+        context.update(csrf(request))
+        return HttpResponse(template.render(context))
+    except:
+        return redirect('/face/')
+
 def profile(request):
-    print "Profile: "
-    print request.user
     u = request.user
     template = get_template('space/profile.html')
     if not u.is_authenticated():
-        error_msg = "Internal server error"
-        context = Context({"error_msg": error_msg})
-        return HttpResponse(template.render(context))
-    if not u.userprofile.confirmed:
-        error_msg = "User unconfirmed"
-        context = Context({"error_msg": error_msg})
-        return HttpResponse(template.render(context))
-    if u.username == "dylanjportelance@gmail.com":
+        return redirect('/face/')
+    if u.username == "jack@fluentlynow.com":
         print "CEO will get..."
         context = Context({
             "users": usersContextList()
         })
         context.update(csrf(request))
         return HttpResponse(template.render(context))
-    name = u.userprofile.name
+    firstName = u.userprofile.first_name
+    lastName = u.userprofile.last_name
     location = u.userprofile.location
-    role = "Speech-Language Pathologist"
-    specialties = u.userprofile.specialties
+    aboutMe = u.userprofile.about_me
+    certifications = u.userprofile.certifications
+    experience = u.userprofile.experience
+    therapyApproach = u.userprofile.therapy_approach
     context = Context({
-        "name": name,
+        "firstName": firstName,
+        "lastName": lastName,
         "location": location,
-        "role": role,
-        "specialties": specialties
+        "aboutMe": aboutMe,
+        "certifications": certifications,
+        "experience": experience,
+        "therapyApproach": therapyApproach
     })
     context.update(csrf(request))
     return HttpResponse(template.render(context))
