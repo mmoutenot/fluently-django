@@ -9,11 +9,13 @@ Need to include existing templates (nav) and create templates for each step of a
   <head>
     <title>Fluently</title>
     <link rel="stylesheet" type="text/css" href="/static/stylesheets/confirmed.css">
-    <link rel="icon" type="image/png" href="/static/images/favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="/static/style/fonts.css">
+    <link rel="stylesheet" type="text/css" href="/static/style/global_style.css">
+    <link rel="icon" type="image/png" href="/static/images/icons/favicon.ico" />
 
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
-    <script type="text/javascript" src="/static/javascripts/jquery.transit.min.js"></script>
-    <script type="text/javascript" src="/static/javascripts/confirm.js"></script>
+    <script src="http//ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
+    <script type="text/javascript" src="/static/src/libs/jquery.transit.min.js"></script>
+    <script type="text/javascript" src="/static/src/confirm.js"></script>
     <script type="text/javascript">
       var csrf_token = "{{csrf_token}}";
     </script>
@@ -25,7 +27,7 @@ Need to include existing templates (nav) and create templates for each step of a
     <div id='navbar'>
       <div id="nav_container">
       	<div id='logo'>
-        <img src='/static/images/logos/Logo_White.png'>
+        <img src='/static/images/logo/Logo_White.png'>
       	</div>
       </div>
     </div>
@@ -52,11 +54,7 @@ Need to include existing templates (nav) and create templates for each step of a
     
     <div id="sign-up-button"><input type='submit' class='btn submit' value="Continue"/></div>
   
- </form>
-  
-      
-      
-      
+ </form>   
       
   </body>
 </html>

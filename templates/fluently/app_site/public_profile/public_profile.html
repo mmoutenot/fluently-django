@@ -3,16 +3,18 @@
 
   <head>
     <title>Profile | Fluently</title>
-    <link rel="stylesheet" type="text/css" href="/static/stylesheets/profile.css">
-    <link rel="stylesheet" type="text/css" href="/static/javascripts/shadowbox-3.0.3/shadowbox.css" />
-    <link rel="icon" type="image/png" href="/static/images/favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="/static/style/profile.css">
+    <link rel="stylesheet" type="text/css" href="/static/style/fonts.css">
+    <link rel="stylesheet" type="text/css" href="/static/style/global_style.css">
+    <link rel="stylesheet" type="text/css" href="/static/src/libs/shadowbox-3.0.3/shadowbox.css" />
+    <link rel="icon" type="image/png" href="/static/images/icons/favicon.ico" />
 
           <script type="text/javascript">
         var csrf_token = "{{csrf_token}}";
       </script>
       <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
-      <script type="text/javascript" src="/static/javascripts/shadowbox-3.0.3/shadowbox.js"></script>
-      <script src="/static/javascripts/profile.js"></script>
+      <script type="text/javascript" src="/static/src/libs/shadowbox-3.0.3/shadowbox.js"></script>
+      <script src="/static/src/profile.js"></script>
 
   </head>
 
@@ -22,7 +24,7 @@
     <div id='navbar'>
     
 	    	<div id='logo'>
-		    	<a href="/"><img src='/static/images/logos/Logo_White.png'></a></div>
+		    	<a href="/"><img src='/static/images/logo/Logo_White.png'></a></div>
 		    
 		    <div id="nav_tagline">Finding the right SLP for your family. <a href="#">Learn more</a></div>
 		
@@ -47,17 +49,17 @@
      			
      				<h4 id="info-name">{{firstName}} {{lastName}}</h4>
      				
-     				<div class="info-line-contain"><img src="/static/images/pin.png"><h5 id="info-role">Speech-Language Pathologist</h4></div>
+     				<div class="info-line-contain"><img src="/static/images/icons/pin.png"><h5 id="info-role">Speech-Language Pathologist</h4></div>
      				
-     				<div class="info-line-contain"><img src="/static/images/globe.png"><h5 id="info-location">{{location}}</h4></div>
+     				<div class="info-line-contain"><img src="/static/images/icons/globe.png"><h5 id="info-location">{{location}}</h4></div>
      				
-     				<div class="info-line-contain"><img src="/static/images/star.png"><h5 id="info-location">Stuttering, fluency disorders</h4></div>
+     				<div class="info-line-contain"><img src="/static/images/icons/star.png"><h5 id="info-location">Stuttering, fluency disorders</h4></div>
      			
      			</div><!-- end left-info-box -->
      		
      		</div><!-- end profpic-box -->
          		
-        <a href="/space/contact/{{userUrl}}" rel="shadowbox;width=600"><div class="profile-button" id="contact-button"><img src="/static/images/lock.png">&nbsp;&nbsp;Contact {{firstName}}</div></a>
+        <a href="/space/contact/{{userUrl}}" rel="shadowbox;width=600"><div class="profile-button" id="contact-button"><img src="/static/images/icons/lock.png">&nbsp;&nbsp;Contact {{firstName}}</div></a>
 
      		  
      		  
@@ -132,7 +134,7 @@
    		
    			<ul>
    				<a href="/"><li>Home</li></a>
-   				<a href="/face/about"><li>About Us</li></a>	
+   				<a href="/about"><li>About Us</li></a>	
    		   		<a href="mailto:team@fluentlynow.com"><li>Support</li></a>
    			</ul>
    			
@@ -141,7 +143,7 @@
    		<div id="footer_right">
    		
    			<ul>
-   				<a href="#"><li>Legal</li></a>
+   				<a href="/privacy"><li>Legal</li></a>
    				<li>&copy;&nbsp;Balbus, Inc.</li>	
    		    
    		</div><!-- end footer_right -->

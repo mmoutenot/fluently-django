@@ -3,14 +3,16 @@
 
   <head>
     <title>My Profile | Fluently</title>
-    <link rel="stylesheet" type="text/css" href="/static/stylesheets/account.css">
-    <link rel="icon" type="image/png" href="/static/images/favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="/static/style/account.css">
+    <link rel="stylesheet" type="text/css" href="/static/style/fonts.css">
+    <link rel="stylesheet" type="text/css" href="/static/style/global_style.css">
+    <link rel="icon" type="image/png" href="/static/images/icons/favicon.ico" />
       
-      <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
+      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
       <script type="text/javascript" src="//api.filepicker.io/v1/filepicker.js"></script>
-      <script type="text/javascript" src="/static/javascripts/spin.min.js"></script>
-      <script type="text/javascript" src="/static/javascripts/jquery.waitforimages.min.js"></script>
-      <script src="/static/javascripts/profile.js"></script>
+      <script type="text/javascript" src="/static/src/libs/spin.min.js"></script>
+      <script type="text/javascript" src="/static/src/libs/jquery.waitforimages.min.js"></script>
+      <script src="/static/src/profile.js"></script>
       <script type="text/javascript">
       var csrf_token = "{{csrf_token}}";
     </script>
@@ -24,11 +26,9 @@
     <div id='navbar'>
     	<div id='navbar_content'>
 	    	<div id='logo'>
-		    	<a href="#"><img src='/static/images/logos/Logo_White.png'></a>
+		    	<a href="/"><img src='/static/images/logo/Logo_White.png'></a>
 		    </div>
-		    
-		
-		    
+	
     	</div> <!-- end navbar_content -->
     </div> <!-- end navbar -->
 
@@ -43,7 +43,7 @@
 	     			
 	     			<div id="change-prof-pic">
 	     			
-              <img id="change-prof-pic-btn" src="/static/images/edit.png"/>
+              <img id="change-prof-pic-btn" src="/static/images/icons/edit.png"/>
 	     			
 	     				<h5>Edit my picture</h5>
 	     			
@@ -59,8 +59,8 @@
      		</div><!-- end profile-picture-edit -->
      	
      		<ul>
-     			<a href="#"><li class="sidebar_item">Need help?</li></a>
-     			<a href="#"><li class="sidebar_item">Refer a colleague</li></a>
+     			<a href="mailto:team@fluentlynow.com?subject=Account%20Support"><li class="sidebar_item">Need help?</li></a>
+     			<a href="mailto:?subject=Check%20out%20Fluently"><li class="sidebar_item">Refer a colleague</li></a>
      		</ul>
      	
      	</div><!-- end sidebar -->
@@ -125,9 +125,9 @@
    		<div id="footer_left">
    		
    			<ul>
-   				<a href="#"><li>Home</li></a>
-   				<a href="#"><li>About Us</li></a>	
-   		   		<a href="#"><li>Support</li></a>
+   				<a href="/"><li>Home</li></a>
+   				<a href="/about"><li>About Us</li></a>	
+   		   		<a href="mailto:team@fluentlynow.com?subject=Account%20Support"><li>Support</li></a>
    			</ul>
    			
    		</div>	<!-- end footer_left -->
@@ -135,7 +135,7 @@
    		<div id="footer_right">
    		
    			<ul>
-   				<a href="#"><li>Legal</li></a>
+   				<a href="/privacy"><li>Legal</li></a>
    				<li>&copy;&nbsp;Balbus, Inc.</li>	
    		    
    		</div><!-- end footer_right -->
