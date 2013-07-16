@@ -1,0 +1,29 @@
+/* MAIN COLORS */
+/* SECONDARY COLORS */
+#holder {
+  border: 10px dashed #cccccc;
+  width: 300px;
+  min-height: 300px;
+  margin: 20px auto; }
+  #holder .hover {
+    border: 10px dashed #d2d2d2; }
+  #holder img {
+    display: block;
+    margin: 10px auto; }
+  #holder p {
+    margin: 10px;
+    font-size: 14px; }
+
+progress {
+  width: 100%; }
+
+progress:after {
+  content: '%'; }
+
+.fail {
+  background: #c00;
+  padding: 2px;
+  color: #fff; }
+
+.hidden {
+  display: none !important; }

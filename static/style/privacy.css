@@ -1,0 +1,18 @@
+body {
+	background-color: #e67b6d;
+	color: white;
+	font-family: Quicksand;}
+	
+#content {
+	width: 900px;
+	margin: 0 auto;
+	line-height: 26px;
+	text-indent: 30px;
+	font-size: 14px;
+	padding: 60px;}
+	
+	#content img{
+		width: 200px;
+		height: 62px;
+		margin-left: 280px;
+		padding: 30px;}
