@@ -157,7 +157,7 @@ body, html {
 	height: auto;;
 	z-index: 999;
 	color: #5d6976;
-	padding-bottom: 40px;
+	padding-bottom: 60px;
 	border-top: 1px solid #c8c8c8;
 	border-bottom: 1px solid #c8c8c8;}
 
@@ -184,6 +184,11 @@ body, html {
 	display: inline-block;
 	text-align: center;
 	margin-left: 60px;}
+	
+	.icon-box img:hover {
+			transform: translate(0px,-5px);
+			-ms-transform: translate(0px,-5px); /* IE 9 */
+			-webkit-transform: translate(0px,-5px); /* Safari and Chrome */}
 
 	.icon-box p{
 		font-size: 14px;
@@ -192,6 +197,21 @@ body, html {
 .icon-title {
 	font-size: 20px;
 	font-weight: 400;}
+	
+#howitworks-link {
+	font-family: Quicksand;
+	margin-top: 40px;
+	color: #5d6976;
+	text-decoration: underline;
+	text-align: center;}
+	#howitworks-link a{
+		color: #5d6976;}
+	#howitworks-link a:hover{
+		opacity: 0.7;
+		-webkit-transition: all .1s ease-in-out;
+		-moz-transition: all .1s ease-in-out;
+		-o-transition: all .1s ease-in-out;
+		transition: all .1s ease-in-out;}
 
 /* JOIN SECTION */
 
@@ -224,7 +244,7 @@ body, html {
 		.join-box h4 {
 			margin-top: 30px;
 			font-weight: 400;
-			font-size: 16px;
+			font-size: 17px;
 			line-height: 24px;}
 
 .profile-button {

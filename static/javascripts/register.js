@@ -149,15 +149,15 @@ $(document).ready(function () {
       // Collect data from certification form fields
 
       var formData = {
-        firstName: $('#account-first-name').val(),
-        lastName: $('#account-last-name').val(),
+        firstName: $('#account-firstName').val(),
+        lastName: $('#account-lastName').val(),
         email: $('#account-email').val(),
         phone: $('#account-phone').val(),
         loc: $('#account-location').val(),
         specialties: $('#account-specialties').val(),
         csrfmiddlewaretoken: csrf_token
       };
-
+      
       if (errors.length === 0) {
 
         // Send data to server, continue to submit stage

@@ -62,14 +62,14 @@ $(document).ready(function() {
     url: "/face/confirm/user/",
     data: data,
     success: function(dataJSON) {
-      if (dataJSON["confirmed"]) {
-        console.log("what")
-        $('#register-account-form').load('confirm_blocks #already-confirmed');
-      } else if (!dataJSON["success"]) {
-        console.log(dataJSON)
+      if (dataJSON.status === "success") {
+        $('#account-email').val(dataJSON['email']);
+      } else {
         window.location.replace("/face/");
       }
-      $('#account-email').val(dataJSON['email']);
+      if (dataJSON.confirmed) {
+        $('#register-account-form').load('confirm_blocks #already-confirmed');
+      } 
     }
   });
 

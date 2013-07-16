@@ -6,7 +6,7 @@ from django.http import HttpResponseRedirect
 from django.template import Context
 from django.template.loader import get_template
 from django.core.context_processors import csrf
-from models import UserProfile
+from models import UserProfile, StudentRequest
 from utils import mandrill_template
 import json
 import requests
@@ -26,9 +26,17 @@ def signin(request):
 def about(request):
     return render(request, 'face/about.html')
 
+# Display how it works page  
+def how(request):
+    return render(request, 'face/how.html')
+
 # Display splash page
 def splash(request):
     return render(request, 'face/splash.html')
+
+# Display privacy policy page
+def privacy(request):
+    return render(request, 'face/privacy.html')
 
 # Check validity of signin info from client via request
 # Redirect to space or send error
@@ -43,7 +51,7 @@ def handle_signin(request):
         print user
         if user is not None:
             login(request, user)
-            return redirect('/space/')
+            return redirect('/space/profile')
             print 'user logged in'
         else:
             print 'invalid user'
@@ -71,26 +79,18 @@ def student_account_handler(request):
         needs = request.POST.get('needs', "")
         print email
         print name
-        if User.objects.filter(username=email).count():
-            print User.objects.filter(username=email)[0].userprofile.emailed
+        if StudentRequest.objects.filter(email=email).count():
             response_json = {
                 "status": "success",
-                "emailed": User.objects.filter(username=email)[0]
-                           .userprofile.emailed
+                "emailed": True
             }
         else:
-            u = User.objects.create(username=email)
-            u.set_unusable_password()
-            u.userprofile.user_type = 'S'
-            u.userprofile.join_id = str(uuid.uuid1())
-            u.userprofile.name = name
-            u.userprofile.location = location 
-            u.userprofile.needs = needs
-            u.userprofile.emailed = True
-            alphnum = string.ascii_uppercase + string.digits
-            u.userprofile.user_url = ''.join(choice(alphnum) for x in range(6))
-            u.save()
-            u.userprofile.save()
+            r = StudentRequest.objects.create(email=email)
+            r.requestType = 'G'
+            r.name = name
+            r.location = location
+            r.needs = needs        
+            r.save()
             mandrill_url = ("https://mandrillapp.com/api/1.0/messages/"
                             "send-template.json")
             template_content_ceo = [
@@ -100,7 +100,7 @@ def student_account_handler(request):
                 { "name": "needs", "content": needs }]
             mandrill_template_ceo = mandrill_template("student-request", 
                                                       template_content_ceo, 
-                                                      "dylan@fluentlynow.com", 
+                                                      "team@fluentlynow.com", 
                                                       "Jack McDermott", 
                                                       "student-request")
             requests.post(mandrill_url, data=mandrill_template_ceo)

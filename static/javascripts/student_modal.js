@@ -4,7 +4,6 @@ var INVALID_EMAIL = "Please provide valid email.";
 var EMAIL_TAKEN = "Email is already in use.";
 var SERVER_ERROR = "Server error. Please try again.";
 
-
 // Display all error strings from *errors array in *invalid-wrap element
 
 function displayErrors(errors) {
@@ -18,6 +17,9 @@ function displayErrors(errors) {
 }
 
 $(document).ready(function () {
+
+  $('#register-student-blocks-wrapper').load(
+    'student_blocks #signup-block');
 
   // Disable submit button when a form field is blank
 
@@ -35,7 +37,7 @@ $(document).ready(function () {
 
   // On submit
   
-  $('.account-form').submit(function () {
+  $('.account-form').live('submit', function () {
 
     console.log("submit");
 
@@ -80,7 +82,8 @@ $(document).ready(function () {
               $('#student-email').val('');
               errors.push(EMAIL_TAKEN);
             } else {
-              $('#student-wrap').load('student_blocks #emailed-block');
+              $('#register-student-blocks-wrapper').load(
+                'student_blocks #thankyou-block');
             }
           } else {
             $('#student-email').val('');

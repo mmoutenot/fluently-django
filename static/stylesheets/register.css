@@ -263,9 +263,10 @@ body, html {
           border-radius: 50%;
           padding: 0;
           margin: 0 auto;
-          text-align: center; 
-         }
-          
+          text-align: center;} 
+            #container #steps ul li h2.active {
+              background: #da6459;
+              box-shadow: 0 0 3px 1px #d2d2d2; }
         #container #steps ul li label {
           margin-top: 5px;
           display: block;

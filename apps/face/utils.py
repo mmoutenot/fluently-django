@@ -15,7 +15,7 @@ def mandrill_template(template_name, template_content, recipient_email,
     "template_name": template_name,
     "template_content": template_content,
     "message": {
-      "from_email": "jack@fluentlynow.com",
+      "from_email": "team@fluentlynow.com",
       "from_name": "Fluently",
       "to": [
         {
@@ -24,7 +24,7 @@ def mandrill_template(template_name, template_content, recipient_email,
         }
       ],
       "headers": {
-        "Reply-To": "jack@fluentlynow.com"
+        "Reply-To": "team@fluentlynow.com"
       },
       "important": False,
       "track_opens": None,

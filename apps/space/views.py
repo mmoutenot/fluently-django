@@ -6,7 +6,8 @@ from django.contrib.auth.models import User, Group
 from django.template import Context
 from django.core.context_processors import csrf
 from django.template.loader import get_template
-from apps.face.models import UserProfile
+from apps.face.models import UserProfile, StudentRequest
+from utils import mandrill_template
 
 # general python packages
 import uuid
@@ -172,6 +173,7 @@ def public_profile(request, user_url):
         certifications = u.userprofile.certifications
         experience = u.userprofile.experience
         therapyApproach = u.userprofile.therapy_approach
+        userUrl = u.userprofile.user_url
         context = Context({
             "firstName": firstName,
             "lastName": lastName,
@@ -179,7 +181,8 @@ def public_profile(request, user_url):
             "aboutMe": aboutMe,
             "certifications": certifications,
             "experience": experience,
-            "therapyApproach": therapyApproach
+            "therapyApproach": therapyApproach,
+            "userUrl": userUrl
         })
         print aboutMe
         context.update(csrf(request))
@@ -187,20 +190,76 @@ def public_profile(request, user_url):
     except:
         return redirect('/face/')
 
+def contact_student_blocks(request):
+    return render(request, 'space/contact_student_blocks.html')
+
 def contact(request, user_url):
     try:
         u = UserProfile.objects.filter(user_url=user_url)[0].user
         template = get_template('space/contact_student_modal.html')
         firstName = u.userprofile.first_name
         lastName = u.userprofile.last_name
+        slp = u.username
+        print firstName
+        print lastName
         context = Context({
             "firstName": firstName,
-            "lastName": lastName
+            "lastName": lastName,
+            "slp": slp
         })
         context.update(csrf(request))
         return HttpResponse(template.render(context))
     except:
         return redirect('/face/')
+
+def contact_SLP(request):
+    response_json = {"status": "fail"}
+    if request.POST:
+        email = request.POST.get('email', "")
+        name = request.POST.get('name', "")
+        location = request.POST.get('loc', "")
+        needs = request.POST.get('needs', "")
+        slp = request.POST.get('slp', "")
+        if StudentRequest.objects.filter(email=email, slp=slp).count():
+            response_json = {
+                "status": "success",
+                "emailed": True
+            }
+        else:
+            r = StudentRequest.objects.create(email=email)
+            r.name = name
+            r.location = location
+            r.needs = needs
+            r.slp = slp
+            r.requestType = 'S'
+            r.save()
+            mandrill_url = ("https://mandrillapp.com/api/1.0/messages/"
+                            "send-template.json")
+            template_content_ceo = [
+                { "name": "name", "content": name },
+                { "name": "email", "content": email },
+                { "name": "location", "content": location },
+                { "name": "needs", "content": needs}, 
+                { "name": "slp", "content": slp }]
+            mandrill_template_ceo = mandrill_template("student-SLP-request", 
+                                                      template_content_ceo, 
+                                                      "dylan@fluentlynow.com", 
+                                                      "Jack McDermott", 
+                                                      "student-SLP-request")
+            requests.post(mandrill_url, data=mandrill_template_ceo)
+            template_content_user = [
+                {"name": "name", "content": name }]
+            mandrill_template_user = mandrill_template("student-app-received",
+                                                   template_content_user,
+                                                   email,
+                                                   name,
+                                                   "student-app-received")
+            requests.post(mandrill_url, data=mandrill_template_user) 
+            response_json = { 
+                "status": "success",
+                "emailed": False
+            }
+    return HttpResponse(json.dumps(response_json), mimetype="application/json") 
 
 def profile(request):
     u = request.user
@@ -221,6 +280,7 @@ def profile(request):
     certifications = u.userprofile.certifications
     experience = u.userprofile.experience
     therapyApproach = u.userprofile.therapy_approach
+    userUrl = u.userprofile.user_url
     context = Context({
         "firstName": firstName,
         "lastName": lastName,
@@ -228,7 +288,8 @@ def profile(request):
         "aboutMe": aboutMe,
         "certifications": certifications,
         "experience": experience,
-        "therapyApproach": therapyApproach
+        "therapyApproach": therapyApproach,
+        "userUrl": userUrl
     })
     context.update(csrf(request))
     return HttpResponse(template.render(context))
