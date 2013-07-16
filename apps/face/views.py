@@ -221,6 +221,8 @@ def register_account_handler(request):
         alphnum = string.ascii_uppercase + string.digits
         u.userprofile.user_url = ''.join(choice(alphnum) for x in range(6))
         u.userprofile.join_id = str(uuid.uuid1())
+        joinlink = 'http://fluentlynow.com/face/confirm?id='
+        joinlink = joinlink + u.userprofile.join_id
         u.userprofile.first_name = firstName
         u.userprofile.last_name = lastName
         u.userprofile.phone = phone
@@ -238,7 +240,8 @@ def register_account_handler(request):
             { "name": "email", "content": email },
             { "name": "phone", "content": phone },
             { "name": "location", "content": location },
-            { "name": "specialties", "content": specialties }]
+            { "name": "specialties", "content": specialties },
+            { "name": "joinlink", "content": joinlink}]
         mandrill_template_ceo = mandrill_template("provider-request", 
                                                   template_content_ceo, 
                                                   "team@fluentlynow.com", 
