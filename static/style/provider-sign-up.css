@@ -1,0 +1,230 @@
+input.text_input {
+  border: 1px solid #d2d2d2;
+  background: white;
+  padding: 3px;
+  width: 250px;
+  height: 32px;
+  line-height: 35px;
+  font-size: 16px;
+  font-family: Signika;
+  border-radius: 3px;
+  color: #5d6976;
+  text-indent: 6px; 
+  }
+
+
+textarea {
+  border: 1px solid #d2d2d2;
+  background: white;
+  padding: 5px;
+  line-height: 22px;
+  font-size: 16px; }
+ 
+
+.btn {
+  text-decoration: none;
+  width: 143px;
+  height: 41px;
+  background: #8ec0ed;
+  display: inline-block;
+  text-align: center;
+  margin: 0 auto;
+  position: relative;
+  color: white;
+  font-size: 18px;
+  text-transform: uppercase;
+  cursor: pointer;
+  line-height: 41px;
+  box-shadow: none;
+  border: none;}
+  .btn:focus {
+    outline: none;}
+  .btn:hover {
+    background: #62a7e6; }
+
+#signup-button {
+	position: relative;
+	margin: 0 auto;
+	width: 200px;
+	text-align: center;
+	margin-top: 30px;
+	padding-bottom: 10px;
+}
+
+
+footer {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  height: 200px;
+  background: #5d6976; }
+  footer:before {
+    padding-top: 300px; }
+
+a {
+  text-decoration: none; }
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0; }
+  ul li {
+    list-style: none;
+    padding: 0;
+    margin: 0; }
+
+body, html {
+  background: #F2F2F2; }
+
+#container {
+  width: 600px;
+  position: relative;
+  margin: 0 auto;
+  padding: 20px;
+  top: 130px;
+  border: 1px solid #d2d2d2;
+  background: white; 
+  }
+  #container #steps {
+    width: 700px;
+    height: 90px;
+    position: relative;
+    top: 0;
+    margin: 0 auto; 
+    }
+    #container #steps #line {
+      width: 370px;
+      height: 2px;
+      border-bottom: 2px solid #d2d2d2;
+      position: absolute;
+      left: 50%;
+      margin-left: -240px;
+      top: 15px; }
+    #container #steps ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      width: 100%;
+      z-index: 2;
+      position: relative; }
+      #container #steps ul li {
+        list-style: none;
+        display: inline-block;
+        text-align: center;
+        width: 25%;
+        float: left;
+        margin-left: 20px; }
+        #container #steps ul li h2 {
+          width: 35px;
+          height: 35px;
+          background: #d2d2d2;
+          color: white;
+          font-size: 20px;
+          font-weight: 300;
+          line-height: 35px;
+          border-radius: 50%;
+          padding: 0;
+          margin: 0 auto;
+          text-align: center; }
+          #container #steps ul li h2.active {
+            background: #da6459;
+            box-shadow: 0 0 3px 1px #d2d2d2; } 
+        #container #steps ul li label {
+          margin-top: 5px;
+          display: block;
+          text-transform: uppercase;
+          font-size: 12px;
+          position: relative;
+          width: 100%; 
+          opacity: 0.7;}
+
+form {
+  *zoom: 1;
+  min-height: 150px; }
+  form:before, form:after {
+    content: " ";
+    display: table; }
+  form:after {
+    clear: both; }
+  form input {
+    margin: 20px auto; }
+    form input[type='text'] {
+      display: block;
+      width: 300px; }
+      form input[type='text'].input_wide {
+        width: 500px; }
+    form input[type='password'] {
+      display: block;
+      width: 300px; }
+      form input[type='password'].input_wide {
+        width: 500px; }
+    form input[type='checkbox'] {
+      display: inline-block; }
+  form textarea {
+    font-family: Signika;
+    width: 500px;
+    height: 130px;
+    display: block;
+    resize: none;
+    margin: 20px auto; }
+  form #next {
+    position: relative;
+    float: right;
+    display: block; }
+  form #back {
+    background: none;
+    color: #5d6976; }
+  form #apply {
+    position: relative;
+    float: none;
+    display: block;
+    margin: 0 auto; }
+  form #terms_box {
+    margin: 0 auto;
+    display: block;
+    width: 480px;
+    text-align: center;
+    font-size: 12px;
+    font-style: italic;
+    font-weight: 100;
+     }
+
+    form #terms_box label {
+      text-align: left;
+      margin-right: 10px; }
+      form #terms_box a {
+        color: #8ec0ed; }
+  form h3 {
+    font-size: 20px;
+    text-align: center;
+    width: 600px;
+    display: block;
+    margin: 0 auto; }
+    
+#signup-title {
+	text-align: center;
+	padding-bottom: 14px;
+	text-transform: uppercase;
+	font-family: Quicksand;
+	font-weight: 500;
+	
+}
+
+.signup-block {
+	margin-top: -40px;
+	
+}
+
+#confirm_container {
+	width: 440px;
+	text-align: center;
+	margin: 0 auto;}
+	#confirm_container a {
+		color: #8ec0ed;
+	}
+
+#invalid-wrap {
+	width: 300px;
+	margin: 0 auto;
+	text-align: center;
+}
