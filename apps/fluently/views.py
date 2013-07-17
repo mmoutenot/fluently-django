@@ -10,8 +10,8 @@ from utils import mandrill_template
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 from django.http import HttpResponseRedirect
-import string
 from random import choice
+import string
 import uuid
 import sys
 import time
@@ -20,29 +20,190 @@ import requests
 import json
 import collections
 
+###               
+###               
+### TEMPLATE URLS 
+###               
+###               
+
+# Marketing Site
+splash_url = 'fluently/marketing_site/splash.html'
+about_url = 'fluently/marketing_site/about.html'
+how_it_works_url = 'fluently/marketing_site/how-it-works.html'
+privacy_url = 'fluently/marketing_site/privacy.html'
+
+# App Site
+sign_in_url = 'fluently/app_site/sign-in.html'
+
+# App Site # Provider Signup
+provider_sign_up_url = 'fluently/app_site/provider_sign_up/provider-sign-up.html'
+provider_sign_up_url = 'fluently/app_site/provider_sign_up/provider-sign-up-blocks.html'
+provider_confirm_url = 'fluently/app_site/provider_signup/provider-confirm.html'
+provider_confirm_blocks_url = 'fluently/app_site/provider_signup/provider-confirm-blocks.html'
+provider_confirm_url_prefix = 'http://fluentlynow.com/confirm?id='
+
+# App Site # Consumer Request
+consumer_request_url = 'fluently/app_site/consumer_request/consumer-request.html'
+consumer_request_blocks_url = 'fluently/app_site/consumer_request/consumer-request-blocks.html'
+
+# App Site # Personal Account
+account_url = 'fluently/app_site/personal_account/account.html'
+default_profile_pic_url = 'static/images/elements/default-profile.jpg'
+
+# App Site # Public Profile
+public_profile_url = 'fluently/app_site/public_profile/public-profile.html'
+
+# App Site # Public Profile # Consumer Contact
+consumer_contact_url = 'fluently/app_site/public_profile/consumer-contact.html'
+consumer_contact_blocks_url = 'fluently/app_site/public_profile/consumer-contact-blocks.html'
+
+###
+###                        
+### PAGE DISPLAY FUNCTIONS 
+###                        
+###
+
 # Display splash page
 def splash(request):
-    return render(request, 'fluently/marketing_site/splash.html')
+    return render(request, splash_url)
 
 # Display signin page  
 def signin(request):
-    return render(request, 'fluently/app_site/sign-in.html')
+    return render(request, sign_in_url)
 
 # Display about page  
 def about(request):
-    return render(request, 'fluently/marketing_site/about.html')
+    return render(request, about_url)
 
 # Display how it works page  
 def how_it_works(request):
-    return render(request, 'fluently/marketing_site/how-it-works.html')
+    return render(request, how_it_works_url)
 
 # Display privacy policy page
 def privacy(request):
-    return render(request, 'fluently/marketing_site/privacy.html')
+    return render(request, privacy)
 
-# Check validity of signin info from client via request
-# Redirect to space or send error
-def handle_sign_in(request):
+# Display provider sign up page
+def provider_sign_up(request):
+    return render(request, provider_sign_up_url)
+
+# Display consumer request modal page
+def consumer_request(request):
+    return render(request, consumer_request_url)
+
+# Display consumer request blocks
+def consumer_request_blocks(request):
+    return render(request, consumer_request_blocks_url)
+
+# Display provider sign up blocks
+def provider_sign_up_blocks(request):
+    return render(request, provider_sign_up_blocks_url)
+
+# Display provider confirm password page
+def provider_confirm(request):
+    return render(request, provider_confirm_url)
+
+# Display provider confirm blocks
+def provider_confirm_blocks(request):
+    return render(request, provider_confirm_blocks_url)
+
+# Display account page
+def account(request):
+    u = request.user
+    template = get_template(account_url)
+    if not u.is_authenticated():
+        return redirect('/')
+    if u.username == "jack@fluentlynow.com":
+        print "CEO will get..."
+        context = Context({
+            "users": usersContextList()
+        })
+        context.update(csrf(request))
+        return HttpResponse(template.render(context))
+    firstName = u.userprofile.first_name
+    lastName = u.userprofile.last_name
+    location = u.userprofile.location
+    aboutMe = u.userprofile.about_me
+    certifications = u.userprofile.certifications
+    experience = u.userprofile.experience
+    therapyApproach = u.userprofile.therapy_approach
+    userUrl = u.userprofile.user_url
+    context = Context({
+        "firstName": firstName,
+        "lastName": lastName,
+        "location": location,
+        "aboutMe": aboutMe,
+        "certifications": certifications,
+        "experience": experience,
+        "therapyApproach": therapyApproach,
+        "userUrl": userUrl
+    })
+    context.update(csrf(request))
+    return HttpResponse(template.render(context))
+
+# Display consumer contact blocks
+def consumer_contact_blocks(request):
+    return render(request, consumer_contact_blocks_url)
+
+# Display consumer contact page
+def consumer_contact(request, user_url):
+    try:
+        u = UserProfile.objects.filter(user_url=user_url)[0].user
+        template = get_template(consumer_contact_url)
+        firstName = u.userprofile.first_name
+        lastName = u.userprofile.last_name
+        slp = u.username
+        print firstName
+        print lastName
+        context = Context({
+            "firstName": firstName,
+            "lastName": lastName,
+            "slp": slp
+        })
+        context.update(csrf(request))
+        return HttpResponse(template.render(context))
+    except:
+        return redirect('/')
+
+# Display public profile page for provider based on given url
+def public_profile(request, user_url):
+    print "pub"
+    try:
+        u = UserProfile.objects.filter(user_url=user_url)[0].user  
+        template = get_template(public_profile_url)
+        firstName = u.userprofile.first_name
+        lastName = u.userprofile.last_name
+        location = u.userprofile.location
+        aboutMe = u.userprofile.about_me
+        certifications = u.userprofile.certifications
+        experience = u.userprofile.experience
+        therapyApproach = u.userprofile.therapy_approach
+        userUrl = u.userprofile.user_url
+        context = Context({
+            "firstName": firstName,
+            "lastName": lastName,
+            "location": location,
+            "aboutMe": aboutMe,
+            "certifications": certifications,
+            "experience": experience,
+            "therapyApproach": therapyApproach,
+            "userUrl": userUrl
+        })
+        print aboutMe
+        context.update(csrf(request))
+        return HttpResponse(template.render(context))
+    except:
+        return redirect('/')
+
+###        
+###          
+### HANDLERS 
+###          
+###
+
+# Check validity of sign in info from client via request
+# Redirect to account or send error
+def sign_in_handler(request):
     email = password = ''
     response_json = {"status": "fail"}
     if request.POST:
@@ -53,12 +214,12 @@ def handle_sign_in(request):
         print user
         if user is not None:
             login(request, user)
-            return redirect('/fluently/public_profile/public_profile.html')
+            return redirect(account_url)
             print 'user logged in'
         else:
             print 'invalid user'
             error_msg = "Invalid username or password. Please try again."
-            template = get_template('fluently/sign_in.html')
+            template = get_template('sign_in_url')
             context = Context({"error_msg": error_msg})
             context.update(csrf(request))
             return HttpResponse(template.render(context))
@@ -66,13 +227,9 @@ def handle_sign_in(request):
         return HttpResponse(json.dumps(response_json), 
                             mimetype="application/json") 
 
-# Display provider sign up page
-def provider_sign_up(request):
-    return render(request, 'face/provider-signup.html')
-
-# Request with new student info from register page 
-# Save student in database, send emails to CEO and student 
-def student_account_handler(request):
+# Request with new consumer info from consumer request page 
+# Save consumer in database, send emails to CEO and consumer 
+def consumer_request_handler(request):
     response_json = {"status": "fail"}
     if request.POST:
         email = request.POST.get('email', "")
@@ -120,29 +277,9 @@ def student_account_handler(request):
             }
     return HttpResponse(json.dumps(response_json), mimetype="application/json") 
 
-# Display register student page
-def register_student(request):
-    return render(request, 'face/register_student_modal.html')
-
-# Display register student blocks
-def register_student_blocks(request):
-    return render(request, 'face/register_student_blocks.html')
-
-# Display provider sign up blocks
-def provider_sign_up_blocks(request):
-    return render(request, 'fluently/app_site/provider_signup/provider_sign_up_blocks.html')
-
-# Display confirm password page
-def confirm(request):
-    return render(request, 'face/confirm.html')
-
-# Display confirm blocks
-def confirm_blocks(request):
-    return render(request, 'face/confirm_blocks.html')
-
-# Request with user's join id
-# Response with matching user's email if unconfirmed or redirect to signin
-def confirm_user(request):
+# Request with provider's join id
+# Response with matching user's email if unconfirmed or redirect to sign in
+def provider_confirm_id(request):
     response_json = {"status": "fail"}
     if request.POST:
         join_id = request.POST.get('join_id', "")
@@ -166,8 +303,8 @@ def confirm_user(request):
                mimetype="application/json")
 
 # Request with email and password
-# Set user's password, login and redirect to space
-def confirm_password(request):
+# Set provider's password, login and redirect to space
+def provider_confirm_password(request):
     response_json = {"status": "fail"}
     if request.POST:
         email = request.POST.get('email', "")
@@ -184,8 +321,8 @@ def confirm_password(request):
     return HttpResponse(json.dumps(response_json), mimetype="application/json")
         
 # Request with email
-# Response with whether matching user has been sent a join email
-def register_emailed(request):
+# Response with whether matching provider has been sent a join email
+def provider_sign_up_emailed(request):
     response_json = {"status": "fail"}
     if request.POST:
         email = request.POST.get('email', "")
@@ -203,9 +340,9 @@ def register_emailed(request):
     print json.dumps(response_json)
     return HttpResponse(json.dumps(response_json), mimetype="application/json") 
 
-# Request with new user info from register page 
-# Save user in database, send emails to CEO and user 
-def register_account_handler(request):
+# Request with new provider info from sign up page 
+# Save provider in database, send emails to CEO and provider 
+def provider_sign_up_handler(request):
     print "handling"
     response_json = {"status": "fail"}
     if request.POST:
@@ -223,14 +360,13 @@ def register_account_handler(request):
         alphnum = string.ascii_uppercase + string.digits
         u.userprofile.user_url = ''.join(choice(alphnum) for x in range(6))
         u.userprofile.join_id = str(uuid.uuid1())
-        joinlink = 'http://fluentlynow.com/face/confirm?id='
-        joinlink = joinlink + u.userprofile.join_id
+        provider_confirm_link = provider_confirm_url_prefix + u.userprofile.join_id
         u.userprofile.first_name = firstName
         u.userprofile.last_name = lastName
         u.userprofile.phone = phone
         u.userprofile.location = location 
         u.userprofile.specialties = specialties
-        u.userprofile.pic_url = "/static/images/default_profile.jpg"
+        u.userprofile.pic_url = default_profile_pic_url
         u.userprofile.emailed = True
         u.save()
         u.userprofile.save()
@@ -243,7 +379,7 @@ def register_account_handler(request):
             { "name": "phone", "content": phone },
             { "name": "location", "content": location },
             { "name": "specialties", "content": specialties },
-            { "name": "joinlink", "content": joinlink}]
+            { "name": "joinlink", "content": provider_confirm_link}] 
         mandrill_template_ceo = mandrill_template("provider-request", 
                                                   template_content_ceo, 
                                                   "team@fluentlynow.com", 
@@ -261,30 +397,12 @@ def register_account_handler(request):
         response_json = {"status": "success"}
     return HttpResponse(json.dumps(response_json), mimetype="application/json")
 
-def usersContextList():
-    keyorder = {k:v for v,k in enumerate(
-        ['id', 'name', 'email', 'phone', 'location', 'specialties']
-    )}
-    users = User.objects.all()
-    usersContextList = []
-    for user in users:
-        userDict = {}
-        userDict['specialties'] = user.userprofile.specialties
-        userDict['location'] = user.userprofile.location
-        userDict['phone'] = user.userprofile.phone
-        userDict['email'] = user.username
-        userDict['name'] = user.userprofile.name
-        userDict['id'] = user.pk
-        dictItems = sorted(userDict.items(), key=lambda i:keyorder.get(i[0]))
-        userDict = collections.OrderedDict(dictItems)
-        usersContextList.append(userDict)
-    return usersContextList
-
+# Get posted provider profile info and save to database
 def save_profile(request):
     u = request.user
     print u
     if not u.is_authenticated():
-        return redirect('/face/')
+        return redirect('/')
     response_json = {
         "status": "fail",
     }
@@ -317,58 +435,11 @@ def save_profile(request):
         }
     return HttpResponse(json.dumps(response_json), mimetype="application/json")
 
-def public_profile(request, user_url):
-    print "pub"
-    try:
-        u = UserProfile.objects.filter(user_url=user_url)[0].user  
-        template = get_template('space/public_profile.html')
-        firstName = u.userprofile.first_name
-        lastName = u.userprofile.last_name
-        location = u.userprofile.location
-        aboutMe = u.userprofile.about_me
-        certifications = u.userprofile.certifications
-        experience = u.userprofile.experience
-        therapyApproach = u.userprofile.therapy_approach
-        userUrl = u.userprofile.user_url
-        context = Context({
-            "firstName": firstName,
-            "lastName": lastName,
-            "location": location,
-            "aboutMe": aboutMe,
-            "certifications": certifications,
-            "experience": experience,
-            "therapyApproach": therapyApproach,
-            "userUrl": userUrl
-        })
-        print aboutMe
-        context.update(csrf(request))
-        return HttpResponse(template.render(context))
-    except:
-        return redirect('/face/')
 
-def contact_student_blocks(request):
-    return render(request, 'space/contact_student_blocks.html')
 
-def contact(request, user_url):
-    try:
-        u = UserProfile.objects.filter(user_url=user_url)[0].user
-        template = get_template('space/contact_student_modal.html')
-        firstName = u.userprofile.first_name
-        lastName = u.userprofile.last_name
-        slp = u.username
-        print firstName
-        print lastName
-        context = Context({
-            "firstName": firstName,
-            "lastName": lastName,
-            "slp": slp
-        })
-        context.update(csrf(request))
-        return HttpResponse(template.render(context))
-    except:
-        return redirect('/face/')
-
-def contact_SLP(request):
+# Get posted consumer contact info
+# Send emails to CEO and consumer
+def consumer_contact_handler(request):
     response_json = {"status": "fail"}
     if request.POST:
         email = request.POST.get('email', "")
@@ -417,40 +488,10 @@ def contact_SLP(request):
             }
     return HttpResponse(json.dumps(response_json), mimetype="application/json") 
 
-def profile(request):
-    u = request.user
-    template = get_template('space/profile.html')
-    if not u.is_authenticated():
-        return redirect('/face/')
-    if u.username == "jack@fluentlynow.com":
-        print "CEO will get..."
-        context = Context({
-            "users": usersContextList()
-        })
-        context.update(csrf(request))
-        return HttpResponse(template.render(context))
-    firstName = u.userprofile.first_name
-    lastName = u.userprofile.last_name
-    location = u.userprofile.location
-    aboutMe = u.userprofile.about_me
-    certifications = u.userprofile.certifications
-    experience = u.userprofile.experience
-    therapyApproach = u.userprofile.therapy_approach
-    userUrl = u.userprofile.user_url
-    context = Context({
-        "firstName": firstName,
-        "lastName": lastName,
-        "location": location,
-        "aboutMe": aboutMe,
-        "certifications": certifications,
-        "experience": experience,
-        "therapyApproach": therapyApproach,
-        "userUrl": userUrl
-    })
-    context.update(csrf(request))
-    return HttpResponse(template.render(context))
 
-def profile_picture(request):
+
+# Get or update profile picture of logged in provider   
+def profile_picture_handler(request):
     print "profile picture"
     response_json = {"status": "fail"}
     u = request.user
@@ -465,26 +506,23 @@ def profile_picture(request):
                              "pic_url": u.userprofile.pic_url}
     return HttpResponse(json.dumps(response_json), mimetype="application/json")
 
-def account(request):
-  u = request.user
-  if not u.is_authenticated():
-    return redirect('/')
-  if not u.userprofile.confirmed:
-    return render(request, 'space/unconfirmed.html')
-  else:
-    try:
-      other_users = Group.objects.get(name=u.userprofile.company).user_set.exclude(username=u.username)
-      active_users = other_users.filter(userprofile__confirmed=True)
-      invited_users = other_users.filter(userprofile__confirmed=False)
-      active_usernames = [n[0] for n in active_users.values_list('username')]
-      invited_usernames = [n[0] for n in invited_users.values_list('username')]
-      print "printing active and invited"
-      print active_usernames
-      print invited_usernames
-      template = get_template('space/account.html')
-      context = Context({"invited_users":invited_users})
-      context.update(csrf(request))
-      return HttpResponse(template.render(context))
-    except:
-      return render(request, 'space/account.html')
-
+'''    
+def usersContextList():
+    keyorder = {k:v for v,k in enumerate(
+        ['id', 'name', 'email', 'phone', 'location', 'specialties']
+    )}
+    users = User.objects.all()
+    usersContextList = []
+    for user in users:
+        userDict = {}
+        userDict['specialties'] = user.userprofile.specialties
+        userDict['location'] = user.userprofile.location
+        userDict['phone'] = user.userprofile.phone
+        userDict['email'] = user.username
+        userDict['name'] = user.userprofile.name
+        userDict['id'] = user.pk
+        dictItems = sorted(userDict.items(), key=lambda i:keyorder.get(i[0]))
+        userDict = collections.OrderedDict(dictItems)
+        usersContextList.append(userDict)
+    return usersContextList
+'''
