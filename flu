@@ -1,0 +1,3 @@
+#!/bin/bash
+sqlite3 fluently < clearTables
+python manage.py runserver

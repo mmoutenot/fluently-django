@@ -1,0 +1,3 @@
+delete from auth_user;
+delete from fluently_userprofile;
+delete from fluently_studentrequest;

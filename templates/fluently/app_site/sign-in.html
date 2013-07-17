@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title>Fluently</title>
+    <link rel="stylesheet" type="text/css" href="/static/style/signin.css">
+    <link rel="stylesheet" type="text/css" href="/static/style/fonts.css">
+    <link rel="stylesheet" type="text/css" href="/static/style/global_style.css">
+    <link rel="icon" type="image/png" href="/static/images/icons/favicon.ico" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
+
+  </head>
+
+  <body>
+  
+  	<div id="go_back">
+ 	
+ 		<a href="/">&larr; &nbsp;Back to Homepage</a>
+ 	
+ 	</div>
+  
+   <!--SIGN-IN FORM -->
+  
+  <div id="container">
+  
+  	<div id="top_logo_bar">
+  	
+  		<img src="/static/images/logos/Logo_white.png">
+  		
+  	</div><!-- End top_logo_bar -->
+  	
+  	<div id="login_container">
+  	
+  		<form action="/face/handle_signin/" method="post">
+  		
+  			{% csrf_token %}
+  			
+  			<input class="text_inputs" id="signin_email" name="signin_email" type="text" placeholder="Email">
+  			
+  			<input class="text_inputs" id="signin_password" name="signin_password" type="password" placeholder="Password">
+
+        <div id="error-msg">{{ error_msg }}</div>
+  			
+  			<input id="login_submit" type="submit" value="Sign-in" style="display: inline-block;">
+  			
+  		</form>	
+  		
+  		<div id="forgot">Forgot password?</div>
+  	
+  	</div><!-- End login_container -->	
+  
+  
+  </div> <!-- End container -->
+  
+
+  <!--FOOTBAR -->
+  
+    <div id='footbar'>
+		 <div id='footbar_content'>
+		 <a href="/face/register/">Don't have an account? &nbsp;&nbsp;Sign-up</a>  
+    	</div> <!-- end footbar_content -->
+    </div> <!-- end footbar -->
+
+  </body>
+</html>
