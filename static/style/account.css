@@ -197,7 +197,6 @@
 #prof-pic {
 	height: 220px;
 	width: 200px;
-	background-image: url("/static/images/default.jpg");
 	margin: 0 auto;
 	margin-top: 28px;
 	border: 7px solid white;}	

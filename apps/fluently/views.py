@@ -36,8 +36,8 @@ privacy_url = 'fluently/marketing_site/privacy.html'
 sign_in_url = 'fluently/app_site/sign-in.html'
 
 # App Site # Provider Signup
-provider_sign_up_url = 'fluently/app_site/provider_sign_up/provider-sign-up.html'
-provider_sign_up_url = 'fluently/app_site/provider_sign_up/provider-sign-up-blocks.html'
+provider_sign_up_url = 'fluently/app_site/provider_signup/provider-sign-up.html'
+provider_sign_up_blocks_url = 'fluently/app_site/provider_signup/provider-sign-up-blocks.html'
 provider_confirm_url = 'fluently/app_site/provider_signup/provider-confirm.html'
 provider_confirm_blocks_url = 'fluently/app_site/provider_signup/provider-confirm-blocks.html'
 provider_confirm_url_prefix = 'http://fluentlynow.com/confirm?id='
@@ -48,14 +48,14 @@ consumer_request_blocks_url = 'fluently/app_site/consumer_request/consumer-reque
 
 # App Site # Personal Account
 account_url = 'fluently/app_site/personal_account/account.html'
-default_profile_pic_url = 'static/images/elements/default-profile.jpg'
+default_profile_pic_url = '/static/images/elements/default-profile.jpg'
 
 # App Site # Public Profile
 public_profile_url = 'fluently/app_site/public_profile/public-profile.html'
 
 # App Site # Public Profile # Consumer Contact
-consumer_contact_url = 'fluently/app_site/public_profile/consumer-contact.html'
-consumer_contact_blocks_url = 'fluently/app_site/public_profile/consumer-contact-blocks.html'
+consumer_contact_url = 'fluently/app_site/public_profile/consumer_contact/consumer-contact.html'
+consumer_contact_blocks_url = 'fluently/app_site/public_profile/consumer_contact/consumer-contact-blocks.html'
 
 ###
 ###                        
@@ -68,7 +68,7 @@ def splash(request):
     return render(request, splash_url)
 
 # Display signin page  
-def signin(request):
+def sign_in(request):
     return render(request, sign_in_url)
 
 # Display about page  
@@ -81,7 +81,7 @@ def how_it_works(request):
 
 # Display privacy policy page
 def privacy(request):
-    return render(request, privacy)
+    return render(request, privacy_url)
 
 # Display provider sign up page
 def provider_sign_up(request):
@@ -142,28 +142,28 @@ def account(request):
     return HttpResponse(template.render(context))
 
 # Display consumer contact blocks
-def consumer_contact_blocks(request):
+def consumer_contact_blocks(request, user_url):
     return render(request, consumer_contact_blocks_url)
 
 # Display consumer contact page
 def consumer_contact(request, user_url):
-    try:
-        u = UserProfile.objects.filter(user_url=user_url)[0].user
-        template = get_template(consumer_contact_url)
-        firstName = u.userprofile.first_name
-        lastName = u.userprofile.last_name
-        slp = u.username
-        print firstName
-        print lastName
-        context = Context({
-            "firstName": firstName,
-            "lastName": lastName,
-            "slp": slp
-        })
-        context.update(csrf(request))
-        return HttpResponse(template.render(context))
-    except:
-        return redirect('/')
+#   try:
+    u = UserProfile.objects.filter(user_url=user_url)[0].user
+    template = get_template(consumer_contact_url)
+    firstName = u.userprofile.first_name
+    lastName = u.userprofile.last_name
+    slp = u.username
+    print firstName
+    print lastName
+    context = Context({
+        "firstName": firstName,
+        "lastName": lastName,
+        "slp": slp
+    })
+    context.update(csrf(request))
+    return HttpResponse(template.render(context))
+#    except:
+#        return redirect('/')
 
 # Display public profile page for provider based on given url
 def public_profile(request, user_url):
@@ -219,7 +219,7 @@ def sign_in_handler(request):
         else:
             print 'invalid user'
             error_msg = "Invalid username or password. Please try again."
-            template = get_template('sign_in_url')
+            template = get_template(sign_in_url)
             context = Context({"error_msg": error_msg})
             context.update(csrf(request))
             return HttpResponse(template.render(context))

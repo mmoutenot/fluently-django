@@ -15,7 +15,7 @@ Need to include existing templates (nav) and create templates for each step of a
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
     <script type="text/javascript" src="/static/src/libs/jquery.transit.min.js"></script>
-    <script type="text/javascript" src="/static/src/libs/register.js"></script>
+    <script type="text/javascript" src="/static/src/provider-sign-up.js"></script>
     <script type="text/javascript">
       var csrf_token = "{{csrf_token}}";
     </script>
@@ -27,7 +27,7 @@ Need to include existing templates (nav) and create templates for each step of a
     <div id='navbar'>
     	<div id='navbar_content'>
 	    	<div id='logo'>
-		    	<a href="/"><img src='/static/images/logo/Logo_White.png'></a>
+		    	<a href="/"><img src='/static/images/logos/Logo_White.png'></a>
 		    </div>
     
     	</div> <!-- end navbar_content -->
@@ -60,17 +60,7 @@ Need to include existing templates (nav) and create templates for each step of a
 
       <div id="account-wrap">
       
-   <div class="signup-block" id="certification-block">
-  <form id="certify-account-form" class="account-form">
-    <input id="account-company" type="text" class = 'text_input form_input' placeholder = 'Company Name' />
-    <input id="account-phone" type="text" class = 'text_input form_input' maxlength="10" placeholder = '(617)-299-9363' />
-    <div id='terms_box'>
-        By clicking "Sign-up" you agree to our <a href="/privacy">Privacy Policy</a>
-    </div>
-    <div id="invalid-wrap"></div>
-   <div id="sign-up-button"> <input type='submit' class='btn submit' value="Sign up"></div>
-  </form>
-</div>
+
 
       </div><!-- end account-wrap -->
       

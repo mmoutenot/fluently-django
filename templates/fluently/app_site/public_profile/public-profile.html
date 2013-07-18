@@ -3,18 +3,20 @@
 
   <head>
     <title>Profile | Fluently</title>
-    <link rel="stylesheet" type="text/css" href="/static/style/profile.css">
+    <link rel="stylesheet" type="text/css" href="/static/style/public-profile.css">
     <link rel="stylesheet" type="text/css" href="/static/style/fonts.css">
     <link rel="stylesheet" type="text/css" href="/static/style/global-style.css">
     <link rel="stylesheet" type="text/css" href="/static/src/libs/shadowbox-3.0.3/shadowbox.css" />
     <link rel="icon" type="image/png" href="/static/images/icons/favicon.ico" />
 
-          <script type="text/javascript">
+      <script type="text/javascript">
         var csrf_token = "{{csrf_token}}";
       </script>
-      <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+
+       <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="http:////ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
       <script type="text/javascript" src="/static/src/libs/shadowbox-3.0.3/shadowbox.js"></script>
-      <script src="/static/src/profile.js"></script>
+      <script src="/static/src/public-profile.js"></script>
 
   </head>
 
@@ -24,9 +26,9 @@
     <div id='navbar'>
     
 	    	<div id='logo'>
-		    	<a href="/"><img src='/static/images/logo/Logo_White.png'></a></div>
+		    	<a href="/"><img src='/static/images/logos/Logo_White.png'></a></div>
 		    
-		    <div id="nav_tagline">Finding the right SLP for your family. <a href="#">Learn more</a></div>
+		    <div id="nav_tagline">Finding the right SLP for your family. <a href="/how-it-works/">Learn more</a></div>
 		
     </div> <!-- end navbar -->
 
@@ -59,7 +61,7 @@
      		
      		</div><!-- end profpic-box -->
          		
-        <a href="/space/contact/{{userUrl}}" rel="shadowbox;width=600"><div class="profile-button" id="contact-button"><img src="/static/images/icons/lock.png">&nbsp;&nbsp;Contact {{firstName}}</div></a>
+        <a href="/consumer-contact/{{userUrl}}" rel="shadowbox;width=600;height=558"><div class="profile-button" id="contact-button"><img src="/static/images/icons/lock-white.png">&nbsp;&nbsp;Contact {{firstName}}</div></a>
 
      		  
      		  

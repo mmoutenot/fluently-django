@@ -78,3 +78,41 @@ width: 130px;
 	margin-top: -34px;}
 	#forgot:hover{
 		opacity:.8;}
+
+  /* FOOTER */
+
+#forgot a{
+	color: #8EC0ED;}
+
+#footbar {
+  width: 100%;
+  height: 50px;
+  position: fixed;
+  bottom: 0;
+  background: #e67b6d;
+  z-index: 9999;
+ 
+  background-color: #e67b6d;
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #e67b6d), color-stop(100%, #e46f60));
+  background-image: -webkit-linear-gradient(#e67b6d, #e46f60);
+  background-image: linear-gradient(#e67b6d, #e46f60); }
+  
+#footbar_content {
+	position: relative;
+	width: 400px;
+	color: white;
+	text-align: center;
+	margin: 0 auto;
+	line-height: 50px;
+	font-weight: 200;}
+	#footbar_content a{
+		text-decoration: none;
+		color: white;
+		padding: 10px;}
+		#footbar_content a:hover{
+			text-decoration: underline;
+			opacity: 0.98;}
+
+#error-msg {
+  text-align: center;
+}

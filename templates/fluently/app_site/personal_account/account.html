@@ -12,7 +12,7 @@
       <script type="text/javascript" src="//api.filepicker.io/v1/filepicker.js"></script>
       <script type="text/javascript" src="/static/src/libs/spin.min.js"></script>
       <script type="text/javascript" src="/static/src/libs/jquery.waitforimages.min.js"></script>
-      <script src="/static/src/profile.js"></script>
+      <script src="/static/src/account.js"></script>
       <script type="text/javascript">
       var csrf_token = "{{csrf_token}}";
     </script>
@@ -26,7 +26,7 @@
     <div id='navbar'>
     	<div id='navbar_content'>
 	    	<div id='logo'>
-		    	<a href="/"><img src='/static/images/logo/Logo_White.png'></a>
+		    	<a href="/"><img src='/static/images/logos/Logo_White.png'></a>
 		    </div>
 	
     	</div> <!-- end navbar_content -->
@@ -53,7 +53,7 @@
      			
      			<h4 id="info-name">{{firstName}} {{lastName}}</h4>
      			
-     			<a href="profile/{{userUrl}}"><p>Preview my Fluently profile &rarr;</p></a>
+     			<a href="/profile/{{userUrl}}"><p>Preview my Fluently profile &rarr;</p></a>
      			
      		
      		</div><!-- end profile-picture-edit -->

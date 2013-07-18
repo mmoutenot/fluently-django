@@ -29,7 +29,7 @@ $(document).ready(function () {
   $.ajax({
     type: "post",
     dataType: "json",
-    url: "/space/picture/",
+    url: "/picture/",
     data: data,
     success: function(dataJSON) {
       if (dataJSON['status'] === "success") {
@@ -38,6 +38,7 @@ $(document).ready(function () {
           'background-image', 
           'url("' + dataJSON.pic_url + '")'
         );
+        console.log(dataJSON);
         console.log($('#prof-pic').css('background-image'));
       } 
     }
@@ -54,6 +55,7 @@ $(document).ready(function () {
               services: ['COMPUTER']
           },
           function (InkBlob) {
+              var spinner = new Spinner(opts).spin(target);
               filepicker.convert(InkBlob, {
                       width: 200,
                       height: 220,
@@ -68,11 +70,10 @@ $(document).ready(function () {
                       $.ajax({
                           type: "post",
                           dataType: "json",
-                          url: "/space/picture/",
+                          url: "/picture/",
                           data: data,
                           success: function (dataJSON) {
                               if (dataJSON.status === "success") {
-                                  var spinner = new Spinner(opts).spin(target);
                                   $('#prof-pic').css(
                                       'background-image',
                                       'url("' + pic.url + '")'
@@ -140,7 +141,7 @@ $(document).ready(function () {
     $.ajax({
       type: "post",
       dataType: "json",
-      url: "/space/save_profile/",
+      url: "/save-profile/",
       data: data,
       success: function(dataJSON) {
         if (dataJSON['status'] === "success") {

@@ -16,7 +16,7 @@ body, html {
   position: relative;
   top: 0;
   background: #e67b6d;
-  z-index: 9999;
+  z-index: 999;
  
   background-color: #e67b6d;
   background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #e67b6d), color-stop(100%, #e46f60));
@@ -148,4 +148,6 @@ body, html {
 		margin-right: 10px;
 		padding: 6px;}
 	
-
+#invalid-wrap {
+  text-align: center;
+}

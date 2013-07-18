@@ -34,7 +34,7 @@ textarea {
   font-size: 18px;
   text-transform: uppercase;
   cursor: pointer;
-  line-height: 41px;
+  line-height: 38px;
   box-shadow: none;
   border: none;}
   .btn:focus {
@@ -42,7 +42,7 @@ textarea {
   .btn:hover {
     background: #62a7e6; }
 
-#signup-button {
+#sign-up-button {
 	position: relative;
 	margin: 0 auto;
 	width: 200px;
@@ -73,15 +73,13 @@ ul {
     padding: 0;
     margin: 0; }
 
-body, html {
-  background: #F2F2F2; }
 
 #container {
   width: 600px;
   position: relative;
   margin: 0 auto;
   padding: 20px;
-  top: 130px;
+  top: 60px;
   border: 1px solid #d2d2d2;
   background: white; 
   }
@@ -125,10 +123,9 @@ body, html {
           border-radius: 50%;
           padding: 0;
           margin: 0 auto;
-          text-align: center; }
-          #container #steps ul li h2.active {
-            background: #da6459;
-            box-shadow: 0 0 3px 1px #d2d2d2; } 
+          text-align: center; 
+         }
+          
         #container #steps ul li label {
           margin-top: 5px;
           display: block;
@@ -137,6 +134,11 @@ body, html {
           position: relative;
           width: 100%; 
           opacity: 0.7;}
+
+          #container #steps ul li h2.active{
+            background: #e67b6d;
+            box-shadow: 0 0 3px 1px #d2d2d2;
+          }
 
 form {
   *zoom: 1;
@@ -201,7 +203,7 @@ form {
     display: block;
     margin: 0 auto; }
     
-#signup-title {
+#sign-up-title {
 	text-align: center;
 	padding-bottom: 14px;
 	text-transform: uppercase;
@@ -223,8 +225,4 @@ form {
 		color: #8ec0ed;
 	}
 
-#invalid-wrap {
-	width: 300px;
-	margin: 0 auto;
-	text-align: center;
-}
+
