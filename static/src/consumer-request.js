@@ -18,6 +18,17 @@ function displayErrors(errors) {
 
 $(document).ready(function () {
 
+  // Spin animation
+
+  var opts = {
+    lines: 9,
+    length: 0,
+    width: 8,
+    radius: 10,
+    corners: 1,
+    color: '#ffffff'
+  };  
+
   $('#register-student-blocks-wrapper').load(
     'blocks #signup-block');
 
@@ -39,6 +50,9 @@ $(document).ready(function () {
   
   $('.account-form').live('submit', function () {
 
+    var target = document.getElementById('sign-up-button');
+    var spinner = new Spinner(opts).spin(target);  
+
     console.log("submit");
 
     // Clear errors  
@@ -50,6 +64,7 @@ $(document).ready(function () {
 
     if (!$('#student-email').val().match(EMAIL_REGEX)) {
       errors.push(INVALID_EMAIL);
+      spinner.stop();
       $('#student-email').val('');
     }
 
@@ -87,6 +102,7 @@ $(document).ready(function () {
             }
           } else {
             $('#student-email').val('');
+            spinner.stop();
             errors.push(SERVER_ERROR);
           }
           displayErrors(errors);

@@ -18,8 +18,17 @@ function displayErrors(errors) {
 
 $(document).ready(function () {
 
+  // Spin animation
 
-  console.log("jscript");  
+  var opts = {
+    lines: 9,
+    length: 0,
+    width: 8,
+    radius: 10,
+    corners: 1,
+    color: '#ffffff'
+  };  
+
   $('#contact-student-blocks-wrapper').load(
     'blocks #contactform-block', function () {
      
@@ -47,6 +56,9 @@ $(document).ready(function () {
   
   $('#contact-signup-form').live('submit', function () {
 
+    var target = document.getElementById('sign-up-button');
+    var spinner = new Spinner(opts).spin(target);   
+
     // Clear errors  
 
     errors = [];
@@ -56,6 +68,7 @@ $(document).ready(function () {
 
     if (!$('#contact-email').val().match(EMAIL_REGEX)) {
       errors.push(INVALID_EMAIL);
+      spinner.stop();
       $('#contact-email').val('');
     }
 
@@ -94,6 +107,7 @@ $(document).ready(function () {
             }
           } else {
             $('#contact-email').val('');
+            spinner.stop();
             errors.push(SERVER_ERROR);
           }
           displayErrors(errors);
