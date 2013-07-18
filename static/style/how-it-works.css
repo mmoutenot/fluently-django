@@ -70,30 +70,25 @@
 		height: 200px;
 		float: right;
 		position: relative;
-		margin-left: 570px;
-		margin-top: -300px;}
+		margin-left: 590px;
+		margin-top: -260px;}
 		#connect-arrow{
-			width: 360px;
-			height: 144px;
-			margin-left: 30px;}
+			margin-left: 60px;
+			z-index: 9;}
 		#name {
 			width: 160px;
 			height: 80px;
 			position: absolute;
-			margin-top: -164px;
-			margin-left: 220px;
-			background-image: url("/static/images/elements/name1.png");
+			margin-top: -107px;
+			margin-left: 282px;
+			background-image: url("img/name1.png");
 			border-image: none;}
 
 
-#top-button {
-	float: right;
-	margin: 0 auto;
+.top-button {
 	background-color: #9AE598;
 	width: 200px;
 	border-bottom: 2px solid #5cc258;
-	margin-top: -200px;
-	margin-right: 210px;
 	color: white;
 	text-decoration: none;
 	text-align: center;
@@ -102,14 +97,19 @@
 	font-weight: bold;
 	text-transform: uppercase;
 	line-height: 62px;
-	border-radius: 7px;}
-		#top-button:hover {
-			background-color: #84e081;
+	border-radius: 7px;
+	float: right;
+	margin-right: 174px;
+	display: block;
+	z-index: 99;
+	margin-top: 0px;}
+		.top-button:hover {
+			background-color: #86d183;
 			 -webkit-transition: all .1s ease-in-out;
 			 -moz-transition: all .1s ease-in-out;
 			 -o-transition: all .1s ease-in-out;
 			 transition: all .1s ease-in-out;}
-			
+						
 #top-text-right {
 		float: right;
 		margin-top: -60px;
