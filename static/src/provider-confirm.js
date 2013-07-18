@@ -32,7 +32,6 @@ function displayErrors(errors) {
 $(document).ready(function() {
 
   // Disable submit button when a form field is blank
-
   $('.submit').prop('disabled', true);
   observeInterval = 100;
   setInterval(function () {
@@ -68,7 +67,7 @@ $(document).ready(function() {
         window.location.replace("/");
       }
       if (dataJSON.confirmed) {
-        $('#register-account-form').load('blocks #already-confirmed');
+        $('#register-account-form').load('blocks #confirmed-block');
       } 
     }
   });

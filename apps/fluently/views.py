@@ -113,13 +113,6 @@ def account(request):
     template = get_template(account_url)
     if not u.is_authenticated():
         return redirect('/')
-    if u.username == "jack@fluentlynow.com":
-        print "CEO will get..."
-        context = Context({
-            "users": usersContextList()
-        })
-        context.update(csrf(request))
-        return HttpResponse(template.render(context))
     firstName = u.userprofile.first_name
     lastName = u.userprofile.last_name
     location = u.userprofile.location
@@ -505,24 +498,3 @@ def profile_picture_handler(request):
             response_json = {"status": "success", 
                              "pic_url": u.userprofile.pic_url}
     return HttpResponse(json.dumps(response_json), mimetype="application/json")
-
-'''    
-def usersContextList():
-    keyorder = {k:v for v,k in enumerate(
-        ['id', 'name', 'email', 'phone', 'location', 'specialties']
-    )}
-    users = User.objects.all()
-    usersContextList = []
-    for user in users:
-        userDict = {}
-        userDict['specialties'] = user.userprofile.specialties
-        userDict['location'] = user.userprofile.location
-        userDict['phone'] = user.userprofile.phone
-        userDict['email'] = user.username
-        userDict['name'] = user.userprofile.name
-        userDict['id'] = user.pk
-        dictItems = sorted(userDict.items(), key=lambda i:keyorder.get(i[0]))
-        userDict = collections.OrderedDict(dictItems)
-        usersContextList.append(userDict)
-    return usersContextList
-'''

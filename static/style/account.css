@@ -19,7 +19,7 @@
 		color: #5d6976;}
 			#sidebar a{
 			text-decoration: none;
-			padding: 14px;}
+			padding: 24px;}
 
 .sidebar_item {
 		opacity: 0.6;
@@ -40,12 +40,13 @@
 	margin-left: 0px;
 	margin-top: 10px;
 	margin-bottom: 38px;}	
+		
 
 /* CONTENT AREA */
 
 #content {
 	width: 960px;
-	height: 1190px;;
+	height: 1220px;;
 	position: relative;
 	margin: 0 auto;
 	background: white;
@@ -53,6 +54,7 @@
 	border: 1px solid #e5e5e5;	
 	margin-top: -40px;
 	padding-top: 40px;}
+	
 
 #content_container {
 	float: right;
@@ -63,9 +65,11 @@
 	display: block;}
 
 .account_title {
+  float: left;
 	font-family: Quicksand;
 	font-size: 20px;
 	position: relative;
+  width: 400px;
 	margin-top: 20px;
 	text-transform: uppercase;
 	padding-bottom: 20px;}
@@ -122,9 +126,23 @@
 .save-buttons-box {
 	display: inline-block;
 	margin-top: 0px;
-	margin-left: 370px;
+	margin-left: 204px;
+	width: 300px;
 	visibility: hidden;}
-	
+
+.saved-alert {
+		color: #6dce6a;
+		text-transform: uppercase;
+		margin-right: 120px;
+		display: inline;
+		font-size: 12px;}
+
+.edit-container {
+  float: right;
+	margin-top: 15px;
+  margin-right: 92px;
+}
+
 .edit-button {
 	background-color: #fcfcfc;
 	width: 40px;
@@ -140,15 +158,14 @@
 	border-bottom: 1px solid gray;
 	cursor: pointer;}
 
-.edit-btn {
-	margin-left: 442px;
+
+#edit-btn {
 	margin-bottom: 30px;
-	margin-top: -65px;
   display: inline-block;
 	cursor: pointer;}
 			
 		
-.save-btn {
+#save-btn {
 	color: #7ed87b;
 	width: 40px;
 	opacity: 1.0;
@@ -160,13 +177,13 @@
 	#save-btn:hover {
 		opacity: 0.8;}	
 	
-.cancel-btn {
+#cancel-btn {
 	color: #e67b6d;
 	width: 50px;
 	opacity: 1.0;
 	display: inline-block;
 	cursor: pointer;}
-	.cancel-btn:hover {
+	#cancel-btn:hover {
 		opacity: 0.8;}
 
 /* PROFILE PICTURE EDIT */
@@ -219,11 +236,4 @@
 	#change-prof-pic img {
 		margin-top: 54px;
 		opacity: 0.7;}
-
-
-	
-	
-	
-	
-
 

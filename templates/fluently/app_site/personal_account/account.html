@@ -4,16 +4,16 @@
   <head>
     <title>My Profile | Fluently</title>
     <link rel="stylesheet" type="text/css" href="/static/style/account.css">
-    <link rel="stylesheet" type="text/css" href="/static/style/fonts.css">
     <link rel="stylesheet" type="text/css" href="/static/style/global-style.css">
+    <link rel="stylesheet" type="text/css" href="/static/style/fonts.css">
     <link rel="icon" type="image/png" href="/static/images/icons/favicon.ico" />
       
-      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
-      <script type="text/javascript" src="//api.filepicker.io/v1/filepicker.js"></script>
-      <script type="text/javascript" src="/static/src/libs/spin.min.js"></script>
-      <script type="text/javascript" src="/static/src/libs/jquery.waitforimages.min.js"></script>
-      <script src="/static/src/account.js"></script>
-      <script type="text/javascript">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
+    <script type="text/javascript" src="//api.filepicker.io/v1/filepicker.js"></script>
+    <script type="text/javascript" src="/static/src/libs/spin.min.js"></script>
+    <script type="text/javascript" src="/static/src/libs/jquery.waitforimages.min.js"></script>
+    <script src="/static/src/account.js"></script>
+        <script type="text/javascript">
       var csrf_token = "{{csrf_token}}";
     </script>
 
@@ -28,7 +28,9 @@
 	    	<div id='logo'>
 		    	<a href="/"><img src='/static/images/logos/Logo_White.png'></a>
 		    </div>
-	
+		    
+		
+		    
     	</div> <!-- end navbar_content -->
     </div> <!-- end navbar -->
 
@@ -43,7 +45,7 @@
 	     			
 	     			<div id="change-prof-pic">
 	     			
-              <img id="change-prof-pic-btn" src="/static/images/icons/edit.png"/>
+	     				<img src="/static/images/icons/edit.png">
 	     			
 	     				<h5>Edit my picture</h5>
 	     			
@@ -59,8 +61,8 @@
      		</div><!-- end profile-picture-edit -->
      	
      		<ul>
-     			<a href="mailto:team@fluentlynow.com?subject=Account%20Support"><li class="sidebar_item">Need help?</li></a>
-     			<a href="mailto:?subject=Check%20out%20Fluently"><li class="sidebar_item">Refer a colleague</li></a>
+     			<a href="mailto:team@fluentlynow.com?subject=Support"><li class="sidebar_item">Need help?</li></a>
+     			<a href="mailto:?subject=Check%20out%FluentlyNow.com"><li class="sidebar_item">Refer a colleague</li></a>
      		</ul>
      	
      	</div><!-- end sidebar -->
@@ -68,11 +70,11 @@
      	<div id="content_container">
  
 	     	<h3 class="account_title">Personal Information</h3>
-        <div id="profile-status"></div>
 	     	
-	     		<div class="edit-button edit-btn">Edit</div>
+	     		<div class="edit-container"><div class="edit-button edit-box" id="edit-btn">Edit</div></div>
 	     		
-	     		<form id="account-info-form">
+
+          	<form id="account-info-form">
 		     		<label class="field-label">First Name</label><input class="user-field" id="first-name" type="text" value="{{firstName}}">
 		     		<label class="field-label">Last Name</label><input class="user-field" id="last-name" type="text" value="{{lastName}}">
 		     		<label class="field-label">City/State</label><input class="user-field" id="location" type="text" value="{{location}}">
@@ -80,36 +82,34 @@
 		     		<div id="status"></div>
 		
 		     	<div class="save-buttons-box">
-		     		
-		     		<div class="edit-button cancel-btn">Cancel</div>
-		     		<div class="edit-button save-btn">Save</div>
-		     		
+		     		<p class="saved-alert">&#x2713;&nbsp;Saved!</p>
+		     		<div class="edit-button cancel-box" id="cancel-btn">Cancel</div>
+		     		<div class="edit-button save-box" id="save-btn">Save</div>
+	
 		     	</div><!-- end save-buttons-box -->
 		     		
 		     	<div id="account-line"></div>
 		     	
 		     	<h3 class="account_title">Professional Information</h3>
 		 
-	     			<div class="edit-button edit-btn">Edit</div>
-	
-	
-		     	<form id="account-info-form">
+	     			<div class="edit-container"><div class="edit-button edit-box" id="edit-btn">Edit</div></div>
+	<form id="account-info-form">
 		     		<label class="textarea-label">About Me</label><textarea class="text-field" id="about-me" rows="4" cols="40" placeholder="Hi, I'm Susan! I'm a board-certified SLP from..." maxlength="262">{% if aboutMe %} {{ aboutMe }} {% endif %}</textarea>
-		     		
+
 		     		<label class="textarea-label">Certifications</label><textarea class="text-field" id="certifications" rows="4" cols="40" placeholder="CCC-SLP - ASHA Board-certified specialist..." maxlength="260">{% if aboutMe %} {{ certifications }} {% endif %}</textarea>
-		     		
+
 		     		<label class="textarea-label">Experience</label><textarea class="text-field" id="experience" rows="4" cols="40" placeholder="MS, Tufts University - 15+ years working with articulation & fluency disorders..." maxlength="260">{% if experience %} {{experience}} {% endif %}</textarea>
-		     		
+
 		     		<label class="textarea-label">Therapy Approach</label><textarea class="text-field" id="therapy-approach" rows="4" cols="40" placeholder="I believe therapy should be..." maxlength="260">{% if therapyApproach %} {{therapyApproach}} {% endif %}</textarea>
-	
+
 		     	</form>
 		     	
 		     	<div id="status"></div>
 		     	
 		     	<div class="save-buttons-box">
-		     		
-		     		<div class="edit-button cancel-btn">Cancel</div>
-		     		<div class="edit-button save-btn">Save</div>
+		     		<p class="saved-alert">&#x2713;&nbsp;Saved!</p>
+		     		<div class="edit-button cancel-box" id="cancel-btn">Cancel</div>
+		     		<div class="edit-button save-box" id="save-btn">Save</div>
 		     		
 		     	</div><!-- end save-buttons-box -->
 	     	 
@@ -127,7 +127,7 @@
    			<ul>
    				<a href="/"><li>Home</li></a>
    				<a href="/about"><li>About Us</li></a>	
-   		   		<a href="mailto:team@fluentlynow.com?subject=Account%20Support"><li>Support</li></a>
+   		   		<a href="mailto:team@fluentlynow.com"><li>Support</li></a>
    			</ul>
    			
    		</div>	<!-- end footer_left -->

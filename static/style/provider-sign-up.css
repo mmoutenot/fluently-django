@@ -164,7 +164,7 @@ form {
       display: inline-block; }
   form textarea {
     font-family: Signika;
-    width: 500px;
+    width: 300px;
     height: 130px;
     display: block;
     resize: none;
@@ -224,5 +224,13 @@ form {
 	#confirm_container a {
 		color: #8ec0ed;
 	}
+  #confirm_container p {
+    width: 400px;
+    line-height: 22px;
+    font-size: 14px;
+    margin-top: -16px;
+    padding-bottom: 20px;
+    padding-top: 20px;
+  }
 
 

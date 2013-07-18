@@ -62,6 +62,18 @@ function hiddenInputsFromData(data) {
 
 $(document).ready(function () {
 
+  // Spin animation
+
+  var opts = {
+    lines: 9,
+    length: 0,
+    width: 8,
+    radius: 10,
+    corners: 1,
+    color: '#ffffff'
+  };
+
+
   // Begin with account stage
 
   stage = "account";
@@ -86,6 +98,10 @@ $(document).ready(function () {
 
   $('.account-form').live('submit', function () {
 
+    //$('#sign-up-button').empty();
+    var target = document.getElementById('sign-up-button');
+    var spinner = new Spinner(opts).spin(target);
+
     // Clear errors  
 
     var errors = [];
@@ -97,6 +113,7 @@ $(document).ready(function () {
 
       if (!$('#account-email').val().match(EMAIL_REGEX)) {
         errors.push(INVALID_EMAIL);
+        spinner.stop();  
         $('#account-email').val('');
       }
 
@@ -136,6 +153,7 @@ $(document).ready(function () {
               }
             } else {
               $('#account-email').val('');
+              spinner.stop();  
               errors.push(SERVER_ERROR);
             }
             console.log(errors);
@@ -169,10 +187,13 @@ $(document).ready(function () {
           data: formData,
           success: function (dataJSON) {
             if (dataJSON.status === "success") {
-              $('#account-wrap').load('blocks #submit-block');
+              $('#account-wrap').load('blocks #submit-block', function () {
+                spinner.stop();  
+              });
               animateStep();
               stage = "submit";
             } else {
+              spinner.stop();  
               errors.push(SERVER_ERROR);
             }
             displayErrors(errors);

@@ -108,7 +108,7 @@ textarea {
   font-size: 18px;
   text-transform: uppercase;
   cursor: pointer;
-  line-height: 41px;
+  line-height: 38px;
   box-shadow: none;
   border: none;}
   .btn:focus {
@@ -155,7 +155,7 @@ body, html {
   position: relative;
   margin: 0 auto;
   padding: 20px;
-  top: 130px;
+  top: 90px;
   border: 1px solid #d2d2d2;
   background: white; 
   }
@@ -304,3 +304,24 @@ form {
 	text-align: center;
 	
 }
+
+#confirmed {
+	text-decoration: none;
+	position: relative;
+	text-align: center;
+	margin-top: 80px;
+	margin-bottom: 40px;
+	width: 320px;
+	line-height: 70px;
+	margin: 0 auto;
+	height: 70px;
+	background: #8EC0ED;
+	color: white;
+	font-family: Quicksand;
+	text-transform: uppercase;
+	font-size: 16px;
+	border-radius: 9px;
+	font-weight: bold;
+	border-bottom: 2px solid #62a7e6;}
+		#confirmed:hover {
+			background: #62a7e6;}

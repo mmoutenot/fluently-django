@@ -49,7 +49,7 @@ $(document).ready(function () {
   filepicker.setKey('Ax3aLiPGtQJyyVSqNIiW2z');
  
 
-  $('#change-prof-pic-btn').click(function () {
+  $('#change-prof-pic').click(function () {
       filepicker.pick({
               'mimetype': "image/*",
               services: ['COMPUTER']
@@ -101,9 +101,11 @@ $(document).ready(function () {
 
   // Edit, save, cancel buttons
 
-  $('.edit-btn').click(function () {
+  $('.edit-box').click(function () {
+    console.log("edit box click");
     $('.save-buttons-box').css('visibility', 'visible');
-    $('.edit-btn').css('visibility', 'hidden');
+    $('.saved-alert').css('visibility', 'hidden');
+    $('.edit-box').css('visibility', 'hidden');
     $('.user-field').removeAttr('disabled')
     $('.text-field').removeAttr('disabled')
 
@@ -119,9 +121,13 @@ $(document).ready(function () {
 
   });
 
-  $('.save-btn').click(function () {
+  $('.save-box').click(function () {
     $('.save-buttons-box').css('visibility', 'hidden');
-    $('.edit-btn').css('visibility', 'visible');
+    $('.saved-alert').css('visibility', 'visible');
+    setTimeout(function () {
+      $('.saved-alert').css('visibility', 'hidden');
+    }, 2000);  
+    $('.edit-box').css('visibility', 'visible');
     $('.user-field').attr('disabled', 'disabled');
     $('.text-field').attr('disabled', 'disabled');
 
@@ -154,10 +160,10 @@ $(document).ready(function () {
 
   });
 
-  $('.cancel-btn').click(function () {
+  $('.cancel-box').click(function () {
 
     $('.save-buttons-box').css('visibility', 'hidden');
-    $('.edit-btn').css('visibility', 'visible');
+    $('.edit-box').css('visibility', 'visible');
     $('.user-field').attr('disabled', 'disabled');
     $('.text-field').attr('disabled', 'disabled');
       
