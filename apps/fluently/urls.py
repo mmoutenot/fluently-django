@@ -8,10 +8,15 @@ urlpatterns = patterns('',
                   url(r'^about/$', 'apps.fluently.views.about'),    
                   url(r'^how-it-works/$', 'apps.fluently.views.how_it_works'),
                   url(r'^privacy/$', 'apps.fluently.views.privacy'),
+                  url(r'^example-profile/$', 'apps.fluently.views.example_profile'),
+                  url(r'^example-consumer-contact/$', 'apps.fluently.views.example_consumer_contact'),
+                  url(r'^example-consumer-contact/blocks/$', 'apps.fluently.views.example_consumer_contact_blocks'),
+                  url(r'^why-fluently/$', 'apps.fluently.views.slp_landing'),
 
                   # App Site
                   url(r'^sign-in/$', 'apps.fluently.views.sign_in'),
                   url(r'^sign-in/handler/$', 'apps.fluently.views.sign_in_handler'),
+                  url(r'^search/$', 'apps.fluently.views.search'),
                    
                   # App Site # Provider Signup 
                   url(r'^join/$', 'apps.fluently.views.provider_sign_up'),

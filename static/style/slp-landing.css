@@ -1,0 +1,218 @@
+
+	        	        
+
+/* CONTENT */
+
+.text_container {
+	width: 1080px;
+	margin: 0 auto;
+	padding-top: 30px;
+	padding-bottom: 30px;}
+
+.section-title {
+	text-align: center;
+	width: 190px;
+	font-family: Quicksand;
+	font-weight: 500;
+	line-height: 46px;
+	text-align: center;
+	margin: 0 auto;
+	padding-top: 40px;
+	border-bottom: 1px solid rgba(93,105,117,0.26);}
+
+
+/* Top SECTION */
+
+#top-section {
+	background-color: #8EC0ED;
+	width: 100%;
+	height: 440px;}
+		#top-section h1 {
+		text-align: center;
+		color: white;
+		font-family: Quicksand;
+		margin-top: 60px;
+		font-size: 36px;}
+		#top-section h3 {
+		text-align: center;
+		color: white;
+		font-weight: 400;
+		opacity: 0.8;
+		margin-top: 20px;
+		font-size: 20px;}
+			#top-section img {
+				width: 600px;
+				height: 300px;
+				margin-left: 240px;
+				margin-top: 20px;}
+			
+
+
+/* SIGN UP SECTION */
+
+#sign-up-section {
+	height: auto;
+	margin: 0 auto;
+	padding-top: 60px;
+	padding-bottom: 10px;}
+		#sign-up-section h1 {
+			font-family: Quicksand;
+			font-size: 32px;
+			font-weight: 500;
+			letter-spacing: 2px;
+			padding-bottom: 18px;	
+			width: 600px;
+			margin: 0 auto;
+			text-align: center;
+			margin-top: 40px;
+			text-transform: uppercase;}
+			
+#sign-up-box {
+	width: 900px;
+	margin: 0 auto;
+	margin-top: 40px;}			
+	#sign-up-box h2{	
+		font-family: Signika;
+		font-weight: 300;
+		color: #e67b6d;
+		font-size: 19px;}		
+	#sign-up-box p{		
+		font-family: Signika;
+		font-weight: 100;
+		font-size: 14px;
+		line-height: 20px;}
+		
+.sign-up-hut {
+	width: 240px;
+	display: inline-block;
+	margin-left: 45px;}
+
+
+#view-example {
+	font-family: Quicksand;
+	font-size: 26px;
+	color: #8EC0ED;
+	text-align: center;
+	text-decoration: underline;
+	margin-top: 50px;}
+	#view-example a{
+		text-decoration: none;
+		color: #8EC0ED;}
+		#view-example a:hover{
+		opacity: 0.8;}
+		
+			
+#quote-container {
+	width: 800px;
+	margin: 0 auto;
+	margin-top: 60px;}
+		#quote-container img{
+			height: 100px;
+			margin-left: 40px;
+			border-radius: 200px;
+			border: 1px solid #5c5c5c;}	
+			
+#quote {
+	margin-top: 6px;
+	width: 620px;
+	float: right;
+	font-family: Signika;
+	font-weight: 100;
+	line-height: 30px;
+	font-style: italic;
+	text-indent: 12px;
+	font-size: 18px;}
+		#quote p{
+			font-size: 13px;
+			font-style: normal;
+			text-indent: 60px;}
+		
+
+#sign-up-card {
+	background: white;
+	width: 660px;
+	margin: 0 auto;
+	text-align: center;
+	padding: 20px;
+	margin-top: 120px;
+	border: 1px solid #c8c8c8;
+	border-radius: 8px;
+	height: 550px;}
+		#sign-up-card img {
+			margin-top: -64px;
+			
+		}
+		#sign-up-card h1 {
+			font-family: Quicksand;
+			font-size: 26px;
+			font-weight: 300;
+			margin: 0 auto;
+			text-align: center;
+			margin-top: 50px;
+			text-transform: uppercase;}
+		#sign-up-card h3 {
+			font-family: Quicksand;
+			font-size: 20px;
+			font-weight: 200;
+			line-height: 70px;}
+
+input {
+	width: 320px;
+	color: #5d6976;
+	height: 36px;
+	border: none;
+	border-bottom: 1px dotted #c8c8c8;
+	font-family: Quicksand;
+	font-size: 20px;
+	font-weight: 700;
+	margin-left: 10px;
+	margin-right: 4px;
+	text-indent: 8px;}
+	
+#firstName {
+	width: 150px;}	
+				
+
+.profile-button {
+	width: 200px;
+	height: 60px;
+	background-color: #8EC0ED;
+	color: white;
+	text-decoration: none;
+	text-align: center;
+	font-size: 16px;
+	font-family: Quicksand;
+	font-weight: bold;
+	text-transform: uppercase;
+	line-height: 62px;
+	border-radius: 7px;}
+
+#landing-page-button {
+	margin: 0 auto;
+	width: 330px;
+	height: 80px;
+	background-color: #8EC0ED;
+	border-bottom: 2px solid #6399c8;
+	margin-top: 50px;
+	font-size: 19px;
+	line-height: 82px;}
+		#landing-page-button:hover {
+			background-color: #7ab5e8;
+			 -webkit-transition: all .1s ease-in-out;
+			 -moz-transition: all .1s ease-in-out;
+			 -o-transition: all .1s ease-in-out;
+			 transition: all .1s ease-in-out;}
+	
+	
+#privacy-blurb {
+	font-weight: 100;
+	font-style: italic;
+	font-size: 12px;
+	width: 500px;
+	text-align: center;
+	margin: 0 auto;
+	margin-top: 40px;
+	line-height: 18px;}
+		#privacy-blurb a {
+			color: #e67b6d;}
+

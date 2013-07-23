@@ -31,9 +31,14 @@ splash_url = 'fluently/marketing_site/splash.html'
 about_url = 'fluently/marketing_site/about.html'
 how_it_works_url = 'fluently/marketing_site/how-it-works.html'
 privacy_url = 'fluently/marketing_site/privacy.html'
+example_profile_url = 'fluently/marketing_site/example-profile.html'
+example_consumer_contact_url = 'fluently/marketing_site/example-consumer-contact.html'
+example_consumer_contact_blocks_url = 'fluently/marketing_site/example-consumer-contact-blocks.html'
+slp_landing_url = 'fluently/marketing_site/slp-landing.html'
 
 # App Site
 sign_in_url = 'fluently/app_site/sign-in.html'
+search_url = 'fluently/app_site/search.html'
 
 # App Site # Provider Signup
 provider_sign_up_url = 'fluently/app_site/provider_signup/provider-sign-up.html'
@@ -82,6 +87,26 @@ def how_it_works(request):
 # Display privacy policy page
 def privacy(request):
     return render(request, privacy_url)
+
+# Display example profile page
+def example_profile(request):
+    return render(request, example_profile_url)
+
+# Display example consumer contact page
+def example_consumer_contact(request):
+    return render(request, example_consumer_contact_url)
+
+# Display example consumer contact blocks page
+def example_consumer_contact_blocks(request):
+    return render(request, example_consumer_contact_blocks_url)
+
+# Display SLP landing page
+def slp_landing(request):
+    return render(request, slp_landing_url)
+
+# Display search page
+def search(request):
+    return render(request, search_url)
 
 # Display provider sign up page
 def provider_sign_up(request):
@@ -427,8 +452,6 @@ def save_profile(request):
             "status": "success",
         }
     return HttpResponse(json.dumps(response_json), mimetype="application/json")
-
-
 
 # Get posted consumer contact info
 # Send emails to CEO and consumer
