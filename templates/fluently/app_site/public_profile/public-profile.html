@@ -2,7 +2,7 @@
 <html>
 
   <head>
-    <title>Profile | Fluently</title>
+    <title>Fluently | {{firstName}} {{lastName}}</title>
     <link rel="stylesheet" type="text/css" href="/static/style/public-profile.css">
     <link rel="stylesheet" type="text/css" href="/static/style/fonts.css">
     <link rel="stylesheet" type="text/css" href="/static/style/global-style.css">
@@ -24,12 +24,12 @@
 
   <!-- USE NAVBAR TEMPLATE -->
     <div id='navbar'>
-    
+      <div id='navbar_content'> 
 	    	<div id='logo'>
 		    	<a href="/"><img src='/static/images/logos/Logo_White.png'></a></div>
 		    
 		    <div id="nav_tagline">Finding the right SLP for your family. <a href="/how-it-works/">Learn more</a></div>
-		
+	    </div>	
     </div> <!-- end navbar -->
 
    <!--CONTENT BODY -->
@@ -51,9 +51,9 @@
      			
      				<h4 id="info-name">{{firstName}} {{lastName}}</h4>
      				
-     				<div class="info-line-contain"><img src="/static/images/icons/pin.png"><h5 id="info-role">Speech-Language Pathologist</h4></div>
+     				<div class="info-line-contain"><img src="/static/images/icons/book.png"><h5 id="info-role">Speech-Language Pathologist</h4></div>
      				
-     				<div class="info-line-contain"><img src="/static/images/icons/globe.png"><h5 id="info-location">{{location}}</h4></div>
+     				<div class="info-line-contain"><img src="/static/images/icons/pin.png"><h5 id="info-location">{{location}}</h4></div>
      				
      				<div class="info-line-contain"><img src="/static/images/icons/star.png"><h5 id="info-location">Stuttering, fluency disorders</h4></div>
      			

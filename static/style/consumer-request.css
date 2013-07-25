@@ -152,29 +152,43 @@ form .large_response {
 
 .btn {
   text-decoration: none;
-  width: 143px;
-  height: 41px;
+  width: intrinsic;
+  padding-left: 38px;
+  padding-right: 18px;
+  height: 60px;
   background: #8ec0ed;
   display: inline-block;
   text-align: center;
   margin: 0 auto;
   position: relative;
   color: white;
-  font-size: 18px;
+  font-size: 17px;
   text-transform: uppercase;
+  font-family: Quicksand;
+  font-weight: bold;
   cursor: pointer;
-  line-height: 36px;
+  line-height: 56px;
   box-shadow: none;
-  border: none;}
+  background-image: url("/static/images/icons/mail-white.png");
+  background-repeat: no-repeat;
+  background-position-x: 13px;
+  background-position-y: 20px;
+  border: none;
+  border-bottom: 2px solid #5a94c7;
+  border-radius: 8px;}
   .btn:focus {
     outline: none;}
   .btn:hover {
-    background: #62a7e6; }
+    background: #62a7e6;
+    background-image: url("/static/images/icons/mail-white.png");
+    background-repeat: no-repeat;
+    background-position-x: 13px;
+    background-position-y: 20px;}
 
 #sign-up-button {
 	position: relative;
 	margin: 0 auto;
-	width: 200px;
+	width: 300px;
 	text-align: center;
 	margin-top: 20px;}
 

@@ -43,7 +43,7 @@ body a{
   background-image: linear-gradient(#e67b6d, #e46f60); }
   	#navbar #logo {
     float: left;
-    margin-top: 10px;
+    margin-top: 0px;
     margin-left: 50px; }
   	  #navbar #logo img {
       width: 190px;
@@ -106,7 +106,7 @@ body a{
 	height: 500px;
 	float: right;
 	margin-right: 70px;
-	margin-top: 60px;}
+	margin-top: 20px;}
 
 .all-profile a{
 	text-decoration: none;}
@@ -121,7 +121,7 @@ body a{
 	background-color: #f1f3f5;
 	border-radius: 5px;
 	margin: 0 auto;
-	margin-top: 70px;
+	margin-top: 30px;
 	padding-top: 30px;}
 
 #profpic {

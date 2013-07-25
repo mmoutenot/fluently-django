@@ -4,18 +4,18 @@ var INVALID_EMAIL = "Please provide valid email.";
 var EMAIL_TAKEN = "Email is already in use.";
 var SERVER_ERROR = "Server error. Please try again.";
 
-// Read GET URL variables and return them in associative array
-
+// Read a page's GET URL variables and return them as an associative array.
 function getUrlVars() {
-  var vars = [], hash;
-  var hashes = window.location.href.slice(
-    window.location.href.indexOf('?') + 1).split('&');
-  for (i = 0; i < hashes.length; i++) {
-    hash = hashes[i].split('=');
-    vars.push(hash[0]);
-    vars[hash[0]] = hash[1];
-  }
-  return vars;
+    var vars = [], hash;
+    var hashes = window.location.href.slice(
+                 window.location.href.indexOf('?') + 1).split('&');
+    for (var i = 0; i < hashes.length; i++)
+    {
+        hash = hashes[i].split('=');
+        vars.push(hash[0]);
+        vars[hash[0]] = hash[1];
+    }
+    return vars;
 }
 
 // Display all error strings from *errors array in *invalid-wrap element
@@ -73,12 +73,25 @@ $(document).ready(function () {
     color: '#ffffff'
   };
 
+  // Get first name and email via server
+
+  urlFirstName = getUrlVars()["firstName"];
+  urlEmail = getUrlVars()["email"];
+  if (typeof urlFirstName == 'undefined') {
+    urlFirstName = "";
+  }
+  if (typeof urlEmail == 'undefined') {
+    urlEmail = "";
+  }
 
   // Begin with account stage
 
   stage = "account";
   $('#account-step h2').addClass('active');
-  $('#account-wrap').load('blocks #account-block');
+  $('#account-wrap').load('blocks #account-block', function () {
+    $('#account-first-name').val(urlFirstName);
+    $('#account-email').val(urlEmail);    
+  });
 
   // Disable submit button when a form field is blank
 
@@ -171,7 +184,8 @@ $(document).ready(function () {
         lastName: $('#account-lastName').val(),
         email: $('#account-email').val(),
         phone: $('#account-phone').val(),
-        loc: $('#account-location').val(),
+        zipCode: $('#account-zip-code').val(),
+        country: $('#country').val(),
         specialties: $('#account-specialties').val(),
         csrfmiddlewaretoken: csrf_token
       };

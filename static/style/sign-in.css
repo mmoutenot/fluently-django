@@ -38,13 +38,11 @@
 	width: 400px;
 	height: 200px;
 	margin: 0 auto;
-	margin-top: 40px;
-	
-}
+	margin-top: 40px;}
 
 .text_inputs {
 	border: none;
-	background-color: #f5f3ef;
+	background-color: #f1f3f5;;
 	border-radius: none;
 	width: 280px;
 	margin-bottom: 20px; 
@@ -53,7 +51,7 @@
 	margin-left: 60px;
 	text-indent: 20px;
 	color: gray;
-}
+	text-indent: 40px;}
 
 #login_submit {
 	width: 140px;
@@ -64,25 +62,60 @@
 	text-transform: uppercase;
 	font-size: 16px;
 	margin-top: 10px;
-	margin-left: 220px;
-	border: none;}
-	#login_submit:hover {
-	opacity: 0.8;
+	margin-left: 204px;
+	border: none;
 	cursor: pointer;
-	}
+	border-bottom: 1px solid #4c94d3;
+	font-weight: bold;
+	border-radius: 5px;
+	line-height: 48px;}
+	#login_submit:hover {
+			background-color: #7ab5e8;
+			 -webkit-transition: all .1s ease-in-out;
+			 -moz-transition: all .1s ease-in-out;
+			 -o-transition: all .1s ease-in-out;
+			 transition: all .1s ease-in-out;}
 
 #forgot {
-width: 130px;
-	opacity: 0.4;
-	margin-left: 40px;
-	margin-top: -34px;}
+	width: 130px;
+	opacity: 0.7;
+	margin-left: 60px;
+	margin-top: -32px;}
 	#forgot:hover{
 		opacity:.8;}
 
-  /* FOOTER */
-
 #forgot a{
-	color: #8EC0ED;}
+	color: #444f5b;}
+
+
+::-webkit-input-placeholder {
+   color: rgba(93,105,117,0.74);}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   color: #5d6976;}
+
+:-ms-input-placeholder {  
+   color: #5d6976;}
+
+[placeholder]:focus::-webkit-input-placeholder {
+  transition: opacity 0.2s 0.2s ease; 
+  opacity: 0;}
+
+#signin_email {
+	background-image: url("/static/images/icons/mail-gray.png");
+	background-repeat: no-repeat;
+	background-position-x: 10px;
+	background-position-y: 14px;}
+
+#signin_password {
+	background-image: url("/static/images/icons/lock-gray.png");
+	background-repeat: no-repeat;
+	background-position-x: 10px;
+	background-position-y: 10px;}
+
+
+
+/* FOOTER */
 
 #footbar {
   width: 100%;
@@ -110,9 +143,7 @@ width: 130px;
 		color: white;
 		padding: 10px;}
 		#footbar_content a:hover{
-			text-decoration: underline;
-			opacity: 0.98;}
+			text-decoration: underline;}
 
 #error-msg {
-  text-align: center;
-}
+  text-align: center;}

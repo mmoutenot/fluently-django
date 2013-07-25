@@ -23,33 +23,64 @@ textarea {
 
 .btn {
   text-decoration: none;
-  width: 143px;
-  height: 41px;
+  width: intrinsic;
+  height: 60px;
+  padding-right: 20px;
+  padding-left: 20px;
   background: #8ec0ed;
   display: inline-block;
   text-align: center;
   margin: 0 auto;
   position: relative;
   color: white;
-  font-size: 18px;
+  font-size: 17px;
   text-transform: uppercase;
+  font-family: Quicksand;
+  font-weight: bold;
   cursor: pointer;
-  line-height: 38px;
+  line-height: 56px;
   box-shadow: none;
-  border: none;}
+  border: none;
+  border-bottom: 2px solid #5a94c7;
+  border-radius: 8px;}
   .btn:focus {
     outline: none;}
   .btn:hover {
-    background: #62a7e6; }
+    background: #62a7e6;}
 
-#sign-up-button {
+.submit-btn {
 	position: relative;
 	margin: 0 auto;
-	width: 200px;
+	width: 160px;;
+	text-align: center;
+	margin-top: 30px;
+	padding-bottom: 10px;
+	padding-left: 14px;
+	text-indent: 22px;
+	margin-left: 228px;
+	background-image: url("/static/images/icons/lock-white.png");
+	background-repeat: no-repeat;
+	background-position-x: 24px;
+	background-position-y: 20px;
+}
+	.submit-btn:hover {
+		background-image: url("/static/images/icons/lock-white.png");
+		background-repeat: no-repeat;
+		background-position-x: 24px;
+		background-position-y: 20px;
+		
+	}
+
+#continue-button {
+	position: relative;
+	margin: 0 auto;
+	width: 220px;
 	text-align: center;
 	margin-top: 30px;
 	padding-bottom: 10px;
 }
+
+
 
 
 footer {
@@ -119,7 +150,7 @@ ul {
           color: white;
           font-size: 20px;
           font-weight: 300;
-          line-height: 35px;
+          line-height: 37px;
           border-radius: 50%;
           padding: 0;
           margin: 0 auto;
@@ -165,6 +196,7 @@ form {
   form textarea {
     font-family: Signika;
     width: 300px;
+    color: #5d6975;
     height: 130px;
     display: block;
     resize: none;
@@ -234,3 +266,58 @@ form {
   }
 
 
+select {
+	color: #5d6976;
+	background-color: #ffffff;
+	font-size: 16px;
+	width: 140px;
+	margin-left: 14px;
+	margin-right: 14px;
+	font-family: Signika;
+	font-weight: 100;
+	border: none;
+	height: 40px;
+	outline: none;
+	display: inline-block;
+	cursor: pointer;
+	cursor: hand;
+	border-radius: 6px;
+	-webkit-border-radius:6px;
+    -moz-border-radius:6px;
+    }
+
+#country {
+	width: 316px;	
+	margin-left: 143px;
+}
+
+
+
+.zip_code {
+	border: 1px solid #d2d2d2;
+	background: white;
+	padding: 3px;
+	width: 100px;
+	height: 32px;
+	line-height: 35px;
+	font-size: 16px;
+	font-family: Signika;
+	border-radius: 3px;
+	color: #5d6976;
+	text-indent: 6px;
+	width: 20px;
+}
+
+
+::-webkit-input-placeholder {
+   color: #5d6976;}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   color: #5d6976;}
+
+:-ms-input-placeholder {  
+   color: #5d6976;}
+
+[placeholder]:focus::-webkit-input-placeholder {
+  transition: opacity 0.2s 0.2s ease; 
+  opacity: 0;}

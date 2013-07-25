@@ -10,6 +10,7 @@ from utils import mandrill_template
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 from django.http import HttpResponseRedirect
+from django.db.models import Q
 from random import choice
 import string
 import uuid
@@ -38,7 +39,12 @@ slp_landing_url = 'fluently/marketing_site/slp-landing.html'
 
 # App Site
 sign_in_url = 'fluently/app_site/sign-in.html'
-search_url = 'fluently/app_site/search.html'
+
+# App Site # Search View
+
+search_url = 'fluently/app_site/search_view/search.html'
+profile_card_url = 'fluently/app_site/search_view/profile-card.html'
+no_results_url = 'fluently/app_site/search_view/no-results.html'
 
 # App Site # Provider Signup
 provider_sign_up_url = 'fluently/app_site/provider_signup/provider-sign-up.html'
@@ -108,8 +114,18 @@ def slp_landing(request):
 def search(request):
     return render(request, search_url)
 
+# Display profile card block
+def profile_card(request):
+    return render(request, profile_card_url)
+
+# Display no results block
+def no_results(request):
+    return render(request, no_results_url)
+
 # Display provider sign up page
 def provider_sign_up(request):
+    firstName = request.GET.get('firstName')
+    email = request.GET.get('email')
     return render(request, provider_sign_up_url)
 
 # Display consumer request modal page
@@ -175,7 +191,7 @@ def consumer_contact(request, user_url):
     print lastName
     context = Context({
         "firstName": firstName,
-        "lastName": lastName,
+        "lastName": lastName[0] + '.',
         "slp": slp
     })
     context.update(csrf(request))
@@ -199,7 +215,7 @@ def public_profile(request, user_url):
         userUrl = u.userprofile.user_url
         context = Context({
             "firstName": firstName,
-            "lastName": lastName,
+            "lastName": lastName[0] + '.',
             "location": location,
             "aboutMe": aboutMe,
             "certifications": certifications,
@@ -218,6 +234,17 @@ def public_profile(request, user_url):
 ### HANDLERS 
 ###          
 ###
+
+def search_results(request):
+    response_json = {"status": "fail"}
+    if request.POST:
+        need = request.POST.get('need', '')
+        zipCode = request.POST.get('zipCode', '')
+        locatedIn = request.POST.get('locatedIn', '')
+        payment = request.POST.get('payment', '')
+        
+    return HttpResponse(json.dumps(response_json),
+                        mimetype='application/json')
 
 # Check validity of sign in info from client via request
 # Redirect to account or send error
@@ -369,7 +396,8 @@ def provider_sign_up_handler(request):
         lastName = request.POST.get('lastName', "")
         email = request.POST.get('email', "")
         phone = request.POST.get('phone', "")
-        location = request.POST.get('loc', "")
+        zipCode = request.POST.get('zipCode', "")
+        country = request.POST.get('country', "")
         specialties = request.POST.get('specialties', "")
         u, created = User.objects.get_or_create(username=email)
         print "created"
@@ -382,7 +410,8 @@ def provider_sign_up_handler(request):
         u.userprofile.first_name = firstName
         u.userprofile.last_name = lastName
         u.userprofile.phone = phone
-        u.userprofile.location = location 
+        u.userprofile.zip_code = zipCode
+        u.userprofile.country = country
         u.userprofile.specialties = specialties
         u.userprofile.pic_url = default_profile_pic_url
         u.userprofile.emailed = True
@@ -395,7 +424,8 @@ def provider_sign_up_handler(request):
             { "name": "lastName", "content": lastName },
             { "name": "email", "content": email },
             { "name": "phone", "content": phone },
-            { "name": "location", "content": location },
+            { "name": "zipCode", "content": zipCode },
+            { "name": "country", "content": country },
             { "name": "specialties", "content": specialties },
             { "name": "joinlink", "content": provider_confirm_link}] 
         mandrill_template_ceo = mandrill_template("provider-request", 
@@ -486,7 +516,7 @@ def consumer_contact_handler(request):
                 { "name": "slp", "content": slp }]
             mandrill_template_ceo = mandrill_template("student-SLP-request", 
                                                       template_content_ceo, 
-                                                      "dylan@fluentlynow.com", 
+                                                      "team@fluentlynow.com", 
                                                       "Jack McDermott", 
                                                       "student-SLP-request")
             requests.post(mandrill_url, data=mandrill_template_ceo)

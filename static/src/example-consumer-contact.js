@@ -32,9 +32,9 @@ $(document).ready(function () {
   $('#contact-student-blocks-wrapper').load(
     'blocks #contactform-block', function () {
      
-    $('#student-modal-title').text('Contact Susan Johnston');
+    $('#student-modal-title').text('Contact Susan J.');
     $('#student-needs').attr(
-      'placeholder', "I'm contacting Susan Johnston because...");  
+      'placeholder', "I'm contacting Susan J. because...");  
     
   });
 

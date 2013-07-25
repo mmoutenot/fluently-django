@@ -39,7 +39,7 @@
 	height: 500px;
 	float: right;
 	margin-right: 70px;
-	margin-top: 60px;}
+	margin-top: 10px;}
 
 .all-profile a{
 	text-decoration: none;}
@@ -54,7 +54,7 @@
 	background-color: #f1f3f5;
 	border-radius: 5px;
 	margin: 0 auto;
-	margin-top: 70px;
+	margin-top: 20px;
 	padding-top: 30px;}
 
 #profpic {
@@ -131,8 +131,8 @@
 /* BUTTONS */
 
 
+
 .profile-button {
-	width: 200px;
 	height: 60px;
 	background-color: #8EC0ED;
 	color: white;
@@ -148,15 +148,13 @@
 		opacity: 0.9;}
 
 #contact-button {
+	width: intrinsic;
+	padding-right: 18px;
+	padding-left: 18px;  
+	
 	margin: 0 auto;
 	margin-top: 20px;
 	border-bottom: 2px solid #4c94d3;}
-		#contact-button:hover {
-			background-color: #7ab5e8;
-			 -webkit-transition: all .1s ease-in-out;
-			 -moz-transition: all .1s ease-in-out;
-			 -o-transition: all .1s ease-in-out;
-			 transition: all .1s ease-in-out;}
 
 #join-button {
 	margin: 0 auto;
@@ -181,7 +179,6 @@
 	font-family: Quicksand;
 	color: white;
 	font-weight: 200;
-	margin-right: 50px;
 	display: block;}
 	#nav_tagline a{
 	color: white;

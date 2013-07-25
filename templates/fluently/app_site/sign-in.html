@@ -2,7 +2,7 @@
 <html>
 
   <head>
-    <title>Fluently</title>
+    <title>Sign-in | Fluently</title>
     <link rel="stylesheet" type="text/css" href="/static/style/sign-in.css">
     <link rel="stylesheet" type="text/css" href="/static/style/fonts.css">
     <link rel="stylesheet" type="text/css" href="/static/style/global-style.css">
@@ -35,11 +35,11 @@
   		
   			{% csrf_token %}
   			
-  			<input class="text_inputs" id="signin_email" name="signin_email" type="text" placeholder="Email">
+  			<input class="text_inputs" id="signin_email" name="signin_email" type="text" placeholder="Email Address">
   			
   			<input class="text_inputs" id="signin_password" name="signin_password" type="password" placeholder="Password">
 
-        <div id="error-msg">{{ error_msg }}</div>
+       <div id="error-msg">{{ error_msg }}</div>
   			
   			<input id="login_submit" type="submit" value="Sign-in" style="display: inline-block;">
   			

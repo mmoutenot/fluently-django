@@ -12,7 +12,12 @@ body {
 
 #student-modal-wrapper {
   z-index: 9999;
-
+  height: 540px;
+  width: 500px;
+  background-color: white;
+  position: relative;
+  margin: 0 auto;
+  border: 1px solid #d2d2d2;
 }
 
 #student-modal-title {
@@ -20,8 +25,8 @@ body {
 	text-transform: uppercase;
 	font-family: Quicksand;
 	font-weight: 500;
-	padding-top: 50px;
-	padding-bottom: 50px;
+	padding-top: 40px;
+	padding-bottom: 40px;
 	font-size: 20px;
 	width: 400px;
 	margin: 0 auto;
@@ -50,7 +55,8 @@ form {
     margin: 20px auto; }
     form input[type='text'] {
       display: block;
-      width: 300px; }
+      width: 300px;
+      height: 30px; }
       form input[type='text'].input_wide {
         width: 500px; }
     form input[type='password'] {
@@ -62,12 +68,11 @@ form {
       display: inline-block; }
   form textarea {
     font-family: Signika;
-    font-size: 16px;
     width: 300px;
-    height: 130px;
+    height: 100px;
     display: block;
     resize: none;
-    margin: 20px auto; }
+    margin: 20px auto;}
   form #next {
     position: relative;
     float: right;
@@ -102,7 +107,6 @@ form {
     display: block;
     margin: 0 auto; }
 
-
 input.text_input {
   border: 1px solid #d2d2d2;
   background: white;
@@ -128,8 +132,8 @@ form .large_response {
 	border: 1px solid #d2d2d2;
   background: white;
   padding: 3px;
- line-height: 22px;
-  font-size: 16px;
+  line-height: 24px;
+  font-size: 14px;
   font-family: Signika;
   border-radius: 3px;
   color: #5d6976;
@@ -137,32 +141,45 @@ form .large_response {
 
 .btn {
   text-decoration: none;
-  width: 143px;
-  height: 41px;
+  width: intrinsic;
+  padding-left: 38px;
+  padding-right: 18px;
+  height: 60px;
   background: #8ec0ed;
   display: inline-block;
   text-align: center;
   margin: 0 auto;
   position: relative;
   color: white;
-  font-size: 18px;
+  font-size: 17px;
   text-transform: uppercase;
+  font-family: Quicksand;
+  font-weight: bold;
   cursor: pointer;
-  line-height: 38px;
+  line-height: 56px;
   box-shadow: none;
-  border: none;}
+  background-image: url("/static/images/icons/mail-white.png");
+  background-repeat: no-repeat;
+  background-position-x: 13px;
+  background-position-y: 20px;
+  border: none;
+  border-bottom: 2px solid #5a94c7;
+  border-radius: 8px;}
   .btn:focus {
     outline: none;}
   .btn:hover {
-    background: #62a7e6; }
+    background: #62a7e6;
+    background-image: url("/static/images/icons/mail-white.png");
+    background-repeat: no-repeat;
+    background-position-x: 13px;
+    background-position-y: 20px;}
 
 #sign-up-button {
 	position: relative;
 	margin: 0 auto;
-	width: 200px;
+	width: 300px;
 	text-align: center;
-	margin-top: 30px;
-	padding-bottom: 10px;}
+	margin-top: 20px;}
 
 
 

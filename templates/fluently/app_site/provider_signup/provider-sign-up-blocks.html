@@ -4,24 +4,33 @@
   <form id="register-account-form" class="account-form">
     <input id="account-first-name" maxlength="16" type='text' class = 'text_input form_input' placeholder= 'First Name'/>
     <input id="account-last-name" maxlength="20" type='text' class = 'text_input form_input' placeholder= 'Last Name'/>
-    <input id="account-email" maxlength="40" type='text' class = 'text_input form_input' placeholder= 'Email' />
+    <input id="account-email" maxlength="40" type='text' class = 'text_input form_input' placeholder= 'Email Address' />
     <input id="account-phone" maxlength="20" type='text' class = 'text_input form_input' placeholder= '(617)-299-9363' />
     <div id="invalid-wrap"></div>
-    <div id="sign-up-button"><input type='submit' class='btn submit' value="Continue"/></div>
+    <div id="continue-button"><input type='submit' class='btn submit' value="Continue &rarr;"/></div>
   </form>
 </div>
 
 {# Certification #}
 
+
 <div class="signup-block" id="certification-block">
-  <form id="certify-account-form" class="account-form">
-    <input id="account-location" maxlength="32" type="text" class = 'text_input form_input' placeholder = 'State or Country' />
-    <textarea resize="none" id="account-specialties" maxlength="512" type="text" class = 'text_input form_input' placeholder = 'Therapy Specialties' />
+  <form id="certify-account-form" class="account-form"> 		
+  		<input id="account-zip-code" maxlength="14" type="text" class = "zip_code" placeholder = 'Zip or Postal Code' />
+  		<select id="country">
+		     					<option value="usa">United States</option>
+		     					<option value="uk">United Kingdom</option>
+		     					<option value="canada">Canada</option>
+		     					<option value="aus">Australia</option>
+		     					<option value="other">other</option>
+  	</select>   
+    <textarea resize="none" id="account-specialties" maxlength="512" type="text" class = 'text_input form_input' placeholder="Briefly describe your therapy specialties and experience..."></textarea>
     <div id='terms_box'>By clicking "Sign-up" you agree to our <a href="/privacy">Privacy Policy.</a></div>
     <div id="invalid-wrap"></div>
-    <div id="sign-up-button"> <input type='submit' class='btn submit' value="Sign up"></div>
+    <div id="sign-up-button"> <input type='submit' class='btn submit-btn' value="Sign up"> </div>
   </form>
 </div>
+
 
 {# Submit #}
 
