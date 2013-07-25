@@ -21,8 +21,12 @@ MANAGERS = ADMINS
 
 DATABASES = {
   'default': {
-    'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
+    'ENGINE': 'django.db.backends.postgresql_psycopg2', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
     'NAME': 'fluently',            # Or path to database file if using sqlite3.
+    'USER': 'fluently',            # Not used with sqlite3.
+    'PASSWORD': 'password',          # Not used with sqlite3.
+    'HOST': 'localhost',            # Set to empty string for localhost. Not used with sqlite3.
+    'PORT': '',            # Set to empty string for default. Not used with sqlite3.
   }
 }
 
@@ -54,6 +58,7 @@ USE_L10N = True
 MEDIA_ROOT = 'media/'
 MEDIA_URL = 'media/'
 
+# STATIC_ROOT = os.path.join(PROJECT_PATH, 'static')
 STATIC_URL = '/static/'
 
 # URL prefix for admin static files -- CSS, JavaScript and images.
@@ -65,9 +70,6 @@ ADMIN_MEDIA_PREFIX = '/static/admin/'
 STATICFILES_FINDERS = (
   'django.contrib.staticfiles.finders.FileSystemFinder',
   'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-
-  # vendor
-  'compressor.finders.CompressorFinder',
 )
 
 SECRET_KEY = 'PLEASE_ADD_ME'
@@ -86,10 +88,6 @@ MIDDLEWARE_CLASSES = (
   'django.contrib.messages.middleware.MessageMiddleware',
 )
 
-COMPRESS_PRECOMPILERS = (
-  ('text/coffeescript', 'coffee --compile --stdio'),
-)
-
 ROOT_URLCONF = 'urls'
 
 
@@ -102,9 +100,14 @@ INSTALLED_APPS = (
   'django.contrib.staticfiles',
   'django.contrib.admin',
 
-  'apps.fluently',
-)
+  # vendor apps
+  'vendor.TokBox',
+  'django_socketio',
 
+  # fluently apps
+  'apps.space',
+  'apps.face',
+)
 
 
 LOGGING = {
