@@ -101,12 +101,14 @@ INSTALLED_APPS = (
   'django.contrib.admin',
 
   # vendor apps
-  'vendor.TokBox',
-  'django_socketio',
+  #'vendor.TokBox',
+  #'django_socketio',
+  'south',
 
   # fluently apps
-  'apps.space',
-  'apps.face',
+  #'apps.space',
+  #'apps.face',
+  'apps.fluently'
 )
 
 
