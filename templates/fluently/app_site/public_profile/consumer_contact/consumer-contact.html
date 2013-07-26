@@ -2,28 +2,44 @@
 
   <head>
     <title>Fluently</title>
-    <link rel="stylesheet" type="text/css" href="/static/style/consumer-contact.css">
-    <link rel="stylesheet" type="text/css" href="/static/style/fonts.css">
+   
+    <link rel="stylesheet" type="text/css" href="global-style.css">
+    <link rel="stylesheet" type="text/css" href="fonts.css">
+    <link rel="stylesheet" type="text/css" href="consumer-contact.css">
+
+   
     <link rel="stylesheet" type="text/css" href="/static/style/global-style.css">
+    <link rel="stylesheet" type="text/css" href="/static/style/fonts.css">
+    <link rel="stylesheet" type="text/css" href="/static/style/consumer-contact.css">
     <link rel="icon" type="image/png" href="/static/images/icons/favicon.ico" />
+   
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
     <script type="text/javascript" src="/static/src/libs/spin.min.js"></script>
     <script type="text/javascript" src="/static/src/consumer-contact.js"></script>
     <script type="text/javascript">
       var csrf_token = "{{csrf_token}}";
-      var firstName = "{{firstName}}";
-      var lastName = "{{lastName}}";
-      var slp = "{{slp}}";
     </script>
   </head>
 
   <body>
 
-  	<div id="contact-student-blocks-wrapper">
+  	<div id="register-student-blocks-wrapper">
+  	
+  	
+  
+<div id="thankyou-block">
+  <div id="thankyou-title">Message sent!</div>
+    <div id="student-modal-thanks">
+      We have received your contact request. We will review your therapy needs and forward your message to {{firstName}}. 
+      Thanks for finding therapy on Fluently. <br/><br/>Stay positive.
+      <br/><img src="signature.png">
+	  </div>
+</div>
 
-			
-
-
+  	
+  	
+  	
+  	
 
   	</div> <!-- end wrapper -->
   	

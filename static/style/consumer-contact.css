@@ -1,31 +1,44 @@
-
-
 /* STUDENT MODAL */
 
 body {
   background: white;
 }
 
-#contact-student-blocks-wrapper {
+#register-student-blocks-wrapper {
   background: white;
+  
 }
 
-#student-modal-wrapper {
+#student_modal {
+	
   z-index: 9999;
-  height: 540px;
-  width: 500px;
-  background-color: white;
-  position: relative;
-  margin: 0 auto;
-  border: 1px solid #d2d2d2;
-}
+	height: 540px;
+	width: 500px;
+	background-color: white;
+	position: relative;
+	margin: 0 auto;
+	border: 1px solid #d2d2d2;}
 
 #student-modal-title {
 	text-align: center;
+	padding-bottom: 14px;
 	text-transform: uppercase;
 	font-family: Quicksand;
 	font-weight: 500;
 	padding-top: 40px;
+	padding-bottom: 40px;
+	font-size: 16px;
+	width: 400px;
+	margin: 0 auto;
+	line-height: 32px;}
+
+#thankyou-title {
+	text-align: center;
+	padding-bottom: 14px;
+	text-transform: uppercase;
+	font-family: Quicksand;
+	font-weight: 500;
+	padding-top: 80px;
 	padding-bottom: 40px;
 	font-size: 20px;
 	width: 400px;
@@ -33,15 +46,17 @@ body {
 	line-height: 32px;}
 
 #student-modal-explain {
-	width: 400px;
+	width: 340px;
 	margin: 0 auto;
 	text-align: center;
 	padding-bottom: 50px;
 	margin-top: -28px;
-	font-size: 14px;}
+	font-size: 13px;
+	line-height: 22px;}
 
 .signup-block {
 	margin-top: -40px;}
+
 
 form {
   *zoom: 1;
@@ -107,37 +122,36 @@ form {
     display: block;
     margin: 0 auto; }
 
+
 input.text_input {
   border: 1px solid #d2d2d2;
   background: white;
   padding: 3px;
   width: 250px;
-  height: 35px;
-  line-height: 35px;
-  font-size: 16px;
-  font-family: Signika;
-  border-radius: 3px;
-  color: #5d6976;
-  text-indent: 6px;}
-
-
-
-form .large_response {
-	height: 120px;}
-
-
-#contact-needs {
-	width: 300px;
-	height: 90px;
-	border: 1px solid #d2d2d2;
-  background: white;
-  padding: 3px;
-  line-height: 24px;
+  height: 28px;
+  line-height: 30px;
   font-size: 14px;
   font-family: Signika;
   border-radius: 3px;
   color: #5d6976;
   text-indent: 6px;}
+
+form .large_response {
+	height: 120px;}
+
+
+#student-needs {
+	width: 300px;
+	height: 90px;
+	border: 1px solid #d2d2d2;
+	background: white;
+	padding: 3px;
+	line-height: 24px;
+	font-size: 14px;
+	font-family: Signika;
+	border-radius: 3px;
+	color: #5d6976;
+	text-indent: 6px;}
 
 .btn {
   text-decoration: none;
@@ -182,7 +196,6 @@ form .large_response {
 	margin-top: 20px;}
 
 
-
 /* Thank You Submission */
 
 
@@ -196,18 +209,10 @@ form .large_response {
 	font-size: 14px;}
 
 	#student-modal-thanks img{
-		padding-top: 30px;}
+		padding-top: 30px;
+		
+	}
 
-
-
-
-
-
-
-
-
-
-
-	
-	
-	
+#invalid-wrap {
+  text-align:center;
+}	
