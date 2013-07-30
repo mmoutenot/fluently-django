@@ -81,6 +81,8 @@
 			position: absolute;
 			margin-top: -107px;
 			margin-left: 282px;
+			background-repeat: no-repeat;
+			background-position: center center;
 			background-image: url("img/name1.png");
 			border-image: none;}
 
