@@ -77,10 +77,10 @@ $(document).ready(function () {
       // Collect data from account form fields
 
       formData = {
-        name: $('#contact-name').val(),
-        email: $('#contact-email').val(),
-        zipCode: $('#contact-zip-code').val(),
-        needs: $('#contact-needs').val(),
+        name: $('#student-name').val(),
+        email: $('#student-email').val(),
+        zipCode: $('#student-zip-code').val(),
+        needs: $('#student-needs').val(),
         slp: slp,
         csrfmiddlewaretoken: csrf_token
       };
