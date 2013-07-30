@@ -10,11 +10,11 @@ CURRENT_DIR   		= os.path.dirname(__file__)
 TEMPLATE_DIRS 		= (os.path.join(CURRENT_DIR, 'templates'),)
 STATICFILES_DIRS 	= (os.path.join(CURRENT_DIR, 'static'),)
 
-DEBUG = True
+DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
-  # ('Your Name', 'your_email@example.com'),
+    ('Fluently Team', 'team@fluentlynow.com'),
 )
 
 MANAGERS = ADMINS
@@ -88,6 +88,8 @@ MIDDLEWARE_CLASSES = (
   'django.contrib.messages.middleware.MessageMiddleware',
 )
 
+SEND_BROKEN_LINK_EMAILS = True
+
 ROOT_URLCONF = 'urls'
 
 
@@ -130,7 +132,4 @@ LOGGING = {
   }
 }
 
-ALLOWED_HOSTS = [
-    '.fluentlynow.com',
-    '*',
-]
+ALLOWED_HOSTS = ['127.0.0.1']
