@@ -75,7 +75,7 @@ $(document).ready(function () {
       formData = {
         name: $('#student-name').val(),
         email: $('#student-email').val(),
-        loc: $('#student-location').val(),
+        zip: $('#student-zip-code').val(),
         needs: $('#student-needs').val(),
         csrfmiddlewaretoken: csrf_token
       };

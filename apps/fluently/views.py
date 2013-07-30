@@ -279,7 +279,7 @@ def consumer_request_handler(request):
     if request.POST:
         email = request.POST.get('email', "")
         name = request.POST.get('name', "")
-        location = request.POST.get('loc', "")
+        zipCode = request.POST.get('zip', "")
         needs = request.POST.get('needs', "")
         print email
         print name
@@ -292,7 +292,7 @@ def consumer_request_handler(request):
             r = StudentRequest.objects.create(email=email)
             r.requestType = 'G'
             r.name = name
-            r.location = location
+            r.zip_code = zipCode
             r.needs = needs        
             r.save()
             mandrill_url = ("https://mandrillapp.com/api/1.0/messages/"
@@ -300,7 +300,7 @@ def consumer_request_handler(request):
             template_content_ceo = [
                 { "name": "name", "content": name },
                 { "name": "email", "content": email },
-                { "name": "location", "content": location },
+                { "name": "location", "content": zipCode },
                 { "name": "needs", "content": needs }]
             mandrill_template_ceo = mandrill_template("student-request", 
                                                       template_content_ceo, 
@@ -490,7 +490,7 @@ def consumer_contact_handler(request):
     if request.POST:
         email = request.POST.get('email', "")
         name = request.POST.get('name', "")
-        location = request.POST.get('loc', "")
+        zipCode = request.POST.get('zipCode', "")
         needs = request.POST.get('needs', "")
         slp = request.POST.get('slp', "")
         if StudentRequest.objects.filter(email=email, slp=slp).count():
@@ -501,7 +501,7 @@ def consumer_contact_handler(request):
         else:
             r = StudentRequest.objects.create(email=email)
             r.name = name
-            r.location = location
+            r.zip_code = zipCode
             r.needs = needs
             r.slp = slp
             r.requestType = 'S'
@@ -511,7 +511,7 @@ def consumer_contact_handler(request):
             template_content_ceo = [
                 { "name": "name", "content": name },
                 { "name": "email", "content": email },
-                { "name": "location", "content": location },
+                { "name": "location", "content": zipCode },
                 { "name": "needs", "content": needs}, 
                 { "name": "slp", "content": slp }]
             mandrill_template_ceo = mandrill_template("student-SLP-request", 

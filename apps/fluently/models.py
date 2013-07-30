@@ -78,7 +78,7 @@ class StudentRequest(models.Model):
 
     email = models.CharField(max_length=30)
     name = models.CharField(max_length=64)
-    location = models.CharField(max_length=32)
+    zip_code = models.CharField(max_length=9)
     needs = models.CharField(max_length=512)
     slp = models.CharField(max_length=30)
     requestType = models.CharField(max_length=1, choices=REQUEST_TYPE_CHOICES)
