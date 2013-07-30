@@ -79,7 +79,7 @@ $(document).ready(function () {
       formData = {
         name: $('#contact-name').val(),
         email: $('#contact-email').val(),
-        loc: $('#contact-location').val(),
+        zipCode: $('#contact-zip-code').val(),
         needs: $('#contact-needs').val(),
         slp: slp,
         csrfmiddlewaretoken: csrf_token
