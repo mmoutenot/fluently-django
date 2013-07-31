@@ -42,7 +42,7 @@ body, html {
 	position: relative;
 	width: 560px;
 	color: white;
-	font-weight: 500;
+	font-weight: bold;
 	font-family: Quicksand;
 	text-transform: uppercase;
 	font-size: 15px;
@@ -75,10 +75,10 @@ body, html {
  	 position: relative;
  	 bottom: 0;
  	 z-index: 999;
-  background-color: #e67b6d;
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #e67b6d), color-stop(100%, #e46f60));
-  background-image: -webkit-linear-gradient(#e67b6d, #e46f60);
-  background-image: linear-gradient(#e67b6d, #e46f60); }
+ 	 background-color: #e67b6d;
+ 	 background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #e67b6d), color-stop(100%, #e46f60));
+ 	 background-image: -webkit-linear-gradient(#e67b6d, #e46f60);
+ 	 background-image: linear-gradient(#e67b6d, #e46f60); }
  
 #global_footer_content {
 	width: 980px;
@@ -90,7 +90,8 @@ body, html {
 	text-transform: uppercase;
 	font-size: 14px;
 	padding-top: 50px;
-	text-align: center;}
+	text-align: center;
+	font-weight: bold;}
 		#global_footer_content a{
 			color: white;
 			list-style: none;
@@ -99,7 +100,7 @@ body, html {
 			text-decoration: none;
 			padding: 10px;
 			opacity: 1.0;}
-				#global_footer_content p{
+		#global_footer_content p{
 			color: white;
 			list-style: none;
 			display: inline-block;

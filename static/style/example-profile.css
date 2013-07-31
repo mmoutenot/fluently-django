@@ -54,13 +54,13 @@ body a{
 	margin-top: 36px;
 	font-family: Quicksand;
 	color: white;
-	font-weight: 500;
+	font-weight: bold;
 	margin-right: 50px;
 	display: block;}
 	#nav_tagline a{
 	color: white;
 	width: 600px;
-	font-weight: 600;
+	font-weight: bold;
 	padding: 8px;
 	text-decoration: underline;}
 	#nav_tagline a:hover{
