@@ -49,7 +49,8 @@
 
 #profpic-box {
 	width: 300px;
-	height: 420px;
+	height: intrinsic;
+	padding-bottom: 10px;
 	border: 1px solid #e5e5e5;
 	background-color: #f1f3f5;
 	border-radius: 5px;
@@ -69,29 +70,29 @@
 #left-info-box {
 	width: 240px;
 	margin: 0 auto;
-	height: 120px;
+	height: intrinsic;
 	margin-top: 6px;}
 	#left-info-box h4{
 	font-size: 19px;
 	line-height: 14px;
 	font-weight: 600;
+	line-height: 28px;
+	margin-bottom: 14px;
 	text-align: center;}
-	#left-info-box h5{
-	line-height: 8px;
+
+.info-line-contain h5{
+	line-height: 16px;
 	font-size: 14px;
 	font-weight: 100;
-	margin-left: 0px;
-	display: inline;}
-	#left-info-box img{
+	margin-left: 30px;}
+	.info-line-contain img{
 		width: 16px;
 		height: 16px;
-		margin-left: 15px;
-		display: inline-block;
-		vertical-align: middle;
-		padding-right: 10px;}
+		position: absolute;
+		margin-left: 0px;
+		vertical-align: middle;}
 
-.info-line-contain {
-	padding-bottom: 14px;}
+
 
 
 /* Right Profile */
