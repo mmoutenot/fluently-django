@@ -11,6 +11,13 @@
   		
   			<input id="city-input" placeholder="City"><input id="state-input" placeholder="State">
   			
+  			<select id="select-job" class="selectize-style" placeholder="Select your job title" style="width: 340px">
+		     					<option value="slp">Speech-Language Pathologist</option>
+		     					<option value="audiologist">Audiologist</option>
+				  		</optgroup>
+				</select>
+			
+  			
   			<div><!-- begin selectize -->
   				<select id="select-to1" class="selectize-style" placeholder="Select your certifications..." style="width: 340px">
 	  						<optgroup label="Professional">
@@ -29,29 +36,31 @@
 			</div><!-- end selectize -->
   			
   			<div><!-- begin selectize -->
-  				<select id="select-to" class="selectize-style" placeholder="List your therapy focus... (max 4)" style="width: 340px">
+  				<select id="select-to" class="selectize-style" placeholder="List your therapy focus... (max 6)" style="width: 340px">
 	  				<optgroup label="Speech Disorders">
-		     					<option value="articulation">Articulation</option>
+		     					<option selected="selected" value="articulation">Articulation</option>
 		     					<option value="stuttering">Stuttering</option>
 		     					<option value="apraxia">Apraxia of Speech</option>
 		     					<option value="dysarthria">Dysarthria</option>
 		     				<optgroup label="Language Disorders">	
 		     					<option value="aphasia">Aphasia</option>
-		     					<option value="autism">Autism-Spectrum Disorders</option>
 		     					<option value="asperger">Asperger Syndrome</option>
-		     					<option value="commdisorder">Communication Disorder</option>
+		     					<option value="autism">Autism-Spectrum Disorders</option>
 		     					<option value="dyslexia">Dyslexia</option>
+		     					<option value="expressivelang">Expressive Language Disorder</option>
+		     					<option value="oralmotor">Oral Motor Dysfunction</option>
 		     				<optgroup label="Other">
-		     					<option value="aac">Augmentative and Alternative Communication (AAC)</option>
 		     					<option value="accent">Accent Modification</option>
+		     					<option value="devdelay">Auditory Proccesing Disorder</option>
+		     					<option value="aac">Augmentative & Alternative Communication (AAC)</option>
 		     					<option value="devdelay">Developmental Delay</option>
-		     					<option value="dysphagia">Dysphagia</option>
+		     					<option value="dysphagia">Dysphagia/Swallowing/Feeding</option>
+		     					<option value="literacy">Literacy/Reading</option>
 		     					<option value="other">other</option>
+
 				  		</optgroup>
 				</select>
-			  </div><!-- end selectize -->
-
-      </div><!-- end specialties-container -->
+			</div><!-- end selectize -->
   		
   		<div id="sign-up-button"> <input type='submit' class='btn submit-btn' value="Continue &rarr;"> </div>
   	
@@ -109,7 +118,7 @@
 		<h1>Welcome to Fluently</h1>
   		
   		<h4>Thanks for joining Fluently! If you have any questions along the way, contact us at <a href="mailto:team@fluentlynow.com">team@fluentlynow.com</a> at anytime.</h4>		
-  		<img id="signature" src="/static/images/elements/signature.png">
+  		<img id="signature" src="signature.png">
   		
   		<h2>Watch this 30 second video on getting started:</h2>
   		
