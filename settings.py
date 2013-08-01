@@ -14,7 +14,7 @@ DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
-  # ('Your Name', 'your_email@example.com'),
+    ('Fluently Team', 'team@fluentlynow.com'),
 )
 
 MANAGERS = ADMINS
@@ -23,6 +23,10 @@ DATABASES = {
   'default': {
     'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
     'NAME': 'fluently',            # Or path to database file if using sqlite3.
+    'USER': '',            # Not used with sqlite3.
+    'PASSWORD': '',          # Not used with sqlite3.
+    'HOST': '',            # Set to empty string for localhost. Not used with sqlite3.
+    'PORT': '',            # Set to empty string for default. Not used with sqlite3.
   }
 }
 
@@ -54,6 +58,7 @@ USE_L10N = True
 MEDIA_ROOT = 'media/'
 MEDIA_URL = 'media/'
 
+# STATIC_ROOT = os.path.join(PROJECT_PATH, 'static')
 STATIC_URL = '/static/'
 
 # URL prefix for admin static files -- CSS, JavaScript and images.
@@ -65,9 +70,6 @@ ADMIN_MEDIA_PREFIX = '/static/admin/'
 STATICFILES_FINDERS = (
   'django.contrib.staticfiles.finders.FileSystemFinder',
   'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-
-  # vendor
-  'compressor.finders.CompressorFinder',
 )
 
 SECRET_KEY = 'PLEASE_ADD_ME'
@@ -86,9 +88,7 @@ MIDDLEWARE_CLASSES = (
   'django.contrib.messages.middleware.MessageMiddleware',
 )
 
-COMPRESS_PRECOMPILERS = (
-  ('text/coffeescript', 'coffee --compile --stdio'),
-)
+SEND_BROKEN_LINK_EMAILS = True
 
 ROOT_URLCONF = 'urls'
 
@@ -102,9 +102,16 @@ INSTALLED_APPS = (
   'django.contrib.staticfiles',
   'django.contrib.admin',
 
-  'apps.fluently',
-)
+  # vendor apps
+  #'vendor.TokBox',
+  #'django_socketio',
+  'south',
 
+  # fluently apps
+  #'apps.space',
+  #'apps.face',
+  'apps.fluently'
+)
 
 
 LOGGING = {
@@ -124,3 +131,5 @@ LOGGING = {
   },
   }
 }
+
+ALLOWED_HOSTS = ['127.0.0.1']

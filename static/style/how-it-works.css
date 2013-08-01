@@ -61,7 +61,7 @@
 	margin-left: 112px;
 	height: 254px;
 	width: 394px;
-	background-image: url("img/slider1.png");
+	background-image: url("/static/images/elements/slider1.png");
 	z-index: 9;}		
 
 
@@ -81,9 +81,15 @@
 			position: absolute;
 			margin-top: -107px;
 			margin-left: 282px;
+<<<<<<< HEAD
 			background-repeat: no-repeat;
 			background-position: center center;
 			background-image: url("img/name1.png");
+=======
+      background-repeat: no-repeat;
+			background-position: center center;
+			background-image: url("/static/images/elements/name1.png");
+>>>>>>> 21e2d8443988e2e57ecf85a35e95f1f2370e6400
 			border-image: none;}
 
 

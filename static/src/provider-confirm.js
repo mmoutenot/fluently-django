@@ -112,8 +112,7 @@ $(document).ready(function() {
             errors.push(SERVER_ERROR);
             displayErrors(errors);
           } else if (dataJSON["status"] === "success") {
-            console.log("success");
-            $('#register-account-form').load('blocks #confirmed');
+            $('#register-account-form').load('blocks #confirmed-block');
           }
         }
 
