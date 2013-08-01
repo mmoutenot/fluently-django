@@ -52,7 +52,6 @@ h2 {
 #account-edit-blocks-wrapper {
   width: 480px;
   height: 630px;
-  border: 1px solid lime;
   margin: 0 auto;
   background: white;
   margin-top: 40px;}
@@ -63,7 +62,7 @@ h2 {
 	 font-weight: 100;
 	 font-size: 22px;
 	 text-align: center;
-	 margin-top: 50px;}
+	 padding-top: 56px;}
 	 
 h4 {
 	font-weight: 100;

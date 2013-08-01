@@ -32,16 +32,16 @@
   			<div><!-- begin selectize -->
   				<select id="select-to1" class="selectize-style" placeholder="Select your certifications..." style="width: 340px">
 	  						<optgroup label="Professional">
-	  						  <option value="ccc">CCC-SLP</option>	
+	  						  <option value="ccc" rank="4">CCC-SLP</option>	
 	  						<optgroup label="Education">
-		     					<option value="marts">MA</option>
-		     					<option value="mscience">MS</option>
-		     					<option value="medu">M.Ed</option>
-		     					<option value="phd">Ph.D</option>
+		     					<option value="marts" rank="3">MA</option>
+		     					<option value="mscience" rank="1">MS</option>
+		     					<option value="medu" rank="2">M.Ed</option>
+		     					<option value="phd" rank="0">Ph.D</option>
 		     				<optgroup label="Recognized Specialty">	
-		     					<option value="fluencydisorders">BRS-FD</option>
-		     					<option value="swallowing">BRS-S</option>
-		     					<option value="childlang">BRS-CL</option>	
+		     					<option value="fluencydisorders" rank="5">BRS-FD</option>
+		     					<option value="swallowing" rank="6">BRS-S</option>
+		     					<option value="childlang" rankk="7">BRS-CL</option>	
 				  		</optgroup>
 				</select>
 			</div><!-- end selectize -->
@@ -78,6 +78,7 @@
    <form id="edit-advanced-specialties-form">
     <h1>Edit your profile specialties</h1>
         <h4>Describe your location and specialties, which will be displayed publicly for those searching for therapy services.</h4>	
+			<div class="radio-section">
 				<p>I treat clients ages...</p>
 				<input id="select-all" class="age radio " type="checkbox" name="age" value="all">Select all
 				<input class="age radio " type="checkbox" name="age" value="child">0-4 yrs
@@ -85,10 +86,9 @@
 				<input class="age radio " type="checkbox" name="age" value="teen">11-17 yrs
 				<input class="age radio align2" type="checkbox" name="age" value="adult">18-65 yrs
 				<input class="age radio align2" type="checkbox" name="age" value="senior">66+ yrs 	
-			<div class="radio-section">
 				<p>I offer therapy in...</p>
 					<div id="check-column1">
-				<input class="loc radio " type="checkbox" name="office/clinc" value="office">Office/Clinic
+				<input class="loc radio " type="checkbox" name="office/clinic" value="office">Office/Clinic
 				<input class="loc radio align3" type="checkbox" name="travel" value="home">Travel to home
 					</div>
 					<div id="check-column2">

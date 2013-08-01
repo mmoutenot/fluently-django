@@ -30,21 +30,23 @@ import collections
 
 # Certification Choices
 
-# 1 - CCC-SLP
-# 2 - MA
-# 3 - MS
-# 4 - M.Ed
-# 5 - Ph.D
-# 6 - BRS-FD
-# 7 - BRS-S
-# 8 - BRS-CL
+CERTIFICATION_CHOICES_DISPLAY = (
+    (5, 'CCC-SLP'),
+    (4, 'MA'),
+    (2, 'MS'),
+    (3, 'M.Ed'),
+    (1, 'Ph.D'),
+    (6, 'BRS-FD'),
+    (7, 'BRS-S'),
+    (8, 'BRS-CL'),
+)
 
 CERTIFICATION_CHOICES = (
-    (1, 'ccc'),
-    (2, 'marts'),
-    (3, 'mscience'),
-    (4, 'medu'),
-    (5, 'phd'),
+    (5, 'ccc'),
+    (4, 'marts'),
+    (2, 'mscience'),
+    (3, 'medu'),
+    (1, 'phd'),
     (6, 'fluencydisorders'),
     (7, 'swallowing'),
     (8, 'childlang'),
@@ -52,20 +54,22 @@ CERTIFICATION_CHOICES = (
 
 # Therapy Need Choices
 
-# 1 - Articualtion
-# 2 - Stuttering
-# 3 - Apraxia of Speech
-# 4 - Dysarthria
-# 5 - Aphasia
-# 6 - Autism-Spectrum Disorder
-# 7 - Asperger Syndrome
-# 8 - Communication Disorder
-# 9 - Dyslexia
-# 10 - Augmentative & Alternative Communication (AAC)
-# 11 - Accent Modification
-# 12 - Developmental Delay
-# 13 - Dysphagia
-# 14 - Other
+SPECIALTY_CHOICES_DISPLAY = (
+    (1, 'Articulation'), 
+    (2, 'Stuttering'),   
+    (3, 'Apraxia of Speech'),
+    (4, 'Dysarthria'),
+    (5, 'Aphasia'),
+    (6, 'Autism-Spectrum Disorder'),
+    (7, 'Asperger Syndrome'),
+    (8, 'Communication Disorder'),
+    (9, 'Dyslexia'),
+    (10, 'Augmentative & Alternative Communication (AAC)'),
+    (11, 'Accent Modification'),
+    (12, 'Developmental Delay'),
+    (13, 'Dysphagia'),
+    (14, 'Other'),
+)
 
 SPECIALTY_CHOICES = (
     (1, 'articulation'), 
@@ -359,17 +363,21 @@ def public_profile(request, user_url):
         "lastName": lastName[0] + '.',
         "city": city,
         "state": state,
+        "role": "Speech-Language Pathologist",
         "specialtiesList": int_to_string_list_database(
-                               specialtiesList, SPECIALTY_CHOICES),
+                               specialtiesList, 
+                               SPECIALTY_CHOICES,
+                               SPECIALTY_CHOICES_DISPLAY),
         "aboutMe": aboutMe,
         "certificationList": int_to_string_list_database(
-                                certificationList, CERTIFICATION_CHOICES),
+                                certificationList, 
+                                CERTIFICATION_CHOICES,
+                                CERTIFICATION_CHOICES_DISPLAY),
         "experience": experience,
         "therapyApproach": therapyApproach,
         "userUrl": userUrl
     })
     print specialtiesList
-    print int_to_string_list_database(specialtiesList, SPECIALTY_CHOICES)
     context.update(csrf(request))
     return HttpResponse(template.render(context))
 #except:
@@ -381,16 +389,19 @@ def public_profile(request, user_url):
 ###          
 ###
 
-def int_to_string_list_database(int_list, choices):
+def int_to_string_list_database(int_list, choices, choices_display):
     out_str = ""
     int_list = int_list[1:-1].split(',')
     int_list = filter(None, int_list)
+    int_list.sort()
     print int_list
     for i in int_list:
         for j, choice in list(choices):
             if int(i) == j:
-                out_str += choice + ", "
-    out_str = out_str[:-1]
+                for k, choice_display in list(choices_display):
+                    if j == k:
+                        out_str += choice_display + ", "
+    out_str = out_str[:-2]
     return out_str
 
 # Convert string list to int list based on choice tuples in models.py
@@ -763,8 +774,6 @@ def consumer_contact_handler(request):
                 "emailed": False
             }
     return HttpResponse(json.dumps(response_json), mimetype="application/json") 
-
-
 
 # Get or update profile picture of logged in provider   
 def profile_picture_handler(request):

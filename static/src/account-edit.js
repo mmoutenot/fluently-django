@@ -35,8 +35,8 @@ $(document).ready(function () {
   });
 
   $('#edit-specialties-form').on('submit', function () {
-
-    certs = [];
+   
+    certs = []; 
     $('#select-to1 option').each(
       function () {
         certs.push($(this).val());
