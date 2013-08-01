@@ -1,0 +1,125 @@
+<html>
+
+  <head>
+    <title>Fluently</title>
+    <link rel="stylesheet" type="text/css" href="/static/style/account-edit.css">
+    <link rel="stylesheet" type="text/css" href="/static/style/fonts.css">
+    <link rel="stylesheet" type="text/css" href="/static/style/global-style.css">
+    <link rel="icon" type="image/png" href="/static/images/icons/favicon.ico" />
+
+    <script type="text/javascript">
+      var csrf_token = "{{csrf_token}}";
+    </script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+    <script type="text/javascript" src="/static/src/libs/spin.min.js"></script>
+    <script type="text/javascript" src="/static/src/account-edit.js"></script>
+    <script type="text/javascript" src="/static/src/libs/selectize.min.js"></script>
+    <script type="text/javascript" src="/static/src/account-edit.js"></script>
+    
+  </head>
+
+  <body>
+
+  	<div id="account-edit-blocks-wrapper">
+      
+  {# Edit Specialties Block  #}
+  <div id="edit-specialties-block" style="display: none">
+    <form id="edit-specialties-form">
+		<h1>Edit your profile specialties</h1>
+  		<h4>Describe your location and specialties, which will be displayed publicly for those searching for therapy services.</h4>		
+  		<div class="specialties-container">
+  			<input id="city-input" class="text_input" placeholder="City"><input id="state-input" class="text_input" placeholder="State">
+  			<div><!-- begin selectize -->
+  				<select id="select-to1" class="selectize-style" placeholder="Select your certifications..." style="width: 340px">
+	  						<optgroup label="Professional">
+	  						  <option value="ccc">CCC-SLP</option>	
+	  						<optgroup label="Education">
+		     					<option value="marts">MA</option>
+		     					<option value="mscience">MS</option>
+		     					<option value="medu">M.Ed</option>
+		     					<option value="phd">Ph.D</option>
+		     				<optgroup label="Recognized Specialty">	
+		     					<option value="fluencydisorders">BRS-FD</option>
+		     					<option value="swallowing">BRS-S</option>
+		     					<option value="childlang">BRS-CL</option>	
+				  		</optgroup>
+				</select>
+			</div><!-- end selectize -->
+  			<div><!-- begin selectize -->
+  				<select id="select-to" class="selectize-style" placeholder="List your therapy focus... (max 6)" style="width: 340px">
+	  				<optgroup label="Speech Disorders">
+		     					<option value="articulation">Articulation</option>
+		     					<option value="stuttering">Stuttering</option>
+		     					<option value="apraxia">Apraxia of Speech</option>
+		     					<option value="dysarthria">Dysarthria</option>
+		     				<optgroup label="Language Disorders">	
+		     					<option value="aphasia">Aphasia</option>
+		     					<option value="autism">Autism-Spectrum Disorders</option>
+		     					<option value="asperger">Asperger Syndrome</option>
+		     					<option value="commdisorder">Communication Disorder</option>
+		     					<option value="dyslexia">Dyslexia</option>
+		     				<optgroup label="Other">
+		     					<option value="aac">Augmentative and Alternative Communication (AAC)</option>
+		     					<option value="accent">Accent Modification</option>
+		     					<option value="devdelay">Developmental Delay</option>
+		     					<option value="dysphagia">Dysphagia</option>
+		     					<option value="other">other</option>
+				  		</optgroup>
+				</select>
+			  </div><!-- end selectize -->
+      </div><!-- end specialties-container -->
+  		<div id="sign-up-button"> <input type='submit' class='btn submit-btn' value="Continue &rarr;"> </div>
+    </form>
+	</div><!-- end specialties-container -->
+
+
+  {# Advanced Options Block #}
+   <div id="edit-advanced-specialties-block" style="display: none;">
+   <form id="edit-advanced-specialties-form">
+    <h1>Edit your profile specialties</h1>
+        <h4>Describe your location and specialties, which will be displayed publicly for those searching for therapy services.</h4>	
+				<p>I treat clients ages...</p>
+				<input id="select-all" class="age radio " type="checkbox" name="age" value="all">Select all
+				<input class="age radio " type="checkbox" name="age" value="child">0-4 yrs
+				<input class="age radio align3" type="checkbox" name="age" value="elementary">5-10 yrs <br/>
+				<input class="age radio " type="checkbox" name="age" value="teen">11-17 yrs
+				<input class="age radio align2" type="checkbox" name="age" value="adult">18-65 yrs
+				<input class="age radio align2" type="checkbox" name="age" value="senior">66+ yrs 	
+			<div class="radio-section">
+				<p>I offer therapy in...</p>
+					<div id="check-column1">
+				<input class="loc radio " type="checkbox" name="office/clinc" value="office">Office/Clinic
+				<input class="loc radio align3" type="checkbox" name="travel" value="home">Travel to home
+					</div>
+					<div id="check-column2">
+				<input class="loc radio " type="checkbox" name="teletherapy" value="online">Telepractice
+					</div>
+				<p>I accept payment via...</p>
+				<input class="pay radio" type="checkbox" name="cash/credit" value="hourly">Hourly rate (Cash/Credit)<br/>
+				<input class="pay radio" type="checkbox" name="insurance" value="insurance">Insurance/Receipts
+				<input class="pay radio" type="checkbox" name="other" value="other">Other
+			</div><!-- end radio-section -->
+  		<div id="sign-up-button"> <input type='submit' class='btn submit-btn' value="Submit"> </div>
+      </form>
+    </div>
+
+    {# Welcome Block #}
+
+      <div id="welcome-block" style="display: none;">
+        <h1>Welcome to Fluently</h1>
+          <h4>Thanks for joining Fluently! If you have any questions along the way, contact us at <a href="mailto:team@fluentlynow.com">team@fluentlynow.com</a> at anytime.</h4>		
+          <img id="signature" src="/static/images/elements/signature.png">
+          <h2>Watch this 30 second video on getting started:</h2>
+          <div id="video-place"></div>
+          <div id="sign-up-button"><input type='submit' class='continue-btn btn' value="Get started &rarr;"> </div>
+      </div><!-- end specialties-container -->
+
+
+
+
+
+
+  	</div> <!-- end wrapper -->
+  	
+    </body>
+</html>
