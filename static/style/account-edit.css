@@ -156,7 +156,7 @@ h4 {
 		margin-bottom: -6px;}
 
 .radio {
-	margin-left: 20px;
+	margin-left: 12px;
 	margin-right: 6px;
 	margin-top: 24px;
 	vertical-align: text-bottom;}
@@ -165,7 +165,26 @@ h4 {
 .selectize-style {
 	margin-top: 22px;}	
 	
-	
+#select-job {
+	color: #5d6976;
+	font-size: 15px;
+	width: 280px;
+	margin-left: 14px;
+	margin-right: 14px;
+	font-family: Signika;
+	font-weight: 100;
+	border: none;
+	height: 40px;
+	text-indent: 30px;
+	outline: none;
+	display: inline-block;
+	cursor: pointer;
+	cursor: hand;
+	border-radius: 6px;
+	-webkit-border-radius:6px;
+    -moz-border-radius:6px;}
+
+
 
 /* SELECTIZE.JS - SELECT SPECIALTY */
 
