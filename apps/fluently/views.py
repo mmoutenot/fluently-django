@@ -5,13 +5,14 @@ from django.contrib.auth.models import User, Group
 from django.template import Context
 from django.core.context_processors import csrf
 from django.template.loader import get_template
-from apps.fluently.models import UserProfile, StudentRequest
+import apps.fluently.models 
 from utils import mandrill_template
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 from django.http import HttpResponseRedirect
 from django.db.models import Q
 from random import choice
+from providerSearch import *
 import string
 import uuid
 import sys
@@ -20,6 +21,109 @@ import os
 import requests
 import json
 import collections
+
+###
+###
+### CHOICES 
+###
+###
+
+# Certification Choices
+
+# 1 - CCC-SLP
+# 2 - MA
+# 3 - MS
+# 4 - M.Ed
+# 5 - Ph.D
+# 6 - BRS-FD
+# 7 - BRS-S
+# 8 - BRS-CL
+
+CERTIFICATION_CHOICES = (
+    (1, 'ccc'),
+    (2, 'marts'),
+    (3, 'mscience'),
+    (4, 'medu'),
+    (5, 'phd'),
+    (6, 'fluencydisorders'),
+    (7, 'swallowing'),
+    (8, 'childlang'),
+)
+
+# Therapy Need Choices
+
+# 1 - Articualtion
+# 2 - Stuttering
+# 3 - Apraxia of Speech
+# 4 - Dysarthria
+# 5 - Aphasia
+# 6 - Autism-Spectrum Disorder
+# 7 - Asperger Syndrome
+# 8 - Communication Disorder
+# 9 - Dyslexia
+# 10 - Augmentative & Alternative Communication (AAC)
+# 11 - Accent Modification
+# 12 - Developmental Delay
+# 13 - Dysphagia
+# 14 - Other
+
+SPECIALTY_CHOICES = (
+    (1, 'articulation'), 
+    (2, 'stuttering'),   
+    (3, 'apraxia'),
+    (4, 'dysarthria'),
+    (5, 'aphasia'),
+    (6, 'autism'),
+    (7, 'asperger'),
+    (8, 'commdisorder'),
+    (9, 'dyslexia'),
+    (10, 'aac'),
+    (11, 'accent'),
+    (12, 'devdelay'),
+    (13, 'dysphagia'),
+    (14, 'other'),
+)
+
+# Age Choices
+
+# 1 - 0-4 - child
+# 2 - 5-10 - elementary
+# 3 - 11-17 - teen
+# 4 - 18-65 - adult
+# 5 - 66+ - senior
+
+CLIENT_AGE_CHOICES = (
+    (1, 'child'),
+    (2, 'elementary'),
+    (3, 'teen'),
+    (4, 'adult'),
+    (5, 'senior'),
+)
+
+# Located In Choices
+
+# 1 - No Preference
+# 2 - Office or Clinic
+# 3 - Home
+# 4 - Online or Videoconferencing
+
+LOCATED_IN_CHOICES = (
+    (1, 'office'),
+    (2, 'home'),
+    (3, 'online'),
+)
+
+# Payment Method Choices
+
+# 1 - No Preference
+# 2 - Hourly Rate (Cash/Credit)
+# 3 - Accepts Insurance
+
+PAYMENT_METHOD_CHOICES = (
+    (1, 'hourly'),
+    (2, 'insurance'),
+    (3, 'other'),
+)
 
 ###               
 ###               
@@ -59,6 +163,8 @@ consumer_request_blocks_url = 'fluently/app_site/consumer_request/consumer-reque
 
 # App Site # Personal Account
 account_url = 'fluently/app_site/personal_account/account.html'
+account_edit_url = 'fluently/app_site/personal_account/account-edit.html'
+account_edit_blocks_url = 'fluently/app_site/personal_account/account-edit-blocks.html'
 default_profile_pic_url = '/static/images/elements/default-profile.jpg'
 
 # App Site # Public Profile
@@ -112,6 +218,23 @@ def slp_landing(request):
 
 # Display search page
 def search(request):
+    template = get_template(search_url)
+    providers = []
+    if UserProfile.objects:
+        for i, u in enumerate(UserProfile.objects.all()):
+            print u
+            provider = {}
+            provider['firstName'] = u.first_name
+            provider['lastName'] = u.last_name
+            provider['zipCode'] = u.zip_code
+            provider['specialtiesList'] = u.specialties_list
+            provider['locatedIn'] = u.located_in
+            provider['paymentMethod'] = u.payment_method
+            providers.append(provider)
+        print providers
+        context = Context({"providers": providers})
+        context.update(csrf(request))
+        return HttpResponse(template.render(context))
     return render(request, search_url)
 
 # Display profile card block
@@ -156,7 +279,7 @@ def account(request):
         return redirect('/')
     firstName = u.userprofile.first_name
     lastName = u.userprofile.last_name
-    location = u.userprofile.location
+    zipCode = u.userprofile.zip_code
     aboutMe = u.userprofile.about_me
     certifications = u.userprofile.certifications
     experience = u.userprofile.experience
@@ -165,7 +288,7 @@ def account(request):
     context = Context({
         "firstName": firstName,
         "lastName": lastName,
-        "location": location,
+        "zipCode": zipCode,
         "aboutMe": aboutMe,
         "certifications": certifications,
         "experience": experience,
@@ -174,6 +297,20 @@ def account(request):
     })
     context.update(csrf(request))
     return HttpResponse(template.render(context))
+
+# Display account edit page
+def account_edit(request):
+    u = request.user
+    if not u.is_authenticated():
+        return redirect('/')
+    template = get_template(account_edit_url)
+    context = Context({})
+    context.update(csrf(request))
+    return HttpResponse(template.render(context))
+
+# Display account edit blocks
+def account_edit_blocks(request):
+    return render(request, account_edit_blocks_url)
 
 # Display consumer contact blocks
 def consumer_contact_blocks(request, user_url):
@@ -202,32 +339,41 @@ def consumer_contact(request, user_url):
 # Display public profile page for provider based on given url
 def public_profile(request, user_url):
     print "pub"
-    try:
-        u = UserProfile.objects.filter(user_url=user_url)[0].user  
-        template = get_template(public_profile_url)
-        firstName = u.userprofile.first_name
-        lastName = u.userprofile.last_name
-        location = u.userprofile.location
-        aboutMe = u.userprofile.about_me
-        certifications = u.userprofile.certifications
-        experience = u.userprofile.experience
-        therapyApproach = u.userprofile.therapy_approach
-        userUrl = u.userprofile.user_url
-        context = Context({
-            "firstName": firstName,
-            "lastName": lastName[0] + '.',
-            "location": location,
-            "aboutMe": aboutMe,
-            "certifications": certifications,
-            "experience": experience,
-            "therapyApproach": therapyApproach,
-            "userUrl": userUrl
-        })
-        print aboutMe
-        context.update(csrf(request))
-        return HttpResponse(template.render(context))
-    except:
-        return redirect('/')
+#try:
+    print "trying"
+    u = UserProfile.objects.filter(user_url=user_url)[0].user  
+    print 'got it'
+    template = get_template(public_profile_url)
+    firstName = u.userprofile.first_name
+    lastName = u.userprofile.last_name
+    aboutMe = u.userprofile.about_me
+    city = u.userprofile.city
+    state = u.userprofile.state
+    certificationList = u.userprofile.certification_list
+    specialtiesList = u.userprofile.specialties_list
+    experience = u.userprofile.experience
+    therapyApproach = u.userprofile.therapy_approach
+    userUrl = u.userprofile.user_url
+    context = Context({
+        "firstName": firstName,
+        "lastName": lastName[0] + '.',
+        "city": city,
+        "state": state,
+        "specialtiesList": int_to_string_list_database(
+                               specialtiesList, SPECIALTY_CHOICES),
+        "aboutMe": aboutMe,
+        "certificationList": int_to_string_list_database(
+                                certificationList, CERTIFICATION_CHOICES),
+        "experience": experience,
+        "therapyApproach": therapyApproach,
+        "userUrl": userUrl
+    })
+    print specialtiesList
+    print int_to_string_list_database(specialtiesList, SPECIALTY_CHOICES)
+    context.update(csrf(request))
+    return HttpResponse(template.render(context))
+#except:
+#return redirect('/')
 
 ###        
 ###          
@@ -235,14 +381,99 @@ def public_profile(request, user_url):
 ###          
 ###
 
+def int_to_string_list_database(int_list, choices):
+    out_str = ""
+    int_list = int_list[1:-1].split(',')
+    int_list = filter(None, int_list)
+    print int_list
+    for i in int_list:
+        for j, choice in list(choices):
+            if int(i) == j:
+                out_str += choice + ", "
+    out_str = out_str[:-1]
+    return out_str
+
+# Convert string list to int list based on choice tuples in models.py
+def string_to_int_list_database(str_list, choices):
+    out_ids = '['
+    str_list = str_list.split(',')
+    for s in str_list:
+        for i, choice in list(choices):
+            if s == choice:
+                out_ids += str(i) + ',' 
+    out_ids += ']'
+    return out_ids
+
+def account_edit_handler(request):
+    u = request.user
+    if not u.is_authenticated():
+        return redirect('/')
+    viewed = u.userprofile.viewed_account
+#u.userprofile.viewed_account = True
+    return HttpResponse(json.dumps({"viewed":viewed}),
+                        mimetype="application/json")
+
+def account_options_handler(request):
+    u = request.user
+    if not u.is_authenticated():
+        return redirect('/')
+    if request.POST:
+        u.userprofile.city = request.POST.get('city', '')
+        u.userprofile.state = request.POST.get('state', '')
+        u.userprofile.certification_list = string_to_int_list_database(
+                                   request.POST.get('certifications', ''),
+                                   CERTIFICATION_CHOICES) 
+        u.userprofile.specialties_list = string_to_int_list_database(
+                                 request.POST.get('specialties', ''),
+                                 SPECIALTY_CHOICES)
+        u.userprofile.save()
+        return HttpResponse(json.dumps({"status": "success"}),
+                            mimetype='application/json')
+    return HttpResponse(json.dumps({"status": "fail"}),
+                        mimetype='application/json')
+
+def account_advanced_options_handler(request):
+    u = request.user
+    if not u.is_authenticated():
+        return redirect('/')
+    if request.POST:
+        print 'hello'
+        print request.POST.get('age', '')
+        u.userprofile.client_ages_list = string_to_int_list_database(
+                                 request.POST.get('age', ''),
+                                 CLIENT_AGE_CHOICES) 
+        u.userprofile.located_in = string_to_int_list_database(
+                           request.POST.get('loc', ''),
+                           LOCATED_IN_CHOICES)
+        u.userprofile.payment_method = string_to_int_list_database(
+                              request.POST.get('pay', ''),
+                              PAYMENT_METHOD_CHOICES)
+        u.userprofile.save()
+        return HttpResponse(json.dumps({"status": "success"}),
+                            mimetype='application/json')
+    return HttpResponse(json.dumps({"status": "fail"}),
+                        mimetype='application/json')
+
 def search_results(request):
     response_json = {"status": "fail"}
+    if not len(User.objects.all()):
+        sample_therapists()
     if request.POST:
         need = request.POST.get('need', '')
         zipCode = request.POST.get('zipCode', '')
         locatedIn = request.POST.get('locatedIn', '')
         payment = request.POST.get('payment', '')
-        
+        print need
+        print zipCode
+        print locatedIn
+        print payment 
+        q = SearchQuery.objects.create()
+        q.need = need
+        q.zip_code = zipCode
+        q.located_in = locatedIn
+        q.payment_method = payment 
+        q.save()
+        response_json = {"status": "success"}
     return HttpResponse(json.dumps(response_json),
                         mimetype='application/json')
 
@@ -388,7 +619,6 @@ def provider_sign_up_emailed(request):
 # Request with new provider info from sign up page 
 # Save provider in database, send emails to CEO and provider 
 def provider_sign_up_handler(request):
-    print "handling"
     response_json = {"status": "fail"}
     if request.POST:
         print request.POST

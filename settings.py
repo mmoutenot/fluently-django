@@ -10,7 +10,7 @@ CURRENT_DIR   		= os.path.dirname(__file__)
 TEMPLATE_DIRS 		= (os.path.join(CURRENT_DIR, 'templates'),)
 STATICFILES_DIRS 	= (os.path.join(CURRENT_DIR, 'static'),)
 
-DEBUG = False
+DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (

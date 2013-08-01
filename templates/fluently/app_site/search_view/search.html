@@ -145,7 +145,13 @@
 		   		
 		   		<div class="row"><!--begin row -->
 		   		
-		
+	        {% for p in providers %}
+            {% for k, v in p.items %}
+            {{ k }}: {{ v }}
+            <br/> 
+            {% endfor %}
+            <br/><br/>
+          {% endfor %}
 		  		   		
 		   		</div><!-- end row -->
 		   		

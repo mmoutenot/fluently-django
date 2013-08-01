@@ -1,3 +1,7 @@
+Shadowbox.init({
+  skipSetup: true
+});
+
 // String Constants
 
 SERVER_ERROR = "Internal server error."
@@ -7,6 +11,30 @@ SERVER_ERROR = "Internal server error."
 var profile_data;
 
 $(document).ready(function () {
+
+  data = {
+    csrfmiddlewaretoken: csrf_token
+  }
+
+  $.get("/account-edit/", function(modalHTML) {
+    $.ajax({
+      type: "post",
+      dataType: "json",
+      url: "/account-edit/handler/",
+      data: data,
+      success: function(dataJSON) {
+        if (!dataJSON['viewed']) {
+          Shadowbox.open({
+            content: modalHTML,
+            player: 'html',
+            height: 558,
+            width: 500
+          });  
+        }
+      }
+    });
+  });
+
 
   // Spin animation
 
@@ -47,7 +75,6 @@ $(document).ready(function () {
   // Change profile picture
 
   filepicker.setKey('Ax3aLiPGtQJyyVSqNIiW2z');
- 
 
   $('#change-prof-pic').click(function () {
       filepicker.pick({

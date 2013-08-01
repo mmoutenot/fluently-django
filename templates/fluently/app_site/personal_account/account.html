@@ -2,16 +2,19 @@
 <html>
 
   <head>
-    <title>My Profile | Fluently</title>
-    <link rel="stylesheet" type="text/css" href="/static/style/account.css">
+    <title>My Account | Fluently</title>
+    
+     <link rel="stylesheet" type="text/css" href="/static/style/account.css">
     <link rel="stylesheet" type="text/css" href="/static/style/global-style.css">
     <link rel="stylesheet" type="text/css" href="/static/style/fonts.css">
+    <link rel="stylesheet" type="text/css" href="/static/src/libs/shadowbox-3.0.3/shadowbox.css" />
     <link rel="icon" type="image/png" href="/static/images/icons/favicon.ico" />
       
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
     <script type="text/javascript" src="//api.filepicker.io/v1/filepicker.js"></script>
     <script type="text/javascript" src="/static/src/libs/spin.min.js"></script>
     <script type="text/javascript" src="/static/src/libs/jquery.waitforimages.min.js"></script>
+    <script src="/static/src/libs/shadowbox-3.0.3/shadowbox.js"></script>
     <script src="/static/src/account.js"></script>
         <script type="text/javascript">
       var csrf_token = "{{csrf_token}}";
@@ -28,8 +31,6 @@
 	    	<div id='logo'>
 		    	<a href="/"><img src='/static/images/logos/Logo_White.png'></a>
 		    </div>
-		    
-		
 		    
     	</div> <!-- end navbar_content -->
     </div> <!-- end navbar -->
@@ -55,6 +56,8 @@
      			
      			<h4 id="info-name">{{firstName}} {{lastName}}</h4>
      			
+     			<a href="/profile/{{userUrl}}" id="edit-modal-link"><p>Edit my profile specialties &rarr;</p></a>
+     			
      			<a href="/profile/{{userUrl}}"><p>Preview my Fluently profile &rarr;</p></a>
      			
      		
@@ -77,7 +80,7 @@
           	<form id="account-info-form">
 		     		<label class="field-label">First Name</label><input class="user-field" id="first-name" type="text" value="{{firstName}}">
 		     		<label class="field-label">Last Name</label><input class="user-field" id="last-name" type="text" value="{{lastName}}">
-		     		<label class="field-label">City/State</label><input class="user-field" id="location" type="text" value="{{location}}">
+		     		<label class="field-label">Zip Code</label><input class="user-field" id="zip-code" type="text" value="{{zipCode}}">
 		     	</form>
 		     		<div id="status"></div>
 		

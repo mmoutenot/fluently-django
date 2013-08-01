@@ -5,7 +5,7 @@
 #sidebar {
 	float: left;
 	width: 360px;
-	height: auto;
+	height: intrinsic;
 	position: absolute;
 	color: #5d6976;
 	padding-top: 46px;}
@@ -190,7 +190,7 @@
 
 #profile-picture-edit {
 	width: 280px;
-	height: 360px;
+	height: 390px;
 	margin: 0 auto;
 	border: 1px solid #e5e5e5;
 	background-color: #f1f3f5;
@@ -203,7 +203,7 @@
 			text-align: center;}
 		#profile-picture-edit p{
 			font-size: 12px;
-			margin-top: -28px;
+			margin-top: -20px;
 			line-height: 14px;
 			font-weight: 400;
 			color: #5d6976;
