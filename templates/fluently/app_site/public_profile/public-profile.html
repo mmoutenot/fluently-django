@@ -3,6 +3,12 @@
 
   <head>
     <title>Fluently | {{firstName}} {{lastName}}</title>
+    
+<link rel="stylesheet" type="text/css" href="public-profile.css">
+<link rel="stylesheet" type="text/css" href="fonts.css">
+<link rel="stylesheet" type="text/css" href="global-style.css">
+    
+    
     <link rel="stylesheet" type="text/css" href="/static/style/public-profile.css">
     <link rel="stylesheet" type="text/css" href="/static/style/fonts.css">
     <link rel="stylesheet" type="text/css" href="/static/style/global-style.css">
@@ -77,13 +83,13 @@
      		
      			<div id="left-info-box">
      			
-     				<h4 id="info-name">{{firstName}} {{lastName}}</h4>
+     				<h4 id="info-name">{{firstName}} {{lastName}} - {{credentials}}</h4>
      				
-     				<div class="info-line-contain"><img src="/static/images/icons/book.png"><h5 id="info-role">Speech-Language Pathologist</h4></div>
+     				<div class="info-line-contain"><img src="/static/images/icons/book.png"><h5 id="info-role">{{role}}</h5></div>
      				
-     				<div class="info-line-contain"><img src="/static/images/icons/pin.png"><h5 id="info-location">{{city}}, {{state}}</h4></div>
+     				<div class="info-line-contain"><img src="/static/images/icons/pin.png"><h5 id="info-location">{{city}}, {{state}}</h5></div>
      				
-     				<div class="info-line-contain"><img src="/static/images/icons/star.png"><h5 id="info-specialties">{{specialtiesList}}</h4></div>
+     				<div class="info-line-contain"><img src="/static/images/icons/star.png"><h5 id="info-specialties">{{specialties}}</h5></div>
      			
      			</div><!-- end left-info-box -->
      		
