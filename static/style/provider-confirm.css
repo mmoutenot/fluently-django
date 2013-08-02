@@ -122,9 +122,18 @@ textarea {
 	width: 200px;
 	text-align: center;
 	margin-top: 30px;
-	padding-bottom: 10px;
-}
+	padding-bottom: 10px;}
 
+#confirm-button {
+	position: relative;
+	margin: 0 auto;
+	width: intrinsic;
+	padding-left: 18px;
+	padding-right: 18px;
+	text-align: center;
+	border-radius: 10px;
+	border-bottom: 2px solid #62a7e6;
+	margin-top: 40px;}
 
 footer {
   width: 100%;
