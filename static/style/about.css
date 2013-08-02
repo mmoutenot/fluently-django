@@ -1,4 +1,7 @@
-
+body a {
+	text-decoration: none;
+	color: inherit;}
+	
 /* CONTENT */
 
 .text_container {
