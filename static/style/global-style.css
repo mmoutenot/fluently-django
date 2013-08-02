@@ -5,8 +5,8 @@ body, html {
   color: #5d6976;
   background: #f1f3f5;
   position: relative;
-     -webkit-font-smoothing: antialiased;
-     font-smoothing: antialiased;}
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;}
   	body a{
 	  	text-decoration: none;}
 
@@ -17,13 +17,12 @@ body, html {
   height: 80px;
   position: relative;
   top: 0;
-  background: #e67b6d;
   z-index: 999;
- 
-  background-color: #e67b6d;
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #e67b6d), color-stop(100%, #e46f60));
-  background-image: -webkit-linear-gradient(#e67b6d, #e46f60);
-  background-image: linear-gradient(#e67b6d, #e46f60); }
+  background-color: #fb5644;
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #fb5644), color-stop(100%, #f85947));
+  background-image: -webkit-linear-gradient(#fb5644, #f85947 0%);
+  background-image: linear-gradient(#fb5644, #f85947); }
+
   #navbar_content {
 	  width: 1080px;
 	  margin: 0 auto;
@@ -75,11 +74,11 @@ body, html {
  	 position: relative;
  	 bottom: 0;
  	 z-index: 999;
- 	 background-color: #e67b6d;
- 	 background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #e67b6d), color-stop(100%, #e46f60));
- 	 background-image: -webkit-linear-gradient(#e67b6d, #e46f60);
- 	 background-image: linear-gradient(#e67b6d, #e46f60); }
- 
+ 	 background-color: #fb5644;
+ 	 background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #fb5644), color-stop(100%, #f85947));
+ 	 background-image: -webkit-linear-gradient(#fb5644, #f85947 0%);
+ 	 background-image: linear-gradient(#fb5644, #f85947); }
+  
 #global_footer_content {
 	width: 980px;
 	height: 90px;
@@ -130,7 +129,7 @@ body, html {
 		#footer_left ul li{
 		display: inline;
 		text-decoration: none;
-		color: #5d6976;
+		color: #5d6975;
 		margin-left: 0px;
 		margin-right: 40px;
 		padding: 6px;}
