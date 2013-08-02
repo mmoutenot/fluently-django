@@ -143,17 +143,20 @@
 	background: white;
 	margin: 0 auto;
 	text-decoration: none;
-	margin-top: -100px;}
+	margin-top: -100px;
+	color: #5d6975;}
 	#more-info h6 {
 		font-size: 15px;
 		font-weight: 500;
 		font-family: Quicksand;
 		text-align: center;
-		line-height: 40px;}	
+		line-height: 40px;
+		color: #5d6975;}
 	#more-info img { 
 		height: 90px;
 		margin-left: 444px;}
 	#more-info a:hover {
-		text-decoration: underline;}
+		text-decoration: underline;
+		color: #5d6975;}
 		
 		

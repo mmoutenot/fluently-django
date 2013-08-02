@@ -122,13 +122,8 @@
   height: 50px;
   position: fixed;
   bottom: 0;
-  background: #FB5644;
   z-index: 9999;
- 
-  background-color: #e67b6d;
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #e67b6d), color-stop(100%, #e46f60));
-  background-image: -webkit-linear-gradient(#e67b6d, #e46f60);
-  background-image: linear-gradient(#e67b6d, #e46f60); }
+  background-color: #FB5644;}
   
 #footbar_content {
 	position: relative;
