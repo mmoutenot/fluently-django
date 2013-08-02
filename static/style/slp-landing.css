@@ -24,7 +24,7 @@
 /* Top SECTION */
 
 #top-section {
-	background-color: #8EC0ED;
+	background-color: #3994D1;
 	width: 100%;
 	height: 440px;}
 		#top-section h1 {
@@ -74,7 +74,7 @@
 	#sign-up-box h2{	
 		font-family: Signika;
 		font-weight: 300;
-		color: #e67b6d;
+		color: #FB5644;
 		font-size: 19px;}		
 	#sign-up-box p{		
 		font-family: Signika;
@@ -91,13 +91,13 @@
 #view-example {
 	font-family: Quicksand;
 	font-size: 26px;
-	color: #8EC0ED;
+	color: #3994D1;
 	text-align: center;
 	text-decoration: underline;
 	margin-top: 50px;}
 	#view-example a{
 		text-decoration: none;
-		color: #8EC0ED;}
+		color: #3994D1;}
 		#view-example a:hover{
 		opacity: 0.8;}
 		
@@ -176,7 +176,7 @@ input {
 .profile-button {
 	width: 200px;
 	height: 60px;
-	background-color: #8EC0ED;
+	background-color: #3994D1;
 	color: white;
 	text-decoration: none;
 	text-align: center;
@@ -191,13 +191,13 @@ input {
 	margin: 0 auto;
 	width: 350px;
 	height: 80px;
-	background-color: #8EC0ED;
-	border-bottom: 2px solid #6399c8;
+	background-color: #3994D1;
+	border-bottom: 3px solid #308cc9;
 	margin-top: 50px;
 	font-size: 19px;
 	line-height: 82px;}
 		#landing-page-button:hover {
-			background-color: #7ab5e8;
+			background-color: #308cc9;
 			 -webkit-transition: all .1s ease-in-out;
 			 -moz-transition: all .1s ease-in-out;
 			 -o-transition: all .1s ease-in-out;
@@ -214,5 +214,5 @@ input {
 	margin-top: 40px;
 	line-height: 18px;}
 		#privacy-blurb a {
-			color: #e67b6d;}
+			color: #FB5644;}
 

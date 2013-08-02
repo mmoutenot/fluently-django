@@ -27,7 +27,7 @@ textarea {
   height: 60px;
   padding-right: 20px;
   padding-left: 20px;
-  background: #8ec0ed;
+  background: #3994D1;
   display: inline-block;
   text-align: center;
   margin: 0 auto;
@@ -41,12 +41,12 @@ textarea {
   line-height: 56px;
   box-shadow: none;
   border: none;
-  border-bottom: 2px solid #5a94c7;
+  border-bottom: 2px solid #308cc9;
   border-radius: 8px;}
   .btn:focus {
     outline: none;}
   .btn:hover {
-    background: #62a7e6;}
+    background: #308cc9;}
 
 .submit-btn {
 	position: relative;

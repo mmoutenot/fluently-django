@@ -99,7 +99,7 @@ textarea {
   text-decoration: none;
   width: 143px;
   height: 41px;
-  background: #8ec0ed;
+  background: #3994D1;
   display: inline-block;
   text-align: center;
   margin: 0 auto;
@@ -114,7 +114,7 @@ textarea {
   .btn:focus {
     outline: none;}
   .btn:hover {
-    background: #62a7e6; }
+    background: #308cc9; }
 
 #sign-up-button {
 	position: relative;
@@ -132,7 +132,7 @@ textarea {
 	padding-right: 18px;
 	text-align: center;
 	border-radius: 10px;
-	border-bottom: 2px solid #62a7e6;
+	border-bottom: 2px solid #308cc9;
 	margin-top: 40px;}
 
 footer {
@@ -324,13 +324,13 @@ form {
 	line-height: 70px;
 	margin: 0 auto;
 	height: 70px;
-	background: #8EC0ED;
+	background: #3994D1;
 	color: white;
 	font-family: Quicksand;
 	text-transform: uppercase;
 	font-size: 16px;
 	border-radius: 9px;
 	font-weight: bold;
-	border-bottom: 2px solid #62a7e6;}
+	border-bottom: 2px solid #308cc9;}
 		#confirmed:hover {
-			background: #62a7e6;}
+			background: #308cc9;}

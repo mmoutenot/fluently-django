@@ -20,7 +20,7 @@
 /* Top SECTION */
 
 #top-section {
-	background-color: #8EC0ED;
+	background-color: #3994D1;
 	width: 100%;
 	height: 440px;}
 		#top-section h1 {
@@ -37,13 +37,11 @@
 		margin-top: 20px;
 		font-size: 20px;}
 
-
 #top-lower-section {
 	background: white;
 	padding-bottom: 170px;
 	border-bottom: 1px solid #c8c8c8;}
 	
-
 #macbook {
 	width: 520px;
 	height: 390px;
@@ -63,7 +61,6 @@
 	width: 394px;
 	background-image: url("/static/images/elements/slider1.png");
 	z-index: 9;}		
-
 
 #connect-arrow-box {
 		width: 560px;
@@ -94,9 +91,9 @@
 
 
 .top-button {
-	background-color: #9AE598;
+	background-color: #36DC57;
 	width: 200px;
-	border-bottom: 2px solid #5cc258;
+	border-bottom: 2px solid #2ccd4c;
 	color: white;
 	text-decoration: none;
 	text-align: center;
@@ -112,7 +109,7 @@
 	z-index: 99;
 	margin-top: 0px;}
 		.top-button:hover {
-			background-color: #86d183;
+			background-color: #2ccd4c;
 			 -webkit-transition: all .1s ease-in-out;
 			 -moz-transition: all .1s ease-in-out;
 			 -o-transition: all .1s ease-in-out;
@@ -196,7 +193,7 @@
 	line-height: 22px;}
 		.steps-text h3{
 			font-size: 24px;
-			color: #8EC0ED;
+			color: #3994D1;
 			line-height: 36px;
 			font-family: Quicksand;}
 	
@@ -266,7 +263,7 @@
 .profile-button {
 	width: 200px;
 	height: 60px;
-	background-color: #8EC0ED;
+	background-color: #3994D1;
 	color: white;
 	text-decoration: none;
 	text-align: center;
@@ -279,12 +276,12 @@
 
 #parent-button {
 	margin: 0 auto;
-	background-color: #8EC0ED;
+	background-color: #3994D1;
 	width: 170px;
-	border-bottom: 2px solid #6399c8;
+	border-bottom: 2px solid #308cc9;
 	margin-top: 40px;}
 		#parent-button:hover {
-			background-color: #7ab5e8;
+			background-color: #308cc9;
 			 -webkit-transition: all .1s ease-in-out;
 			 -moz-transition: all .1s ease-in-out;
 			 -o-transition: all .1s ease-in-out;
@@ -292,12 +289,12 @@
 					
 #join-button {
 	margin: 0 auto;
-	background-color: #9AE598;
+	background-color: #36DC57;
 	width: 170px;
-	border-bottom: 2px solid #5cc258;
+	border-bottom: 2px solid #2ccd4c;
 	margin-top: 40px;}
 		#join-button:hover {
-			background-color: #84e081;
+			background-color: #2ccd4c;
 			 -webkit-transition: all .1s ease-in-out;
 			 -moz-transition: all .1s ease-in-out;
 			 -o-transition: all .1s ease-in-out;

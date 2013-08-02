@@ -41,7 +41,7 @@
 #student-button {
 	position: relative;
 	color: white;
-	background-color: #8EC0ED;
+	background-color: #3994D1;
 	height: 80px;
 	width: 220px;
 	margin-left: 110px;
@@ -54,9 +54,9 @@
 	font-size: 20px;
 	line-height: 78px;
 	display: inline-block;
-	border-bottom: 2px solid #6399c8;}
+	border-bottom: 3px solid #308cc9;}
 		#student-button:hover {
-			background-color: #7ab5e8;
+			background-color: #308cc9;
 			 -webkit-transition: all .1s ease-in-out;
 			 -moz-transition: all .1s ease-in-out;
 			 -o-transition: all .1s ease-in-out;
@@ -166,7 +166,7 @@
 .profile-button {
 	width: 200px;
 	height: 60px;
-	background-color: #8EC0ED;
+	background-color: #3994D1;
 	color: white;
 	text-decoration: none;
 	text-align: center;
@@ -179,12 +179,12 @@
 
 #parent-button {
 	margin: 0 auto;
-	background-color: #8EC0ED;
+	background-color: #3994D1;
 	width: 170px;
-	border-bottom: 2px solid #6399c8;
+	border-bottom: 2px solid #308cc9;
 	margin-top: 40px;}
 		#parent-button:hover {
-			background-color: #7ab5e8;
+			background-color: #308cc9;
 			 -webkit-transition: all .1s ease-in-out;
 			 -moz-transition: all .1s ease-in-out;
 			 -o-transition: all .1s ease-in-out;
@@ -192,12 +192,12 @@
 					
 #join-button {
 	margin: 0 auto;
-	background-color: #9AE598;
+	background-color: #36DC57;
 	width: 170px;
-	border-bottom: 2px solid #5cc258;
+	border-bottom: 2px solid #2ccd4c;
 	margin-top: 40px;}
 		#join-button:hover {
-			background-color: #84e081;
+			background-color: #2ccd4c;
 			 -webkit-transition: all .1s ease-in-out;
 			 -moz-transition: all .1s ease-in-out;
 			 -o-transition: all .1s ease-in-out;

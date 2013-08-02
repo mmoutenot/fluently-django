@@ -98,7 +98,7 @@ body a{
 	width: 360px;
 	height: 500px;
 	float: left;
-	margin-left: 10px;
+	margin-left: 0px;
 	position: relative;}
 
 #right-profile {
@@ -106,7 +106,7 @@ body a{
 	height: 500px;
 	float: right;
 	margin-right: 70px;
-	margin-top: 20px;}
+	margin-top: 10px;}
 
 .all-profile a{
 	text-decoration: none;}
@@ -201,7 +201,7 @@ body a{
 .profile-button {
 	width: 200px;
 	height: 60px;
-	background-color: #8EC0ED;
+	background-color: #3994D1;
 	color: white;
 	text-decoration: none;
 	text-align: center;
@@ -217,78 +217,18 @@ body a{
 #contact-button {
 	margin: 0 auto;
 	margin-top: 20px;
-	border-bottom: 2px solid #4c94d3;}
+	border-bottom: 2px solid #308cc9;}
 
 #join-button {
 	margin: 0 auto;
-	background-color: #9AE598;
+	background-color: #36DC57;
 	width: 160px;
 	height: 50px;
 	float: right;
 	margin-top: -58px;
 	margin-right: 40px;
-	border-bottom: 2px solid #5cc258;
+	border-bottom: 2px solid #2ccd4c;
 	line-height: 52px;}
-	
-.edit-button {
-	color: #5d6976;
-	background-color: #fcfcfc;
-	height: 20px;
-	width: 40px;
-	font-family: Quicksand;
-	font-weight: bold;
-	font-size: 11px;
-	text-transform: uppercase;
-	text-align: center;
-	line-height: 20px;
-	border: 1px solid #ccc;
-	border-radius: 6px;
-	cursor: pointer;
-	opacity: 0.6;
-	padding: 2px;
-	border-bottom: 1px solid gray;}
-	.edit-button:hover {
-		opacity: 1.0;}
-		
-.save-button {
-	color: #7ed87b;
-	background-color: #fcfcfc;
-	height: 20px;
-	width: 40px;
-	font-family: Quicksand;
-	font-weight: bold;
-	font-size: 11px;
-	text-transform: uppercase;
-	text-align: center;
-	line-height: 20px;
-	border: 1px solid #ccc;
-	border-radius: 6px;
-	cursor: pointer;
-	opacity: 1.0;
-	padding: 2px;
-	border-bottom: 1px solid gray;}
-	.save-button:hover {
-		opacity: 0.8;}	
-	
-.cancel-button {
-	color: #e67b6d;
-	background-color: #fcfcfc;
-	height: 20px;
-	width: 50px;
-	font-family: Quicksand;
-	font-weight: bold;
-	font-size: 11px;
-	text-transform: uppercase;
-	text-align: center;
-	line-height: 20px;
-	border: 1px solid #ccc;
-	border-radius: 6px;
-	cursor: pointer;
-	opacity: 1.0;
-	padding: 2px;
-	border-bottom: 1px solid gray;}
-	.cancel-button:hover {
-		opacity: 0.8;}
 
 
 /* FOOTER AREA */

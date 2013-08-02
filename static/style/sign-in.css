@@ -27,7 +27,7 @@
 #top_logo_bar {
 	width: 540px;
 	height: 80px;
-	background: #e67b6d;}
+	background: #FB5644;}
 	#top_logo_bar img {
 		height: 50px;
 		width: 162px;
@@ -56,7 +56,7 @@
 #login_submit {
 	width: 140px;
 	height: 50px;
-	background-color: #8EC0ED;
+	background-color: #3994D1;
 	color: white;
 	font-family: Quicksand;
 	text-transform: uppercase;
@@ -65,12 +65,12 @@
 	margin-left: 204px;
 	border: none;
 	cursor: pointer;
-	border-bottom: 1px solid #4c94d3;
+	border-bottom: 2px solid #308cc9;
 	font-weight: bold;
 	border-radius: 5px;
 	line-height: 48px;}
 	#login_submit:hover {
-			background-color: #7ab5e8;
+			background-color: #308cc9;
 			 -webkit-transition: all .1s ease-in-out;
 			 -moz-transition: all .1s ease-in-out;
 			 -o-transition: all .1s ease-in-out;
@@ -122,7 +122,7 @@
   height: 50px;
   position: fixed;
   bottom: 0;
-  background: #e67b6d;
+  background: #FB5644;
   z-index: 9999;
  
   background-color: #e67b6d;

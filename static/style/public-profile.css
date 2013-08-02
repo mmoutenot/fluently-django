@@ -137,7 +137,7 @@
 
 .profile-button {
 	height: 60px;
-	background-color: #8EC0ED;
+	background-color: #3994D1;
 	color: white;
 	text-decoration: none;
 	text-align: center;
@@ -148,29 +148,32 @@
 	line-height: 62px;
 	border-radius: 7px;}
 		.profile-button:hover {
-		opacity: 0.9;}
+		background-color: #308cc9;
+		-webkit-transition: all .1s ease-in-out;
+			 -moz-transition: all .1s ease-in-out;
+			 -o-transition: all .1s ease-in-out;
+			 transition: all .1s ease-in-out;}
 
 #contact-button {
 	width: intrinsic;
 	padding-right: 18px;
-	padding-left: 18px;  
-	
+	padding-left: 18px;  	
 	margin: 0 auto;
 	margin-top: 20px;
-	border-bottom: 2px solid #4c94d3;}
+	border-bottom: 2px solid #308cc9;}
 
 #join-button {
 	margin: 0 auto;
-	background-color: #9AE598;
+	background-color: #36DC57;
 	width: 160px;
 	height: 50px;
 	float: right;
 	margin-top: -58px;
 	margin-right: 40px;
-	border-bottom: 2px solid #5cc258;
+	border-bottom: 2px solid #2ccd4c;
 	line-height: 52px;}
 		#join-button:hover {
-			background-color: #84e081;
+			background-color: #2ccd4c;
 			 -webkit-transition: all .1s ease-in-out;
 			 -moz-transition: all .1s ease-in-out;
 			 -o-transition: all .1s ease-in-out;

@@ -6,7 +6,7 @@
   height: 60px;
   padding-right: 30px;
   padding-left: 30px;
-  background: #8ec3ee;
+  background: #3994D1;
   display: inline-block;
   text-align: center;
   margin: 0 auto;
@@ -21,16 +21,16 @@
   line-height: 46px;
   box-shadow: none;
   border: none;
-  border-bottom: 2px solid #5a94c7;
+  border-bottom: 2px solid #308cc9;
   border-radius: 8px;
   margin-left: 155px;}
   .continue-btn:focus {
     outline: none;}
   .continue-btn:hover {
-    background: #62a7e6;}
+    background: #308cc9;}
 
 h4 a{
-	color: #5a94c7;}
+	color: #3994D1;}
 	
 h2 {
 	font-size: 16px;
@@ -92,7 +92,7 @@ h4 {
   height: 50px;
   padding-right: 30px;
   padding-left: 30px;
-  background: #8ec3ee;
+  background: #3994D1;
   display: inline-block;
   text-align: center;
   margin: 0 auto;
@@ -107,12 +107,12 @@ h4 {
   line-height: 46px;
   box-shadow: none;
   border: none;
-  border-bottom: 2px solid #5a94c7;
+  border-bottom: 2px solid #308cc9;
   border-radius: 8px;}
   .btn:focus {
     outline: none;}
   .btn:hover {
-    background: #62a7e6;}
+    background: #308cc9;}
 
 #sign-up-button {
 	text-align: center;}
