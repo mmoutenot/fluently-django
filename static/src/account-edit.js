@@ -52,14 +52,14 @@ $(document).ready(function () {
     }
   });
 
-  $('#welcome-form').on('submit', function () {
+  $('#welcome-form').live('submit', function () {
     console.log('what');
     $('#welcome-blocks-wrapper').load(
       '/account-edit/blocks #edit-specialties-block');
   });
 
-  $('#edit-specialties-form').on('submit', function () {
-    alert('edit submit');
+  $('#edit-specialties-form').live('submit', function () {
+    console.log('edit submit');
 
     certs = []; 
     $('#select-to1 option').each(
@@ -97,11 +97,10 @@ $(document).ready(function () {
 
     $('#welcome-blocks-wrapper').load(
         '/account-edit/blocks #edit-advanced-specialties-block'); 
-    alert('to advanced');
     return false;
   });
 
-  $('#edit-advanced-specialties-form').on('submit', function () {
+  $('#edit-advanced-specialties-form').live('submit', function () {
 
     ages = [];
     $('.age').each(
@@ -152,7 +151,7 @@ $(document).ready(function () {
 
   });
 
-  $('#select-all').click(function() {
+  $('#select-all').live('click', function () {
     $('.age').prop('checked', $('#select-all').is(':checked'));
   });
 
