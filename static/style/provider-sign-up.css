@@ -167,7 +167,7 @@ ul {
           opacity: 0.7;}
 
           #container #steps ul li h2.active{
-            background: #e67b6d;
+            background: #FB5644;
             box-shadow: 0 0 3px 1px #d2d2d2;
           }
 
@@ -220,14 +220,13 @@ form {
     text-align: center;
     font-size: 12px;
     font-style: italic;
-    font-weight: 100;
-     }
+    font-weight: 100;}
 
     form #terms_box label {
       text-align: left;
       margin-right: 10px; }
       form #terms_box a {
-        color: #8ec0ed; }
+        color: #3994D1; }
   form h3 {
     font-size: 20px;
     text-align: center;

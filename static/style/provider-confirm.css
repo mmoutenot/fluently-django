@@ -328,9 +328,10 @@ form {
 	color: white;
 	font-family: Quicksand;
 	text-transform: uppercase;
-	font-size: 16px;
+	font-size: 17px;
 	border-radius: 9px;
 	font-weight: bold;
+	margin-top: 30px;
 	border-bottom: 2px solid #308cc9;}
 		#confirmed:hover {
 			background: #308cc9;}
