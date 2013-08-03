@@ -1,5 +1,3 @@
-Shadowbox.init({});
-
 // Get profile picture
 
 data = {

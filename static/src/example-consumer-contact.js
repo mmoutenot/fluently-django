@@ -29,8 +29,8 @@ $(document).ready(function () {
     color: '#ffffff'
   };  
 
-  $('#contact-student-blocks-wrapper').load(
-    'blocks #contactform-block', function () {
+  $('#example-contact-blocks-wrapper').load(
+    '/example-consumer-contact/blocks #signup-block', function () {
      
     $('#student-modal-title').text('Contact Susan J.');
     $('#student-needs').attr(
@@ -49,12 +49,16 @@ $(document).ready(function () {
         noBlanks = false;
       }
     });
+    if (!$('#student-needs').val()) {
+      noBlanks = false;
+    }
     $('.submit').prop('disabled', !noBlanks);
+    console.log(noBlanks);
   }, observeInterval);
 
   // On submit
   
-  $('#contact-signup-form').live('submit', function () {
+  $('#student-signup-form').live('submit', function () {
 
     var target = document.getElementById('sign-up-button');
     var spinner = new Spinner(opts).spin(target);   
@@ -66,32 +70,19 @@ $(document).ready(function () {
 
     // Validate email
 
-    if (!$('#contact-email').val().match(EMAIL_REGEX)) {
+    if (!$('#student-email').val().match(EMAIL_REGEX)) {
       errors.push(INVALID_EMAIL);
       spinner.stop();
-      $('#contact-email').val('');
+      $('#student-email').val('');
     }
 
     if (errors.length == 0) {
-    
-      // Collect data from account form fields
 
-      formData = {
-        name: $('#contact-name').val(),
-        email: $('#contact-email').val(),
-        loc: $('#contact-location').val(),
-        needs: $('#contact-needs').val(),
-        slp: slp,
-        csrfmiddlewaretoken: csrf_token
-      };
-
-      // Validate email with server
-      // Store form data
-  
-      console.log("ajaxing ");
-      console.log(formData);
-
-      $('#contact-student-blocks-wrapper').load('blocks #thankyou-block');
+      $('#example-contact-blocks-wrapper').load(
+          '/example-consumer-contact/blocks #thankyou-block', 
+          function() {
+            console.log('thanks?');
+          });
       spinner.stop();
 
     }

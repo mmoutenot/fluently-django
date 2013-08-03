@@ -1,5 +1,18 @@
 $(document).ready(function () {   
 
+  $.ajax({
+    type: "post",
+    dataType: "json",
+    url: "/account-edit/handler/",
+    data: data,
+    success: function(dataJSON) {
+      if (!dataJSON['viewed']) {
+        console.log('sup');
+        $('#myModal').modal('show');  
+      }
+    }
+  });
+
   // Spin animation
 
   var opts = {
@@ -18,24 +31,36 @@ $(document).ready(function () {
     data: {csrfmiddlewaretoken: csrf_token},
     success: function(dataJSON) {
       if (!dataJSON['viewed']) {
-        $('#edit-specialties-block').css('display', '');
-        $('#select-to').prop('selectedIndex', -1);
-        $('#select-to').selectize({
-          maxItems: 6,
-          hideSelected: true
-        });
-        $('#select-to1').selectize({
-          hideSelected: true,
-          maxItems: 5,
-        });
+        $('#welcome-blocks-wrapper').load(
+          '/account-edit/blocks #welcome-block');
       } else {
-        $('edit-advanced-specialties-block').css('display', '');
+        $('#welcome-blocks-wrapper').load(
+          '/account-edit/blocks #edit-specialties-block',
+          function () {
+            $('#select-to').prop('selectedIndex', -1);
+            $('#select-to').selectize({
+              maxItems: 6,
+              hideSelected: true
+            });
+            $('#select-to1').selectize({
+              hideSelected: true,
+              maxItems: 5,
+            });
+          }
+        );
       }
     }
   });
 
+  $('#welcome-form').on('submit', function () {
+    console.log('what');
+    $('#welcome-blocks-wrapper').load(
+      '/account-edit/blocks #edit-specialties-block');
+  });
+
   $('#edit-specialties-form').on('submit', function () {
-   
+    alert('edit submit');
+
     certs = []; 
     $('#select-to1 option').each(
       function () {
@@ -70,8 +95,9 @@ $(document).ready(function () {
       }
     });
 
-    $('#edit-specialties-block').css('display', 'none');
-    $('#edit-advanced-specialties-block').css('display', '');
+    $('#welcome-blocks-wrapper').load(
+        '/account-edit/blocks #edit-advanced-specialties-block'); 
+    alert('to advanced');
     return false;
   });
 
@@ -111,12 +137,9 @@ $(document).ready(function () {
       age: ages.toString(),
       loc: locs.toString(),
       pay: pays.toString(),
-      test: "test",
       csrfmiddlewaretoken: csrf_token
     };
     
-    console.log(formData);
-
     $.ajax({
       type: "post",
       dataType: "json",
@@ -127,9 +150,6 @@ $(document).ready(function () {
       }
     });
 
-    $('#edit-advanced-specialties-block').css('display', 'none');
-    $('#welcome-block').css('display', '');
-    return false;
   });
 
   $('#select-all').click(function() {

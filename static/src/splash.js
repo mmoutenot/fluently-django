@@ -1,4 +1,1 @@
-Shadowbox.init({
-});
-
 

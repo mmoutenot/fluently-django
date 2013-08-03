@@ -5,7 +5,7 @@ from django.contrib.auth.models import User, Group
 from django.template import Context
 from django.core.context_processors import csrf
 from django.template.loader import get_template
-import apps.fluently.models 
+from apps.fluently.models import UserProfile, StudentRequest, SearchQuery
 from utils import mandrill_template
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
@@ -299,6 +299,7 @@ def account(request):
         "therapyApproach": therapyApproach,
         "userUrl": userUrl
     })
+    print userUrl
     context.update(csrf(request))
     return HttpResponse(template.render(context))
 
@@ -318,41 +319,37 @@ def account_edit_blocks(request):
 
 # Display consumer contact blocks
 def consumer_contact_blocks(request, user_url):
+    print user_url
     return render(request, consumer_contact_blocks_url)
 
 # Display consumer contact page
 def consumer_contact(request, user_url):
-#   try:
     u = UserProfile.objects.filter(user_url=user_url)[0].user
     template = get_template(consumer_contact_url)
     firstName = u.userprofile.first_name
     lastName = u.userprofile.last_name
+    userUrl = u.userprofile.user_url
     slp = u.username
-    print firstName
-    print lastName
     context = Context({
         "firstName": firstName,
         "lastName": lastName[0] + '.',
-        "slp": slp
+        "slp": slp,
+        "userUrl": userUrl
     })
     context.update(csrf(request))
     return HttpResponse(template.render(context))
-#    except:
-#        return redirect('/')
 
 # Display public profile page for provider based on given url
 def public_profile(request, user_url):
     print "pub"
-#try:
-    print "trying"
     u = UserProfile.objects.filter(user_url=user_url)[0].user  
-    print 'got it'
     template = get_template(public_profile_url)
     firstName = u.userprofile.first_name
     lastName = u.userprofile.last_name
     aboutMe = u.userprofile.about_me
     city = u.userprofile.city
     state = u.userprofile.state
+    slp = u.username
     certificationList = u.userprofile.certification_list
     specialtiesList = u.userprofile.specialties_list
     experience = u.userprofile.experience
@@ -375,13 +372,12 @@ def public_profile(request, user_url):
                                 CERTIFICATION_CHOICES_DISPLAY),
         "experience": experience,
         "therapyApproach": therapyApproach,
+        "slp": slp,
         "userUrl": userUrl
     })
     print specialtiesList
     context.update(csrf(request))
     return HttpResponse(template.render(context))
-#except:
-#return redirect('/')
 
 ###        
 ###          
@@ -420,7 +416,9 @@ def account_edit_handler(request):
     if not u.is_authenticated():
         return redirect('/')
     viewed = u.userprofile.viewed_account
-#u.userprofile.viewed_account = True
+    u.userprofile.viewed_account = True
+    u.userprofile.save()
+    print viewed
     return HttpResponse(json.dumps({"viewed":viewed}),
                         mimetype="application/json")
 
@@ -501,7 +499,7 @@ def sign_in_handler(request):
         print user
         if user is not None:
             login(request, user)
-            return redirect(account_url)
+            return redirect('/account/')
             print 'user logged in'
         else:
             print 'invalid user'

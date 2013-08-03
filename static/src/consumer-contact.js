@@ -18,6 +18,8 @@ function displayErrors(errors) {
 
 $(document).ready(function () {
 
+  console.log('called');
+
   // Spin animation
 
   var opts = {
@@ -30,8 +32,7 @@ $(document).ready(function () {
   };  
 
   $('#contact-student-blocks-wrapper').load(
-    'blocks #contactform-block', function () {
-     
+    '/consumer-contact/' + user_url + '/blocks #signup-block', function () {
     $('#student-modal-title').text('Contact ' + firstName + ' ' + lastName);
     $('#student-needs').attr(
       'placeholder', "I'm contacting " + firstName + " "  + lastName + " because...");  
@@ -49,12 +50,15 @@ $(document).ready(function () {
         noBlanks = false;
       }
     });
+    if (!$('#student-needs').val()) {
+      noBlanks = false;
+    }
     $('.submit').prop('disabled', !noBlanks);
   }, observeInterval);
 
   // On submit
   
-  $('#contact-signup-form').live('submit', function () {
+  $('#student-signup-form').live('submit', function () {
 
     var target = document.getElementById('sign-up-button');
     var spinner = new Spinner(opts).spin(target);   
@@ -66,10 +70,10 @@ $(document).ready(function () {
 
     // Validate email
 
-    if (!$('#contact-email').val().match(EMAIL_REGEX)) {
+    if (!$('#student-email').val().match(EMAIL_REGEX)) {
       errors.push(INVALID_EMAIL);
       spinner.stop();
-      $('#contact-email').val('');
+      $('#student-email').val('');
     }
 
     if (errors.length == 0) {
@@ -99,14 +103,15 @@ $(document).ready(function () {
         success: function (dataJSON) {
           if (dataJSON['status'] === "success") {
             if (dataJSON['emailed'] === true) {
-              $('#contact-email').val('');
+              $('#student-email').val('');
+              spinner.stop();
               errors.push(EMAIL_TAKEN);
             } else {
               $('#contact-student-blocks-wrapper').load(
-                'blocks #thankyou-block');
+                '/consumer-contact/' + user_url + '/blocks #thankyou-block');
             }
           } else {
-            $('#contact-email').val('');
+            $('#student-email').val('');
             spinner.stop();
             errors.push(SERVER_ERROR);
           }

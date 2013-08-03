@@ -1,7 +1,3 @@
-Shadowbox.init({
-  skipSetup: true
-});
-
 // String Constants
 
 SERVER_ERROR = "Internal server error."
@@ -15,26 +11,6 @@ $(document).ready(function () {
   data = {
     csrfmiddlewaretoken: csrf_token
   }
-
-  $.get("/account-edit/", function(modalHTML) {
-    $.ajax({
-      type: "post",
-      dataType: "json",
-      url: "/account-edit/handler/",
-      data: data,
-      success: function(dataJSON) {
-        if (!dataJSON['viewed']) {
-          Shadowbox.open({
-            content: modalHTML,
-            player: 'html',
-            height: 558,
-            width: 500
-          });  
-        }
-      }
-    });
-  });
-
 
   // Spin animation
 

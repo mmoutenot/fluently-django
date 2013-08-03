@@ -29,8 +29,8 @@ $(document).ready(function () {
     color: '#ffffff'
   };  
 
-  $('#register-student-blocks-wrapper').load(
-    'blocks #signup-block');
+  $('#contact-student-blocks-wrapper').load(
+    '/consumer-request/blocks #signup-block');
 
   // Disable submit button when a form field is blank
 
@@ -43,15 +43,21 @@ $(document).ready(function () {
         noBlanks = false;
       }
     });
+    if (!$('#student-needs').val()) {
+      noBlanks = false;
+    }
     $('.submit').prop('disabled', !noBlanks);
   }, observeInterval);
 
   // On submit
   
-  $('.account-form').live('submit', function () {
+  $('.account-form').live('submit', function (e) {
+
+    e.preventDefault();
 
     var target = document.getElementById('sign-up-button');
     var spinner = new Spinner(opts).spin(target);  
+    $(':submit').attr('disabled', 'disabled');
 
     console.log("submit");
 
@@ -95,10 +101,11 @@ $(document).ready(function () {
           if (dataJSON['status'] === "success") {
             if (dataJSON['emailed'] === true) {
               $('#student-email').val('');
+              spinner.stop();
               errors.push(EMAIL_TAKEN);
             } else {
-              $('#register-student-blocks-wrapper').load(
-                'blocks #thankyou-block');
+              $('#contact-student-blocks-wrapper').load(
+                '/consumer-request/blocks #thankyou-block');
             }
           } else {
             $('#student-email').val('');
