@@ -51,7 +51,7 @@ body, html {
 	  list-style: none;
 	  margin-left: 70px;
 	  padding: 4px;
-	  height: 84px;
+	  height: 64px;
 	  margin-top: -20px;
 	  display: inline-block;
 	  text-align: center;
@@ -70,6 +70,7 @@ body, html {
 	border-radius: 8px;
 	height: 70px;
 	margin-left: 40px;
+	margin-top: 20px;
 	}	    
 	    
 	    
