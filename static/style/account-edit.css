@@ -44,10 +44,12 @@ h2 {
 
 #video-place {
 	width: 340px;
-	height: 190px;
-	background: aqua;
+	height: 191px;
+	background-image: url('static/images/elements/welcome-video.jpg');
 	margin-top: 20px;
 	margin-left: 70px;}
+	#video-place:hover {
+		opacity: 0.7;}
 
 #account-edit-blocks-wrapper {
   width: 480px;
