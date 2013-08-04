@@ -45,7 +45,7 @@ body, html {
 	font-family: Quicksand;
 	text-transform: uppercase;
 	font-size: 15px;
-	line-height: 90px;}
+	line-height: 80px;}
 	  #navbar_list li {
 	  float: right;
 	  list-style: none;
@@ -66,6 +66,10 @@ body, html {
 	    
 #sign-up {
 	background: #d53221;
+	width: 130px;
+	border-radius: 8px;
+	height: 70px;
+	margin-left: 40px;
 	}	    
 	    
 	    
