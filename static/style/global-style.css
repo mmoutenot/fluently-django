@@ -64,6 +64,10 @@ body, html {
 	    -o-transition: all .1s ease-in-out;
 	    transition: all .1s ease-in-out;}
 	    
+#sign-up {
+	background: #d53221;
+	}	    
+	    
 	    
 /* GLOBAL FOOTER AREA (SALMON) */
 
