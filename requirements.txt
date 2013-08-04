@@ -12,9 +12,6 @@ django-socketio==0.3.6
 djrill==0.5.0
 docopt==0.4.0
 gdata==2.0.18
-gevent==0.13.8
-gevent-socketio==0.2.1
-gevent-websocket==0.3.6
 greenlet==0.4.0
 mandrill==1.0.37
 requests==1.2.0
