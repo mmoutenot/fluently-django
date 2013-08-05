@@ -96,8 +96,9 @@
      		</div><!-- end profile-picture-edit -->
      	
      		<ul>
-     			<a href="mailto:team@fluentlynow.com?subject=Support"><li class="sidebar_item">Need help?</li></a>
-     			<a href="mailto:?subject=Check%20out%FluentlyNow.com"><li class="sidebar_item">Refer a colleague</li></a>
+     			<a href="mailto:?subject=Check%20out%20FluentlyNow.com&body=I'm%20using%20my%20Fluently%20to%20showcase%20my%20SLP%20experience,%20learn%20more%20at:%20http://fluentlynow.com/why-fluently"><li class="sidebar_item">Refer a colleague</li></a>
+     			<a href="mailto:?subject={{firstName}}%20is%20on%20Fluently&body=Here's%20the%20link%20to%20my%20profile%20on%20Fluently:%20http://fluentlynow.com/profile/{{userID}}"><li class="sidebar_item">Share my profile</li></a>
+     			<a href="mailto:team@fluentlynow.com?subject=Account%20Support"><li class="sidebar_item">Need help?</li></a>
      		</ul>
      	
      	</div><!-- end sidebar -->
@@ -129,9 +130,9 @@
 		 
 	     			<div class="edit-container"><div class="edit-button edit-box" id="edit-btn">Edit</div></div>
 	<form id="account-info-form">
-		     		<label class="textarea-label">About Me</label><textarea class="text-field" id="about-me" rows="4" cols="40" placeholder="Hi, I'm Susan! I'm a board-certified SLP from..." maxlength="262">{% if aboutMe %} {{ aboutMe }} {% endif %}</textarea>
+		     		<label class="textarea-label">About Me</label><textarea class="text-field" id="about-me" rows="4" cols="40" placeholder="Hi, I'm Susan! I'm an experienced SLP from..." maxlength="262">{% if aboutMe %} {{ aboutMe }} {% endif %}</textarea>
 
-		     		<label class="textarea-label">Certifications</label><textarea class="text-field" id="certifications" rows="4" cols="40" placeholder="CCC-SLP - ASHA Board-certified specialist..." maxlength="260">{% if aboutMe %} {{ certifications }} {% endif %}</textarea>
+		     		<label class="textarea-label">Certifications</label><textarea class="text-field" id="certifications" rows="4" cols="40" placeholder="CCC-SLP - ASHA member and..." maxlength="260">{% if aboutMe %} {{ certifications }} {% endif %}</textarea>
 
 		     		<label class="textarea-label">Experience</label><textarea class="text-field" id="experience" rows="4" cols="40" placeholder="MS, Tufts University - 15+ years working with articulation & fluency disorders..." maxlength="260">{% if experience %} {{experience}} {% endif %}</textarea>
 
@@ -161,7 +162,7 @@
    		
    			<ul>
    				<a href="/"><li>Home</li></a>
-   				<a href="/about"><li>About Us</li></a>	
+   				<a href="/about"><li>About</li></a>	
    		   		<a href="mailto:team@fluentlynow.com"><li>Support</li></a>
    			</ul>
    			
@@ -170,7 +171,7 @@
    		<div id="footer_right">
    		
    			<ul>
-   				<a href="/privacy"><li>Legal</li></a>
+   				<a href="/privacy"><li>Privacy</li></a>
    				<li>&copy;&nbsp;Balbus, Inc.</li>	
    		    
    		</div><!-- end footer_right -->

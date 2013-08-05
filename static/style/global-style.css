@@ -64,11 +64,14 @@ body, html {
 	    -o-transition: all .1s ease-in-out;
 	    transition: all .1s ease-in-out;}
 	    
+#nav_tagline {
+	font-weight: bold;}
+
 #sign-up {
 	background: #d53221;
-	width: 130px;
-
-	}	    
+	width: 130px;}	    
+	    
+	    
 	    
 	    
 /* GLOBAL FOOTER AREA (SALMON) */
