@@ -27,10 +27,8 @@ body a {
 #main-section {
 	background: url('/static/images/backgrounds/about1.jpg');
 	height: 400px;
-	position: fixed;
 	background-repeat: repeat;
-	background-size: cover;
-	top: 0px;}
+	background-size: cover;}
 
 
 /* MISSION SECTION */
@@ -39,8 +37,6 @@ body a {
 	background-color: #3994D1;
 	width: 100%;
 	height: auto;
-	position: relative;
-	margin-top: 500px;
 	padding-bottom: 40px;}
 	#our-mission h2 {
 		color: white;
