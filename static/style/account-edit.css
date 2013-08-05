@@ -23,7 +23,8 @@
   border: none;
   border-bottom: 2px solid #308cc9;
   border-radius: 8px;
-  margin-left: 155px;}
+  margin-left: 155px;
+  margin-bottom: 20px;}
   .continue-btn:focus {
     outline: none;}
   .continue-btn:hover {
@@ -112,7 +113,8 @@ h4 {
   box-shadow: none;
   border: none;
   border-bottom: 2px solid #308cc9;
-  border-radius: 8px;}
+  border-radius: 8px;
+   margin-bottom: 20px;}
   .btn:focus {
     outline: none;}
   .btn:hover {
