@@ -105,7 +105,7 @@ INSTALLED_APPS = (
   # vendor apps
   #'vendor.TokBox',
   #'django_socketio',
-  'south',
+  #'south',
 
   # fluently apps
   #'apps.space',
