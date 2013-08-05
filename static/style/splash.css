@@ -23,7 +23,7 @@
 #main_title {
 	text-align: center;
 	font-family: Quicksand;
-	font-size: 46px;
+	font-size: 44px;
 	color: white;
 	position: relative;
 	padding-top: 70px;
@@ -63,7 +63,7 @@
 			 transition: all .1s ease-in-out;}
 
 
-#slp-button {
+.slp-button {
 	position: relative;
 	color: white;
 	background-color: #36DC57;
@@ -80,7 +80,7 @@
 	line-height: 78px;
 	display: inline-block;
 	border-bottom: 3px solid #2ccd4c;}
-		#slp-button:hover {
+		.slp-button:hover {
 			background-color: #2ccd4c;
 			 -webkit-transition: all .1s ease-in-out;
 			 -moz-transition: all .1s ease-in-out;
