@@ -68,8 +68,7 @@ $(document).ready(function () {
             hideSelected: true,
             maxItems: 5,
           });
-        }); 
-      });
+      }); 
     return false;
   });
 
