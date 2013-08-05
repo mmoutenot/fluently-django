@@ -67,7 +67,7 @@ $(document).ready(function() {
         window.location.replace("/");
       }
       if (dataJSON.confirmed) {
-        $('#register-account-form').load('blocks #confirmed-block');
+        window.location.replace("/account/");
       } 
     }
   });
@@ -112,7 +112,7 @@ $(document).ready(function() {
             errors.push(SERVER_ERROR);
             displayErrors(errors);
           } else if (dataJSON["status"] === "success") {
-            $('#register-account-form').load('blocks #confirmed-block');
+            window.location.replace("/account/");
           }
         }
 
