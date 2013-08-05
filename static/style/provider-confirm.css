@@ -110,6 +110,7 @@ textarea {
   cursor: pointer;
   line-height: 38px;
   box-shadow: none;
+  font-family: Quicksand;
   border: none;}
   .btn:focus {
     outline: none;}
@@ -127,13 +128,14 @@ textarea {
 #confirm-button {
 	position: relative;
 	margin: 0 auto;
+	padding: 10px;
 	width: intrinsic;
 	padding-left: 18px;
 	padding-right: 18px;
 	text-align: center;
 	border-radius: 10px;
 	border-bottom: 2px solid #308cc9;
-	margin-top: 40px;}
+	margin-top: 20px;}
 
 footer {
   width: 100%;
