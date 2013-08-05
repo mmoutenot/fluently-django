@@ -56,6 +56,7 @@ $(document).ready(function () {
     console.log('what');
     $('#welcome-blocks-wrapper').load(
       '/account-edit/blocks #edit-specialties-block');
+    return false;
   });
 
   $('#edit-specialties-form').live('submit', function () {
