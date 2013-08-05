@@ -56,7 +56,20 @@ $(document).ready(function () {
   $('#welcome-form').live('submit', function () {
     console.log('what');
     $('#welcome-blocks-wrapper').load(
-      '/account-edit/blocks #edit-specialties-block');
+      '/account-edit/blocks #edit-specialties-block',
+      function () {
+          console.log('ello');
+          $('#select-to').prop('selectedIndex', -1);
+          $('#select-to').selectize({
+            maxItems: 6,
+            hideSelected: true
+          });
+          $('#select-to1').selectize({
+            hideSelected: true,
+            maxItems: 5,
+          });
+        }); 
+      });
     return false;
   });
 
@@ -98,19 +111,7 @@ $(document).ready(function () {
     });
 
     $('#welcome-blocks-wrapper').load(
-        '/account-edit/blocks #edit-advanced-specialties-block',
-        function () { 
-          console.log('ello');
-          $('#select-to').prop('selectedIndex', -1);
-          $('#select-to').selectize({
-            maxItems: 6,
-            hideSelected: true
-          });
-          $('#select-to1').selectize({
-            hideSelected: true,
-            maxItems: 5,
-          });
-        }); 
+        '/account-edit/blocks #edit-advanced-specialties-block');
     return false;
   });
 
