@@ -34,20 +34,22 @@ h4 a{
 	
 h2 {
 	font-size: 16px;
+	text-align: center;
 	width: 340px;
 	margin: 0 auto;
 	margin-top: 40px;
 	line-height: 30px;}
 
 #signature {
-	margin-left: 136px;}
+	margin-left: 180px;}
 
 #video-place {
 	width: 340px;
 	height: 191px;
 	background-image: url('static/images/elements/welcome-video.jpg');
 	margin-top: 20px;
-	margin-left: 70px;}
+	margin-left: 70px;
+	text-align: center;}
 	#video-place:hover {
 		opacity: 0.7;}
 
@@ -61,14 +63,14 @@ h2 {
  h1 {
 	 font-family: Quicksand;
 	 text-transform: uppercase;
-	 font-weight: 100;
+	 font-weight: 600;
 	 font-size: 22px;
 	 text-align: center;
-	 padding-top: 56px;}
+	 padding-top: 20px;}
 	 
 h4 {
 	font-weight: 100;
-	width: 360px;
+	width: 380px;
 	margin: 0 auto;
 	text-align: center;
 	font-size: 14px;
@@ -117,7 +119,9 @@ h4 {
     background: #308cc9;}
 
 #sign-up-button {
-	text-align: center;}
+	text-align: center;
+	line-height: 50px;
+	height: 58px;}
 
 #city-input {
 	border: 1px solid #d2d2d2;
