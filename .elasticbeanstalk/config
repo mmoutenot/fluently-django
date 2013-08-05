@@ -1,0 +1,26 @@
+[global]
+ApplicationName=fluently
+AwsCredentialFile=/Users/mmoutenot/.elasticbeanstalk/aws_credential_file
+DevToolsEndpoint=git.elasticbeanstalk.us-east-1.amazonaws.com
+EnvironmentName=fluently-env
+InstanceProfileName=aws-elasticbeanstalk-ec2-role
+OptionSettingFile=/Users/mmoutenot/workspace/fluently-summer/.elasticbeanstalk/optionsettings.fluently-env
+RdsDeletionPolicy=Snapshot
+RdsEnabled=Yes
+RdsSourceSnapshotName=
+Region=us-east-1
+ServiceEndpoint=https://elasticbeanstalk.us-east-1.amazonaws.com
+SolutionStack=32bit Amazon Linux running Python
+
+[branches]
+site=fluently-env
+
+[branch:site]
+ApplicationVersionName=Sample Application
+EnvironmentName=fluently-env
+InstanceProfileName=aws-elasticbeanstalk-ec2-role
+OptionSettingFile=/Users/mmoutenot/workspace/fluently-summer/.elasticbeanstalk/optionsettings.fluently-env
+RdsDeletionPolicy=Snapshot
+RdsEnabled=Yes
+RdsSourceSnapshotName=
+
