@@ -29,7 +29,8 @@ body a {
 	height: 400px;
 	position: fixed;
 	background-repeat: repeat;
-	background-size: cover;}
+	background-size: cover;
+	top: 0px;}
 
 
 /* MISSION SECTION */
@@ -39,7 +40,7 @@ body a {
 	width: 100%;
 	height: auto;
 	position: relative;
-	margin-top: 100px;
+	margin-top: 500px;
 	padding-bottom: 40px;}
 	#our-mission h2 {
 		color: white;
