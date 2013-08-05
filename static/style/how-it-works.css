@@ -190,7 +190,8 @@
 	float: right;
 	margin-top: 20px;
 	font-size: 18px;
-	line-height: 24px;}
+	font-weight: 200;
+	line-height: 26px;}
 		.steps-text h3{
 			font-size: 24px;
 			color: #3994D1;
@@ -202,7 +203,8 @@
 	float: left;
 	margin-left: 20px;
 	font-size: 18px;
-	line-height: 24px;
+	line-height: 26px;
+	font-weight: 200;
 	padding-bottom: 20px;}
 		.steps-text2 h3{
 			font-size: 24px;
