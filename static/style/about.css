@@ -25,7 +25,8 @@ body a {
 /* MAIN SECTION */
 
 #main-section {
-	position: relative;
+	position: fixed;
+	margin-top: 80px;
 	background: url('/static/images/backgrounds/about1.jpg');
 	height: 400px;
 	background-repeat: repeat;
