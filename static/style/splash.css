@@ -23,7 +23,7 @@
 #main_title {
 	text-align: center;
 	font-family: Quicksand;
-	font-size: 36px;
+	font-size: 44px;
 	color: white;
 	position: relative;
 	padding-top: 70px;
@@ -61,6 +61,15 @@
 			 -moz-transition: all .1s ease-in-out;
 			 -o-transition: all .1s ease-in-out;
 			 transition: all .1s ease-in-out;}
+
+
+#slp-cta a{
+	text-decoration: underline;
+	font-size: 16px;
+	color: white;
+	font-size: italic;
+}
+
 			
 #content a{
 	text-decoration: none;}
@@ -114,20 +123,6 @@
 	font-size: 20px;
 	font-weight: 400;}
 	
-#howitworks-link {
-	font-family: Quicksand;
-	margin-top: 40px;
-	color: #5d6976;
-	text-decoration: underline;
-	text-align: center;}
-	#howitworks-link a{
-		color: #5d6976;}
-	#howitworks-link a:hover{
-		opacity: 0.7;
-		-webkit-transition: all .1s ease-in-out;
-		-moz-transition: all .1s ease-in-out;
-		-o-transition: all .1s ease-in-out;
-		transition: all .1s ease-in-out;}
 
 /* JOIN SECTION */
 
