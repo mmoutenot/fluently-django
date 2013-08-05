@@ -45,7 +45,7 @@
 	height: 80px;
 	width: 220px;
 	margin-left: 110px;
-	margin-top: 20px;
+	margin-top: 30px;
 	border-radius: 8px;
 	font-family: Quicksand;
 	font-weight: bold;
@@ -101,7 +101,7 @@
 #icon-container {
 	width: 1000px;
 	margin: 0 auto;
-	padding-top: 60px;}
+	padding-top: 70px;}
 
 .icon-box {
 	width: 258px;
