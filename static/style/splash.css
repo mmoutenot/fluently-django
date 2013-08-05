@@ -161,7 +161,9 @@
 			line-height: 24px;}
 
 .profile-button {
-	width: 200px;
+	width: intrinsic;
+	padding-left: 18px;
+	padding-right: 18px;
 	height: 60px;
 	background-color: #3994D1;
 	color: white;
