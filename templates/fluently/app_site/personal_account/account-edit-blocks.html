@@ -10,7 +10,7 @@
   		
   		
   		
-  			<input id="city-input" placeholder="City"><input id="state-input" placeholder="State">
+  			<input id="city-input" placeholder="City" class="text-input"><input id="state-input" class="text-input" placeholder="State">
   			
   			<select id="select-job" class="selectize-style" placeholder="Select your job title" style="width: 340px">
 		     					<option value="slp">Speech-Language Pathologist</option>
@@ -92,18 +92,18 @@
 			<div class="radio-section">
 				<p>I offer therapy in...</p>
 					<div id="check-column1">
-				<input class="radio " type="checkbox" name="office/clinc" value="office">Office/Clinic
-				<input class="radio align3" type="checkbox" name="travel" value="travel">Travel to home
+				<input class="loc radio " type="checkbox" name="office/clinc" value="office">Office/Clinic
+				<input class="loc radio align3" type="checkbox" name="travel" value="travel">Travel to home
 					</div>
 					<div id="check-column2">
-				<input class="radio " type="checkbox" name="teletherapy" value="telepractice">Telepractice
+				<input class="loc radio " type="checkbox" name="teletherapy" value="telepractice">Telepractice
 				
 					</div>
 				
 				<p>I accept payment via...</p>
-				<input class="radio" type="checkbox" name="cash/credit" value="cash/credit">Hourly rate (Cash/Credit)<br/>
-				<input class="radio" type="checkbox" name="insurance" value="insurance">Insurance/Receipts
-				<input class="radio" type="checkbox" name="other" value="other">Other
+				<input class="pay radio" type="checkbox" name="cash/credit" value="cash/credit">Hourly rate (Cash/Credit)<br/>
+				<input class="pay radio" type="checkbox" name="insurance" value="insurance">Insurance/Receipts
+				<input class="pay radio" type="checkbox" name="other" value="other">Other
 			</div><!-- end radio-section -->
 
   		<div id="sign-up-button"> <input type='submit' class='btn submit-btn' value="Submit"> </div>
