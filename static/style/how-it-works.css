@@ -189,8 +189,8 @@
 	width: 400px;
 	float: right;
 	margin-top: 20px;
-	font-size: 16px;
-	line-height: 22px;}
+	font-size: 18px;
+	line-height: 24px;}
 		.steps-text h3{
 			font-size: 24px;
 			color: #3994D1;
@@ -199,10 +199,10 @@
 	
 .steps-text2 {
 	width: 400px;
-	float: left;;
+	float: left;
 	margin-left: 20px;
-	font-size: 16px;
-	line-height: 22px;
+	font-size: 18px;
+	line-height: 24px;
 	padding-bottom: 20px;}
 		.steps-text2 h3{
 			font-size: 24px;
