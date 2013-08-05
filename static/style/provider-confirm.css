@@ -136,7 +136,9 @@ textarea {
 	border-radius: 10px;
 	border-bottom: 2px solid #308cc9;
 	margin-top: 20px;
-	height: 64px;}
+	height: 64px;
+	margin-bottom: 20px;
+	margin-left: 200px;}
 
 footer {
   width: 100%;
