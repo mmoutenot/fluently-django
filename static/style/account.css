@@ -81,6 +81,9 @@
 	margin-left: 30px;
 	opacity: 0.8;}
 
+textarea {
+	resize: none;} 
+
 .textarea-label {
 	font-size: 15px;
 	width: 160px;
@@ -103,7 +106,9 @@
 	background: white;
 	padding: 5px;
 	line-height: 22px;
-	font-size: 16px; }	
+	font-size: 16px; 
+	
+	opacity: 0.8;}	
 	
 .text-field {
 	width: 280px;
@@ -118,7 +123,10 @@
 	padding: 5px;
 	line-height: 22px;
 	font-size: 14px; 
-	overflow: hidden;}	
+	overflow: hidden;
+	resize: none;
+	
+	opacity: 0.8;}	
 	
 
 /* Edit Buttons Box */
