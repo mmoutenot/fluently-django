@@ -108,6 +108,12 @@ body, html {
 			text-decoration: none;
 			padding: 10px;
 			opacity: 1.0;}
+				#global_footer_content a{
+					text-decoration: underline;
+					-webkit-transition: all .1s ease-in-out;
+					-moz-transition: all .1s ease-in-out;
+					-o-transition: all .1s ease-in-out;
+					transition: all .1s ease-in-out;}
 		#global_footer_content p{
 			color: white;
 			list-style: none;
