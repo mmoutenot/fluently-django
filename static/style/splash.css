@@ -43,7 +43,9 @@
 	color: white;
 	background-color: #3994D1;
 	height: 80px;
-	width: 220px;
+	width: intrinsic;
+	padding-left: 18px;
+	padding-right: 18px;
 	margin-left: 110px;
 	margin-top: 30px;
 	border-radius: 8px;
