@@ -111,6 +111,8 @@ $(document).ready(function () {
     $('.edit-box').css('visibility', 'hidden');
     $('.user-field').removeAttr('disabled')
     $('.text-field').removeAttr('disabled')
+    $('.user-field').css('opacity', 1.0);
+    $('.text-field').css('opacity', 1.0);
 
     profile_data = {
       firstName: $('#first-name').val(),
@@ -133,6 +135,8 @@ $(document).ready(function () {
     $('.edit-box').css('visibility', 'visible');
     $('.user-field').attr('disabled', 'disabled');
     $('.text-field').attr('disabled', 'disabled');
+    $('.user-field').css('opacity', 0.8);
+    $('.text-field').css('opacity', 0.8);
 
     // Save user info
 
@@ -169,6 +173,8 @@ $(document).ready(function () {
     $('.edit-box').css('visibility', 'visible');
     $('.user-field').attr('disabled', 'disabled');
     $('.text-field').attr('disabled', 'disabled');
+    $('.user-field').css('opacity', 0.8);
+    $('.text-field').css('opacity', 0.8);
       
     $('#first-name').val(profile_data.firstName);
     $('#last-name').val(profile_data.lastName);
