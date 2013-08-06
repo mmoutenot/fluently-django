@@ -227,45 +227,53 @@
 	height: 225px;
 	margin-left: 60px;}
 	
-/* JOIN SECTION */
+/* PARENT eBOOK SECTION */
 
-#join_section {
+#ebook-section {
 	height: auto;
 	margin: 0 auto;
 	background: #ffffff;
-	padding-bottom: 50px;}
-		#join_section h3 {
+	padding-bottom: 150px;
+	padding-top: 70px;}
+		#ebook-section h3 {
 			font-family: Quicksand;
 			font-size: 20px;
 			font-weight: 500;
-			margin-left: 40px;}
+			margin-left: 0px;}
 
-#join-container {
-	width: 1000px;
+#ebook-container {
+	width: 900px;
 	position: relative;
 	margin: 0 auto;
-	padding-top: 50px;}
+	padding-top: 0px;}
 	
-.join-box {
-	width: 420px;
+#ebook-image-box {
+	float: left;
+	display: inline-block;}
+	
+.email-box {
+	width: 440px;
+	margin-top: 40px;
 	display: inline-block;
-	text-align: center;
 	margin-left: 54px;}
-	.join-box h2 {
-		font-size: 22px;
-		font-weight: 300;
+	.email-box h2 {
+		font-size: 23px;
+		font-weight: 600;
+		text-align: center;
 		font-family: Quicksand;}
-		.join-box h4 {
-			margin-top: 30px;
+		.email-box h4 {
+			margin-top: 20px;
 			font-weight: 400;
 			font-size: 16px;
-			line-height: 24px;}
+			line-height: 26px;}
 
-.profile-button {
+
+.ebook-button {
+	display: inline-block;
 	width: intrinsic;
-	padding-left: 12px;
-	padding-right: 12px;
-	height: 60px;
+	padding-left: 14px;
+	padding-right: 14px;
+	height: 40px;
 	background-color: #3994D1;
 	color: white;
 	text-decoration: none;
@@ -274,32 +282,20 @@
 	font-family: Quicksand;
 	font-weight: bold;
 	text-transform: uppercase;
-	line-height: 62px;
-	border-radius: 7px;}
-
+	line-height: 44px;
+	border-radius: 4px;
+	padding-top: 1px;}
+					
 #parent-button {
-	margin: 0 auto;
+	margin-left: 4px;
 	background-color: #3994D1;
-	width: 170px;
 	border-bottom: 2px solid #308cc9;
-	margin-top: 40px;}
+	margin-top: 10px;
+	cursor: pointer;}
 		#parent-button:hover {
 			background-color: #308cc9;
 			 -webkit-transition: all .1s ease-in-out;
 			 -moz-transition: all .1s ease-in-out;
 			 -o-transition: all .1s ease-in-out;
 			 transition: all .1s ease-in-out;}
-					
-#join-button {
-	margin: 0 auto;
-	background-color: #36DC57;
-	width: 170px;
-	border-bottom: 2px solid #2ccd4c;
-	margin-top: 40px;}
-		#join-button:hover {
-			background-color: #2ccd4c;
-			 -webkit-transition: all .1s ease-in-out;
-			 -moz-transition: all .1s ease-in-out;
-			 -o-transition: all .1s ease-in-out;
-			 transition: all .1s ease-in-out;}
-	
+			

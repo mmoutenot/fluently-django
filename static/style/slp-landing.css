@@ -45,10 +45,102 @@
 				height: 300px;
 				margin-left: 240px;
 				margin-top: 20px;}
+
+
+
+/* SLP eBOOK SECTION */
+
+#slp-ebook-section {
+	height: 500PX;;
+	margin: 0 auto;
+	background: #ffffff;
+	padding-bottom: 50px;
+	padding-top: 20px;}
+		#slp-ebook-section h3 {
+			font-family: Quicksand;
+			font-size: 20px;
+			font-weight: 500;
+			margin-left: 0px;}
+
+#slp-ebook-container {
+	width: 900px;
+	position: relative;
+	margin: 0 auto;
+	padding-top: 0px;}
+	
+#slp-ebook-image-box {
+	float: right;
+	display: inline-block;}
+	
+.slp-email-box {
+	width: 430px;
+	float: left;
+	margin-top: 40px;
+	display: block;
+	margin-left: 54px;}
+	.slp-email-box h2 {
+		font-size: 23px;
+		font-weight: 600;
+		font-family: Quicksand;}
+		.slp-email-box h4 {
+			margin-top: 20px;
+			font-weight: 400;
+			font-size: 16px;
+			line-height: 26px;}
+
+
+.text_inputs {
+	background-color: #f1f3f5;
+	border-radius: none;
+	width: 280px;
+	margin-bottom: 20px; 
+	height: 40px;
+	font-size: 14px;
+	border: none;
+	margin-left: 4px;
+	color: gray;
+	text-indent: 40px;}
+	
+#signin_email {
+	background-image: url("/static/images/icons/mail-gray.png");
+	background-repeat: no-repeat;
+	background-position-x: 10px;
+	background-position-y: 14px;}	
+
+.ebook-button {
+	display: inline-block;
+	width: intrinsic;
+	padding-left: 14px;
+	padding-right: 14px;
+	height: 40px;
+	background-color: #3994D1;
+	color: white;
+	text-decoration: none;
+	text-align: center;
+	font-size: 16px;
+	font-family: Quicksand;
+	font-weight: bold;
+	text-transform: uppercase;
+	line-height: 44px;
+	border-radius: 4px;}
+					
+#slp-button {
+	background-color: #36DC57;
+	border-bottom: 1px solid #2ccd4c;
+	margin-top: 10px;
+	cursor: pointer;}
+		#slp-button:hover {
+			background-color: #2ccd4c;
+			 -webkit-transition: all .1s ease-in-out;
+			 -moz-transition: all .1s ease-in-out;
+			 -o-transition: all .1s ease-in-out;
+			 transition: all .1s ease-in-out;}
+
+
 			
 
 
-/* SIGN UP SECTION */
+/* SIGN UP SECTION 
 
 #sign-up-section {
 	height: auto;
@@ -214,5 +306,5 @@ input {
 	margin-top: 40px;
 	line-height: 18px;}
 		#privacy-blurb a {
-			color: #FB5644;}
+			color: #FB5644;} */
 
