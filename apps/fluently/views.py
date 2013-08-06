@@ -147,6 +147,10 @@ PAYMENT_METHOD_CHOICES = (
 ###               
 ###               
 
+# Development Site
+
+newaccount_url = 'fluently/newaccount.html'
+
 # Marketing Site
 splash_url = 'fluently/marketing_site/splash.html'
 about_url = 'fluently/marketing_site/about.html'
@@ -195,6 +199,14 @@ consumer_contact_blocks_url = 'fluently/app_site/public_profile/consumer_contact
 ### PAGE DISPLAY FUNCTIONS 
 ###                        
 ###
+
+# Display newaccount page
+def newaccount(request):
+    print 'ayo'
+    template = get_template(newaccount_url)
+    context = Context({})
+    context.update(csrf(request))
+    return HttpResponse(template.render(context))
 
 # Display splash page
 def splash(request):
@@ -398,6 +410,33 @@ def public_profile(request, user_url):
 ### HANDLERS AND HELPERS
 ###          
 ###
+
+def newaccount_handler(request):
+    email = "team@fluentlynow.com"
+    u, created = User.objects.get_or_create(username=email)
+    u.set_unusable_password()
+    u.userprofile.user_type = 'P'
+    alphnum = string.ascii_uppercase + string.digits
+    u.userprofile.user_url = ''.join(choice(alphnum) for x in range(6))
+    u.userprofile.join_id = str(uuid.uuid1())
+    provider_confirm_link = provider_confirm_url_prefix + u.userprofile.join_id
+    u.userprofile.first_name = "Testeph"
+    u.userprofile.last_name = "Userson"
+    u.userprofile.phone = "4254439143"
+    u.userprofile.zip_code = "02144"
+    u.userprofile.country = "USA"
+    u.userprofile.specialties = ""
+    u.userprofile.pic_url = default_profile_pic_url
+    u.userprofile.emailed = True
+    u.set_password('Voice23!')
+    u.userprofile.confirmed = True
+    u.userprofile.viewed_account = False
+    u.save()
+    u.userprofile.save()
+    u = authenticate(username=email, password='Voice23!')
+    login(request, u)
+    return HttpResponse(json.dumps({"status": "success"}),
+                        mimetype="application/json")
 
 def account_field_handler(request):
     u = request.user
