@@ -115,7 +115,6 @@
 /* SLP eBOOK SECTION */
 
 #slp-ebook-section {
-	position: relative;
 	margin: 0 auto;
 	background: #ffffff;
 	padding-bottom: 50px;
@@ -129,8 +128,7 @@
 #slp-ebook-container {
 	width: 900px;
 	position: relative;
-	margin: 0 auto;
-	padding-top: 0px;}
+	margin: 0 auto;}
 	
 #slp-ebook-image-box {
 	float: right;
