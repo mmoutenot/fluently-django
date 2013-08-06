@@ -73,7 +73,7 @@
 	#sign-up-box h2{	
 		font-family: Signika;
 		font-weight: 300;
-		color: #FB5644;
+		font-weight: bold;
 		font-size: 24px;}		
 	#sign-up-box p{		
 		font-family: Signika;
@@ -106,7 +106,8 @@
 	line-height: 30px;
 	font-style: italic;
 	text-indent: 12px;
-	font-size: 18px;}
+	font-size: 18px;
+	padding-bottom: 20px;}
 		#quote p{
 			font-size: 13px;
 			font-style: normal;
