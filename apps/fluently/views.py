@@ -351,6 +351,7 @@ def public_profile(request, user_url):
     state = u.userprofile.state
     slp = u.username
     certificationList = u.userprofile.certification_list
+    certifications = u.userprofile.certifications
     specialtiesList = u.userprofile.specialties_list
     experience = u.userprofile.experience
     therapyApproach = u.userprofile.therapy_approach
@@ -370,6 +371,7 @@ def public_profile(request, user_url):
                                 certificationList, 
                                 CERTIFICATION_CHOICES,
                                 CERTIFICATION_CHOICES_DISPLAY),
+        "certifications": certifications,
         "experience": experience,
         "therapyApproach": therapyApproach,
         "slp": slp,
