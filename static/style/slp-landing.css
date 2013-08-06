@@ -29,13 +29,12 @@
 	height: 440px;}
 		#top-section h1 {
 		text-align: center;
-		color: white;
+		color: #5d6975;
 		font-family: Quicksand;
 		margin-top: 60px;
 		font-size: 36px;}
 		#top-section h3 {
 		text-align: center;
-		color: white;
 		font-weight: 400;
 		opacity: 0.8;
 		margin-top: 20px;
@@ -51,6 +50,7 @@
 #sign-up-section {
 	background: #3994D1;
 	height: auto;
+	color: white;
 	margin: 0 auto;
 	padding-top: 60px;
 	padding-bottom: 60px;}
