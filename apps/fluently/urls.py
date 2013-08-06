@@ -47,6 +47,8 @@ urlpatterns = patterns('',
                   url(r'^account-edit/handler/$', 'apps.fluently.views.account_edit_handler'),
                   url(r'^account-edit/options-handler-1/$', 'apps.fluently.views.account_options_handler'),
                   url(r'^account-edit/options-handler-2/$', 'apps.fluently.views.account_advanced_options_handler'),
+                  url(r'^account-edit/fields-handler-1/$', 'apps.fluently.views.account_field_handler'),
+                  url(r'^account-edit/fields-handler-2/$', 'apps.fluently.views.account_advanced_field_handler'),
                   url(r'^save-profile/$', 'apps.fluently.views.save_profile'),
                   url(r'^picture/$', 'apps.fluently.views.profile_picture_handler'),
                   
