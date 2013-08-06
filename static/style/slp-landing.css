@@ -115,11 +115,11 @@
 /* SLP eBOOK SECTION */
 
 #slp-ebook-section {
-	height: 500px;
+	height: 5320px;
 	margin: 0 auto;
 	background: #ffffff;
 	padding-bottom: 50px;
-	padding-top: 50px;}
+	padding-top: 20px;}
 		#slp-ebook-section h3 {
 			font-family: Quicksand;
 			font-size: 20px;
