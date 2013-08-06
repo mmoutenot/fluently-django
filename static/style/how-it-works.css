@@ -232,8 +232,8 @@
 #ebook-section {
 	height: auto;
 	margin: 0 auto;
-	background: #ffffff;
-	padding-bottom: 150px;
+	background: white;
+	padding-bottom: 50px;
 	padding-top: 70px;}
 		#ebook-section h3 {
 			font-family: Quicksand;
@@ -244,8 +244,7 @@
 #ebook-container {
 	width: 900px;
 	position: relative;
-	margin: 0 auto;
-	padding-top: 0px;}
+	margin: 0 auto;}
 	
 #ebook-image-box {
 	float: left;
@@ -266,7 +265,6 @@
 			font-weight: 400;
 			font-size: 16px;
 			line-height: 26px;}
-
 
 .ebook-button {
 	display: inline-block;
