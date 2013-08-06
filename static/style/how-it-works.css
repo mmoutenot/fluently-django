@@ -227,6 +227,7 @@
 	height: 225px;
 	margin-left: 60px;}
 	
+	
 /* PARENT eBOOK SECTION */
 
 #ebook-section {
@@ -265,6 +266,24 @@
 			font-weight: 400;
 			font-size: 16px;
 			line-height: 26px;}
+
+.text_inputs {
+	background-color: #f1f3f5;
+	border-radius: none;
+	width: 280px;
+	margin-bottom: 20px; 
+	height: 40px;
+	font-size: 14px;
+	border: none;
+	margin-left: 4px;
+	color: gray;
+	text-indent: 40px;}
+	
+#signin_email {
+	background-image: url("/static/images/icons/mail-gray.png");
+	background-repeat: no-repeat;
+	background-position-x: 10px;
+	background-position-y: 14px;}	
 
 .ebook-button {
 	display: inline-block;
