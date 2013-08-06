@@ -46,7 +46,44 @@
 				margin-left: 240px;
 				margin-top: 20px;}
 
+/* SIGN UP SECTION */
 
+#sign-up-section {
+	height: auto;
+	margin: 0 auto;
+	padding-top: 60px;
+	padding-bottom: 10px;}
+		#sign-up-section h1 {
+			font-family: Quicksand;
+			font-size: 32px;
+			font-weight: 500;
+			letter-spacing: 2px;
+			padding-bottom: 18px;	
+			width: 600px;
+			margin: 0 auto;
+			text-align: center;
+			margin-top: 40px;
+			text-transform: uppercase;}
+			
+#sign-up-box {
+	width: 900px;
+	margin: 0 auto;
+	margin-top: 40px;}			
+	#sign-up-box h2{	
+		font-family: Signika;
+		font-weight: 300;
+		color: #FB5644;
+		font-size: 24px;}		
+	#sign-up-box p{		
+		font-family: Signika;
+		font-weight: 100;
+		font-size: 16px;
+		line-height: 24px;}
+		
+.sign-up-hut {
+	width: 240px;
+	display: inline-block;
+	margin-left: 45px;}
 
 /* SLP eBOOK SECTION */
 
