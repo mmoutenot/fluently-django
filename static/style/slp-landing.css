@@ -84,6 +84,33 @@
 	width: 240px;
 	display: inline-block;
 	margin-left: 45px;}
+	
+			
+#quote-container {
+	width: 800px;
+	margin: 0 auto;
+	margin-top: 60px;}
+		#quote-container img{
+			height: 100px;
+			margin-left: 40px;
+			border-radius: 200px;
+			border: 1px solid #5c5c5c;}	
+			
+#quote {
+	margin-top: 6px;
+	width: 620px;
+	float: right;
+	font-family: Signika;
+	font-weight: 100;
+	line-height: 30px;
+	font-style: italic;
+	text-indent: 12px;
+	font-size: 18px;}
+		#quote p{
+			font-size: 13px;
+			font-style: normal;
+			text-indent: 60px;}
+
 
 /* SLP eBOOK SECTION */
 
