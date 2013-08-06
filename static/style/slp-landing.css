@@ -115,6 +115,7 @@
 /* SLP eBOOK SECTION */
 
 #slp-ebook-section {
+	height: 500px;
 	margin: 0 auto;
 	background: #ffffff;
 	padding-bottom: 50px;
