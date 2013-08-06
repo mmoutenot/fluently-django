@@ -24,18 +24,17 @@
 /* Top SECTION */
 
 #top-section {
-	background-color: #3994D1;
+	background-color: #f1f3f5;
 	width: 100%;
 	height: 440px;}
 		#top-section h1 {
 		text-align: center;
-		color: white;
+		color: #5d6975;
 		font-family: Quicksand;
 		margin-top: 60px;
 		font-size: 36px;}
 		#top-section h3 {
 		text-align: center;
-		color: white;
 		font-weight: 400;
 		opacity: 0.8;
 		margin-top: 20px;
@@ -45,16 +44,16 @@
 				height: 300px;
 				margin-left: 240px;
 				margin-top: 20px;}
-			
-
 
 /* SIGN UP SECTION */
 
 #sign-up-section {
+	background: #3994D1;
 	height: auto;
+	color: white;
 	margin: 0 auto;
 	padding-top: 60px;
-	padding-bottom: 10px;}
+	padding-bottom: 70px;}
 		#sign-up-section h1 {
 			font-family: Quicksand;
 			font-size: 32px;
@@ -74,7 +73,7 @@
 	#sign-up-box h2{	
 		font-family: Signika;
 		font-weight: 300;
-		color: #FB5644;
+		font-weight: bold;
 		font-size: 24px;}		
 	#sign-up-box p{		
 		font-family: Signika;
@@ -86,31 +85,17 @@
 	width: 240px;
 	display: inline-block;
 	margin-left: 45px;}
-
-
-#view-example {
-	font-family: Quicksand;
-	font-size: 26px;
-	color: #3994D1;
-	text-align: center;
-	text-decoration: underline;
-	margin-top: 50px;}
-	#view-example a{
-		text-decoration: none;
-		color: #3994D1;}
-		#view-example a:hover{
-		opacity: 0.8;}
-		
+	
 			
 #quote-container {
 	width: 800px;
 	margin: 0 auto;
-	margin-top: 60px;}
+	margin-top: 40px;}
 		#quote-container img{
 			height: 100px;
 			margin-left: 40px;
 			border-radius: 200px;
-			border: 1px solid #5c5c5c;}	
+			border: 3px solid #ffffff;}	
 			
 #quote {
 	margin-top: 6px;
@@ -121,61 +106,77 @@
 	line-height: 30px;
 	font-style: italic;
 	text-indent: 12px;
-	font-size: 18px;}
+	font-size: 18px;
+	padding-bottom: 20px;}
 		#quote p{
 			font-size: 13px;
 			font-style: normal;
 			text-indent: 60px;}
-		
 
-#sign-up-card {
-	background: white;
-	width: 660px;
+
+/* SLP eBOOK SECTION */
+
+#slp-ebook-section {
+	height: 320px;
 	margin: 0 auto;
-	text-align: center;
-	padding: 20px;
-	margin-top: 120px;
-	border: 1px solid #c8c8c8;
-	border-radius: 8px;
-	height: 550px;}
-		#sign-up-card img {
-			margin-top: -64px;
-			
-		}
-		#sign-up-card h1 {
-			font-family: Quicksand;
-			font-size: 26px;
-			font-weight: 300;
-			margin: 0 auto;
-			text-align: center;
-			margin-top: 50px;
-			text-transform: uppercase;}
-		#sign-up-card h3 {
+	background: #ffffff;
+	padding-bottom: 50px;
+	padding-top: 20px;}
+		#slp-ebook-section h3 {
 			font-family: Quicksand;
 			font-size: 20px;
-			font-weight: 200;
-			line-height: 70px;}
+			font-weight: 500;
+			margin-left: 0px;}
 
-input {
-	width: 320px;
-	color: #5d6976;
-	height: 36px;
-	border: none;
-	border-bottom: 1px dotted #c8c8c8;
-	font-family: Quicksand;
-	font-size: 20px;
-	font-weight: 700;
-	margin-left: 10px;
-	margin-right: 4px;
-	text-indent: 8px;}
+#slp-ebook-container {
+	width: 900px;
+	position: relative;
+	margin: 0 auto;}
 	
-#firstName {
-	width: 150px;}	
-				
+#slp-ebook-image-box {
+	float: right;
+	display: inline-block;}
+	
+.slp-email-box {
+	width: 430px;
+	float: left;
+	margin-top: 40px;
+	display: block;
+	margin-left: 54px;}
+	.slp-email-box h2 {
+		font-size: 23px;
+		font-weight: 600;
+		font-family: Quicksand;}
+		.slp-email-box h4 {
+			margin-top: 20px;
+			font-weight: 400;
+			font-size: 16px;
+			line-height: 26px;}
 
-.profile-button {
-	width: 200px;
-	height: 60px;
+.text_inputs {
+	background-color: #f1f3f5;
+	border-radius: none;
+	width: 280px;
+	margin-bottom: 20px; 
+	height: 40px;
+	font-size: 14px;
+	border: none;
+	margin-left: 4px;
+	color: gray;
+	text-indent: 40px;}
+	
+#signin_email {
+	background-image: url("/static/images/icons/mail-gray.png");
+	background-repeat: no-repeat;
+	background-position-x: 10px;
+	background-position-y: 14px;}	
+
+.ebook-button {
+	display: inline-block;
+	width: intrinsic;
+	padding-left: 14px;
+	padding-right: 14px;
+	height: 40px;
 	background-color: #3994D1;
 	color: white;
 	text-decoration: none;
@@ -184,35 +185,22 @@ input {
 	font-family: Quicksand;
 	font-weight: bold;
 	text-transform: uppercase;
-	line-height: 62px;
-	border-radius: 7px;}
-
-#landing-page-button {
-	margin: 0 auto;
-	width: 350px;
-	height: 80px;
-	background-color: #3994D1;
-	border-bottom: 3px solid #308cc9;
-	margin-top: 50px;
-	font-size: 19px;
-	line-height: 82px;}
-		#landing-page-button:hover {
-			background-color: #308cc9;
+	line-height: 44px;
+	border-radius: 4px;}
+					
+#slp-button {
+	background-color: #36DC57;
+	border-bottom: 1px solid #2ccd4c;
+	margin-top: 10px;
+	cursor: pointer;}
+		#slp-button:hover {
+			background-color: #2ccd4c;
 			 -webkit-transition: all .1s ease-in-out;
 			 -moz-transition: all .1s ease-in-out;
 			 -o-transition: all .1s ease-in-out;
 			 transition: all .1s ease-in-out;}
-	
-	
-#privacy-blurb {
-	font-weight: 100;
-	font-style: italic;
-	font-size: 12px;
-	width: 500px;
-	text-align: center;
-	margin: 0 auto;
-	margin-top: 40px;
-	line-height: 18px;}
-		#privacy-blurb a {
-			color: #FB5644;}
+
+
+			
+
 
