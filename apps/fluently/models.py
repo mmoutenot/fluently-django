@@ -2,6 +2,16 @@ from django.db import models
 from django.db.models.signals import post_save
 from django.contrib.auth.models import User
 
+# Role Choices
+
+# 1 - Speech-Language Pathologist
+# 2 - Audiologist
+
+ROLE_CHOICES = {
+    (1, 'slp'),
+    (2, 'aud'),
+}
+
 # Certification Choices
 
 # 1 - CCC-SLP
@@ -151,6 +161,7 @@ class UserProfile(models.Model):
     payment_method = models.CommaSeparatedIntegerField(max_length=4)
     phone = models.CharField(max_length=36)
     pic_url = models.CharField(max_length=512)
+    role = models.CharField(max_length=1)
     specialties = models.CharField(max_length=512)
     specialties_list = models.CommaSeparatedIntegerField(max_length=22)
     state = models.CharField(max_length=2)

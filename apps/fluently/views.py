@@ -28,6 +28,18 @@ import collections
 ###
 ###
 
+# Role Choices
+
+ROLE_CHOICES = (
+    (1, 'slp'),
+    (2, 'audiologist'),
+)
+
+ROLE_CHOICES_DISPLAY = (
+    (1, 'Speech-Language Pathologist'),
+    (2, 'Audiologist'),
+)
+
 # Certification Choices
 
 CERTIFICATION_CHOICES_DISPLAY = (
@@ -383,9 +395,58 @@ def public_profile(request, user_url):
 
 ###        
 ###          
-### HANDLERS 
+### HANDLERS AND HELPERS
 ###          
 ###
+
+def account_field_handler(request):
+    u = request.user
+    if not u.is_authenticated():
+        return redirect('/')
+    specialtyIntStr = u.userprofile.specialties_list.replace('[', '').replace(']', '')
+    specialtyInts = [int(x) for x in specialtyIntStr.split(',') if x != '']
+    specialtyDict = dict((k, v) for k, v in SPECIALTY_CHOICES)
+    specialties = [specialtyDict[s] for s in specialtyInts]
+    certIntStr = u.userprofile.certification_list.replace('[', '').replace(']', '')
+    certInts = [int(x) for x in certIntStr.split(',') if x != '']
+    certDict = dict((k, v) for k, v in CERTIFICATION_CHOICES)
+    certs = [certDict[s] for s in certInts]
+    response_json = {
+        "city": u.userprofile.city,
+        "state": u.userprofile.state,
+        "role": "slp" if u.userprofile.role == 1 else "audiologist",  
+        "specialties": specialties,
+        "certifications": certs,
+    }
+    print response_json
+    return HttpResponse(json.dumps(response_json),
+                        mimetype="application/json")
+
+def account_advanced_field_handler(request):
+    u = request.user
+    if not u.is_authenticated():
+        return redirect('/')
+    print 'in it'
+    ageIntStr = u.userprofile.client_ages_list.replace('[', '').replace(']', '')
+    ageInts = [int(x) for x in ageIntStr.split(',') if x != '']
+    ageDict = dict((k, v) for k, v in CLIENT_AGE_CHOICES)
+    ages = [ageDict[s] for s in ageInts]
+    locIntStr = u.userprofile.located_in.replace('[', '').replace(']', '')
+    locInts = [int(x) for x in locIntStr.split(',') if x != '']
+    locDict = dict((k, v) for k, v in LOCATED_IN_CHOICES)
+    locs = [locDict[s] for s in locInts]
+    payIntStr = u.userprofile.payment_method.replace('[', '').replace(']', '')
+    payInts = [int(x) for x in payIntStr.split(',') if x != '']
+    payDict = dict((k, v) for k, v in PAYMENT_METHOD_CHOICES)
+    pays = [payDict[s] for s in payInts]
+    response_json = {
+        "ages": ages,
+        "locs": locs,
+        "pays": pays,
+    }
+    print response_json
+    return HttpResponse(json.dumps(response_json),
+                        mimetype="application/json")
 
 def int_to_string_list_database(int_list, choices, choices_display):
     out_str = ""
@@ -401,6 +462,7 @@ def int_to_string_list_database(int_list, choices, choices_display):
                         out_str += choice_display + ", "
     out_str = out_str[:-2]
     return out_str
+
 
 # Convert string list to int list based on choice tuples in models.py
 def string_to_int_list_database(str_list, choices):
@@ -431,6 +493,7 @@ def account_options_handler(request):
     if request.POST:
         u.userprofile.city = request.POST.get('city', '')
         u.userprofile.state = request.POST.get('state', '')
+        u.userprofile.role = 1 if request.POST.get('role', '') == 'slp' else 2
         u.userprofile.certification_list = string_to_int_list_database(
                                    request.POST.get('certifications', ''),
                                    CERTIFICATION_CHOICES) 
@@ -450,6 +513,8 @@ def account_advanced_options_handler(request):
     if request.POST:
         print 'hello'
         print request.POST.get('age', '')
+        print request.POST.get('loc', '')
+        print request.POST.get('pay', '')
         u.userprofile.client_ages_list = string_to_int_list_database(
                                  request.POST.get('age', ''),
                                  CLIENT_AGE_CHOICES) 
@@ -712,13 +777,6 @@ def save_profile(request):
         u.userprofile.experience = experience
         u.userprofile.therapy_approach = therapyApproach
         u.userprofile.save()
-        print firstName
-        print lastName
-        print aboutMe
-        print location
-        print certifications
-        print experience
-        print therapyApproach
         response_json = {   
             "status": "success",
         }
