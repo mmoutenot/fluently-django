@@ -95,7 +95,7 @@ $(document).ready(function () {
     success: function(dataJSON) {
       if (!dataJSON['viewed']) {
         console.log('sup');
-        $('#myModal').modal('show');  
+        $('#myModal').modal('show');
       }
     }
   });

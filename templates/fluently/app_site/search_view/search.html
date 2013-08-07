@@ -7,12 +7,8 @@
     <link rel="stylesheet" type="text/css" href="/static/style/fonts.css">
     <link rel="stylesheet" type="text/css" href="/static/style/global-style.css">
     <link rel="icon" type="image/png" href="/static/images/favicon.ico" />
-      <script>
-    var csrf_token = "{{csrf_token}}";
-  </script>
     <script src="http://code.jquery.com/jquery-latest.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-    <script src="/static/src/search.js"></script>
+    <script src="http:////ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
  
 		<!-- <script>
   
@@ -37,8 +33,6 @@
   	});
   
   </script>
-
-
   
   </head>
 
@@ -68,8 +62,9 @@
 	     		<form>
 		     			<span class="search-text">I'm looking for therapy in</span>
  
-		     			<select id="select-need" placeholder="Select your need"><!-- therapy need -->
-		     					<option value="no-preference" selected="selected" disabled>select one...</option>
+		     			<select id="select-need" placeholder="Select your therapy need"><!-- therapy need -->
+		     					<option selected="selected" disabled>select one...</option>
+		     					<option value="evaluation">Preliminary Speech-Language Evaluation</option>
 		     				<optgroup label="Speech Disorders">
 		     					<option value="articulation">Articulation</option>
 		     					<option value="stuttering">Stuttering</option>
@@ -77,15 +72,18 @@
 		     					<option value="dysarthria">Dysarthria</option>
 		     				<optgroup label="Language Disorders">	
 		     					<option value="aphasia">Aphasia</option>
-		     					<option value="autism">Autism-Spectrum Disorders</option>
 		     					<option value="asperger">Asperger Syndrome</option>
-		     					<option value="commdisorder">Communication Disorder</option>
+		     					<option value="autism">Autism-Spectrum Disorders</option>
 		     					<option value="dyslexia">Dyslexia</option>
+		     					<option value="expressivelang">Expressive Language Disorder</option>
+		     					<option value="oralmotor">Oral Motor Dysfunction</option>
 		     				<optgroup label="Other">
-		     					<option value="aac">Augmentative & Alternative Communication (AAC)</option>
 		     					<option value="accent">Accent Modification</option>
+		     					<option value="devdelay">Auditory Proccesing Disorder</option>
+		     					<option value="aac">Augmentative & Alternative Communication (AAC)</option>
 		     					<option value="devdelay">Developmental Delay</option>
-		     					<option value="dysphagia">Dysphagia</option>
+		     					<option value="dysphagia">Dysphagia/Swallowing/Feeding</option>
+		     					<option value="literacy">Literacy/Reading</option>
 		     					<option value="other">other</option>
 		     						</select>
 		     			
@@ -113,22 +111,33 @@
 	
 	   				<div id="advanced-options-container">
 	   	
+	   					<span class="advanced-options-text">treats ages</span>
+	   	
+		     			<select class="advanced-select" id="age-image" placeholder="age"><!-- setting -->
+			     			<option value="office">Any age</option>
+			     			<option value="office">0-4 years</option>
+			     			<option value="home">5-10 years</option>
+			     			<option value="online">11-17 years</option>
+			     			<option value="online">18-65 years</option>
+			     			<option value="online">66+ years</option>
+			     				</select>
+	   					
 	   					<span class="advanced-options-text">located in</span>
 	   	
-		     			<select id="located-in" placeholder="where"><!-- setting -->
-			     			<option value="no-preference">No preference</option>
+		     			<select class="advanced-select" id="office-image" placeholder="where"><!-- setting -->
+			     			<option value="office">No preference</option>
 			     			<option value="office">Office or Clinic</option>
 			     			<option value="home">Travels to my home</option>
 			     			<option value="online">Online/videoconferencing</option>
-			     		</select>
+			     				</select>
 			     		
 			     		<span class="advanced-options-text">with payment method</span>
-          
-              <select id="payment" placeholder="payment"><!-- setting -->
-                <option value="no-preference">No preference</option>
-                <option value="hourly">Hourly rate (cash/credit)</option>
-                <option value="insurance">Accepts insurance</option>
-              </select>  
+			     		
+			     		 <select class="advanced-select" id="payment-image" placeholder="payment"><!-- setting -->
+			     			<option value="office">No preference</option>
+			     			<option value="home">Hourly rate (cash/credit)</option>
+			     			<option value="insurance">Accepts insurance</option>
+			     				</select>  
 			     		   
 			     		 <input id="continue-button" type="submit" value="Continue&nbsp;&rarr;"><!-- continue button -->
 			     		 
@@ -137,29 +146,108 @@
      <!-- BEGIN DYNAMIC CONTENT -->
      
      		<div id="content-container">
+	
+		      {% for r in provider_rows %}
 
-     	
-		  
+          <div class="row">
+         
+
+            	
+   			 <a class="profile-link" href="/profile/{{r.0.userUrl}}">
+         <div class="profile-card">
 		   		
-		   	<!-- Profile Views -->	
+		   				<div class="prof-pic-box"><img src="{{r.0.picUrl}}"></div>
+		   				
+		   				<div class="prof-right-info">
+		   				
+		   					<div class="provider-name">{{r.0.firstName}} &nbsp;{{r.0.lastName}}</div>
+		   					
+		   					<div class="provider-credentials">{{r.0.certificationList}}</div>
+		   					
+		   					<div class="provider-details">
+		   					
+		   						<img class="image" src="/static/images/icons/book-salmon.png">
+		   						
+		   						<p class="provider-info">{{r.0.role}}</p>
+		   						
+		   					</div>
+		   					
+		   					<div class="provider-details">
+		   					
+		   						<img class="image" src="/static/images/icons/pin-salmon.png">
+		   						
+		   						<p class="provider-info location"><a href="#">{{r.0.city}}, {{r.0.state}}</a></p>
+		   					
+		   					</div>
+		   					
+		   					<div class="provider-details">
+		   					
+		   						<img class="image" src="/static/images/icons/star-salmon.png">
+		   						
+		   						<p class="provider-info specialty"><a href="#">Stuttering</a>, <a href="#">fluency disorders</a></p>
+		   				
+		   					</div>	
+		   						
+		   				</div><!-- end prof-right-info -->
+		   				
+		   					<div class="quote-box">{{r.0.aboutMe}}</div>
+		   					<div class="view-profile-link"><h7>View full profile &rarr;</h7></div>
+		   				
+		   			</div></div></a>
+		   			
+		   			<!-- END PROFILE CARD -->
+		   			
+		   			<!-- BEGIN PROFILE CARD -->
+   			
+   			 <a class="profile-link" href="#"><div class="profile-card">
 		   		
-		   		<div class="row"><!--begin row -->
-		   		
-	        {% for p in providers %}
-            {% for k, v in p.items %}
-            {{ k }}: {{ v }}
-            <br/> 
-            {% endfor %}
-            <br/><br/>
-          {% endfor %}
-		  		   		
-		   		</div><!-- end row -->
-		   		
-		   	
-		   		
-	 <!-- END DYNAMIC CONTENT -->
-		   		
-     
+		   				<div class="prof-pic-box"></div>
+		   				
+		   				<div class="prof-right-info">
+		   				
+		   					<div class="provider-name">Susan &nbsp;J.</div>
+		   					
+		   					<div class="provider-credentials">CCC-SLP, MS, BRS</div>
+		   					
+		   					<div class="provider-details">
+		   					
+		   						<img class="image" src="/static/images/icons/book-salmon.png">
+		   						
+		   						<p class="provider-info">Speech-Language Pathologist</p>
+		   						
+		   					</div>
+		   					
+		   					<div class="provider-details">
+		   					
+		   						<img class="image" src="/static/images/icons/pin-salmon.png">
+		   						
+		   						<p class="provider-info location"><a href="#">Boston, MA</a></p>
+		   					
+		   					</div>
+		   					
+		   					<div class="provider-details">
+		   					
+		   						<img class="image" src="/static/images/icons/star-salmon.png">
+		   						
+		   						<p class="provider-info specialty"><a href="#">Stuttering</a>, <a href="#">fluency disorders</a>, <a href="#">fluency disorders</a></p>
+		   				
+		   					</div>	
+		   						
+		   				</div><!-- end prof-right-info -->
+		   				
+		   					<div class="quote-box">Hi there, I'm Susan! I'm an SLP from Boston that loves helping children overcome their speech disorders and become more confident speak...</div>
+		   					<div class="view-profile-link"><h7>View full profile &rarr;</h7></div>
+		   			</div>	
+		   			</div></a>
+
+
+
+
+
+          </div>
+
+          {% endfor %}      
+		   	     
        </div><!-- end content-container -->
      
      </div><!-- end content -->
