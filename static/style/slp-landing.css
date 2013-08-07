@@ -135,12 +135,13 @@
 	
 #slp-ebook-image-box {
 	float: right;
+	margin-top: -20px;
 	display: inline-block;}
 	
 .slp-email-box {
 	width: 430px;
 	float: left;
-	margin-top: 40px;
+	margin-top: 28px;
 	display: block;
 	margin-left: 54px;}
 	.slp-email-box h2 {
