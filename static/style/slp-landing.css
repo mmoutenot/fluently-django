@@ -32,13 +32,13 @@
 		color: #5d6975;
 		font-family: Quicksand;
 		margin-top: 60px;
-		font-size: 36px;}
+		font-size: 44px;}
 		#top-section h3 {
 		text-align: center;
 		font-weight: 400;
 		opacity: 0.8;
-		margin-top: 40px;
-		font-size: 20px;}
+		margin-top: 30px;
+		font-size: 22px;}
 #top-section img {
 				width: 600px;
 				height: 300px;
@@ -255,22 +255,42 @@
 	font-style: italic;
 	visibility: hidden;}		
 	
+	
+	
+/* Bottom CTA Sign up */
+
 
 #bottom-signup {
 	width: 100%;
-	padding-top: 60px;
-	margin-top: -50px;
+	padding-top: 10px;
+	margin: 0 auto;
+	text-align: center;
+	margin-top: -80px;
 	height: intrinsic;
 	background: white;
 	padding-bottom: 60px;}
-		
+
+#line-box {
+	width: 800px;
+	margin: 0 auto;
+	margin-top: 32px;
+	display: inline-block;}
+
+#bottom-signup p {
+	display: inline;
+	text-align: center;
+	width: 100px;
+	margin: 0 auto;
+	font-family: Quicksand;
+	font-size: 20px;
+	vertical-align: top;}		
 			
-#provider-line {
-			font-size: 1.4em;
-			border-top: 1px solid rgba(93,105,117,0.24);
-			width: 560px;
-			margin: 0 auto;
-			margin-top: 70px;}
+.parent-line {
+	font-size: 1.4em;
+	border-top: 1px solid rgba(93,105,117,0.34);
+	width: 358px;
+	margin-top: 10px;}
+
 
 #provider-container {
 	width: 900px;
