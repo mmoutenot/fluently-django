@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title>Fluently - Frequently Asked Questions</title>
+
+    <link rel="stylesheet" type="text/css" href="/static/style/faqs.css">
+    <link rel="stylesheet" type="text/css" href="/static/style/global-style.css">
+    <link rel="stylesheet" type="text/css" href="/static/style/fonts.css">
+    <link rel="icon" type="image/png" href="/static/images/icons/favicon.ico" />
+     
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>    
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+
+           <script type="text/javascript">
+      var csrf_token = "{{csrf_token}}";
+      var user_url = "{{userUrl}}";
+    </script>
+    <script type="text/javascript" src="/static/src/libs/bootstrap-modal.js"></script>
+
+   	<script>
+	    	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		    	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		    	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		    	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+		    	ga('create', 'UA-42425586-1', 'fluentlynow.com');
+		    	ga('send', 'pageview');
+		    </script>
+		    
+		<script type="text/javascript">
+			var GoSquared = {};
+				GoSquared.acct = "GSN-026008-V";
+				(function(w){
+					function gs(){
+						w._gstc_lt = +new Date;
+						var d = document, g = d.createElement("script");
+						g.type = "text/javascript";
+						g.src = "//d1l6p2sc9645hc.cloudfront.net/tracker.js";
+						var s = d.getElementsByTagName("script")[0];
+						s.parentNode.insertBefore(g, s);
+						}
+						w.addEventListener ?
+						w.addEventListener("load", gs, false) :
+						w.attachEvent("onload", gs);
+						})(window);
+			</script>
+       
+    <script>
+ 
+ 
+        $(document).ready(function () {
+       	$('li.answer').hide();
+       	$('.question').click(
+       		function(){
+        $('li.answer').slideUp();
+        $(this).nextUntil('.question').slideDown();
+    });
+    });
+
+    	</script> 
+       
+ 
+        
+  </head>
+
+  <body>
+
+   <!-- USE NAVBAR TEMPLATE -->
+    <div id='navbar'>
+    	<div id='navbar_content'>
+	    	<div id='logo'>
+		    	<a href="/"><img src="/static/images/logos/Logo_White.png"></a>
+		    </div>
+		    
+		    <div id="navbar_list">
+		    <ul>
+		    
+		    	<a href="/join"><li class="navbar_button sign-up">Sign-up</li></a>
+		    
+		    	<a href="/about"><li class="navbar_button">About Us</li></a>
+		 	
+		    	<a href="/how-it-works"><li class="navbar_button">For parents</li></a>
+		    	
+		    	<a href="/why-fluently"><li class="navbar_button">For SLPs</li></a>
+	
+		    </ul>
+		  
+		    </div>
+		    		    
+    	</div> <!-- end navbar_content -->
+    	    	
+    </div> <!-- end navbar -->
+
+  <!--CONTENT BODY -->
+     <div id='content'>
+     
+     	<div id="content_container">
+     	
+     		<h1>Frequently Asked Questions</h1>
+     		
+     		<ul>
+    
+     			<li class="question">+ How much does Fluently cost?</li>
+     				<li class="answer">Fluently is 100% free for both speech-language pathologists as well as parents and students. We are interested in growing our community of exceptional private therapists and connecting these SLPs with parents and students looking for their therapy offerings. Eventually, we plan to offer paid or premium features to our users, but for now Fluently is free.</li>
+   	  			
+   	  			<li class="question">+ Is it only open for fluency disorders?</li>
+   	  				<li class="answer">Nope! Fluently is open for over fifteen major speech, language and learning specialties. Our community offers therapy and counseling services in everything from childhood apraxia to geriatric stroke rehabilitation. The name "Fluently" may denote fluency, but we think it has an even bigger meaning: finding life-changing therapy shouldn't be difficult; it should run easily, smoothly and (you guessed it!) fluently.</li>
+   	  			
+   	  			<li class="question">+ How do you maintain privacy for users?</li>
+   	  				<li class="answer">We take our users privacy seriously. We don't sell or abuse your personal information, and we never share your therapy information with third-parties. Our website is hosted with enterprise-grade security through secure socket layer (SSL) encryption. On a user-level basis, each profile is only identifiable by a randomly-generated user code and user names are only displayed by first name and last initial.</li>
+   	  			
+   	  			<li class="question">+ Which disorders are specialties do you include?</li>
+     				<li class="answer">Currently, our community offers therapy services in over fifteen major speech, language and learning areas. These specialties include, but aren't limited to: preliminary speech-language evaluations, articulation, stuttering or stammering, fluency disorders, apraxia of speech, dysarthria, aphasia, Asperger Syndrome, autism-spectrum disorders, dyslexia, expressive language disorders, oral motor dysfunctions, accent modification, auditory processing disorders, augmentative and alternative communication (AAC), development delays, dysphagia or swallowing, and literacy.</li>
+   	  			
+   	  			<li class="question">+ How do you verify a therapist's credentials?</li>
+   	  				<li class="answer">When a new therapy provider applies to join Fluently, we examine several important aspects of the application. First, it's important that the therapist meet our minimum selection requirement: active professional standing within their field. Most often, this means certification from the American Speech and Hearing Association (or equivalent international organization) and licensure at the local or state level. Certification statuses are verifiable through each organization's membership directory. We do reserve the right to make exceptions, primarily for therapy providers that have recently retired and wish to continue practicing on a part-time basis. Next, we examine professional experience, education, advanced certifications or memberships (such as a board-recognized specialty) and involvement within the greater community (publications, conferences, etc.). Lastly, each therapy provider is personally contacted by our team to understand whether their services meet the needs and expectations of our community. </li>
+	
+   	  		</ul>
+       	
+   	  		<div id="email-us">Can't find what you're looking for? <a href="mailto:team@fluentlynow.com">Email our friendly support team &rarr;</a></div>
+   	  				
+     	</div><!-- end content_container -->
+     
+     	
+     </div><!-- end content --> 	          
+  <!--FOOTER -->
+  
+     <div id='footer_container'>
+     
+   		<div id="footer_left">
+   		
+   			<ul>
+   				<a href="/"><li>Home</li></a>
+   				<a href="/about"><li>About</li></a>	
+   		   		<a href="mailto:team@fluentlynow.com"><li>Support</li></a>
+   			</ul>
+   			
+   		</div>	<!-- end footer_left -->
+   		
+   		<div id="footer_right">
+   		
+   			<ul>
+   				<a href="/privacy"><li>Privacy</li></a>
+   				<li>&copy;&nbsp;Balbus, Inc.</li>	
+   		    
+   		</div><!-- end footer_right -->
+
+     </div><!-- end footer_container -->
+
+  </body>
+</html>
