@@ -26,7 +26,7 @@
 #top-section {
 	background-color: #f1f3f5;
 	width: 100%;
-	height: 440px;}
+	height: 460px;}
 		#top-section h1 {
 		text-align: center;
 		color: #5d6975;
@@ -37,13 +37,63 @@
 		text-align: center;
 		font-weight: 400;
 		opacity: 0.8;
-		margin-top: 20px;
+		margin-top: 40px;
 		font-size: 20px;}
-			#top-section img {
+#top-section img {
 				width: 600px;
 				height: 300px;
 				margin-left: 240px;
 				margin-top: 20px;}
+
+#button-container {
+	width: 500px;
+	margin: 0 auto;
+	margin-top: 40px;
+	text-align: center;}
+
+.profile-button {
+	width: intrinsic;
+	padding-left: 6px;
+	padding-right: 6px;
+	display: inline-block;
+	height: 60px;
+	background-color: #3994D1;
+	color: white;
+	text-decoration: none;
+	text-align: center;
+	font-size: 16px;
+	font-family: Quicksand;
+	font-weight: bold;
+	text-transform: uppercase;
+	line-height: 62px;
+	border-radius: 7px;}
+
+#learn-button {
+	margin: 0 auto;
+	margin-right: 7px;
+	background-color: #3994D1;
+	width: 170px;
+	border-bottom: 2px solid #308cc9;}
+		#learn-button:hover {
+			background-color: #308cc9;
+			 -webkit-transition: all .1s ease-in-out;
+			 -moz-transition: all .1s ease-in-out;
+			 -o-transition: all .1s ease-in-out;
+			 transition: all .1s ease-in-out;}
+					
+#join-button {
+	margin: 0 auto;
+	margin-left: 7px;
+	background-color: #36DC57;
+	width: 170px;
+	border-bottom: 2px solid #2ccd4c;}
+		#join-button:hover {
+			background-color: #2ccd4c;
+			 -webkit-transition: all .1s ease-in-out;
+			 -moz-transition: all .1s ease-in-out;
+			 -o-transition: all .1s ease-in-out;
+			 transition: all .1s ease-in-out;}
+
 
 /* SIGN UP SECTION */
 
@@ -52,24 +102,23 @@
 	height: auto;
 	color: white;
 	margin: 0 auto;
-	padding-top: 60px;
+	padding-top: 70px;
 	padding-bottom: 70px;}
 		#sign-up-section h1 {
 			font-family: Quicksand;
 			font-size: 32px;
 			font-weight: 500;
-			letter-spacing: 2px;
-			padding-bottom: 18px;	
+			letter-spacing: 2px;	
 			width: 600px;
 			margin: 0 auto;
 			text-align: center;
-			margin-top: 30px;
+			margin-top: 100px;
 			text-transform: uppercase;}
 			
 #sign-up-box {
 	width: 900px;
 	margin: 0 auto;
-	margin-top: 40px;}			
+	margin-top: 30px;}			
 	#sign-up-box h2{	
 		font-family: Signika;
 		font-weight: 300;
@@ -90,7 +139,7 @@
 #quote-container {
 	width: 800px;
 	margin: 0 auto;
-	margin-top: 40px;}
+	margin-top: 30px;}
 		#quote-container img{
 			height: 100px;
 			margin-left: 40px;
@@ -106,8 +155,7 @@
 	line-height: 30px;
 	font-style: italic;
 	text-indent: 12px;
-	font-size: 18px;
-	padding-bottom: 20px;}
+	font-size: 18px;}
 		#quote p{
 			font-size: 13px;
 			font-style: normal;
@@ -120,7 +168,6 @@
 	height: 320px;
 	margin: 0 auto;
 	background: #ffffff;
-	padding-bottom: 50px;
 	padding-top: 20px;}
 		#slp-ebook-section h3 {
 			font-family: Quicksand;
@@ -208,6 +255,66 @@
 	font-style: italic;
 	visibility: hidden;}		
 	
-			
 
+#bottom-signup {
+	width: 100%;
+	padding-top: 60px;
+	margin-top: -50px;
+	height: intrinsic;
+	background: white;
+	padding-bottom: 60px;}
+		
+			
+#provider-line {
+			font-size: 1.4em;
+			border-top: 1px solid rgba(93,105,117,0.24);
+			width: 560px;
+			margin: 0 auto;
+			margin-top: 70px;}
+
+#provider-container {
+	width: 900px;
+	margin: 0 auto;
+	background: white;
+	position: relative;
+	text-align: center;
+	margin-top: 50px;}
+		#provider-container h2{
+			font-size: 28px;
+			font-family: Quicksand;
+			display: inline;
+			margin-top: 16px;
+			vertical-align: sub;
+			margin-right: 30px;
+			font-weight: 800;}
+		
+#provider-button {
+	width: intrinsic;
+	height: 58px;
+	color: white;
+	padding-right: 20px;
+	padding-left: 20px;
+	text-decoration: none;
+	text-align: center;
+	font-size: 17px;
+	font-family: Quicksand;
+	font-weight: bold;
+	text-transform: uppercase;
+	line-height: 58px;
+	border-radius:10px;
+	margin: 0 auto;
+	cursor: pointer;
+	cursor: hand;
+	display: inline-block;
+	border: none;
+	background-image: none;
+	background-color: #3994D1;
+	border-bottom: 3px solid #308cc9;
+	margin-right: 10px;}
+	#provider-button:hover {
+			background-color: #308cc9;
+			 -webkit-transition: all .1s ease-in-out;
+			 -moz-transition: all .1s ease-in-out;
+			 -o-transition: all .1s ease-in-out;
+			 transition: all .1s ease-in-out;}
 
