@@ -160,6 +160,7 @@ example_profile_url = 'fluently/marketing_site/example-profile.html'
 example_consumer_contact_url = 'fluently/marketing_site/example-consumer-contact.html'
 example_consumer_contact_blocks_url = 'fluently/marketing_site/example-consumer-contact-blocks.html'
 slp_landing_url = 'fluently/marketing_site/slp-landing.html'
+faq_url = 'fluently/marketing_site/faqs.html'
 
 # App Site
 sign_in_url = 'fluently/app_site/sign-in.html'
@@ -219,6 +220,10 @@ def sign_in(request):
 # Display about page  
 def about(request):
     return render(request, about_url)
+
+# Display faq page
+def faq(request):
+    return render(request, faq_url)
 
 # Display how it works page  
 def how_it_works(request):
