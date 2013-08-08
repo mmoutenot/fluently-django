@@ -147,7 +147,7 @@
      
      		<div id="content-container">
 	
-		      {% for r in provider_rows %}
+		      {% for i, r in enumerated_provider_rows %}
 
           <div class="row">
          
@@ -198,22 +198,24 @@
 		   			<!-- END PROFILE CARD -->
 		   			
 		   			<!-- BEGIN PROFILE CARD -->
-   			
-   			 <a class="profile-link" href="#"><div class="profile-card">
+   		
+            {% if rows_even and last_index == i %}
+     <a class="profile-link" href="/profile/{{r.1.userUrl}}">
+         <div class="profile-card">
 		   		
-		   				<div class="prof-pic-box"></div>
+		   				<div class="prof-pic-box"><img src="{{r.1.picUrl}}"></div>
 		   				
 		   				<div class="prof-right-info">
 		   				
-		   					<div class="provider-name">Susan &nbsp;J.</div>
+		   					<div class="provider-name">{{r.1.firstName}} &nbsp;{{r.1.lastName}}</div>
 		   					
-		   					<div class="provider-credentials">CCC-SLP, MS, BRS</div>
+		   					<div class="provider-credentials">{{r.1.certificationList}}</div>
 		   					
 		   					<div class="provider-details">
 		   					
 		   						<img class="image" src="/static/images/icons/book-salmon.png">
 		   						
-		   						<p class="provider-info">Speech-Language Pathologist</p>
+		   						<p class="provider-info">{{r.1.role}}</p>
 		   						
 		   					</div>
 		   					
@@ -221,7 +223,7 @@
 		   					
 		   						<img class="image" src="/static/images/icons/pin-salmon.png">
 		   						
-		   						<p class="provider-info location"><a href="#">Boston, MA</a></p>
+		   						<p class="provider-info location"><a href="#">{{r.1.city}}, {{r.1.state}}</a></p>
 		   					
 		   					</div>
 		   					
@@ -229,21 +231,18 @@
 		   					
 		   						<img class="image" src="/static/images/icons/star-salmon.png">
 		   						
-		   						<p class="provider-info specialty"><a href="#">Stuttering</a>, <a href="#">fluency disorders</a>, <a href="#">fluency disorders</a></p>
+		   						<p class="provider-info specialty"><a href="#">Stuttering</a>, <a href="#">fluency disorders</a></p>
 		   				
 		   					</div>	
 		   						
 		   				</div><!-- end prof-right-info -->
 		   				
-		   					<div class="quote-box">Hi there, I'm Susan! I'm an SLP from Boston that loves helping children overcome their speech disorders and become more confident speak...</div>
+		   					<div class="quote-box">{{r.1.aboutMe}}</div>
 		   					<div class="view-profile-link"><h7>View full profile &rarr;</h7></div>
-		   			</div>	
-		   			</div></a>
+		   				
+		   			</div></div></a>
 
-
-
-
-
+          {% endif %}
           </div>
 
           {% endfor %}      

@@ -222,7 +222,7 @@ def about(request):
     return render(request, about_url)
 
 # Display faq page
-def faq(request):
+def faqs(request):
     return render(request, faq_url)
 
 # Display how it works page  
@@ -266,20 +266,32 @@ def search(request):
             provider_row[column]['firstName'] = u.first_name
             provider_row[column]['lastName'] = u.last_name[0] + "."
             provider_row[column]['zipCode'] = u.zip_code
-            provider_row[column]['specialtiesList'] = u.specialties_list
-            provider_row[column]['certificationList'] = u.certification_list
+            provider_row[column]['specialtiesList'] = int_to_string_list_database(
+                                                          u.specialties_list,
+                                                          SPECIALTY_CHOICES,
+                                                          SPECIALTY_CHOICES_DISPLAY)
+            provider_row[column]['certificationList'] = int_to_string_list_database(
+                                                            u.certification_list, 
+                                                            CERTIFICATION_CHOICES,
+                                                            CERTIFICATION_CHOICES_DISPLAY)
             provider_row[column]['locatedIn'] = u.located_in
             provider_row[column]['paymentMethod'] = u.payment_method
             provider_row[column]['city'] = u.city
             provider_row[column]['state'] = u.state
             provider_row[column]['aboutMe'] = u.about_me
-            provider_row[column]['role'] = u.role
+            provider_row[column]['role'] = int_to_string_list_database(
+                                               '[' + u.role +']',
+                                               ROLE_CHOICES,
+                                               ROLE_CHOICES_DISPLAY)
             provider_row[column]['userUrl'] = u.user_url
             provider_row[column]['picUrl'] = u.pic_url
-            if i % 2 == 1:
+
+            if i % 2 == 1 or i == len(UserProfile.objects.all()) - 1:
                 provider_rows.append(provider_row)
         context = Context({
-            "provider_rows": provider_rows
+            "enumerated_provider_rows": enumerate(provider_rows),
+            "rows_even": len(UserProfile.objects.all()) % 2 == 0,
+            "last_index": len(UserProfile.objects.all()) - 1 
         })
         context.update(csrf(request))
         return HttpResponse(template.render(context))
@@ -430,6 +442,11 @@ def public_profile(request, user_url):
 ### HANDLERS AND HELPERS
 ###          
 ###
+
+#def send_parent_ebook(request):
+
+#def send_slp_ebook(request):
+
 
 def newaccount_handler(request):
     email = "team@fluentlynow.com"
