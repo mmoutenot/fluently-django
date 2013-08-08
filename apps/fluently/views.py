@@ -247,7 +247,10 @@ def example_consumer_contact_blocks(request):
 
 # Display SLP landing page
 def slp_landing(request):
-    return render(request, slp_landing_url)
+    template = get_template(slp_landing_url)
+    context = Context({})
+    context.update(csrf(request))
+    return HttpResponse(template.render(context))
 
 # Display search page
 def search(request):
@@ -443,10 +446,32 @@ def public_profile(request, user_url):
 ###          
 ###
 
-#def send_parent_ebook(request):
-
-#def send_slp_ebook(request):
-
+def send_ebook(request):
+    response_json = { "status": "fail" }
+    if request.POST:
+        email = request.POST.get('email', '')
+        recipientType = request.POST.get('recipientType', '')
+        mandrill_url = ("https://mandrillapp.com/api/1.0/messages/"
+                        "send-template.json")
+        template_content_ceo = [
+                { "name": "email", "content": email },
+                { "name": "recipientType", "content": recipientType  }]
+        mandrill_template_ceo = mandrill_template("ebook-alert", 
+                                                  template_content_ceo, 
+                                                  "team@fluentlynow.com", 
+                                                  "Jack McDermott", 
+                                                  "ebook-alert")
+        requests.post(mandrill_url, data=mandrill_template_ceo)
+        ebook_template_content = []
+        mandrill_ebook_template = mandrill_template(recipientType + "-ebook", 
+                                                    ebook_template_content, 
+                                                    email, 
+                                                    "", 
+                                                    recipientType + "-ebook")
+        requests.post(mandrill_url, data=mandrill_ebook_template)
+        response_json = { "status": "success" }
+        print mandrill_ebook_template
+    return HttpResponse(json.dumps(response_json), mimetype="application/json") 
 
 def newaccount_handler(request):
     email = "team@fluentlynow.com"

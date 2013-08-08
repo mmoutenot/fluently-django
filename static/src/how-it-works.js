@@ -1,12 +1,26 @@
-Shadowbox.init({});
-
 $(document).ready(function () {
-	$('.ebook-button').click(function () {
-    	$('#sent-success').css('visibility', 'visible');
-    	setTimeout(function () {
-	    	$('#sent-success').css('visibility', 'hidden');
-	    }, 2000); 
-    }
-} 
+	
+  $('.ebook-button').click(function () {
+
+    $.ajax({
+      type: 'post',
+      dataType: 'json',
+      url: '/ebook/',
+      data: {
+        recipientType: 'parent',
+        email: $('#signin_email').val(),
+        csrfmiddlewaretoken: csrf_token 
+      },
+      success: function (dataJSON) {
+        $('#sent-success').css('visibility', 'visible');
+        setTimeout(function () {
+          $('#sent-success').css('visibility', 'hidden');
+        }, 2000); 
+      }
+    });
+
+  });
+
+}); 
     
     
