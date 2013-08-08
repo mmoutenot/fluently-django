@@ -201,7 +201,12 @@
 			 -o-transition: all .1s ease-in-out;
 			 transition: all .1s ease-in-out;}
 
-
+#sent-success {
+	font-size: 14px;
+	color: #2ccd4c;
+	margin-left: 40px;
+	font-style: italic;}		
+	
 			
 
 
