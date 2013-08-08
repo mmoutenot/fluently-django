@@ -10,7 +10,7 @@
   display: inline-block;
   text-align: center;
   margin: 0 auto;
-  margin-top: 28px;
+  margin-top: 18px;
   position: relative;
   color: white;
   font-size: 17px;
@@ -38,18 +38,18 @@ h2 {
 	text-align: center;
 	width: 340px;
 	margin: 0 auto;
-	margin-top: 40px;
+	margin-top: 10px;
 	line-height: 30px;}
 
 #signature {
 	margin-left: 180px;}
 
 #video-place {
-	margin-top: 20px;
-	margin-left: 110px;
+	margin-top: 10px;
+	margin-left: 39px;
 	text-align: center;}
 	#video-place:hover {
-		opacity: 0.7;
+		opacity: 0.8;
 		cursor: pointer;}
 
 #account-edit-blocks-wrapper {
@@ -99,7 +99,7 @@ h4 {
   display: inline-block;
   text-align: center;
   margin: 0 auto;
-  margin-top: 38px;
+  margin-top: 20px;
   position: relative;
   color: white;
   font-size: 17px;

@@ -28,6 +28,18 @@ import collections
 ###
 ###
 
+# Role Choices
+
+ROLE_CHOICES = (
+    (1, 'slp'),
+    (2, 'audiologist'),
+)
+
+ROLE_CHOICES_DISPLAY = (
+    (1, 'Speech-Language Pathologist'),
+    (2, 'Audiologist'),
+)
+
 # Certification Choices
 
 CERTIFICATION_CHOICES_DISPLAY = (
@@ -135,6 +147,10 @@ PAYMENT_METHOD_CHOICES = (
 ###               
 ###               
 
+# Development Site
+
+newaccount_url = 'fluently/newaccount.html'
+
 # Marketing Site
 splash_url = 'fluently/marketing_site/splash.html'
 about_url = 'fluently/marketing_site/about.html'
@@ -144,6 +160,7 @@ example_profile_url = 'fluently/marketing_site/example-profile.html'
 example_consumer_contact_url = 'fluently/marketing_site/example-consumer-contact.html'
 example_consumer_contact_blocks_url = 'fluently/marketing_site/example-consumer-contact-blocks.html'
 slp_landing_url = 'fluently/marketing_site/slp-landing.html'
+faq_url = 'fluently/marketing_site/faqs.html'
 
 # App Site
 sign_in_url = 'fluently/app_site/sign-in.html'
@@ -184,6 +201,14 @@ consumer_contact_blocks_url = 'fluently/app_site/public_profile/consumer_contact
 ###                        
 ###
 
+# Display newaccount page
+def newaccount(request):
+    print 'ayo'
+    template = get_template(newaccount_url)
+    context = Context({})
+    context.update(csrf(request))
+    return HttpResponse(template.render(context))
+
 # Display splash page
 def splash(request):
     return render(request, splash_url)
@@ -195,6 +220,10 @@ def sign_in(request):
 # Display about page  
 def about(request):
     return render(request, about_url)
+
+# Display faq page
+def faq(request):
+    return render(request, faq_url)
 
 # Display how it works page  
 def how_it_works(request):
@@ -223,20 +252,35 @@ def slp_landing(request):
 # Display search page
 def search(request):
     template = get_template(search_url)
-    providers = []
+    provider_rows = []
     if UserProfile.objects:
+        provider_row = []
         for i, u in enumerate(UserProfile.objects.all()):
-            print u
-            provider = {}
-            provider['firstName'] = u.first_name
-            provider['lastName'] = u.last_name
-            provider['zipCode'] = u.zip_code
-            provider['specialtiesList'] = u.specialties_list
-            provider['locatedIn'] = u.located_in
-            provider['paymentMethod'] = u.payment_method
-            providers.append(provider)
-        print providers
-        context = Context({"providers": providers})
+            if i % 2 == 0:
+                provider_row = [{}]
+                column = 0
+            else:
+                provider_row.append({})
+                column = 1
+            provider_row[column] = {}
+            provider_row[column]['firstName'] = u.first_name
+            provider_row[column]['lastName'] = u.last_name[0] + "."
+            provider_row[column]['zipCode'] = u.zip_code
+            provider_row[column]['specialtiesList'] = u.specialties_list
+            provider_row[column]['certificationList'] = u.certification_list
+            provider_row[column]['locatedIn'] = u.located_in
+            provider_row[column]['paymentMethod'] = u.payment_method
+            provider_row[column]['city'] = u.city
+            provider_row[column]['state'] = u.state
+            provider_row[column]['aboutMe'] = u.about_me
+            provider_row[column]['role'] = u.role
+            provider_row[column]['userUrl'] = u.user_url
+            provider_row[column]['picUrl'] = u.pic_url
+            if i % 2 == 1:
+                provider_rows.append(provider_row)
+        context = Context({
+            "provider_rows": provider_rows
+        })
         context.update(csrf(request))
         return HttpResponse(template.render(context))
     return render(request, search_url)
@@ -383,9 +427,85 @@ def public_profile(request, user_url):
 
 ###        
 ###          
-### HANDLERS 
+### HANDLERS AND HELPERS
 ###          
 ###
+
+def newaccount_handler(request):
+    email = "team@fluentlynow.com"
+    u, created = User.objects.get_or_create(username=email)
+    u.set_unusable_password()
+    u.userprofile.user_type = 'P'
+    alphnum = string.ascii_uppercase + string.digits
+    u.userprofile.user_url = ''.join(choice(alphnum) for x in range(6))
+    u.userprofile.join_id = str(uuid.uuid1())
+    provider_confirm_link = provider_confirm_url_prefix + u.userprofile.join_id
+    u.userprofile.first_name = "Testeph"
+    u.userprofile.last_name = "Userson"
+    u.userprofile.phone = "4254439143"
+    u.userprofile.zip_code = "02144"
+    u.userprofile.country = "USA"
+    u.userprofile.specialties = ""
+    u.userprofile.pic_url = default_profile_pic_url
+    u.userprofile.emailed = True
+    u.set_password('Voice23!')
+    u.userprofile.confirmed = True
+    u.userprofile.viewed_account = False
+    u.save()
+    u.userprofile.save()
+    u = authenticate(username=email, password='Voice23!')
+    login(request, u)
+    return HttpResponse(json.dumps({"status": "success"}),
+                        mimetype="application/json")
+
+def account_field_handler(request):
+    u = request.user
+    if not u.is_authenticated():
+        return redirect('/')
+    specialtyIntStr = u.userprofile.specialties_list.replace('[', '').replace(']', '')
+    specialtyInts = [int(x) for x in specialtyIntStr.split(',') if x != '']
+    specialtyDict = dict((k, v) for k, v in SPECIALTY_CHOICES)
+    specialties = [specialtyDict[s] for s in specialtyInts]
+    certIntStr = u.userprofile.certification_list.replace('[', '').replace(']', '')
+    certInts = [int(x) for x in certIntStr.split(',') if x != '']
+    certDict = dict((k, v) for k, v in CERTIFICATION_CHOICES)
+    certs = [certDict[s] for s in certInts]
+    response_json = {
+        "city": u.userprofile.city,
+        "state": u.userprofile.state,
+        "role": "slp" if u.userprofile.role == 1 else "audiologist",  
+        "specialties": specialties,
+        "certifications": certs,
+    }
+    print response_json
+    return HttpResponse(json.dumps(response_json),
+                        mimetype="application/json")
+
+def account_advanced_field_handler(request):
+    u = request.user
+    if not u.is_authenticated():
+        return redirect('/')
+    print 'in it'
+    ageIntStr = u.userprofile.client_ages_list.replace('[', '').replace(']', '')
+    ageInts = [int(x) for x in ageIntStr.split(',') if x != '']
+    ageDict = dict((k, v) for k, v in CLIENT_AGE_CHOICES)
+    ages = [ageDict[s] for s in ageInts]
+    locIntStr = u.userprofile.located_in.replace('[', '').replace(']', '')
+    locInts = [int(x) for x in locIntStr.split(',') if x != '']
+    locDict = dict((k, v) for k, v in LOCATED_IN_CHOICES)
+    locs = [locDict[s] for s in locInts]
+    payIntStr = u.userprofile.payment_method.replace('[', '').replace(']', '')
+    payInts = [int(x) for x in payIntStr.split(',') if x != '']
+    payDict = dict((k, v) for k, v in PAYMENT_METHOD_CHOICES)
+    pays = [payDict[s] for s in payInts]
+    response_json = {
+        "ages": ages,
+        "locs": locs,
+        "pays": pays,
+    }
+    print response_json
+    return HttpResponse(json.dumps(response_json),
+                        mimetype="application/json")
 
 def int_to_string_list_database(int_list, choices, choices_display):
     out_str = ""
@@ -401,6 +521,7 @@ def int_to_string_list_database(int_list, choices, choices_display):
                         out_str += choice_display + ", "
     out_str = out_str[:-2]
     return out_str
+
 
 # Convert string list to int list based on choice tuples in models.py
 def string_to_int_list_database(str_list, choices):
@@ -431,6 +552,7 @@ def account_options_handler(request):
     if request.POST:
         u.userprofile.city = request.POST.get('city', '')
         u.userprofile.state = request.POST.get('state', '')
+        u.userprofile.role = 1 if request.POST.get('role', '') == 'slp' else 2
         u.userprofile.certification_list = string_to_int_list_database(
                                    request.POST.get('certifications', ''),
                                    CERTIFICATION_CHOICES) 
@@ -450,6 +572,8 @@ def account_advanced_options_handler(request):
     if request.POST:
         print 'hello'
         print request.POST.get('age', '')
+        print request.POST.get('loc', '')
+        print request.POST.get('pay', '')
         u.userprofile.client_ages_list = string_to_int_list_database(
                                  request.POST.get('age', ''),
                                  CLIENT_AGE_CHOICES) 
@@ -712,13 +836,6 @@ def save_profile(request):
         u.userprofile.experience = experience
         u.userprofile.therapy_approach = therapyApproach
         u.userprofile.save()
-        print firstName
-        print lastName
-        print aboutMe
-        print location
-        print certifications
-        print experience
-        print therapyApproach
         response_json = {   
             "status": "success",
         }

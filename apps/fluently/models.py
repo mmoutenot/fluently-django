@@ -2,16 +2,10 @@ from django.db import models
 from django.db.models.signals import post_save
 from django.contrib.auth.models import User
 
-# Certification Choices
-
-# 1 - CCC-SLP
-# 2 - MA
-# 3 - MS
-# 4 - M.Ed
-# 5 - Ph.D
-# 6 - BRS-FD
-# 7 - BRS-S
-# 8 - BRS-CL
+ROLE_CHOICES = {
+    (1, 'slp'),
+    (2, 'aud'),
+}
 
 CERTIFICATION_CHOICES = (
     (1, 'ccc'),
@@ -23,23 +17,6 @@ CERTIFICATION_CHOICES = (
     (7, 'swallowing'),
     (8, 'childlang'),
 )
-
-# Therapy Need Choices
-
-# 1 - Articualtion
-# 2 - Stuttering
-# 3 - Apraxia of Speech
-# 4 - Dysarthria
-# 5 - Aphasia
-# 6 - Autism-Spectrum Disorder
-# 7 - Asperger Syndrome
-# 8 - Communication Disorder
-# 9 - Dyslexia
-# 10 - Augmentative & Alternative Communication (AAC)
-# 11 - Accent Modification
-# 12 - Developmental Delay
-# 13 - Dysphagia
-# 14 - Other
 
 SPECIALTY_CHOICES = (
     (1, 'articulation'), 
@@ -58,14 +35,6 @@ SPECIALTY_CHOICES = (
     (14, 'other'),
 )
 
-# Age Choices
-
-# 1 - 0-4 - child
-# 2 - 5-10 - elementary
-# 3 - 11-17 - teen
-# 4 - 18-65 - adult
-# 5 - 66+ - senior
-
 CLIENT_AGE_CHOICES = (
     (1, 'child'),
     (2, 'elementary'),
@@ -74,25 +43,12 @@ CLIENT_AGE_CHOICES = (
     (5, 'senior'),
 )
 
-# Located In Choices
-
-# 1 - No Preference
-# 2 - Office or Clinic
-# 3 - Home
-# 4 - Online or Videoconferencing
-
 LOCATED_IN_CHOICES = (
     (1, 'no-preference'),
     (2, 'office'),
     (3, 'home'),
     (4, 'online'),
 )
-
-# Payment Method Choices
-
-# 1 - No Preference
-# 2 - Hourly Rate (Cash/Credit)
-# 3 - Accepts Insurance
 
 PAYMENT_METHOD_CHOICES = (
     (1, 'no-preference'),
@@ -151,6 +107,7 @@ class UserProfile(models.Model):
     payment_method = models.CommaSeparatedIntegerField(max_length=4)
     phone = models.CharField(max_length=36)
     pic_url = models.CharField(max_length=512)
+    role = models.CharField(max_length=1)
     specialties = models.CharField(max_length=512)
     specialties_list = models.CommaSeparatedIntegerField(max_length=22)
     state = models.CharField(max_length=2)

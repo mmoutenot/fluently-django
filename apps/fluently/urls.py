@@ -3,10 +3,17 @@ import settings
 from django.conf.urls.defaults import patterns, include, url
 
 urlpatterns = patterns('',
+
+                  # Development Site
+
+                  url(r'^newaccount/$', 'apps.fluently.views.newaccount'),        
+                  url(r'^newaccount-handler/$', 'apps.fluently.views.newaccount_handler'),        
+
                   # Marketing Site
                   url(r'^$', 'apps.fluently.views.splash'),
                   url(r'^about/$', 'apps.fluently.views.about'),    
                   url(r'^how-it-works/$', 'apps.fluently.views.how_it_works'),
+                  url(r'^faq/$', 'apps.fluently.views.faqs'),
                   url(r'^privacy/$', 'apps.fluently.views.privacy'),
                   url(r'^example-profile/$', 'apps.fluently.views.example_profile'),
                   url(r'^example-consumer-contact/$', 'apps.fluently.views.example_consumer_contact'),
@@ -47,6 +54,8 @@ urlpatterns = patterns('',
                   url(r'^account-edit/handler/$', 'apps.fluently.views.account_edit_handler'),
                   url(r'^account-edit/options-handler-1/$', 'apps.fluently.views.account_options_handler'),
                   url(r'^account-edit/options-handler-2/$', 'apps.fluently.views.account_advanced_options_handler'),
+                  url(r'^account-edit/fields-handler-1/$', 'apps.fluently.views.account_field_handler'),
+                  url(r'^account-edit/fields-handler-2/$', 'apps.fluently.views.account_advanced_field_handler'),
                   url(r'^save-profile/$', 'apps.fluently.views.save_profile'),
                   url(r'^picture/$', 'apps.fluently.views.profile_picture_handler'),
                   

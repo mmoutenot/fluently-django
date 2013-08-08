@@ -10,14 +10,13 @@
     <link rel="stylesheet" type="text/css" href="/static/style/fonts.css">
     <link rel="icon" type="image/png" href="/static/images/icons/favicon.ico" />
      
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
-     
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
 
     <script type="text/javascript" src="//api.filepicker.io/v1/filepicker.js"></script>
     <script type="text/javascript" src="/static/src/libs/selectize.min.js"></script>
     <script type="text/javascript" src="/static/src/libs/spin.min.js"></script>
     <script type="text/javascript" src="/static/src/libs/jquery.waitforimages.min.js"></script>
+    <script charset="ISO-8859-1" src="http://fast.wistia.com/static/popover-v1.js"></script>
     <script src="/static/src/account.js"></script>
     <script src="/static/src/account-edit.js"></script>
         <script type="text/javascript">
@@ -88,7 +87,7 @@
      			
      			<h4 id="info-name">{{firstName}} {{lastName}}</h4>
      			
-     			<a data-toggle="modal" href="#myModal"><p>Edit my profile specialties &rarr;</p></a>
+     			<a data-toggle="modal" id="modal-link" href="#myModal"><p>Edit my profile specialties &rarr;</p></a>
      			
      			<a target="_blank" href="/profile/{{userUrl}}"><p>Preview my Fluently profile &rarr;</p></a>
      			
@@ -186,15 +185,8 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-body">
-
         	<div id="welcome-blocks-wrapper">
-
-
-
-
           </div>
-
-
         </div>
       </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->

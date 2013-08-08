@@ -1,29 +1,4 @@
-$(document).ready(function () {   
-
-  $.ajax({
-    type: "post",
-    dataType: "json",
-    url: "/account-edit/handler/",
-    data: data,
-    success: function(dataJSON) {
-      if (!dataJSON['viewed']) {
-        console.log('sup');
-        $('#myModal').modal('show');  
-      }
-    }
-  });
-
-  // Spin animation
-
-  var opts = {
-    lines: 9,
-    length: 0,
-    width: 8,
-    radius: 10,
-    corners: 1,
-    color: '#ffffff'
-  };
-
+function initModalContents() {
   $.ajax({
     type: "post",
     dataType: "json",
@@ -37,7 +12,6 @@ $(document).ready(function () {
         $('#welcome-blocks-wrapper').load(
           '/account-edit/blocks #edit-specialties-block',
           function () {
-            console.log('ello');
             $('#select-to').prop('selectedIndex', -1);
             $('#select-to').selectize({
               maxItems: 6,
@@ -47,10 +21,89 @@ $(document).ready(function () {
               hideSelected: true,
               maxItems: 5,
             });
+            $.ajax({
+              type: "post",
+              dataType: "json",
+              url: "/account-edit/fields-handler-1/",
+              data: { csrfmiddlewaretoken: csrf_token},
+              success: function (dataJSON) {
+                $('#city-input').val(dataJSON.city);
+                $('#state-input').val(dataJSON.state);
+                $('#select-job').val(dataJSON.role);
+                $('#select-to1')[0].selectize.clear();
+                for (i in dataJSON.specialties) {
+                  $('#select-to')[0].selectize.addItem(
+                    dataJSON.specialties[i]);
+                }
+                for (i in dataJSON.certifications) {
+                  $('#select-to1')[0].selectize.addItem(
+                    dataJSON.certifications[i]);
+                }
+                if (!dataJSON.certifications.length) {
+                  $('#select-to1')[0].selectize.addItem('ccc');
+                }   
+                $('#select-to')[0].selectize.close();
+                $('#select-to1')[0].selectize.close();
+              }
+            });
           }
         );
       }
     }
+  });
+}
+
+function initAdvancedModalContents() {
+  $.ajax({
+    type: "post",
+    dataType: "json",
+    url: "/account-edit/fields-handler-2/",
+    data: { csrfmiddlewaretoken: csrf_token},
+    success: function (dataJSON) {
+      for (i in dataJSON.ages) {
+        $('input').each(function () {
+          if ($(this).val() == dataJSON.ages[i]) {
+            $(this).prop('checked', true);
+          }
+        });
+      }
+      for (i in dataJSON.locs) {
+        $('input').each(function () {
+          if ($(this).val() == dataJSON.locs[i]) {
+            $(this).prop('checked', true);
+          }
+        });
+      }
+      for (i in dataJSON.pays) {
+        $('input').each(function () {
+          if ($(this).val() == dataJSON.pays[i]) {
+            $(this).prop('checked', true);
+          }
+        });
+      }
+    }
+  });
+}
+
+$(document).ready(function () {   
+
+  $.ajax({
+    type: "post",
+    dataType: "json",
+    url: "/account-edit/handler/",
+    data: data,
+    success: function(dataJSON) {
+      if (!dataJSON['viewed']) {
+        console.log('sup');
+        $('#myModal').modal('show');
+      }
+    }
+  });
+
+  initModalContents();
+
+  $('#modal-link').click(function () {
+    initModalContents();  
   });
 
   $('#welcome-form').live('submit', function () {
@@ -58,16 +111,18 @@ $(document).ready(function () {
     $('#welcome-blocks-wrapper').load(
       '/account-edit/blocks #edit-specialties-block',
       function () {
-          console.log('ello');
-          $('#select-to').prop('selectedIndex', -1);
-          $('#select-to').selectize({
-            maxItems: 6,
-            hideSelected: true
-          });
-          $('#select-to1').selectize({
-            hideSelected: true,
-            maxItems: 5,
-          });
+        console.log('ello');
+        $('#select-to').prop('selectedIndex', -1);
+        $('#select-to').selectize({
+          maxItems: 6,
+          hideSelected: true
+        });
+        $('#select-to1').selectize({
+          hideSelected: true,
+          maxItems: 5,
+        });
+
+
       }); 
     return false;
   });
@@ -86,7 +141,6 @@ $(document).ready(function () {
     if (!$('#select-to option').length) {
       noBlanks = false;
     }  
-    console.log(noBlanks); 
     if (noBlanks) {
 
       certs = []; 
@@ -106,6 +160,7 @@ $(document).ready(function () {
       formData = {
         city: $('#city-input').val(),
         state: $('#state-input').val(),
+        role: $('#select-job option:selected').val(),
         certifications: certs.toString(),
         specialties: specs.toString(),
         csrfmiddlewaretoken: csrf_token
@@ -124,7 +179,11 @@ $(document).ready(function () {
       });
 
       $('#welcome-blocks-wrapper').load(
-          '/account-edit/blocks #edit-advanced-specialties-block'); 
+        '/account-edit/blocks #edit-advanced-specialties-block',
+        function () {
+          initAdvancedModalContents(); 
+        }
+      );
 
     }
     return false;
@@ -190,6 +249,8 @@ $(document).ready(function () {
         pay: pays.toString(),
         csrfmiddlewaretoken: csrf_token
       };
+
+      console.log(formData);
       
       $.ajax({
         type: "post",
@@ -197,9 +258,10 @@ $(document).ready(function () {
         url: "/account-edit/options-handler-2/",
         data: formData,
         success: function(dataJSON) {
-          console.log('2nd page to server');
+          $('#myModal').modal('toggle');
         }
       });
+      return false; 
     } else {
       return false;
     }
