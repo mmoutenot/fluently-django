@@ -180,5 +180,5 @@ body, html {
    color: rgba(93,105,117,0.71);}
 
 [placeholder]:focus::-webkit-input-placeholder {
-  transition: opacity 0.2s 0.2s ease; 
+  transition: opacity 0.1s 0.1s ease; 
   opacity: 0;}
