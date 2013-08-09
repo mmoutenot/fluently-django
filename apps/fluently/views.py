@@ -158,8 +158,8 @@ for_parents_url = 'fluently/marketing_site/for-parents.html'
 privacy_url = 'fluently/marketing_site/privacy.html'
 example_profile_url = 'fluently/marketing_site/example-profile.html'
 example_consumer_contact_url = 'fluently/marketing_site/example-consumer-contact.html'
-example_consumer_contact_blocks_url = 'fluently/marketing_site/example-consumer-contact-blocks.html'
-slp_landing_url = 'fluently/marketing_site/slp-landing.html'
+example_consumer_contact_blocks_url = 'fluently/marketing_site/modal-blocks/example-consumer-contact-blocks.html'
+for_slps_url = 'fluently/marketing_site/for-slps.html'
 faq_url = 'fluently/marketing_site/faqs.html'
 
 # App Site
@@ -245,9 +245,9 @@ def example_consumer_contact(request):
 def example_consumer_contact_blocks(request):
     return render(request, example_consumer_contact_blocks_url)
 
-# Display SLP landing page
-def slp_landing(request):
-    template = get_template(slp_landing_url)
+# Display for SLPs page
+def for_slps(request):
+    template = get_template(for_slps_url)
     context = Context({})
     context.update(csrf(request))
     return HttpResponse(template.render(context))
