@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title>Fluently - Speech therapy resources for parents</title>
+    <link rel="stylesheet" type="text/css" href="/static/style/bootstrap-modal.css" >
+    <link rel="stylesheet" type="text/css" href="/static/style/consumer-request.css">
+    <link rel="stylesheet" type="text/css" href="/static/style/for-parents.css">
+    <link rel="stylesheet" type="text/css" href="/static/style/fonts.css">
+    <link rel="stylesheet" type="text/css" href="/static/style/global-style.css">
+    <link rel="icon" type="image/png" href="/static/images/icons/favicon.ico"/>
+    
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="http:////ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="/static/src/libs/jquery.backstretch.min.js"></script>
+    <script src="/static/src/libs/smoothscroll.js"></script>
+    <script type="text/javascript">
+      var csrf_token = "{{csrf_token}}";
+    </script>
+    <script src="/static/src/for-parents.js"></script>
+    <script src="/static/src/libs/spin.min.js"></script>
+    <script type="text/javascript" src="/static/src/libs/bootstrap-modal.js"></script>
+    <script type="text/javascript" src="/static/src/consumer-request.js"></script>
+
+    	<script>
+	    	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		    	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		    	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		    	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+		    	ga('create', 'UA-42425586-1', 'fluentlynow.com');
+		    	ga('send', 'pageview');
+		    </script>
+		    
+		<script type="text/javascript">
+			var GoSquared = {};
+				GoSquared.acct = "GSN-026008-V";
+				(function(w){
+					function gs(){
+						w._gstc_lt = +new Date;
+						var d = document, g = d.createElement("script");
+						g.type = "text/javascript";
+						g.src = "//d1l6p2sc9645hc.cloudfront.net/tracker.js";
+						var s = d.getElementsByTagName("script")[0];
+						s.parentNode.insertBefore(g, s);
+						}
+						w.addEventListener ?
+						w.addEventListener("load", gs, false) :
+						w.attachEvent("onload", gs);
+						})(window);
+			</script>
+  </head>
+
+  <body>
+
+  <!-- USE NAVBAR TEMPLATE -->
+    <div id='navbar'>
+    	<div id='navbar_content'>
+	    	<div id='logo'>
+		    	<a href="/"><img src="/static/images/logos/Logo_White.png"></a>
+		    </div>
+		    
+		    <div id="navbar_list">
+		    <ul>
+		    
+		    	<a href="/join"><li class="navbar_button sign-up">Sign-up</li></a>
+		    
+		    	<a href="/about"><li class="navbar_button">About Us</li></a>
+		 	
+		    	<a href="/for-parents"><li class="navbar_button">For Parents</li></a>
+		    	
+		    	<a href="/for-slps"><li class="navbar_button">For SLPs</li></a>
+		    	
+		    </ul>
+		  
+		    </div>
+		    		    
+    	</div> <!-- end navbar_content -->
+    	    	
+    </div> <!-- end navbar -->
+         
+   <!-- Top Section -->
+   
+       <div id="top-section">
+	    
+	    	<div class="text_container">
+	    
+	    		<h1>Find speech therapy near you.</h1>
+	    		
+	    		<h3>Connect with a leading speech-language pathologist through Fluently.</h3>
+	    		
+	    		
+	    		<div id="macbook"><img src="/static/images/elements/transparent-mac.png"></div>
+	    		
+	    		<div id="mac-slider"></div>
+	    	
+
+	    		<div id="connect-arrow-box">
+	    		
+	    			<img id="connect-arrow" src="/static/images/elements/line-words.png">
+	    			
+	    			<div id="name"></div>
+	    			
+	    			<a class="smoothScroll" href="#steps-section">
+	    			<div class="top-button">Learn more</div>
+	    			</a>
+	    		
+	    		</div><!--end connect-arrow-box -->
+
+	    		
+
+	    		
+	    	</div><!-- end text-container -->
+	    
+	    </div><!-- end top-section-->
+   
+       
+   
+   <!-- Steps Section -->
+   
+       <div id="steps-section">
+	    
+	    	<div class="text_container">
+	    
+	    		<h1>Fluently matches you with qualified therapy providers in <strong>three easy steps:</strong></h1>
+
+	    		<div id="steps-container">
+	    			
+	    			<!-- STEP #1 -->
+	    			
+	    			<div class="steps-box">
+	    			
+	    				<div class="steps-image">
+	    				
+	    					<img id="needs-image" src="/static/images/graphics/needs-list.png">
+	    					
+	    				</div><!-- end steps-image -->
+	    				
+	    				<div class="steps-text">
+	    					
+	    					<h3>1. Select your therapy needs</h3>
+	    					
+	    					<p>Fluently works to offer personalized matches for speech therapy options to meet the needs of you and your family.</p>
+	    					
+	    				</div><!-- end steps-text -->
+	    			
+	    			</div><!-- end steps-box -->
+	    			
+	    			<!-- STEP #2 -->
+	    			
+	    		<div class="steps-box">
+	    	
+	    				<div class="steps-text2">
+	    					
+	    					<h3>2. Find the <em>right</em> therapy options</h3>
+	    					
+	    					<p>Fluently searches our online network of qualified speech-language pathologists based on your specific therapy needs.</p>
+	    					
+	    				</div><!-- end steps-text -->
+	    				
+	    				<div id="steps-image2" class="steps-image">
+	    				
+	    					<img id="match-image" src="/static/images/graphics/match-slps.png">
+	    					
+	    				</div><!-- end steps-image -->
+	    			
+	    			</div><!-- end steps-box -->
+	   
+	    			
+	    			<!-- STEP #3 -->
+	    				    			
+	    			<div class="steps-box">
+	    			
+	    				<div class="steps-image">
+	    				
+	    					<img id="profiles-image" src="/static/images/graphics/selection-profiles.png">
+	    					
+	    				</div><!-- end steps-image -->
+	    				
+	    				<div class="steps-text">
+	    					
+	    					<h3>3. Browse SLP profiles</h3>
+	    					
+	    					<p>Fluently offers easy-to-understand profiles for speech & language professionals so you can browse our selection of speech therapy experts.</p>
+	    					
+	    				</div><!-- end steps-text -->
+	    			
+	    			</div><!-- end steps-box -->
+	    			
+	    		</div><!-- end steps-container -->
+	    		
+	    		
+	    	</div><!-- end text_container -->
+	    	
+       </div><!-- end steps-section -->
+          
+  		
+  <div id="ebook-section">
+  	
+  		<div class="text_container">
+  		
+  			<div id="ebook-container">
+  			
+  				<div id="ebook-image-box">
+  				
+  					<img src="/static/images/elements/parent-ebook-image.png">
+  				
+  				</div><!-- end ebook-image-box -->
+  			
+  				<div class="email-box">
+    
+  					<h2>Download our Free Guide for Parents</h2>
+  					
+  					<h4>This free guide <strong>"4 Factors for Finding the right SLP"</strong> outlines the key questions to ask when looking for an exceptional speech-language professional. <em>Enter your email address and we'll send you a free copy:</em></h4>
+    	
+  					<input class="text_inputs" id="signin_email" name="signin_email" type="text" placeholder="Email Address"><div class="ebook-button" id="submit-button">Submit</div>
+  					
+  					<div id="sent-success"><strong>Sent!</strong> Check your inbox for the guide.</div>
+  					
+  				</div><!-- end email-box -->
+  				
+  				  			
+  			</div><!-- end ebook-container -->
+  			
+  		</div><!-- end text_container -->
+        		  
+    </div><!-- end ebook-section -->   
+  		
+  			<div id="bottom-signup">
+  			
+  			<div id="line-box"><div class="parent-line" style="float:left;"></div><p>OR</p><div class="parent-line" style="float:right;"></div></div>
+  			
+  			<div id="parent-container">
+  			
+  				<h2><strong>Connect with a therapist for your needs today.</strong></h2>
+  			
+  				<div id="parent-button">Get started</div></div>
+  			
+  			</div>
+ 
+
+  <!-- USE FOOTER TEMPLATE -->
+  
+    <div id="global_footer">
+    
+    	<div id="global_footer_content">
+  
+    			<a href="/about">About</a>
+    			<a href="mailto:team@fluentlynow.com">Contact Us</a>
+    			<a href="/privacy">Privacy Policy</a>
+    			<p>&copy;&nbsp;Balbus, Inc.</p>
+    		
+    	</div> <!-- end global footer content -->
+    
+    </div> <!-- end global footer -->
+
+  			
+
+<script data-cfasync="false" type='text/javascript'>/*<![CDATA[*/window.olark||(function(c){var f=window,d=document,l=f.location.protocol=="https:"?"https:":"http:",z=c.name,r="load";var nt=function(){
+f[z]=function(){
+(a.s=a.s||[]).push(arguments)};var a=f[z]._={
+},q=c.methods.length;while(q--){(function(n){f[z][n]=function(){
+f[z]("call",n,arguments)}})(c.methods[q])}a.l=c.loader;a.i=nt;a.p={
+0:+new Date};a.P=function(u){
+a.p[u]=new Date-a.p[0]};function s(){
+a.P(r);f[z](r)}f.addEventListener?f.addEventListener(r,s,false):f.attachEvent("on"+r,s);var ld=function(){function p(hd){
+hd="head";return["<",hd,"></",hd,"><",i,' onl' + 'oad="var d=',g,";d.getElementsByTagName('head')[0].",j,"(d.",h,"('script')).",k,"='",l,"//",a.l,"'",'"',"></",i,">"].join("")}var i="body",m=d[i];if(!m){
+return setTimeout(ld,100)}a.P(1);var j="appendChild",h="createElement",k="src",n=d[h]("div"),v=n[j](d[h](z)),b=d[h]("iframe"),g="document",e="domain",o;n.style.display="none";m.insertBefore(n,m.firstChild).id=z;b.frameBorder="0";b.id=z+"-loader";if(/MSIE[ ]+6/.test(navigator.userAgent)){
+b.src="javascript:false"}b.allowTransparency="true";v[j](b);try{
+b.contentWindow[g].open()}catch(w){
+c[e]=d[e];o="javascript:var d="+g+".open();d.domain='"+d.domain+"';";b[k]=o+"void(0);"}try{
+var t=b.contentWindow[g];t.write(p());t.close()}catch(x){
+b[k]=o+'d.write("'+p().replace(/"/g,String.fromCharCode(92)+'"')+'");d.close();'}a.P(2)};ld()};nt()})({
+loader: "static.olark.com/jsclient/loader0.js",name:"olark",methods:["configure","extend","declare","identify"]});
+/* custom configuration goes here (www.olark.com/documentation) */
+olark.identify('5644-292-10-7024');/*]]>*/</script><noscript><a href="https://www.olark.com/site/5644-292-10-7024/contact" title="Contact us" target="_blank">Questions? Feedback?</a> powered by <a href="http://www.olark.com?welcome" title="Olark live chat software">Olark live chat software</a></noscript>
+ 
+
+<script>
+  $("#mac-slider").backstretch([
+    "/static/images/elements/slider1.png",
+   "/static/images/elements/slider2.png",
+     "/static/images/elements/slider3.png"    
+  ], {duration: 2600, fade: 400});
+</script>
+
+<script>
+  $("#name").backstretch([
+    "/static/images/elements/name1.png",
+   "/static/images/elements/name2.png",
+     "/static/images/elements/name3.png"    
+  ], {duration: 3000, fade: 0});
+</script>
+
+  </body>
+</html>
