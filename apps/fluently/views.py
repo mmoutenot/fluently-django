@@ -154,7 +154,7 @@ newaccount_url = 'fluently/newaccount.html'
 # Marketing Site
 splash_url = 'fluently/marketing_site/splash.html'
 about_url = 'fluently/marketing_site/about.html'
-how_it_works_url = 'fluently/marketing_site/how-it-works.html'
+for_parents_url = 'fluently/marketing_site/for-parents.html'
 privacy_url = 'fluently/marketing_site/privacy.html'
 example_profile_url = 'fluently/marketing_site/example-profile.html'
 example_consumer_contact_url = 'fluently/marketing_site/example-consumer-contact.html'
@@ -225,9 +225,9 @@ def about(request):
 def faqs(request):
     return render(request, faq_url)
 
-# Display how it works page  
-def how_it_works(request):
-    return render(request, how_it_works_url)
+# Display for parents page  
+def for_parents(request):
+    return render(request, for_parents_url)
 
 # Display privacy policy page
 def privacy(request):

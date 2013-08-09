@@ -12,13 +12,13 @@ urlpatterns = patterns('',
                   # Marketing Site
                   url(r'^$', 'apps.fluently.views.splash'),
                   url(r'^about/$', 'apps.fluently.views.about'),    
-                  url(r'^how-it-works/$', 'apps.fluently.views.how_it_works'),
+                  url(r'^for-parents/$', 'apps.fluently.views.for_parents'),
                   url(r'^faq/$', 'apps.fluently.views.faqs'),
                   url(r'^privacy/$', 'apps.fluently.views.privacy'),
                   url(r'^example-profile/$', 'apps.fluently.views.example_profile'),
                   url(r'^example-consumer-contact/$', 'apps.fluently.views.example_consumer_contact'),
                   url(r'^example-consumer-contact/blocks/$', 'apps.fluently.views.example_consumer_contact_blocks'),
-                  url(r'^why-fluently/$', 'apps.fluently.views.slp_landing'),
+                  url(r'^for-slps/$', 'apps.fluently.views.for_slps'),
                   url(r'^ebook/$', 'apps.fluently.views.send_ebook'),
 
                   # App Site
