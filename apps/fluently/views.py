@@ -147,10 +147,6 @@ PAYMENT_METHOD_CHOICES = (
 ###               
 ###               
 
-# Development Site
-
-newaccount_url = 'fluently/newaccount.html'
-
 # Marketing Site
 splash_url = 'fluently/marketing_site/splash.html'
 about_url = 'fluently/marketing_site/about.html'
@@ -200,14 +196,6 @@ consumer_contact_blocks_url = 'fluently/app_site/public_profile/consumer_contact
 ### PAGE DISPLAY FUNCTIONS 
 ###                        
 ###
-
-# Display newaccount page
-def newaccount(request):
-    print 'ayo'
-    template = get_template(newaccount_url)
-    context = Context({})
-    context.update(csrf(request))
-    return HttpResponse(template.render(context))
 
 # Display splash page
 def splash(request):

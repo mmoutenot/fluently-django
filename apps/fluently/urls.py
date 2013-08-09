@@ -4,11 +4,6 @@ from django.conf.urls.defaults import patterns, include, url
 
 urlpatterns = patterns('',
 
-                  # Development Site
-
-                  url(r'^newaccount/$', 'apps.fluently.views.newaccount'),        
-                  url(r'^newaccount-handler/$', 'apps.fluently.views.newaccount_handler'),        
-
                   # Marketing Site
                   url(r'^$', 'apps.fluently.views.splash'),
                   url(r'^about/$', 'apps.fluently.views.about'),    

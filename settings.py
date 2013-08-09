@@ -5,10 +5,10 @@ import os, sys
 # = Directory Declaractions =
 # ===========================
 
-PROJECT_PATH 		= os.path.dirname(os.path.abspath(__file__))
-CURRENT_DIR   		= os.path.dirname(__file__)
-TEMPLATE_DIRS 		= (os.path.join(CURRENT_DIR, 'templates'),)
-STATICFILES_DIRS 	= (os.path.join(CURRENT_DIR, 'static'),)
+PROJECT_PATH            = os.path.dirname(os.path.abspath(__file__))
+CURRENT_DIR             = os.path.dirname(__file__)
+TEMPLATE_DIRS           = (os.path.join(CURRENT_DIR, 'templates'),)
+STATICFILES_DIRS        = (os.path.join(CURRENT_DIR, 'static'),)
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -22,7 +22,7 @@ MANAGERS = ADMINS
 DATABASES = {
   'default': {
     'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-    'NAME': 'fluently',            # Or path to database file if using sqlite3.
+    'NAME': '/home/ubuntu/fluently-django/fluently',            # Or path to database file if using sqlite3.
     'USER': '',            # Not used with sqlite3.
     'PASSWORD': '',          # Not used with sqlite3.
     'HOST': '',            # Set to empty string for localhost. Not used with sqlite3.
@@ -133,3 +133,5 @@ LOGGING = {
 }
 
 ALLOWED_HOSTS = ['127.0.0.1']
+                                                                                                                                                                                                  135,1         Bot
+
