@@ -32,12 +32,7 @@ $(document).ready(function () {
   };  
 
   $('#contact-student-blocks-wrapper').load(
-    '/consumer-contact/' + user_url + '/blocks #signup-block', function () {
-    $('#student-modal-title').text('Contact ' + firstName + ' ' + lastName);
-    $('#student-needs').attr(
-      'placeholder', "I'm contacting " + firstName + " "  + lastName + " because...");  
-    
-  });
+    '/consumer-contact/' + user_url + '/blocks #signup-block');
 
   // Disable submit button when a form field is blank
 

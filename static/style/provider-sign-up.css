@@ -110,7 +110,7 @@ ul {
   position: relative;
   margin: 0 auto;
   padding: 20px;
-  top: 60px;
+  top: 40px;
   border: 1px solid #d2d2d2;
   background: white; 
   }
@@ -236,12 +236,20 @@ form {
     
 #sign-up-title {
 	text-align: center;
-	padding-bottom: 14px;
+	padding-bottom: -4px;
+	padding-top: 12px;
 	text-transform: uppercase;
 	font-family: Quicksand;
+	font-weight: 500;}
+
+#sign-up-explain {
+	text-align: center;
+	padding-bottom: 16px;
 	font-weight: 500;
-	
-}
+	line-height: 24px;
+	width: 500px;
+	margin-top: -4px;
+	margin: 0 auto;}
 
 .signup-block {
 	margin-top: -40px;
