@@ -246,7 +246,7 @@ def example_consumer_contact_blocks(request):
     return render(request, example_consumer_contact_blocks_url)
 
 # Display for SLPs page
-def for_slps(request):
+def for_therapists(request):
     template = get_template(for_slps_url)
     context = Context({})
     context.update(csrf(request))

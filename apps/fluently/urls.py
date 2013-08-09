@@ -18,7 +18,7 @@ urlpatterns = patterns('',
                   url(r'^example-profile/$', 'apps.fluently.views.example_profile'),
                   url(r'^example-consumer-contact/$', 'apps.fluently.views.example_consumer_contact'),
                   url(r'^example-consumer-contact/blocks/$', 'apps.fluently.views.example_consumer_contact_blocks'),
-                  url(r'^for-slps/$', 'apps.fluently.views.for_slps'),
+                  url(r'^for-therapists/$', 'apps.fluently.views.for_therapists'),
                   url(r'^ebook/$', 'apps.fluently.views.send_ebook'),
 
                   # App Site
