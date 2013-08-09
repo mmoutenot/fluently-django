@@ -110,7 +110,7 @@
 	height: 300px;
 	display: inline-block;
 	text-align: center;
-	margin-left: 60px;}
+	margin-left: 55px;}
 	
 	.icon-box img:hover {
 			transform: translate(0px,-5px);
@@ -124,7 +124,13 @@
 .icon-title {
 	font-size: 21px;
 	font-weight: 400;}
-	
+
+#view-profile {
+	text-align: center;
+	font-size: 24px;
+	text-decoration: underline;
+	color: #3994d1;
+	margin-top: 10px;}	
 
 /* JOIN SECTION */
 
@@ -133,10 +139,10 @@
 	margin: 0 auto;
 	background: #ffffff;
 	padding-bottom: 70px;}
-		#join_section h3 {
+		#join_section h2 {
 			font-family: Quicksand;
 			font-size: 20px;
-			font-weight: 500;
+			font-weight: 600;
 			margin-left: 40px;}
 
 #join-container {
