@@ -16,14 +16,7 @@ urlpatterns = patterns('',
                   # App Site
                   url(r'^sign-in/$', 'apps.fluently.views.sign_in'),
                   url(r'^sign-in/handler/$', 'apps.fluently.views.sign_in_handler'),
-                  url(r'^search/$', 'apps.fluently.views.search'),
                   
-                  # App Site # Search View
-                  url(r'^search/$', 'apps.fluently.views.search'),
-                  url(r'^search/card/$', 'apps.fluently.views.profile_card'),
-                  url(r'^search/no-results/$', 'apps.fluently.views.no_results'),
-                  url(r'^search/search-results/$', 'apps.fluently.views.search_results'),
-
                   # App Site # Provider Signup 
                   url(r'^join/$', 'apps.fluently.views.provider_sign_up'),
                   url(r'^join/blocks/$', 'apps.fluently.views.provider_sign_up_blocks'),
