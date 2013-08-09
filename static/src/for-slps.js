@@ -1,23 +1,9 @@
 $(document).ready(function () {
 
-  observeInterval = 100;
-  setInterval(function () {
-    firstName = $('#firstName').val();
-    email = $('#email').val(); 
-    url = "/join?"
-    if (firstName) {
-      url += "firstName=" + firstName;
-      if (email) {
-        url += "&email=" + email;
-      }
-    } else if (email) {
-      url += "email=" + email;
-    }
-    $('#complete-free-profile').attr('href', url);
-  }, observeInterval);
-
 	$('.ebook-button').click(function () {
-    if (!$('#signin_email').val() {
+    console.log('elloooo');
+    if ($('#signin_email').val()) {
+      console.log('ellloooooadfl');
       $.ajax({
         type: 'post',
         dataType: 'json',

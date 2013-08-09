@@ -2,7 +2,7 @@ $(document).ready(function () {
 	
   $('.ebook-button').click(function () {
 
-    if (!$('#signin_email').val()) {
+    if ($('#signin_email').val()) {
       $.ajax({
         type: 'post',
         dataType: 'json',
