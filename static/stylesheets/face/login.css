@@ -1,0 +1,154 @@
+@font-face {
+  font-family: Quicksand;
+  font-weight: normal;
+  font-style: normal;
+  src: url("../../fonts/Quicksand/Quicksand_Book-webfont.eot");
+  src: url("../../fonts/Quicksand/Quicksand_Book-webfont.eot?#iefix") format("embedded-opentype"), url("../../fonts/Quicksand/Quicksand_Book-webfont.woff") format("woff"), url("../../fonts/Quicksand/Quicksand_Book-webfont.ttf") format("truetype"), url("../../fonts/Quicksand/Quicksand_Book-webfont.svg#Quicksand") format("svg"); }
+
+@font-face {
+  font-family: QuicksandBold;
+  font-weight: normal;
+  font-style: normal;
+  src: url("../../fonts/Quicksand/Quicksand_Bold-webfont.eot");
+  src: url("../../fonts/Quicksand/Quicksand_Bold-webfont.eot?#iefix") format("embedded-opentype"), url("../../fonts/Quicksand/Quicksand_Bold-webfont.woff") format("woff"), url("../../fonts/Quicksand/Quicksand_Bold-webfont.ttf") format("truetype"), url("../../fonts/Quicksand/Quicksand_Bold-webfont.svg#QuicksandBold") format("svg"); }
+
+@font-face {
+  font-family: Signika;
+  font-weight: normal;
+  font-style: normal;
+  src: url("../../fonts/Signika/Signika-Light.eot");
+  src: url("../../fonts/Signika/Signika-Light.eot?#iefix") format("embedded-opentype"), url("../../fonts/Signika/Signika-Light.woff") format("woff"), url("../../fonts/Signika/Signika-Light.ttf") format("truetype"), url("../../fonts/Signika/Signika-Light.svg#Signika") format("svg"); }
+
+body, html {
+  background: #e67b6d;
+  height: 100%;
+  width: 100%;
+  font-family: Signika;
+  position: relative;
+  padding: 0;
+  margin: 0;
+  color: white; }
+
+#login {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 20px 20px 0 0; }
+  #login a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    display: block;
+    height: 30px;
+    padding: 3px;
+    line-height: 30px;
+    width: 118px;
+    margin-right: 90px;
+    text-align: center;
+    border: 1px solid white; }
+    #login a:hover {
+      background: #e26757; }
+  #login #login_fields {
+    display: none; }
+    #login #login_fields .text_inputs {
+      width: 300px;
+      padding: 3px;
+      height: 30px;
+      line-height: 30px;
+      background: white;
+      border: none;
+      font-family: Signika;
+      margin: 0;
+      position: relative;
+      color: #5d6976;
+      font-size: 18px;
+      display: block; }
+      #login #login_fields .text_inputs:focus {
+        outline: none;
+        background: #fcf1f0; }
+      #login #login_fields .text_inputs#login_email {
+        border-bottom: 1px solid #d2d2d2; }
+    #login #login_fields #login_submit {
+      width: 306px;
+      padding: 3px;
+      text-align: center;
+      background: #e67b6d;
+      color: white;
+      height: 38px;
+      line-height: 30px;
+      font-family: Signika;
+      font-size: 18px;
+      border: 1px solid white;
+      cursor: pointer;
+      position: absolute;
+      display: none;
+      box-shadow: none; }
+      #login #login_fields #login_submit:hover {
+        background: #e26757; }
+  #login.active a {
+    box-shadow: none; }
+    #login.active a:focus {
+      outline: none;
+      box-shadow: inset 0 0 3px 3px #da402c; }
+
+#main {
+  width: 500px;
+  margin: 0 auto;
+  top: 180px;
+  position: relative; }
+  #main img {
+    display: block;
+    width: 450px;
+    height: 150px;
+    margin-left: 25px; }
+  #main h2 {
+    padding: 0;
+    margin: 30px 0;
+    text-align: center;
+    font-size: 20px; }
+  #main form {
+    margin: 0 auto;
+    width: 510px; }
+    #main form #mergeTable .mergeRow .field-group input {
+      border: 0;
+      height: 30px;
+      line-height: 30px;
+      padding: 3px;
+      width: 340px;
+      font-family: Signika;
+      color: #5d6976;
+      float: left;
+      display: inline-block;
+      font-size: 18px; }
+      #main form #mergeTable .mergeRow .field-group input:focus {
+        outline: none;
+        background: #fcf1f0; }
+    #main form #button {
+      width: 165px;
+      height: 36px;
+      background: #8ec0ed;
+      display: inline-block;
+      text-align: center;
+      color: white;
+      font-size: 18px;
+      cursor: pointer;
+      line-height: 31px;
+      text-decoration: none;
+      margin-left: -4px;
+      box-shadow: none;
+      border: none;
+      float: left; }
+      #main form #button:focus {
+        outline: none;
+        box-shadow: inset 0 0 3px 3px #62a7e6; }
+      #main form #button:hover {
+        background: #62a7e6; }
+
+footer {
+  position: absolute;
+  bottom: 0;
+  text-align: center;
+  color: white;
+  font-family: Quicksand;
+  width: 100%;
+  font-size: 18px; }

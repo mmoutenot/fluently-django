@@ -1,71 +1,123 @@
-@import "colors";
-@import "fonts";
 @import "main";
-@import "bourbon/bourbon";
 
 #messages {
-	list-style:none;
-	padding:0;
-	margin:0;
+  list-style:none;
+  padding:0;
+  margin:0;
+  position:relative;
+  overflow:auto;
+  height:calc(100% - 193px);
 
-	li {
-		display: block;
-		background:#F2F2F2;
-		padding:5px 0;
-	}
+  li {
+    display: block;
+    padding:10px 0;
+    border-bottom: 1px solid $grey;
+    width:300px;
+    padding:15px;
+    position:relative;
+    @include clearfix;
+
+    h3 {
+      padding:0;
+      margin:0;
+      color:lighten($font, 20%);
+      font-size:14px;
+      font-family:Quicksand;
+      position:relative;
+      line-height:20px;
+
+      &.time {
+        float:right;
+        width:80px;
+        text-align: right;
+      }
+
+      &.name {
+        float:left;
+        text-align:left;
+        margin-bottom:3px;
+        height:20px;
+        width:100%;
+      }
+
+      &.message-local {
+        background:#F1F1F1;
+      }
+
+      &.message-remote {
+        background:#E4E4E4;
+      }
+    }
+
+    .postContent {
+      padding:0;
+      font-size:16px;
+      color:$font;
+      float:left;
+      width:220px;
+      line-height:20px;
+      position:relative;
+      margin:0;
+
+    }
+  }
 }
 
 #chat_form {
-	color:$font;
-	background:$grey;
-	position:fixed;
-	display:block;
-	bottom:0px;
-	width:330px;
-	padding:0;
-	margin:0;
-	@include clearfix;
+  color:$font;
+  position:fixed;
+  display:block;
+  bottom:0px;
+  width:300px;
+  padding:40px 15px;
+  margin:0;
+  border-top:1px solid $grey;
+  background:darken(#F1F1F1,5%);
+  @include clearfix;
 
-	textarea {
-		font-family:Signika;
-		height:70px;
-		width:calc(100% - 10px);
-		padding:5px;
-		margin:0;
-		border:none;
-		resize:none;
-		float:left;
-		font-size:16px;
-		display: inline-block;
-		border-top:1px solid $grey;
-		position:relative;
+  input[type='text'] {
+    background:$white;
+    width:218px;
+    min-height:26px;
+    font-size:16px;
+    line-height:26px;
+    color:$font;
+    font-family:Signika;
+    padding:0 5px;
+    float:left;
+    border-radius:4px;
+    border:1px solid $grey;
 
-		&:focus {
-			background:$white;
-			@include box-shadow(inset 0 0 12px 2px $grey);
-		}
-	}
+    &:focus {
+      outline:none;
+      @include box-shadow(inset 0 0 2px 1px $grey_d);
+    }
+  }
 
-	input[type='submit'] {
-		background:$lt_blue;
-		color:$white;
-		width:100%;
-		border:none;
-		@include box-shadow(none);
-		padding:0;
-		font-family:Signika;
-		height:40px;
-		line-height:40px;
-		font-size:22px;
-		@include transition ($transition);
-	
-		&:focus {
-			outline:none;
-			@include box-shadow(inset 0 0 3px 3px darken($lt_blue,10%));
-		}
+  input[type='submit'] {
+    background:$lt_blue;
+    color:$white;
+    width:63px;
+    margin-left:5px;
+    margin-top:2px;
+    border-radius:4px;
+    border:none;
+    @include box-shadow(none);
+    padding:0;
+    font-family:Signika;
+    height:28px;
+    float:left;
+    line-height:28px;
+    font-size:16px;
+    @include box-shadow(inset 0 0 4px 2px darken($lt_blue,5%));
 
-		&:hover {
-			background:darken($lt_blue,10%);
-		}
-	}
+    &:focus {
+      outline:none;
+      @include box-shadow(inset 0 0 3px 3px darken($lt_blue,10%));
+    }
+
+    &:hover {
+      background:darken($lt_blue,10%);
+    }
+  }
 }

@@ -1,0 +1,95 @@
+{% extends 'space/base.html' %}
+
+{% block shared-space %}
+  {# {% if croco_session %} #}
+  {#   <iframe id="documentViewer" src="http://crocodoc.com/view/{{ croco_session }}"></iframe> #}
+  {# {% else %} #}
+  {#   <iframe id="documentViewer" src=""></iframe> #}
+  {# {% endif %} #}
+{% endblock %}
+
+
+{% block chat %}
+
+  <link rel="stylesheet" type="text/css" href="/static/stylesheets/chat.css">
+
+  <ul id="messages">
+    <script type="text/x-jquery-tmpl">
+
+      <li class="${action}-${sender}">
+      <h3 class='name'>${name}</h3>
+        <h3 class='time'>${time}</h2>
+        <p class='postContent'>${message}</p>
+      </li>
+
+    </script>
+  </ul>
+
+  <form id="chat_form">
+    <input id='message' type='text' name='message' placeholder = 'Send a message...' />
+    <input type="submit" id="submit" value="Send" />
+  </form>
+
+{% endblock %}
+
+
+{% block side-nav %}
+  <link rel="stylesheet" type="text/css" href="/static/stylesheets/side_nav.css">
+
+  <a href="#" id='settings_tab'>
+    <h2>Settings</h2>
+  <img src='/static/images/arrow_down.png' />
+  </a>
+
+  <ul id='side_nav'>
+    <li id='uploadButton'>
+      <a href="#">
+        <img src="/static/images/icons/magnify1.png">
+        <h2>File Viewer</h2>
+      </a>
+    </li>
+
+    <li class='nav_disabled'>
+      <a href="#">
+        <img src="/static/images/icons/whiteboard1.png">
+        <h2>Draw</h2>
+      </a>
+    </li>
+
+    <li class='nav_disabled'>
+      <a href="#">
+        <img src="/static/images/icons/cloud1.png">
+        <h2>Upload</h2>
+      </a>
+    </li>
+
+    <li id="helpButton">
+      <a href="javascript:void(0);" onclick="olark('api.box.expand')">
+        <img src="/static/images/icons/question1.png">
+        <h2>Help</h2>
+      </a>
+    </li>
+
+    <li>
+      <a href="#">
+        <img src="/static/images/icons/end1.png">
+        <h2>End Session</h2>
+      </a>
+    </li>
+
+  </ul>
+
+  <script src="/static/javascripts/olark.js" type="text/javascript"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      var helpLink = $('#helpButton a');
+      $(helpLink).click(function() {
+        $('#habla_panel_div').animate({
+          opacity:1
+        }, 100);
+      });
+
+    });
+  </script>
+{% endblock %}

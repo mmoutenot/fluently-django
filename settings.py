@@ -133,5 +133,3 @@ LOGGING = {
 }
 
 ALLOWED_HOSTS = ['127.0.0.1']
-                                                                                                                                                                                                  135,1         Bot
-

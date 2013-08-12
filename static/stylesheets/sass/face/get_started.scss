@@ -1,0 +1,57 @@
+@import "mainNew";
+
+body, html {
+	background:#F2F2F2;
+}
+
+#container {
+  width:800px;
+  position:relative;
+  margin:0 auto;
+  padding:20px;
+  top: 130px;
+  border:1px solid $grey;
+  @include box-shadow(0 0 5px 1px darken($grey,10%));
+  background:$white;
+
+  h2 {
+  	text-align: center;
+  }
+}
+
+
+.stepBlock {
+	display:block;
+	margin: 40px auto;
+
+	h5 {
+		text-align:center; 
+
+		span {
+			font-family: QuicksandBold;	
+		}
+	}
+
+}
+
+form {
+	width:424px;
+	margin:0 auto;
+	@include clearfix;
+
+	input {
+		float:left;
+		margin: 0 5px;
+	}
+}
+
+#join {
+	margin:50px auto 10px auto;
+}
+
+p {
+	width:700px;
+	margin:0 auto;
+	display: block;
+	text-align:center;
+}

@@ -1,46 +1,23 @@
-/* MAIN COLORS */
-/* SECONDARY COLORS */
 @font-face {
   font-family: Quicksand;
-  src: url("/static/fonts/Quicksand/Quicksand_Book-webfont.ttf");
-  /* url('Quicksand_Book-webfont.ttf');  IE9 */ }
+  font-weight: normal;
+  font-style: normal;
+  src: url("../../fonts/Quicksand/Quicksand_Book-webfont.eot");
+  src: url("../../fonts/Quicksand/Quicksand_Book-webfont.eot?#iefix") format("embedded-opentype"), url("../../fonts/Quicksand/Quicksand_Book-webfont.woff") format("woff"), url("../../fonts/Quicksand/Quicksand_Book-webfont.ttf") format("truetype"), url("../../fonts/Quicksand/Quicksand_Book-webfont.svg#Quicksand") format("svg"); }
 
 @font-face {
   font-family: QuicksandBold;
-  src: url("static/fonts/Quicksand/Quicksand_Bold-webfont.ttf");
-  /* url('Quicksand_Bold-webfont.ttf');  IE9 */ }
+  font-weight: normal;
+  font-style: normal;
+  src: url("../../fonts/Quicksand/Quicksand_Bold-webfont.eot");
+  src: url("../../fonts/Quicksand/Quicksand_Bold-webfont.eot?#iefix") format("embedded-opentype"), url("../../fonts/Quicksand/Quicksand_Bold-webfont.woff") format("woff"), url("../../fonts/Quicksand/Quicksand_Bold-webfont.ttf") format("truetype"), url("../../fonts/Quicksand/Quicksand_Bold-webfont.svg#QuicksandBold") format("svg"); }
 
 @font-face {
   font-family: Signika;
-  src: url("/static/fonts/Signika/Signika-Regular.ttf");
-  /* url('Signika-Regular.ttf');  IE9 */ }
-
-@font-face {
-  font-family: SignikaBold;
-  src: url("/static/fonts/Signika/Signika-Bold.ttf");
-  /* url('Signika-Bold.ttf');  IE9 */ }
-
-/* MAIN COLORS */
-/* SECONDARY COLORS */
-@font-face {
-  font-family: Quicksand;
-  src: url("/static/fonts/Quicksand/Quicksand_Book-webfont.ttf");
-  /* url('Quicksand_Book-webfont.ttf');  IE9 */ }
-
-@font-face {
-  font-family: QuicksandBold;
-  src: url("static/fonts/Quicksand/Quicksand_Bold-webfont.ttf");
-  /* url('Quicksand_Bold-webfont.ttf');  IE9 */ }
-
-@font-face {
-  font-family: Signika;
-  src: url("/static/fonts/Signika/Signika-Regular.ttf");
-  /* url('Signika-Regular.ttf');  IE9 */ }
-
-@font-face {
-  font-family: SignikaBold;
-  src: url("/static/fonts/Signika/Signika-Bold.ttf");
-  /* url('Signika-Bold.ttf');  IE9 */ }
+  font-weight: normal;
+  font-style: normal;
+  src: url("../../fonts/Signika/Signika-Light.eot");
+  src: url("../../fonts/Signika/Signika-Light.eot?#iefix") format("embedded-opentype"), url("../../fonts/Signika/Signika-Light.woff") format("woff"), url("../../fonts/Signika/Signika-Light.ttf") format("truetype"), url("../../fonts/Signika/Signika-Light.svg#Signika") format("svg"); }
 
 body, html {
   padding: 0;
@@ -55,121 +32,21 @@ body, html {
   height: 80px;
   position: fixed;
   top: 0;
-  background: #da6459;
-  z-index: 999;
-  box-shadow: 0px 1px 3px 0px #d34336; }
+  background: #e67b6d;
+  z-index: 9999;
+  box-shadow: 0px 1px 7px 1px #666666;
+  background-color: #e67b6d;
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #e67b6d), color-stop(100%, #e46f60));
+  background-image: -webkit-linear-gradient(#e67b6d, #e46f60);
+  background-image: linear-gradient(#e67b6d, #e46f60); }
   #navbar #logo {
     float: left;
-    padding: 10px; }
+    padding: 10px;
+    margin-left: 5px; }
     #navbar #logo img {
       width: 190px;
       height: 60px;
       display: block; }
-  #navbar #nav {
-    padding: 0;
-    margin: 10px 10px 0 0;
-    float: right;
-    list-style: none; }
-    #navbar #nav .navLink a {
-      text-decoration: none;
-      display: block;
-      width: 150px;
-      color: white;
-      border: 1px solid white;
-      text-align: center;
-      font-size: 20px;
-      height: 40px;
-      line-height: 40px; }
-    #navbar #nav .navLink ul {
-      display: none;
-      margin-top: 1px; }
-      #navbar #nav .navLink ul li {
-        display: block; }
-        #navbar #nav .navLink ul li a {
-          display: block;
-          width: 100%;
-          border: none;
-          border-bottom: 1px solid #d2d2d2;
-          height: 40px;
-          line-height: 40px;
-          background: #5d6976; }
-          #navbar #nav .navLink ul li a:hover {
-            background: #d2d2d2; }
-    #navbar #nav .navLink:hover ul {
-      display: block; }
-
-#main {
-  width: 100%;
-  height: 100%;
-  position: relative;
-  top: 80px;
-  background: white; }
-  #main #left {
-    width: 330px;
-    height: 100%;
-    top: 80px;
-    float: left;
-    position: fixed;
-    border-right: 1px solid #d2d2d2; }
-    #main #left #video_large_container {
-      width: 100%;
-      border-bottom: 1px solid #d2d2d2;
-      position: relative;
-      display: block;
-      height: auto;
-      float: left; }
-      #main #left #video_large_container #video_large {
-        position: relative;
-        width: 100%;
-        height: 100%;
-        margin: 0 auto; }
-    #main #left #video_small_container {
-      height: 130px;
-      width: 100%;
-      position: relative;
-      display: block;
-      float: left; }
-      #main #left #video_small_container #video_small {
-        position: relative;
-        width: 130px;
-        height: 100%;
-        margin: 0 auto; }
-    #main #left #chat {
-      width: 100%;
-      float: left;
-      display: block;
-      height: 170px;
-      border-top: 1px solid #d2d2d2; }
-  #main #right {
-    width: calc(100% - 331px);
-    height: calc(100% - 80px);
-    top: 80px;
-    margin-left: 331px;
-    float: left;
-    position: fixed;
-    background: #d2d2d2; }
-    #main #right #video_large_container {
-      width: 85.5%;
-      height: 100%;
-      box-shadow: 4px 0 18px #666666, -4px 0 18px #666666;
-      margin: 0 auto; }
-      #main #right #video_large_container #video_large {
-        width: 100%;
-        height: 100%;
-        margin: 0 auto; }
-    #main #right #video_small_container {
-      height: 200px;
-      width: 240px;
-      position: absolute;
-      bottom: 20px;
-      left: 100px; }
-      #main #right #video_small_container #video_small {
-        position: relative;
-        width: 240px;
-        height: 100%; }
-    #main #right #shared {
-      width: 100%;
-      background: white; }
 
 input.text_input {
   border: 1px solid #d2d2d2;
@@ -183,8 +60,7 @@ input.text_input {
   color: #5d6976; }
   input.text_input:focus {
     outline: none;
-    background: #f6d9d6;
-    box-shadow: none; }
+    box-shadow: inset 0 0 2px 1px #6d6d6d; }
 
 textarea {
   border: 1px solid #d2d2d2;
@@ -194,7 +70,7 @@ textarea {
   font-size: 18px; }
   textarea:focus {
     outline: none;
-    background: #f6d9d6;
+    background: #f9ddda;
     box-shadow: none; }
 
 .btn {
@@ -216,15 +92,6 @@ textarea {
   .btn:hover {
     background: #62a7e6; }
 
-footer {
-  width: 100%;
-  position: absolute;
-  bottom: 0;
-  height: 200px;
-  background: #5d6976; }
-  footer:before {
-    padding-top: 300px; }
-
 a {
   text-decoration: none; }
 
@@ -240,57 +107,102 @@ ul {
 #messages {
   list-style: none;
   padding: 0;
-  margin: 0; }
+  margin: 0;
+  position: relative;
+  overflow: auto;
+  height: calc(100% - 193px); }
   #messages li {
     display: block;
-    background: #F2F2F2;
-    padding: 5px 0; }
+    padding: 10px 0;
+    border-bottom: 1px solid #d2d2d2;
+    width: 300px;
+    padding: 15px;
+    position: relative;
+    *zoom: 1; }
+    #messages li:before, #messages li:after {
+      content: " ";
+      display: table; }
+    #messages li:after {
+      clear: both; }
+    #messages li h3 {
+      padding: 0;
+      margin: 0;
+      color: #919ca8;
+      font-size: 14px;
+      font-family: Quicksand;
+      position: relative;
+      line-height: 20px; }
+      #messages li h3.time {
+        float: right;
+        width: 80px;
+        text-align: right; }
+      #messages li h3.name {
+        float: left;
+        text-align: left;
+        margin-bottom: 3px;
+        height: 20px;
+        width: 100%; }
+      #messages li h3.message-local {
+        background: #F1F1F1; }
+      #messages li h3.message-remote {
+        background: #E4E4E4; }
+    #messages li .postContent {
+      padding: 0;
+      font-size: 16px;
+      color: #5d6976;
+      float: left;
+      width: 220px;
+      line-height: 20px;
+      position: relative;
+      margin: 0; }
 
 #chat_form {
   color: #5d6976;
-  background: #d2d2d2;
   position: fixed;
   display: block;
   bottom: 0px;
-  width: 330px;
-  padding: 0;
+  width: 300px;
+  padding: 40px 15px;
   margin: 0;
+  border-top: 1px solid #d2d2d2;
+  background: #e4e4e4;
   *zoom: 1; }
   #chat_form:before, #chat_form:after {
     content: " ";
     display: table; }
   #chat_form:after {
     clear: both; }
-  #chat_form textarea {
-    font-family: Signika;
-    height: 70px;
-    width: calc(100% - 10px);
-    padding: 5px;
-    margin: 0;
-    border: none;
-    resize: none;
-    float: left;
+  #chat_form input[type='text'] {
+    background: white;
+    width: 218px;
+    min-height: 26px;
     font-size: 16px;
-    display: inline-block;
-    border-top: 1px solid #d2d2d2;
-    position: relative; }
-    #chat_form textarea:focus {
-      background: white;
-      box-shadow: inset 0 0 12px 2px #d2d2d2; }
+    line-height: 26px;
+    color: #5d6976;
+    font-family: Signika;
+    padding: 0 5px;
+    float: left;
+    border-radius: 4px;
+    border: 1px solid #d2d2d2; }
+    #chat_form input[type='text']:focus {
+      outline: none;
+      box-shadow: inset 0 0 2px 1px #6d6d6d; }
   #chat_form input[type='submit'] {
     background: #8ec0ed;
     color: white;
-    width: 100%;
+    width: 63px;
+    margin-left: 5px;
+    margin-top: 2px;
+    border-radius: 4px;
     border: none;
     box-shadow: none;
     padding: 0;
     font-family: Signika;
-    height: 40px;
-    line-height: 40px;
-    font-size: 22px;
-    -webkit-transition: all 0.7s ease-in-out;
-    -moz-transition: all 0.7s ease-in-out;
-    transition: all 0.7s ease-in-out; }
+    height: 28px;
+    float: left;
+    line-height: 28px;
+    font-size: 16px;
+    box-shadow: inset 0 0 4px 2px #78b4e9; }
     #chat_form input[type='submit']:focus {
       outline: none;
       box-shadow: inset 0 0 3px 3px #62a7e6; }

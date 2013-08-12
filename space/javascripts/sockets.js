@@ -10,11 +10,33 @@ $(function() {
     var d = new Date();
     var win = $(window), doc = $(window.document);
     var bottom = win.scrollTop() + win.height() == doc.height();
-    data.time = $.map([d.getHours(), d.getMinutes(), d.getSeconds()],
+    var h = d.getHours();
+    var ampm;
+    if (h > 12) {
+      h -= 12;
+      ampm = " PM";
+    } else {
+      if (h === 0) {
+        h = 12;
+      }
+      ampm = " AM"
+    }
+
+    if (data.action == null){
+      data.action = "message";
+    }
+
+    if (data.name === user_name){
+      data.sender = 'local';
+    } else {
+      data.sender = 'remote';
+    }
+
+    data.time = h + ":" + $.map([d.getMinutes()],
       function(s) {
         s = String(s);
         return (s.length == 1 ? '0' : '') + s;
-      }).join(':');
+      }) + ampm;
     addItem('#messages', data);
     if (bottom) {
       window.scrollBy(0, 10000);

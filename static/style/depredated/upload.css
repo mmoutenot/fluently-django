@@ -1,24 +1,215 @@
-/* MAIN COLORS */
-/* SECONDARY COLORS */
+@font-face {
+  font-family: Quicksand;
+  font-weight: normal;
+  font-style: normal;
+  src: url("../../fonts/Quicksand/Quicksand_Book-webfont.eot");
+  src: url("../../fonts/Quicksand/Quicksand_Book-webfont.eot?#iefix") format("embedded-opentype"), url("../../fonts/Quicksand/Quicksand_Book-webfont.woff") format("woff"), url("../../fonts/Quicksand/Quicksand_Book-webfont.ttf") format("truetype"), url("../../fonts/Quicksand/Quicksand_Book-webfont.svg#Quicksand") format("svg"); }
+
+@font-face {
+  font-family: QuicksandBold;
+  font-weight: normal;
+  font-style: normal;
+  src: url("../../fonts/Quicksand/Quicksand_Bold-webfont.eot");
+  src: url("../../fonts/Quicksand/Quicksand_Bold-webfont.eot?#iefix") format("embedded-opentype"), url("../../fonts/Quicksand/Quicksand_Bold-webfont.woff") format("woff"), url("../../fonts/Quicksand/Quicksand_Bold-webfont.ttf") format("truetype"), url("../../fonts/Quicksand/Quicksand_Bold-webfont.svg#QuicksandBold") format("svg"); }
+
+@font-face {
+  font-family: Signika;
+  font-weight: normal;
+  font-style: normal;
+  src: url("../../fonts/Signika/Signika-Light.eot");
+  src: url("../../fonts/Signika/Signika-Light.eot?#iefix") format("embedded-opentype"), url("../../fonts/Signika/Signika-Light.woff") format("woff"), url("../../fonts/Signika/Signika-Light.ttf") format("truetype"), url("../../fonts/Signika/Signika-Light.svg#Signika") format("svg"); }
+
+body, html {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  font-family: Signika;
+  color: #5d6976;
+  position: relative; }
+
+#navbar {
+  width: 100%;
+  height: 80px;
+  position: fixed;
+  top: 0;
+  background: #e67b6d;
+  z-index: 9999;
+  box-shadow: 0px 1px 7px 1px #666666;
+  background-color: #e67b6d;
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #e67b6d), color-stop(100%, #e46f60));
+  background-image: -webkit-linear-gradient(#e67b6d, #e46f60);
+  background-image: linear-gradient(#e67b6d, #e46f60); }
+  #navbar #logo {
+    float: left;
+    padding: 10px;
+    margin-left: 5px; }
+    #navbar #logo img {
+      width: 190px;
+      height: 60px;
+      display: block; }
+
+input.text_input {
+  border: 1px solid #d2d2d2;
+  background: white;
+  padding: 3px;
+  width: 250px;
+  height: 35px;
+  line-height: 35px;
+  font-size: 18px;
+  font-family: Signika;
+  color: #5d6976; }
+  input.text_input:focus {
+    outline: none;
+    box-shadow: inset 0 0 2px 1px #6d6d6d; }
+
+textarea {
+  border: 1px solid #d2d2d2;
+  background: white;
+  padding: 5px;
+  line-height: 22px;
+  font-size: 18px; }
+  textarea:focus {
+    outline: none;
+    background: #f9ddda;
+    box-shadow: none; }
+
+.btn {
+  text-decoration: none;
+  width: 143px;
+  height: 41px;
+  background: #8ec0ed;
+  display: inline-block;
+  text-align: center;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  line-height: 41px;
+  box-shadow: none;
+  border: none; }
+  .btn:focus {
+    outline: none;
+    box-shadow: inset 0 0 3px 3px #62a7e6; }
+  .btn:hover {
+    background: #62a7e6; }
+
+a {
+  text-decoration: none; }
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0; }
+  ul li {
+    list-style: none;
+    padding: 0;
+    margin: 0; }
+
+#uploadModal {
+  padding: 0;
+  border-radius: 5px;
+  font-family: Quicksand; }
+  #uploadModal h1 {
+    height: 60px;
+    line-height: 68px;
+    margin: 0;
+    width: 100%;
+    top: 0;
+    background: #8ec0ed;
+    color: white;
+    font-size: 30px;
+    text-align: center;
+    text-transform: uppercase;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    box-shadow: inset 0 0 8px 3px #78b4e9; }
+  #uploadModal #uploadToggle {
+    display: block;
+    width: 100%;
+    position: relative;
+    *zoom: 1; }
+    #uploadModal #uploadToggle:before, #uploadModal #uploadToggle:after {
+      content: " ";
+      display: table; }
+    #uploadModal #uploadToggle:after {
+      clear: both; }
+    #uploadModal #uploadToggle a {
+      text-decoration: none;
+      display: inline-block;
+      width: 50%;
+      background: #d2d2d2;
+      box-shadow: inset 0 0 0 1px #c5c5c5;
+      text-align: center;
+      color: #6d6d6d;
+      font-size: 20px;
+      height: 40px;
+      line-height: 44px;
+      float: left; }
+      #uploadModal #uploadToggle a.active {
+        background: #acacac;
+        box-shadow: inset 0 0 10px 2px #6d6d6d; }
+  #uploadModal #uploadModalContent {
+    padding: 0 20px 20px 20px;
+    margin-top: 30px;
+    color: #5d6976; }
+    #uploadModal #uploadModalContent article #dndTagline {
+      width: 100%;
+      text-align: center; }
+      #uploadModal #uploadModalContent article #dndTagline p {
+        font-size: 16px; }
+      #uploadModal #uploadModalContent article #dndTagline p:nth-child(1) {
+        font-weight: 900; }
+      #uploadModal #uploadModalContent article #dndTagline p:nth-child(2) {
+        text-transform: uppercase; }
+      #uploadModal #uploadModalContent article #dndTagline a {
+        color: #5d6976;
+        font-style: italic;
+        text-decoration: none; }
+        #uploadModal #uploadModalContent article #dndTagline a:hover {
+          text-decoration: underline; }
+    #uploadModal #uploadModalContent article #progressTag {
+      text-align: center;
+      color: #acacac;
+      text-transform: uppercase; }
+
 #holder {
-  border: 10px dashed #cccccc;
-  width: 300px;
-  min-height: 300px;
-  margin: 20px auto; }
+  border: 6px dashed #cccccc;
+  width: 200px;
+  min-height: 200px;
+  margin: 20px auto;
+  border-radius: 35px; }
   #holder .hover {
-    border: 10px dashed #d2d2d2; }
+    border: 10px dashed #8ec0ed; }
   #holder img {
     display: block;
     margin: 10px auto; }
   #holder p {
-    margin: 10px;
-    font-size: 14px; }
+    margin: 70px 10px 0px 10px;
+    font-size: 14px;
+    text-align: center;
+    line-height: 20px; }
 
 progress {
-  width: 100%; }
+  width: 80%;
+  height: 25px;
+  display: block;
+  margin: 40px auto 10px auto;
+  border-color: red; }
 
 progress:after {
   content: '%'; }
+
+progress::-webkit-progress-bar {
+  background-color: #6d6d6d;
+  border-radius: 10px;
+  border: none;
+  height: 25px; }
+
+progress::-webkit-progress-value {
+  background-color: #8ec0ed;
+  border-radius: 10px;
+  height: 25px;
+  border: none;
+  box-shadow: inset 0 0 2px 3px #78b4e9; }
 
 .fail {
   background: #c00;
@@ -27,3 +218,29 @@ progress:after {
 
 .hidden {
   display: none !important; }
+
+#myFiles {
+  width: 90%;
+  display: none;
+  margin: 0 auto;
+  max-height: 417px;
+  overflow-y: scroll; }
+  #myFiles a {
+    width: 33%;
+    height: 150px;
+    display: inline-block;
+    float: left;
+    margin: 10px 0;
+    text-decoration: none; }
+    #myFiles a img {
+      width: 90%;
+      min-height: 50px;
+      height: 120px;
+      margin-left: 5%; }
+    #myFiles a label {
+      text-align: center;
+      font-size: 14px;
+      display: block;
+      width: 100%;
+      color: #5d6976;
+      margin-top: 5px; }

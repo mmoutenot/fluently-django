@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+
+    {# Socket.io setup #}
+    {% load socketio_tags %}
+    {% socketio %}
+
+    {# CSS INCLUDES  #}
+    <link href='/static/stylesheets/index.css'  rel='stylesheet' type='text/css'>
+    <link href='/static/stylesheets/main.css'   rel='stylesheet' type='text/css'>
+    <link href='/static/stylesheets/upload.css' rel='stylesheet' type='text/css'>
+    <link href='/static/stylesheets/reveal.css' rel='stylesheet' type='text/css'>
+
+    {# JS INCLUDES #}
+
+    <script>
+
+      apiKey = "25204042";
+      space_id   = "{{ space.id }}"
+      tok_token  = "{{ tok_token }}";
+      session_id = "{{ tok_session_id }}";
+      csrf_token = "{{ csrf_token }}";
+      user_name  = "{{ user.get_full_name }}";
+
+      SPACE_TYPES = {
+        VIDEO : "video",
+        DOC   : "document",
+      };
+
+      active_space = SPACE_TYPES.VIDEO;
+
+    </script>
+
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
+
+    <script src="/static/javascripts/vendor/custom.modernizr.js"></script>
+    <script src="/static/javascripts/vendor/foundation/foundation.js"></script>
+    <script src="/static/javascripts/vendor/foundation/foundation.reveal.js"></script>
+    <script src="http://ajax.microsoft.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js"></script>
+
+    <script src='//static.opentok.com/webrtc/v2.0/js/TB.min.js' ></script>
+    <script src="//static-v2.crocodoc.com/core/docviewer.js"></script>
+
+    <script src='/static/javascripts/sockets.js' type='text/javascript'></script>
+    <script src='/static/javascripts/main.js' type='text/javascript'></script>
+    <script src='/static/javascripts/video.js' type='text/javascript'></script>
+    <script src='/static/javascripts/upload.js' type='text/javascript'></script>
+    <script src='/static/javascripts/chat.js' type='text/javascript'></script>
+    {% load compress %}
+    {% compress js %}
+      {# coffee script in here #}
+    {% endcompress %}
+  </head>
+
+  <body>
+
+    <div id='navbar'>
+      <div id='logo'> <img src='/static/images/logos/Logo_White.png'> </div>
+
+    </div>
+
+    <div id='main'>
+      <div id='left'>        
+        {% block chat %} {% endblock %}
+        
+
+      </div><!--left-->
+
+      <div id='right'>
+        {% block side-nav %} {% endblock %}
+      
+      </div>
+
+    </div><!--main-->
+
+    <div id="uploadModal" class="reveal-modal">
+     <h1>Share a File</h1>
+     <div id="uploadToggle">
+      <a href="#" id="newUploadBtn" class='active'>New Upload</a>
+      <a href="#" id="myFilesBtn">My Files</a>
+     </div>
+     <div id="uploadModalContent">
+       <article id="newUpload">
+         <div id="holder">
+         </div>
+         <div id="dndTagline">
+          <p>Drag a document from your computer here</p>
+          <p>or</p>
+          <a href="#">Browse from your computer</a>
+         </div>
+         
+         <p id="upload" class="hidden"><label>Drag & drop not supported, but you can still upload via this input field:<br><input type="file"></label></p>
+         <p id="filereader">File API & FileReader API not supported</p>
+         <p id="formdata">XHR2's FormData is not supported</p>
+         <p id="progress">XHR2's upload progress isn't supported</p>
+         <progress id="uploadprogress" min="0" max="100" value="0">0</progress>
+         <p id="progressTag">Upload Progress</p>
+       </article>
+       
+       <article id="myFiles">
+        <a href="#"><img src="#"><label>FILE NAME</label></a>
+        <a href="#"><img src="#"><label>FILE NAME</label></a>
+        <a href="#"><img src="#"><label>FILE NAME</label></a>
+        <a href="#"><img src="#"><label>FILE NAME</label></a>
+        <a href="#"><img src="#"><label>FILE NAME</label></a>
+        <a href="#"><img src="#"><label>FILE NAME</label></a>
+        <a href="#"><img src="#"><label>FILE NAME</label></a>
+
+
+       </article>
+     </div>
+     <a class="close-reveal-modal">&#215;</a>
+   </div>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('.close-reveal-modal').click(function() {
+        $('#uploadModal').hide();
+        $('#uploadModal').removeClass('open');
+        $('.reveal-modal-bg').fadeOut();
+      })
+    })
+  </script>
+
+  <script type="text/javascript">
+    $('#settings_tab').toggle(function() {
+      $('#side_nav').animate({
+        top:140
+      }, 400);
+      $('#settings_tab').addClass('active');
+    }, function() {
+      $('#side_nav').animate({
+        top:-650
+      }, 400);
+      $('#settings_tab').removeClass('active');
+    });
+  </script>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      var uploadBtn = $('#uploadToggle a');
+      var article = $('#uploadModalContent article');
+
+      $(uploadBtn).click(function(e) {
+        e.preventDefault();
+        $(this).addClass('active');
+        $(uploadBtn).not(this).removeClass('active');
+
+        var disp = '#' + this.id.replace("Btn", "");
+        var other = $(article).not(disp);
+        $(other).hide();
+        $(disp).show();
+      });
+    });
+  </script>
+
+
+ </body>
+</html>
