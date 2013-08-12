@@ -202,9 +202,12 @@ $(document).ready(function () {
           success: function (dataJSON) {
             if (dataJSON.status === "success") {
               $('#account-wrap').load('blocks #submit-block', function () {
+                $('#sign-up-title').css('display', 'none');
+                $('#sign-up-explain').css('display', 'none');
+                $('#steps').css('display', 'none');
+                $('#confirm_container h3').css('padding-top', '90px');
                 spinner.stop();  
               });
-              animateStep();
               stage = "submit";
             } else {
               spinner.stop();  

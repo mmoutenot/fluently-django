@@ -93,7 +93,13 @@
 		vertical-align: middle;}
 
 .credentials {
+<<<<<<< HEAD
   font-weight: 500;}
+=======
+  font-weight: 500;
+  font-size: 15px;
+}
+>>>>>>> 8036f3479388f9dc1d6d652bf224d4ebda3aa633
 
 
 /* Right Profile */
