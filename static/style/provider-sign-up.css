@@ -60,14 +60,12 @@ textarea {
 	margin-left: 228px;
 	background-image: url("/static/images/icons/lock-white.png");
 	background-repeat: no-repeat;
-	background-position-x: 24px;
-	background-position-y: 20px;
+	background-position: 10% 48%;
 }
 	.submit-btn:hover {
 		background-image: url("/static/images/icons/lock-white.png");
 		background-repeat: no-repeat;
-		background-position-x: 24px;
-		background-position-y: 20px;
+		background-position: 10% 48%;
 		
 	}
 
