@@ -104,12 +104,12 @@
 #signin_email {
 	background-image: url("/static/images/icons/mail-gray.png");
 	background-repeat: no-repeat;
-	background-position: 10% 48%;}
+	background-position: 4% 48%;}
 
 #signin_password {
 	background-image: url("/static/images/icons/lock-gray.png");
 	background-repeat: no-repeat;
-	background-position: 10% 48%;}
+	background-position: 4% 48%;}
 
 
 
