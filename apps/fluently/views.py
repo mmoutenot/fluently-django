@@ -184,6 +184,7 @@ consumer_request_blocks_url = 'fluently/app_site/consumer_request/consumer-reque
 
 # App Site # Personal Account
 account_url = 'fluently/app_site/personal_account/account.html'
+account_modal_blocks_url = 'fluently/app_site/personal_account/share-modal-blocks.html'
 account_edit_url = 'fluently/app_site/personal_account/account-edit.html'
 account_edit_blocks_url = 'fluently/app_site/personal_account/account-edit-blocks.html'
 default_profile_pic_url = '/static/images/elements/default-profile.jpg'
@@ -360,6 +361,10 @@ def account(request):
     print userUrl
     context.update(csrf(request))
     return HttpResponse(template.render(context))
+
+# Display account modal blocks (share, email, support)
+def account_modal_blocks(request):
+    return render(request, account_modal_blocks_url)
 
 # Display account edit page
 def account_edit(request):
