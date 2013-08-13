@@ -42,7 +42,7 @@
 
 #content-container {
 	width: 1000px;
-	/*border: 1px solid lime;*/
+	border: 1px solid lime;
 	height: auto;
 	margin: 0 auto;
 	padding-top: 40px;}
@@ -139,6 +139,7 @@
 	text-transform: uppercase;
 	font-family: Quicksand;
 	font-size: 14px;
+	font-weight: bold;
 	display: inline-block;
 	cursor: pointer;
 	cursor: hand;}
@@ -188,11 +189,11 @@ select {
 #select-need {    
     background-image: url("/static/images/icons/pencil.png");
 	background-repeat: no-repeat;
-	background-position: 10% 48%;}
+	background-position: 4% 48%;}
 
 .advanced-select {
 	background-repeat: no-repeat;
-	background-position: 10% 48%;
+	background-position: 6% 48%;
 	font-size: 14px;
 	margin-left: 8px;
 	margin-right: 8px;}
@@ -413,8 +414,7 @@ input {
 	margin-top: 30px;
 	display: inline-block;
 	border: 1px solid #c0c4c8;
-	margin-left: 60px;
-	}
+	margin-left: 60px;}
 
 #email-signup-button {
 	background-image: none;
@@ -425,10 +425,31 @@ input {
 	width: 80px;
 	margin-top: 20px;
 	margin-left: 170px;
-	border: 1px solid white;
+	border: 1px solid white;}
+
+
+/* Page Footer/Listings */
+
+#pages-display {
+	width: 1000px;
+	margin: 0 auto;
+	border: 1px solid lime;
+	display: block;}
 	
-}
+#number-profiles-box {
+	width: 300px;
+	float: left;}
+		#number-profiles-box ul{
+			list-style: none;
+			display: inline;}
 
-
+#page-number-box {
+	width: 300px;
+	float: right;}
+		#page-number-box ul{
+			list-style: none;
+			display: inline;
+			text-align: right;
+		}
 
 
