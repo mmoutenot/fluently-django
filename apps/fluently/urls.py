@@ -49,6 +49,7 @@ urlpatterns = patterns('',
 
                   # App Site # Personal Account
                   url(r'^account/$', 'apps.fluently.views.account'),
+                  url(r'^account/modals/$', 'apps.fluently.views.account_modal_blocks'),
 
                   url(r'^account-edit/$', 'apps.fluently.views.account_edit'),
                   url(r'^account-edit/blocks/$', 'apps.fluently.views.account_edit_blocks'),

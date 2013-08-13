@@ -184,6 +184,7 @@ consumer_request_blocks_url = 'fluently/app_site/consumer_request/consumer-reque
 
 # App Site # Personal Account
 account_url = 'fluently/app_site/personal_account/account.html'
+account_modal_blocks_url = 'fluently/app_site/personal_account/share-modal-blocks.html'
 account_edit_url = 'fluently/app_site/personal_account/account-edit.html'
 account_edit_blocks_url = 'fluently/app_site/personal_account/account-edit-blocks.html'
 default_profile_pic_url = '/static/images/elements/default-profile.jpg'
@@ -279,13 +280,12 @@ def search(request):
                                                             CERTIFICATION_CHOICES_DISPLAY)
             provider_row[column]['locatedIn'] = u.located_in
             provider_row[column]['paymentMethod'] = u.payment_method
-            provider_row[column]['city'] = u.city
-            provider_row[column]['state'] = u.state
+            if u.city and u.state:
+                provider_row[column]['location'] = u.city + ', ' + u.state
+            else:
+                provider_row[column]['location'] = 'Unspecified location'
             provider_row[column]['aboutMe'] = u.about_me
-            provider_row[column]['role'] = int_to_string_list_database(
-                                               '[' + u.role +']',
-                                               ROLE_CHOICES,
-                                               ROLE_CHOICES_DISPLAY)
+            provider_row[column]['role'] = 'Speech-Language Pathologist' 
             provider_row[column]['userUrl'] = u.user_url
             provider_row[column]['picUrl'] = u.pic_url
 
@@ -361,6 +361,10 @@ def account(request):
     print userUrl
     context.update(csrf(request))
     return HttpResponse(template.render(context))
+
+# Display account modal blocks (share, email, support)
+def account_modal_blocks(request):
+    return render(request, account_modal_blocks_url)
 
 # Display account edit page
 def account_edit(request):

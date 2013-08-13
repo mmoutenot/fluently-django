@@ -182,3 +182,15 @@ body, html {
 [placeholder]:focus::-webkit-input-placeholder {
   transition: opacity 0.1s 0.1s ease; 
   opacity: 0;}
+
+#close {
+  font-family: Quicksand;
+  font-weight: bold;
+  float: right;
+  font-size: 26px;
+  padding: 10px;
+  cursor: pointer;
+  opacity: 0.5; }
+#close:hover {
+  opacity: 1.0; }
+  

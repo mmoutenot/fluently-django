@@ -32,7 +32,10 @@ SPECIALTY_CHOICES = (
     (11, 'accent'),
     (12, 'devdelay'),
     (13, 'dysphagia'),
-    (14, 'other'),
+    (14, 'expressivelang'),
+    (15, 'oralmotor'),
+    (16, 'literacy'),
+    (17, 'other'),
 )
 
 CLIENT_AGE_CHOICES = (

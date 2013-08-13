@@ -96,6 +96,7 @@ textarea {
 .user-field {
 	width: 280px;
 	height: 30px;
+  display: inline;
 	margin-left: 10px;
 	margin-bottom: 25px;
 	font-family: Signika;
@@ -251,5 +252,5 @@ textarea {
 	font-size: 12px;
 	margin-top: 5px;
 	margin-bottom: 22px;
-	margin-left: 354px;
+	margin-left: 340px;
 	visibility: hidden;}
