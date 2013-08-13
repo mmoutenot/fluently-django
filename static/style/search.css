@@ -95,8 +95,7 @@
 	display: inline-block;
 	background-image: url("/static/images/icons/magnify.png");
 	background-repeat: no-repeat;
-	background-position-x: 28px;
-	background-position-y: 21px;
+	background-position: 10% 48%;
 	border: 3px solid #5b95c8;}
 		#search-button:hover {
 			background-color: #7ab5e8;
@@ -189,13 +188,11 @@ select {
 #select-need {    
     background-image: url("/static/images/icons/pencil.png");
 	background-repeat: no-repeat;
-	background-position-x: 10px;
-	background-position-y: 10px;}
+	background-position: 10% 48%;}
 
 .advanced-select {
 	background-repeat: no-repeat;
-	background-position-x: 10px;
-	background-position-y: 10px;
+	background-position: 10% 48%;
 	font-size: 14px;
 	margin-left: 8px;
 	margin-right: 8px;}
@@ -230,8 +227,7 @@ input {
 	border: 1px solid #5d6975;
 	background-image: url("/static/images/icons/pin.png");
 	background-repeat: no-repeat;
-	background-position-x: 10px;
-	background-position-y: 11px;}
+	background-position: 10% 48%;}
 
 
 ::-webkit-input-placeholder {

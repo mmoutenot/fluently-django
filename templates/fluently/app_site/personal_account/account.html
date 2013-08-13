@@ -26,6 +26,31 @@
     </script>
     <script type="text/javascript" src="/static/src/libs/bootstrap-modal.js"></script>
 
+<script>
+
+(function($) {
+    $.fn.extend( {
+        limiter: function(limit, elem) {
+            $(this).on("keyup focus", function() {
+                setCount(this, elem);
+            });
+            function setCount(src, elem) {
+                var chars = src.value.length;
+                if (chars > limit) {
+                    src.value = src.value.substr(0, limit);
+                    chars = limit;
+                }
+                elem.html( limit - chars );
+            }
+            setCount($(this)[0], elem);
+        }
+    });
+})(jQuery);
+
+</script>
+
+
+
    	<script>
 	    	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 		    	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -133,14 +158,19 @@
 		 
 	     			<div class="edit-container"><div class="edit-button edit-box" id="edit-btn">Edit</div></div>
 	<form id="account-info-form">
-		     		<label class="textarea-label">About Me</label><textarea class="text-field" id="about-me" rows="4" cols="40" placeholder="Hi, I'm Susan! I'm an experienced SLP from..." maxlength="262">{% if aboutMe %} {{ aboutMe }} {% endif %}</textarea>
+		     		<label class="textarea-label">About Me</label><textarea class="text-field" id="about-me" rows="4" cols="40" placeholder="Hi, I'm Susan! I'm an experienced SLP from..." maxlength="300">{% if aboutMe %} {{ aboutMe }} {% endif %}</textarea>
+		     		<div class="chars"><strong>300</strong> characters remaining</div>
 
-		     		<label class="textarea-label">Certifications</label><textarea class="text-field" id="certifications" rows="4" cols="40" placeholder="CCC-SLP - ASHA member and..." maxlength="260">{% if aboutMe %} {{ certifications }} {% endif %}</textarea>
+		     		<label class="textarea-label">Certifications</label><textarea class="text-field" id="certifications" rows="4" cols="40" placeholder="CCC-SLP - ASHA member and..." maxlength="300">{% if aboutMe %} {{ certifications }} {% endif %}</textarea>
+		     		<div class="chars"><strong>300</strong> characters remaining</div>
+		     		
+		     		
+		     		<label class="textarea-label">Experience</label><textarea class="text-field" id="experience" rows="4" cols="40" placeholder="MS, Tufts University - 15+ years working with articulation & fluency disorders..." maxlength="300">{% if experience %} {{experience}} {% endif %}</textarea>
+		     		<div class="chars"><strong>300</strong> characters remaining</div>
 
-		     		<label class="textarea-label">Experience</label><textarea class="text-field" id="experience" rows="4" cols="40" placeholder="MS, Tufts University - 15+ years working with articulation & fluency disorders..." maxlength="260">{% if experience %} {{experience}} {% endif %}</textarea>
-
-		     		<label class="textarea-label">Therapy Approach</label><textarea class="text-field" id="therapy-approach" rows="4" cols="40" placeholder="I believe therapy should be..." maxlength="260">{% if therapyApproach %} {{therapyApproach}} {% endif %}</textarea>
-
+		     		<label class="textarea-label">Therapy Approach</label><textarea class="text-field" id="therapy-approach" rows="4" cols="40" placeholder="I believe therapy should be..." maxlength="300">{% if therapyApproach %} {{therapyApproach}} {% endif %}</textarea>
+		     		<div class="chars"><strong>300</strong> characters remaining</div>
+		     	
 		     	</form>
 		     	
 		     	<div id="status"></div>

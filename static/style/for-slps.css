@@ -217,8 +217,7 @@
 #signin_email {
 	background-image: url("/static/images/icons/mail-gray.png");
 	background-repeat: no-repeat;
-	background-position-x: 10px;
-	background-position-y: 14px;}	
+	background-position: 5% 48%;}	
 
 .ebook-button {
 	display: inline-block;
