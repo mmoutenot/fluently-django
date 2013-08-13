@@ -279,13 +279,12 @@ def search(request):
                                                             CERTIFICATION_CHOICES_DISPLAY)
             provider_row[column]['locatedIn'] = u.located_in
             provider_row[column]['paymentMethod'] = u.payment_method
-            provider_row[column]['city'] = u.city
-            provider_row[column]['state'] = u.state
+            if u.city and u.state:
+                provider_row[column]['location'] = u.city + ', ' + u.state
+            else:
+                provider_row[column]['location'] = 'Unspecified location'
             provider_row[column]['aboutMe'] = u.about_me
-            provider_row[column]['role'] = int_to_string_list_database(
-                                               '[' + u.role +']',
-                                               ROLE_CHOICES,
-                                               ROLE_CHOICES_DISPLAY)
+            provider_row[column]['role'] = 'Speech-Language Pathologist' 
             provider_row[column]['userUrl'] = u.user_url
             provider_row[column]['picUrl'] = u.pic_url
 
